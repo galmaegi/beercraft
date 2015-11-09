@@ -233,9 +233,12 @@
             android:background="@drawable/detail_2">
             <!-- 중간중에서도 윗쪽 그래프-->
             <LinearLayout
-                android:layout_weight="2"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="260dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/beer_graph"/>
 
             </LinearLayout>
             <Space
@@ -243,9 +246,20 @@
                 android:layout_height="10dp" />
             <!-- 중간중에서 아래쪽 육각형-->
             <LinearLayout
-                android:layout_weight="3"
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="fill_parent">
+
+                <galmaegi.beercraft.Detail.BeerDetailHex
+                    android:id="@+id/BeerDetailHex"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp" />
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -261,12 +275,105 @@
             android:layout_weight="3.5"
             android:layout_width="350dp"
             android:layout_height="fill_parent"
+
             android:background="@drawable/detail_3">
             <!-- 오른쪽 상단-->
             <LinearLayout
-                android:layout_weight="3"
+
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="370dp">
+                <ImageView
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="5dp"
+                    android:layout_height="330dp"
+                    android:background="#08ad08"
+                    android:id="@+id/detail_4_img_updown"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="160dp"
+                    android:layout_height="330dp">
+                    <ImageView
+                        android:layout_marginTop="5dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/detail_4_productimage"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="180dp"
+                    android:layout_height="330dp">
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp"
+                        android:id="@+id/detail_4_productname"/>
+                    <TextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="15dp"
+                        android:id="@+id/detail_4_productstyle"/>
+                    <TextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="15dp"
+                        android:id="@+id/detail_4_abv"/>
+                    <TextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="15dp"
+                        android:id="@+id/detail_4_changepercent"/>
+                    <TextView
+                        android:layout_marginTop="2dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="15dp"
+                        android:id="@+id/detail_4_changeprice"/>
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="45dp"
+                        android:id="@+id/detail_4_currentprice"/>
+
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="30dp">
+                        <ImageButton
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/detail_4_countminus"
+                            android:background="#FFFFFF"/>
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/detail_4_counttext"/>
+                        <ImageButton
+                            android:layout_width="30dp"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/detail_4_countplus"
+                            android:background="#FFFFFF"/>
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/detail_4_totalprice"/>
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:layout_marginTop="50dp"
+                        android:layout_width="fill_parent"
+                        android:layout_height="45dp"
+                        android:background="@drawable/btn_buy"
+                        android:id="@+id/detail_4_btn_buy"/>
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -276,9 +383,9 @@
                 android:layout_height="10dp" />
             <!-- 오른쪽 하단-->
             <LinearLayout
-                android:layout_weight="2"
+
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"></LinearLayout>
+                android:layout_height="fill_parent"></LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

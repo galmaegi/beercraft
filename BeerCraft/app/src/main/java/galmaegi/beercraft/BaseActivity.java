@@ -2,18 +2,19 @@ package galmaegi.beercraft;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import galmaegi.beercraft.Detail.DetailActivity;
 
 /**
  * Created by kyoungmin on 2015-10-24.
  */
 public class BaseActivity extends Activity implements View.OnClickListener{
     //현재 BaseActivity를 상속한 엑티비티가 어딘지 확인
-    Context currentContext;
+    public Context currentContext;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

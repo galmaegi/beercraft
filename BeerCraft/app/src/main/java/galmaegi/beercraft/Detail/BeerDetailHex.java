@@ -5,12 +5,14 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.HashMap;
+
 public class BeerDetailHex extends View {
 
     BeerDetailHexShape BeerDetailHexShape;
     float ratioRadius;
     int numberOfPoint = 3; //default
-    int []values;
+    HashMap values;
 
     public BeerDetailHex(Context context) {
         super(context);
@@ -63,6 +65,6 @@ public class BeerDetailHex extends View {
         numberOfPoint = pt;
     }
 
-    public void setValues(int []values){this.values = values;}
+    public void setValues(HashMap values){this.values = values;}
 
 }

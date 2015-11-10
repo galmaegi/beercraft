@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 
+import java.util.HashMap;
+
 public class BeerDetailHexShape {
 
     private Paint paint;
@@ -23,16 +25,15 @@ public class BeerDetailHexShape {
         path.addCircle(x, y, radius, dir);
     }
 
-    public void setPolygon(float x, float y, float radius,int []values){
+    public void setPolygon(float x, float y, float radius, HashMap values){
 
         double section = 2.0 * Math.PI/6;
 
         path.reset();
-        path.moveTo(
-                (float) (x + radius * Math.cos(0)),
-                (float) (y + radius * Math.sin(0)));
 
-//        for(int i=1; i<numOfPt; i++){
+
+//        for(int i=1; i<numOfPt; i++){ver
+
 //            path.lineTo(
 //                    (float)(x + radius * Math.cos(section * i)),
 //                    (float)(y + radius * Math.sin(section * i)));
@@ -42,25 +43,36 @@ public class BeerDetailHexShape {
 //                    (float)(x + radius * Math.cos(section * i)),
 //                    (float)(y + radius * Math.sin(section * i))+values[i-1]);
 //        }
-        path.lineTo(
-                (float)(x + radius * Math.cos(section * 1)),
-                (float)(y + radius * Math.sin(section * 1)));
 
-        path.lineTo(
-                (float)(x + radius * Math.cos(section * 2)),
-                (float)(y + radius * Math.sin(section * 2)));
 
-        path.lineTo(
-                (float)(x + radius * Math.cos(section * 3)),
-                (float)(y + radius * Math.sin(section * 3))+20);
+//        path.moveTo(
+//                (float) (x + radius * Math.cos(0)),
+//                (float) (y + radius * Math.sin(0)));
+//
+//
+//        path.lineTo(
+//                (float) (x + radius * Math.cos(section * 1)),
+//                (float) (y + radius * Math.sin(section * 1)) + 30);
+//
+//
+//        path.lineTo(
+//                (float)(x + radius * Math.cos(section * 2)),
+//                (float)(y + radius * Math.sin(section * 2))+20);
+//
+//        path.lineTo(
+//                (float)(x + radius * Math.cos(section * 3)),
+//                (float)(y + radius * Math.sin(section * 3))+50);
+//
+//        path.lineTo(
+//                (float)(x + radius * Math.cos(section * 4)),
+//                (float)(y + radius * Math.sin(section * 4)));
+//
+//        path.lineTo(
+//                (float) (x + radius * Math.cos(section * 5)),
+//                (float) (y + radius * Math.sin(section * 5)) + 60);
+//
 
-        path.lineTo(
-                (float)(x + radius * Math.cos(section * 4)),
-                (float)(y + radius * Math.sin(section * 4))-20);
 
-        path.lineTo(
-                (float)(x + radius * Math.cos(section * 5)),
-                (float)(y + radius * Math.sin(section * 5)));
 
 //        path.lineTo(
 //                (float)(x + radius * Math.cos(section * 4)),

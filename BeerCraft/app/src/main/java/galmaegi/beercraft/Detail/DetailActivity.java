@@ -1,5 +1,6 @@
 package galmaegi.beercraft.Detail;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -10,15 +11,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.github.mikephil.charting.charts.RadarChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.RadarData;
+import com.github.mikephil.charting.data.RadarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.BaseActivity;
+import galmaegi.beercraft.Custom.RadarMarkerView;
 import galmaegi.beercraft.R;
 
 /**
@@ -26,7 +34,11 @@ import galmaegi.beercraft.R;
  */
 public class DetailActivity extends BaseActivity {
     private static String TAG = "DETAILACTIVITY";
-    BeerDetailHex beerhex;
+    //set font
+    private Typeface tf;
+
+    //to set radarview
+    RadarChart detailRadar;
 
     //<views where included in sector 4>
     ImageView detail_4_img_updown;
@@ -57,8 +69,8 @@ public class DetailActivity extends BaseActivity {
         //공통뷰들을 찾아주기 위한 작업을 수행해야함
         findViewById(R.id.detail_left_side).findViewById(R.id.btn_home).setOnClickListener(this);
         getDetailjson();
-        beerhex = (BeerDetailHex)findViewById(R.id.BeerDetailHex);
-        beerhex.setShapeRadiusRatio(0.2f);
+        detailRadar = (RadarChart)findViewById(R.id.BeerDetailRadar);
+
 
         //initialization views which located in activity_detail sector4
         detail_4_img_updown = (ImageView)findViewById(R.id.detail_4_img_updown);
@@ -76,8 +88,73 @@ public class DetailActivity extends BaseActivity {
         detail_4_btn_buy = (ImageButton)findViewById(R.id.detail_4_btn_buy);
 
 
+        //set font
+//        tf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
 
+        //set radar values
+        detailRadar.setDescription("");
+        detailRadar.setWebLineWidth(1.5f);
+        detailRadar.setWebLineWidthInner(0.75f);
+        detailRadar.setWebAlpha(100);
 
+        // create a custom MarkerView (extend MarkerView) and specify the layout
+        // to use for it
+        RadarMarkerView mv = new RadarMarkerView(this, R.layout.radar_marker);
+
+        // set the marker to the chart
+        detailRadar.setMarkerView(mv);
+        setData();
+
+    }
+    private String[] mParties = new String[] {
+            "CREAMY","FLAVORY","PURE","BITERNESS","SWEETNESS","CLUMSY"
+    };
+    public void setData() {
+
+        float mult = 150;
+        int cnt = 6;
+
+        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+        ArrayList<Entry> yVals2 = new ArrayList<Entry>();
+
+        // IMPORTANT: In a PieChart, no values (Entry) should have the same
+        // xIndex (even if from different DataSets), since no values can be
+        // drawn above each other.
+        for (int i = 0; i < cnt; i++) {
+            yVals1.add(new Entry((float) (Math.random() * mult) + mult / 2, i));
+        }
+
+        for (int i = 0; i < cnt; i++) {
+            yVals2.add(new Entry((float) (Math.random() * mult) + mult / 2, i));
+        }
+
+        ArrayList<String> xVals = new ArrayList<String>();
+
+        for (int i = 0; i < cnt; i++)
+            xVals.add(mParties[i % mParties.length]);
+
+        RadarDataSet set1 = new RadarDataSet(yVals1, "Set 1");
+        set1.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
+        set1.setDrawFilled(true);
+        set1.setLineWidth(2f);
+
+        RadarDataSet set2 = new RadarDataSet(yVals2, "Set 2");
+        set2.setColor(ColorTemplate.VORDIPLOM_COLORS[4]);
+        set2.setDrawFilled(true);
+        set2.setLineWidth(2f);
+
+        ArrayList<RadarDataSet> sets = new ArrayList<RadarDataSet>();
+        sets.add(set1);
+        sets.add(set2);
+
+        RadarData data = new RadarData(xVals, sets);
+//        data.setValueTypeface(tf);
+        data.setValueTextSize(8f);
+        data.setDrawValues(false);
+
+        detailRadar.setData(data);
+
+        detailRadar.invalidate();
     }
     private void getDetailjson() {
 

@@ -2,416 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="1194dp"
-    android:layout_height="674dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".DetailActivity"
     android:background="#000000">
 
-
-
-    <!--<include-->
-    <!--android:id="@+id/detail_action_bar"-->
-    <!--layout="@layout/common_action_bar"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="wrap_content"/>-->
-    <!--<include-->
-    <!--android:id="@+id/detail_left_side"-->
-    <!--android:layout_marginTop="50dp"-->
-    <!--layout="@layout/common_leftside"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_width="wrap_content"/>-->
-    <!--<include-->
-    <!--android:id="@+id/detail_bottom_bar"-->
-    <!--layout="@layout/common_bottom_bar"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_toRightOf="@id/detail_left_side"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_alignParentRight="true"/>-->
-
-    <!--<LinearLayout-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:layout_toRightOf="@id/detail_left_side"-->
-    <!--android:layout_marginBottom="60dp"-->
-    <!--android:layout_marginTop="50dp">-->
-    <!--&lt;!&ndash; 맨왼쪽의 맥주 Summary부분의 뷰를 담당&ndash;&gt;-->
-    <!--<LinearLayout-->
-    <!--android:orientation="vertical"-->
-    <!--android:id="@+id/detail_summary"-->
-    <!--android:layout_weight="2"-->
-    <!--android:layout_width="200dp"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:background="@drawable/detail_1"-->
-    <!-->-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_beer_name"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="BLUE MOON"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_beer_type"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="WHITE IPA"/>-->
-    <!--&lt;!&ndash; 맥주의 도수와 용량을 함께 표기&ndash;&gt;-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_beer_abv_vol"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="5.4%, 355ml"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_price"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="10,800kor"-->
-    <!--/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_range"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="+1200 (+12.62%)"/>-->
-    <!--<Button-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="  +Watch List  "/>-->
-
-    <!--&lt;!&ndash; Today&ndash;&gt;-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="TODAY"/>-->
-
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_high_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="High"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_high"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="10,800"/>-->
-    <!--</FrameLayout>-->
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_low_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="Low"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_low"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="9,100"/>-->
-    <!--</FrameLayout>-->
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_open_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="Open"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_open"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="9,600"/>-->
-    <!--</FrameLayout>-->
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_prev_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="Prev Cls"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_today_prev"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="9,550"/>-->
-    <!--</FrameLayout>-->
-
-    <!--&lt;!&ndash; Summary&ndash;&gt;-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Summary"/>-->
-
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_high_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="1m High"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_high"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="10,800"/>-->
-    <!--</FrameLayout>-->
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_low_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="1m Low"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_low"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="9,100"/>-->
-    <!--</FrameLayout>-->
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_avg_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="1y Avg"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_avg"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="9,600"/>-->
-    <!--</FrameLayout>-->
-    <!--<FrameLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="wrap_content">-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_per_title"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="left"-->
-    <!--android:text="PER"/>-->
-    <!--<TextView-->
-    <!--android:id="@+id/sum_summary_per"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="right"-->
-    <!--android:text="9,550"/>-->
-    <!--</FrameLayout>-->
-
-
     <!--</LinearLayout>-->
     <include layout="@layout/detail_section_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="230dp"
+        android:layout_height="fill_parent"/>
     <Space
         android:layout_height="match_parent"
         android:layout_width="10dp"/>
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="520dp"
         android:layout_height="wrap_content">
         <!-- 중간-->
         <include layout="@layout/detail_section_2"/>
+        <Space
+            android:layout_height="10dp"
+            android:layout_width="fill_parent"/>
         <include layout="@layout/detail_section_3"/>
 
     </LinearLayout>
     <Space
         android:layout_height="fill_parent"
         android:layout_width="10dp"/>
-    <!--<LinearLayout-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_weight="5"-->
-    <!--android:layout_width="500dp"-->
-    <!--android:layout_height="fill_parent">-->
-    <!--&lt;!&ndash;android:background="@drawable/detail_2">&ndash;&gt;-->
-    <!--&lt;!&ndash; 중간중에서도 윗쪽 그래프&ndash;&gt;-->
-    <!--<LinearLayout-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="250dp"-->
-    <!--android:background="@drawable/beer_graph">-->
-    <!--<com.github.mikephil.charting.charts.LineChart-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="250dp"-->
-    <!--android:id="@+id/BeerDetailLine">-->
 
-    <!--</com.github.mikephil.charting.charts.LineChart>-->
-    <!--</LinearLayout>-->
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-        <include layout="@layout/detail_section_4"/>
+        android:layout_width="435dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp">
+        <include layout="@layout/detail_section_4"
+            />
         <Space
             android:layout_width="fill_parent"
             android:layout_height="10dp" />
         <include layout="@layout/detail_section_5"/>
 
     </LinearLayout>
-
-    <!--&lt;!&ndash; 중간중에서 아래쪽 육각형&ndash;&gt;-->
-    <!--<com.github.mikephil.charting.charts.RadarChart-->
-    <!--android:id="@+id/BeerDetailRadar"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="340dp"-->
-
-    <!--/>-->
-
-    <!--<LinearLayout-->
-
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="50dp">-->
-
-    <!--</LinearLayout>-->
-
-    <!--</LinearLayout>-->
-
-
-    <!-- 오른쪽-->
-    <!--<LinearLayout-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_weight="3.5"-->
-    <!--android:layout_width="350dp"-->
-    <!--android:layout_height="fill_parent"-->
-
-    <!--android:background="@drawable/detail_3">-->
-    <!-- 오른쪽 상단-->
-    <!--<LinearLayout-->
-
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="370dp">-->
-    <!--<ImageView-->
-    <!--android:layout_marginLeft="14dp"-->
-    <!--android:layout_marginTop="20dp"-->
-    <!--android:layout_width="5dp"-->
-    <!--android:layout_height="330dp"-->
-    <!--android:background="#08ad08"-->
-    <!--android:id="@+id/detail_4_img_updown"/>-->
-    <!--<LinearLayout-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_marginLeft="20dp"-->
-    <!--android:layout_marginTop="20dp"-->
-    <!--android:layout_width="160dp"-->
-    <!--android:layout_height="330dp">-->
-    <!--<ImageView-->
-    <!--android:layout_marginTop="5dp"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="200dp"-->
-    <!--android:id="@+id/detail_4_productimage"/>-->
-
-    <!--</LinearLayout>-->
-    <!--<LinearLayout-->
-    <!--android:orientation="vertical"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:layout_marginTop="20dp"-->
-    <!--android:layout_width="180dp"-->
-    <!--android:layout_height="330dp">-->
-    <!--<TextView-->
-    <!--android:layout_marginTop="10dp"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="30dp"-->
-    <!--android:id="@+id/detail_4_productname"-->
-    <!--style="@style/product_name"-->
-    <!--android:fontFamily="HeadLine"/>-->
-    <!--<TextView-->
-
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="15dp"-->
-    <!--android:id="@+id/detail_4_productstyle"-->
-    <!--style="@style/product_detail"/>-->
-    <!--<TextView-->
-
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="15dp"-->
-    <!--android:id="@+id/detail_4_abv"-->
-    <!--style="@style/product_detail"/>-->
-    <!--<TextView-->
-
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="15dp"-->
-    <!--android:id="@+id/detail_4_changepercent"/>-->
-    <!--<TextView-->
-
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="15dp"-->
-    <!--android:id="@+id/detail_4_changeprice"/>-->
-    <!--<TextView-->
-    <!--android:layout_marginTop="10dp"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="45dp"-->
-    <!--android:id="@+id/detail_4_currentprice"/>-->
-
-
-    <!--<LinearLayout-->
-    <!--android:orientation="horizontal"-->
-    <!--android:layout_marginTop="10dp"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="30dp">-->
-    <!--<ImageButton-->
-    <!--android:layout_width="30dp"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:id="@+id/detail_4_countminus"-->
-    <!--android:background="#FFFFFF"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="30dp"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:id="@+id/detail_4_counttext"/>-->
-    <!--<ImageButton-->
-    <!--android:layout_width="30dp"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:id="@+id/detail_4_countplus"-->
-    <!--android:background="#FFFFFF"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="fill_parent"-->
-    <!--android:id="@+id/detail_4_totalprice"/>-->
-
-    <!--</LinearLayout>-->
-    <!--<ImageButton-->
-    <!--android:layout_marginTop="50dp"-->
-    <!--android:layout_width="fill_parent"-->
-    <!--android:layout_height="45dp"-->
-    <!--android:background="@drawable/btn_buy"-->
-    <!--android:id="@+id/detail_4_btn_buy"/>-->
-
-
-    <!--</LinearLayout>-->
-
-    <!--</LinearLayout>-->
-
-    <!-- 공백-->
-    <Space
-        android:layout_width="fill_parent"
-        android:layout_height="10dp" />
-    <!-- 오른쪽 하단-->
-
-    <!--</LinearLayout>-->
-    <ListView
-        android:layout_width="100dp"
-        android:layout_height="100dp"></ListView>
-
 
 
 </LinearLayout>

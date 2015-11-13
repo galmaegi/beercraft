@@ -7,186 +7,223 @@
     android:layout_weight="2"
     android:layout_width="200dp"
     android:layout_height="fill_parent"
-    android:background="@drawable/detail_1"
     android:paddingLeft="15dp"
+    android:background="#222222"
     >
 
     <TextView
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/sum_beer_name"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:text="BLUE MOON"/>
+        android:layout_height="wrap_content"
+        android:text="BLUE MOON"
+        style="@style/product_name"/>
     <TextView
         android:id="@+id/sum_beer_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WHITE IPA"/>
+        android:text="WHITE IPA"
+        style="@style/product_detail"/>
     <!-- 맥주의 도수와 용량을 함께 표기-->
     <TextView
         android:id="@+id/sum_beer_abv_vol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5.4%, 355ml"/>
+        android:text="5.4%, 355ml"
+        style="@style/product_detail"/>
     <TextView
         android:layout_marginTop="20dp"
         android:id="@+id/sum_price"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:text="10,800kor"
+        style="@style/product_detail"
         />
     <TextView
         android:id="@+id/sum_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+1200 (+12.62%)"/>
+        android:text="+1200 (+12.62%)"
+        style="@style/product_detail"/>
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
         android:text="  +Watch List  "/>
 
     <!-- Today-->
     <TextView
+        android:layout_marginTop="50dp"
         android:id="@+id/sum_today_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TODAY"/>
+        android:text="TODAY"
+        style="@style/summary_name"/>
 
     <FrameLayout
+        android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp"
+        >
         <TextView
             android:id="@+id/sum_today_high_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="High"/>
+            android:text="High"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_today_high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="10,800"/>
+            android:text="10,800"
+            style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp">
         <TextView
             android:id="@+id/sum_today_low_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Low"/>
+            android:text="Low"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_today_low"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,100"/>
+            android:text="9,100"
+            style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp">
         <TextView
             android:id="@+id/sum_today_open_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Open"/>
+            android:text="Open"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_today_open"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,600"/>
+            android:text="9,600"
+            style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp">
         <TextView
             android:id="@+id/sum_today_prev_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="Prev Cls"/>
+            android:text="Prev Cls"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_today_prev"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,550"/>
+            android:text="9,550"
+            style="@style/summary_price"/>
     </FrameLayout>
 
     <!-- Summary-->
     <TextView
+        android:layout_marginTop="50dp"
         android:id="@+id/sum_summary_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Summary"/>
+        android:text="Summary"
+        style="@style/summary_name"/>
 
     <FrameLayout
+        android:layout_marginTop="10dp"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp">
         <TextView
             android:id="@+id/sum_summary_high_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="1m High"/>
+            android:text="1m High"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_summary_high"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="10,800"/>
+            android:text="10,800"
+            style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp">
         <TextView
             android:id="@+id/sum_summary_low_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="1m Low"/>
+            android:text="1m Low"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_summary_low"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,100"/>
+            android:text="9,100"
+            style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp">
         <TextView
             android:id="@+id/sum_summary_avg_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="1y Avg"/>
+            android:text="1y Avg"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_summary_avg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,600"/>
+            android:text="9,600"
+            style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingRight="15dp">
         <TextView
             android:id="@+id/sum_summary_per_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:text="PER"/>
+            android:text="PER"
+            style="@style/summary_price"/>
         <TextView
             android:id="@+id/sum_summary_per"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,550"/>
+            android:text="9,550"
+            style="@style/summary_price"/>
     </FrameLayout>
 
 

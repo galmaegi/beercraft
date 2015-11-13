@@ -6,8 +6,8 @@
             <name>NanumGothic</name>
         </nameset>
         <fileset>
-            <file>NanumGothic_Coding</file>
-            <file>NanumGothic_Coding_Bold</file>
+            <file>NanumGothic_Coding.ttf</file>
+            <file>NanumGothic_Coding_Bold.ttf</file>
             <file>NanumGothic_Coding.ttf</file>
             <file>NanumGothic_Coding.ttf</file>
 
@@ -20,7 +20,7 @@
         </nameset>
         <fileset>
             <file>HYHeadLineM.ttf</file>
-            <file>HYHeadLineB.TTF</file>
+            <file>HYHeadLineB.ttf</file>
             <file>HYHeadLineM.ttf</file>
             <file>HYHeadLineM.ttf</file>
         </fileset>

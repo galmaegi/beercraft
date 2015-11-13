@@ -5,7 +5,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">NanumGothic</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">25dp</item>
 
     </style>
 
@@ -13,8 +13,47 @@
         <item name="android:textAlignment">textEnd</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">NanumGothic</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">18dp</item>
 
+    </style>
+
+    <style name = "product_price_big">
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textSize">40dp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name = "product_count">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name = "product_total_price">
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@color/colorGreen</item>
+    </style>
+
+    <style name = "summary_name">
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+    <style name = "summary_price">
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textSize">15dp</item>
     </style>
 
 </resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<familyset>
+
+    <family>
+        <nameset>
+            <name>NanumGothic</name>
+        </nameset>
+        <fileset>
+            <file>NanumGothic_Coding</file>
+            <file>NanumGothic_Coding_Bold</file>
+            <file>NanumGothic_Coding.ttf</file>
+            <file>NanumGothic_Coding.ttf</file>
+
+        </fileset>
+    </family>
+
+    <family>
+        <nameset>
+            <name>HeadLine</name>
+        </nameset>
+        <fileset>
+            <file>HYHeadLineM.ttf</file>
+            <file>HYHeadLineB.TTF</file>
+            <file>HYHeadLineM.ttf</file>
+            <file>HYHeadLineM.ttf</file>
+        </fileset>
+    </family>
+
+</familyset>

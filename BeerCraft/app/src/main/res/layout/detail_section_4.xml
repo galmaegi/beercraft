@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="370dp">
+
+
+    <ImageView
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="5dp"
+        android:layout_height="330dp"
+        android:background="#08ad08"
+        android:id="@+id/detail_4_img_updown"/>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="160dp"
+        android:layout_height="330dp">
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:id="@+id/detail_4_productimage"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="180dp"
+        android:layout_height="330dp">
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:id="@+id/detail_4_productname"
+            style="@style/product_name"
+            android:fontFamily="HeadLine"/>
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:id="@+id/detail_4_productstyle"
+            style="@style/product_detail"/>
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:id="@+id/detail_4_abv"
+            style="@style/product_detail"/>
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:id="@+id/detail_4_changepercent"/>
+        <TextView
+
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:id="@+id/detail_4_changeprice"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:id="@+id/detail_4_currentprice"/>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp">
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/detail_4_countminus"
+                android:background="#FFFFFF"/>
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/detail_4_counttext"/>
+            <ImageButton
+                android:layout_width="30dp"
+                android:layout_height="fill_parent"
+                android:id="@+id/detail_4_countplus"
+                android:background="#FFFFFF"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/detail_4_totalprice"/>
+
+        </LinearLayout>
+        <ImageButton
+            android:layout_marginTop="50dp"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/btn_buy"
+            android:id="@+id/detail_4_btn_buy"/>
+
+    </LinearLayout>
+
+</LinearLayout>

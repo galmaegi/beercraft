@@ -1,4 +1,4 @@
-package galmaegi.beercraft.Custom;
+package galmaegi.beercraft.RadarVIew;
 
 import android.content.Context;
 import android.widget.TextView;

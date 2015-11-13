@@ -16,14 +16,23 @@
         android:id="@+id/main_left_side"
         android:layout_marginTop="50dp"
         layout="@layout/common_leftside"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_width="wrap_content"/>
     <include
         android:id="@+id/main_bottom_bar"
         layout="@layout/common_bottom_bar"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_toRightOf="@id/main_left_side"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"/>
+    <fragment
+        android:name="galmaegi.beercraft.FragmentTwo"
+        android:id="@+id/main_fragment"
+        android:layout_below="@id/main_action_bar"
+        android:layout_toRightOf="@+id/main_left_side"
+        android:layout_above="@id/main_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></fragment>
 
 </RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="160dp"
+    android:layout_height="60dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_width="144dp"
+        android:layout_height="15dp"
+        android:textSize="12dp"
+        android:text="Korea Composite Beer Index"/>
+
+    <LinearLayout
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="75dp"
+            android:layout_height="31dp"
+            android:textSize="25dp"
+            android:text="12.08%" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_gravity="right"
+                android:layout_width="43dp"
+                android:layout_height="15dp"
+                android:textSize="12dp"
+                android:text="3072.48" />
+
+            <TextView
+                android:layout_gravity="right"
+                android:layout_width="33dp"
+                android:layout_height="15dp"
+                android:textSize="12dp"
+                android:text="467.31" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

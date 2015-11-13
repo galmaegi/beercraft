@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="718dp"
+    android:layout_height="310dp"
+    android:background="#222222">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
+
+        <TextView
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="11dp"
+            android:layout_width="198dp"
+            android:layout_height="31dp"
+            android:textSize="25dp"
+            android:text="World Beer Market"/>
+
+        <TextView
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="11dp"
+            android:layout_width="56dp"
+            android:layout_height="31dp"
+            android:textSize="25dp"
+            android:text="1 Day"/>
+
+        <TextView
+            android:layout_marginLeft="59dp"
+            android:layout_marginTop="11dp"
+            android:layout_width="79dp"
+            android:layout_height="31dp"
+            android:textSize="25dp"
+            android:text="15 Days"/>
+
+        <TextView
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="11dp"
+            android:layout_width="85dp"
+            android:layout_height="31dp"
+            android:textSize="25dp"
+            android:text="1 Month"/>
+    </LinearLayout>
+
+    <View
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#000000"
+        />
+
+    <TableLayout
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="84dp"
+        android:layout_marginRight="94dp"
+        android:layout_marginBottom="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"/>
+
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_width="160dp"
+                android:layout_height="19dp"
+                android:gravity="center_horizontal"
+                android:textSize="15dp"
+                android:text="INDEX"/>
+
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_width="160dp"
+                android:layout_height="19dp"
+                android:gravity="center_horizontal"
+                android:textSize="15dp"
+                android:text="LAST"/>
+
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_width="160dp"
+                android:layout_height="19dp"
+                android:gravity="center_horizontal"
+                android:textSize="15dp"
+                android:text="CHANGE"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:text="KOBI"/>
+
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:text="BBI"/>
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_margin="1dp"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:gravity="center_vertical"
+                android:text="DBI"/>
+
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+            <include
+                android:layout_margin="1dp"
+                layout="@layout/layout_home_market_info_table_component"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

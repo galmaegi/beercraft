@@ -1,10 +1,11 @@
 package galmaegi.beercraft.Detail;
 
 
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.astuetz.PagerSlidingTabStrip;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.RadarChart;
 
@@ -93,6 +95,12 @@ public class FragmentDetail extends Fragment {
         detail_4_btn_buy = (ImageButton)view.findViewById(R.id.detail_4_btn_buy);
 
         getDetailjson();
+
+        ViewPager viewpager = (ViewPager)view.findViewById(R.id.detail_5_viewpager);
+        viewpager.setAdapter(new Detail_5_Page_Adapter(getFragmentManager()));
+
+        PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.detail_5_tabs);
+        tabStrip.setViewPager(viewpager);
 
     }
 

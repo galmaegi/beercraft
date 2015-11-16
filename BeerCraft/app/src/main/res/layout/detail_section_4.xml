@@ -14,11 +14,11 @@
         android:id="@+id/detail_4_img_updown"/>
     <LinearLayout
         android:orientation="vertical"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_width="160dp"
         android:layout_height="330dp">
-        <ImageView
+        <com.android.volley.toolbox.NetworkImageView
             android:layout_marginTop="5dp"
             android:layout_width="fill_parent"
             android:layout_height="200dp"
@@ -29,7 +29,7 @@
         android:orientation="vertical"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:layout_width="200dp"
+        android:layout_width="230dp"
         android:layout_height="match_parent">
         <TextView
             android:layout_marginTop="10dp"
@@ -77,10 +77,10 @@
             android:layout_width="fill_parent"
             android:layout_height="40dp">
             <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="fill_parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/detail_4_countminus"
-                android:background="#FFFFFF"/>
+                android:background="@drawable/btn_minus"/>
             <TextView
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
@@ -88,12 +88,12 @@
                 style="@style/product_count"
                 android:text="1"/>
             <ImageButton
-                android:layout_width="30dp"
-                android:layout_height="fill_parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/detail_4_countplus"
-                android:background="#FFFFFF"/>
+                android:background="@drawable/btn_plus"/>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_4_totalprice"
                 style="@style/product_total_price"
@@ -103,7 +103,7 @@
         <ImageButton
             android:layout_marginTop="50dp"
             android:layout_width="fill_parent"
-            android:layout_height="45dp"
+            android:layout_height="50dp"
             android:background="@drawable/btn_buy"
             android:id="@+id/detail_4_btn_buy"/>
 

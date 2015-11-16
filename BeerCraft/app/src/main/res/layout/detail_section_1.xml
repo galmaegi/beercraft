@@ -19,14 +19,14 @@
         android:text="BLUE MOON"
         style="@style/product_name"/>
     <TextView
-        android:id="@+id/sum_beer_type"
+        android:id="@+id/sum_beer_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="WHITE IPA"
         style="@style/product_detail"/>
     <!-- 맥주의 도수와 용량을 함께 표기-->
     <TextView
-        android:id="@+id/sum_beer_abv_vol"
+        android:id="@+id/sum_beer_abv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5.4%, 355ml"
@@ -45,7 +45,8 @@
         android:layout_height="wrap_content"
         android:text="+1200 (+12.62%)"
         style="@style/product_detail"/>
-    <Button
+    <ImageButton
+        android:id="@+id/sum_wishlist"
         android:layout_marginTop="15dp"
         android:layout_width="130dp"
         android:layout_height="50dp"

@@ -17,7 +17,9 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.astuetz.PagerSlidingTabStrip;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.RadarChart;
@@ -27,15 +29,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.LineChart.CustomLineChart;
 import galmaegi.beercraft.R;
-import galmaegi.beercraft.RadarVIew.CustomRadarView;
+import galmaegi.beercraft.RadarChart.CustomRadarView;
 
 /**
  * Created by root on 15. 11. 13.
  */
-public class FragmentDetail extends Fragment {
+public class FragmentDetail extends Fragment{
 
     Context parent_context;
+    int price;
 
     private static String TAG = "DETAILACTIVITY";
     //set font
@@ -48,9 +52,31 @@ public class FragmentDetail extends Fragment {
     RadarChart detailRadar;
     CustomRadarView customradar;
 
-    //<views where included in sector 4>
+
+    //<views  where included in section 1>
+    TextView sum_beer_name;
+    TextView sum_beer_style;
+    TextView sum_beer_abv;
+    TextView sum_price;
+    TextView sum_range;
+    ImageButton sum_wishlist;
+    TextView sum_today_high;
+    TextView sum_today_low;
+    TextView sum_today_open;
+    TextView sum_today_prev;
+    TextView sum_summary_high;
+    TextView sum_summary_low;
+    TextView sum_summary_avg;
+    TextView sum_summary_per;
+
+
+
+
+
+
+    //<views where included in section 4>
     ImageView detail_4_img_updown;
-    ImageView detail_4_productimage;
+    NetworkImageView detail_4_productimage;
     TextView detail_4_productname;
     TextView detail_4_productstyle;
     TextView detail_4_abv;
@@ -64,6 +90,11 @@ public class FragmentDetail extends Fragment {
     ImageButton detail_4_btn_buy;
     //</sector4>
 
+    //<views where included in section 5>
+    ViewPager viewpager;
+    PagerSlidingTabStrip tabStrip;
+    //</section5>
+
     public FragmentDetail(Context parent_context){
         this.parent_context = parent_context;
 
@@ -73,15 +104,32 @@ public class FragmentDetail extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //Line Chart View
+        linechart = (LineChart)view.findViewById(R.id.BeerDetailLine);
+        new CustomLineChart(getContext(),linechart,Typeface.createFromAsset(getActivity().getAssets(),"NanumGothic_Coding_Bold.ttf"));
 
         //Radar Chart View
         detailRadar = (RadarChart)view.findViewById(R.id.BeerDetailRadar);
-        customradar = new CustomRadarView(parent_context,detailRadar);
+        customradar = new CustomRadarView(getContext(),detailRadar);
 
+        //initialization views which located in activity_detail section1
+        sum_beer_name = (TextView)view.findViewById(R.id.sum_beer_name);
+        sum_beer_style = (TextView)view.findViewById(R.id.sum_beer_style);
+        sum_beer_abv = (TextView)view.findViewById(R.id.sum_beer_abv);
+        sum_price = (TextView)view.findViewById(R.id.sum_price);
+        sum_range = (TextView)view.findViewById(R.id.sum_range);
+        sum_wishlist = (ImageButton)view.findViewById(R.id.sum_wishlist);
+        sum_today_high = (TextView)view.findViewById(R.id.sum_today_high);
+        sum_today_low = (TextView)view.findViewById(R.id.sum_today_low);
+        sum_today_open = (TextView)view.findViewById(R.id.sum_today_open);
+        sum_today_prev = (TextView)view.findViewById(R.id.sum_today_prev);
+        sum_summary_high = (TextView)view.findViewById(R.id.sum_summary_high);
+        sum_summary_low = (TextView)view.findViewById(R.id.sum_summary_low);
+        sum_summary_avg = (TextView)view.findViewById(R.id.sum_summary_avg);
+        sum_summary_per = (TextView)view.findViewById(R.id.sum_summary_per);
 
-        //initialization views which located in activity_detail sector4
+        //initialization views which located in activity_detail section4
         detail_4_img_updown = (ImageView)view.findViewById(R.id.detail_4_img_updown);
-        detail_4_productimage = (ImageView)view.findViewById(R.id.detail_4_productimage);
+        detail_4_productimage = (NetworkImageView)view.findViewById(R.id.detail_4_productimage);
         detail_4_productname = (TextView)view.findViewById(R.id.detail_4_productname);
         detail_4_productstyle = (TextView)view.findViewById(R.id.detail_4_productstyle);
         detail_4_abv = (TextView)view.findViewById(R.id.detail_4_abv);
@@ -94,13 +142,20 @@ public class FragmentDetail extends Fragment {
         detail_4_totalprice = (TextView)view.findViewById(R.id.detail_4_totalprice);
         detail_4_btn_buy = (ImageButton)view.findViewById(R.id.detail_4_btn_buy);
 
+
+
+
+
+
+        //get section 5
+        viewpager = (ViewPager)view.findViewById(R.id.detail_5_viewpager);
+        tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.detail_5_tabs);
+
+        //get json data
         getDetailjson();
 
-        ViewPager viewpager = (ViewPager)view.findViewById(R.id.detail_5_viewpager);
-        viewpager.setAdapter(new Detail_5_Page_Adapter(getFragmentManager()));
 
-        PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.detail_5_tabs);
-        tabStrip.setViewPager(viewpager);
+
 
     }
 
@@ -112,8 +167,8 @@ public class FragmentDetail extends Fragment {
 
     private void getDetailjson() {
 
-        final String testURL = "http://beerexchange.dnktechnologies.com/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft.php";
-
+        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-get-selected-order-item.php?productID=23";
+//        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
 
@@ -123,10 +178,27 @@ public class FragmentDetail extends Fragment {
                             // Parsing json object response
                             // response will be a json object
                             JSONObject currentobject = (JSONObject)response.get(0);
+
+                            //to set detail_1_section
+
+                            //to set detail_4_section
                             detail_4_productname.setText(currentobject.getString("productName"));
                             detail_4_productstyle.setText(currentobject.getString("style"));
                             detail_4_abv.setText(currentobject.getString("strength")+"%, "+currentobject.getString("volume")+"ml");
-                            detail_4_currentprice.setText(currentobject.getString("sellingPrice"));
+                            price = currentobject.getInt("sellingPrice");
+                            detail_4_currentprice.setText(Detail_4_clicklistener.textFormating(price)+"");
+
+                            Detail_4_clicklistener detail_4_clicklistener = new Detail_4_clicklistener(detail_4_totalprice,detail_4_counttext,price);
+                            detail_4_countplus.setOnClickListener(detail_4_clicklistener);
+                            detail_4_countminus.setOnClickListener(detail_4_clicklistener);
+
+//                            GetImage getimage = new GetImage(detail_4_productimage);
+//                            getimage.getImagebyurl(currentobject.getString("proudctImage"));
+                            ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
+                            detail_4_productimage.setImageUrl(currentobject.getString("proudctImage"),mImageLoader);
+
+                            viewpager.setAdapter(new Detail_5_Page_Adapter(getFragmentManager(),currentobject.getString("tastingNote"),currentobject.getString("beerStory")));
+                            tabStrip.setViewPager(viewpager);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -2,8 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="260dp"
-    android:background="#222222">
+    android:background="#222222"
+
+    >
         <com.github.mikephil.charting.charts.LineChart
+
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:id="@+id/BeerDetailLine">

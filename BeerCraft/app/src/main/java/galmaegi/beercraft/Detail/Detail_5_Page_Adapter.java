@@ -10,11 +10,14 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 public class Detail_5_Page_Adapter extends FragmentPagerAdapter {
 
+    String tastingnote,beerstory;
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+    private String tabTitles[] = new String[] { "Tasting Note", "Beer Story", "News" };
 
-    public Detail_5_Page_Adapter(FragmentManager fm) {
+    public Detail_5_Page_Adapter(FragmentManager fm,String tastingnote,String beerstory) {
         super(fm);
+        this.tastingnote = tastingnote;
+        this.beerstory = beerstory;
     }
 
 
@@ -26,7 +29,12 @@ public class Detail_5_Page_Adapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return Detail_5_PageFragment.newInstance(position + 1);
+        String argument = "";
+        if(position==0)
+            argument = tastingnote;
+        else if(position==1)
+            argument = beerstory;
+        return Detail_5_PageFragment.newInstance(position + 1,argument);
     }
 
     @Override

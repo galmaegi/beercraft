@@ -1,11 +1,9 @@
-package galmaegi.beercraft.RadarVIew;
+package galmaegi.beercraft.RadarChart;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.provider.CalendarContract;
 
 import com.github.mikephil.charting.charts.RadarChart;
-
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.Legend.LegendPosition;
 import com.github.mikephil.charting.components.XAxis;
@@ -31,7 +29,10 @@ public class CustomRadarView {
         radarchart.setDescription("");
         radarchart.setWebLineWidth(1.5f);
         radarchart.setWebLineWidthInner(0.75f);
-        radarchart.setWebAlpha(0);
+        radarchart.setWebAlpha(100);
+        radarchart.setDrawWeb(true);
+        radarchart.setWebColor(Color.WHITE);
+        radarchart.setWebColorInner(Color.WHITE);
 
 
 
@@ -76,18 +77,25 @@ public class CustomRadarView {
         xaxis.setTextColor(Color.WHITE);
         xaxis.setTextSize(20f);
 
+        YAxis yAxis=radarchart.getYAxis();
+        yAxis.setEnabled(false);
+
+
         Legend legend = radarchart.getLegend();
         legend.setEnabled(false);
         legend.setPosition(LegendPosition.ABOVE_CHART_RIGHT);
 
         radarchart.setRotationEnabled(false);
-        radarchart.setExtraTopOffset(-100f);
+        radarchart.setRotationAngle(0.1f);
+        radarchart.setExtraBottomOffset(50f);
 
 
         RadarDataSet set1 = new RadarDataSet(yVals1,null);
         set1.setColor(ColorTemplate.COLORFUL_COLORS[0]);
         set1.setDrawFilled(false);
         set1.setLineWidth(4f);
+//        set1.setVisible(false);
+
 
 
 //        RadarDataSet set2 = new RadarDataSet(yVals2, "Set 2");
@@ -104,11 +112,9 @@ public class CustomRadarView {
         data.setValueTextSize(15f);
         data.setValueTextColor(Color.WHITE);
 
-        data.setDrawValues(true);
+        data.setDrawValues(false);
 
         radarchart.setData(data);
-
-
 
         radarchart.invalidate();
         radarchart.setDescriptionColor(Color.WHITE);

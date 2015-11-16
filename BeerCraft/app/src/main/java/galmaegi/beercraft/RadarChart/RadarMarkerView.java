@@ -1,9 +1,8 @@
-package galmaegi.beercraft.RadarVIew;
+package galmaegi.beercraft.RadarChart;
 
 import android.content.Context;
 import android.widget.TextView;
 
-import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.data.CandleEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;

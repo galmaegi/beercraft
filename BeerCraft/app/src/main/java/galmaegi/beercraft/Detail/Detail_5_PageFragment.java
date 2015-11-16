@@ -14,12 +14,15 @@ import galmaegi.beercraft.R;
  */
 public class Detail_5_PageFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
+    public static final String ARG_PAGE_TEXT = "ARG_PAGE_TEXT";
 
     private int mPage;
+    private String text;
 
-    public static Detail_5_PageFragment newInstance(int page) {
+    public static Detail_5_PageFragment newInstance(int page,String text) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
+        args.putString(ARG_PAGE_TEXT,text);
         Detail_5_PageFragment fragment = new Detail_5_PageFragment();
         fragment.setArguments(args);
         return fragment;
@@ -29,6 +32,7 @@ public class Detail_5_PageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+        text = getArguments().getString(ARG_PAGE_TEXT);
     }
 
     // Inflate the fragment layout we defined above for this fragment
@@ -37,7 +41,7 @@ public class Detail_5_PageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.detail_section_5_page, container, false);
         TextView tvTitle = (TextView) view.findViewById(R.id.detail_section_5_page_text);
-        tvTitle.setText("Fragment #" + mPage);
+        tvTitle.setText("Fragment #" + mPage+text);
         return view;
     }
 }

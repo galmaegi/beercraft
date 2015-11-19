@@ -1,4 +1,4 @@
-package galmaegi.beercraft.Detail.LineChart;
+package galmaegi.beercraft.LineChart;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -20,7 +20,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import java.util.ArrayList;
 
 import galmaegi.beercraft.R;
-import galmaegi.beercraft.Detail.RadarChart.RadarMarkerView;
+import galmaegi.beercraft.RadarChart.RadarMarkerView;
 
 /**
  * Created by root on 15. 11. 15.

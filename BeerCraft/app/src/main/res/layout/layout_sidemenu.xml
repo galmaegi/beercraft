@@ -16,18 +16,17 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="357dp"
-            android:background="#323232"/>
+        <include
+            android:id="@+id/inc_sidemenu_detail"
+            layout="@layout/layout_sidemenu_detail"
+            />
 
         <android.widget.Space
             android:layout_width="match_parent"
             android:layout_height="16dp"/>
 
         <include
-            android:id="@+id/inc_sidemenu_detail"
+            android:id="@+id/inc_sidemenu_tasting_note"
             layout="@layout/layout_sidemenu_tasting_note"
             />
 

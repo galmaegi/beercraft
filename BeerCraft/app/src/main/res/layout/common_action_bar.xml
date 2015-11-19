@@ -7,21 +7,28 @@
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:layout_alignParentStart="true"
-    android:background="@drawable/actionbar">
+    android:background="#000">
     <TextView
         android:layout_weight="1"
         android:layout_gravity="left"
         android:layout_marginLeft="77dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KOREA BEER EXCHANGE"/>
+        android:text="KOREA BEER EXCHANGE"
+        android:id="@+id/action_bar_title"
+        style="@style/actionbar_title"
+        />
 
-    <TextView
+    <Button
         android:layout_marginRight="14dp"
         android:layout_weight="1"
         android:gravity="right"
+        android:layout_gravity="right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TABLE NUMBER #001"
+        style="@style/actionbar_tablenum"
+        android:id="@+id/action_bar_tablenum"
+        android:background="#000"
         />
 </LinearLayout>

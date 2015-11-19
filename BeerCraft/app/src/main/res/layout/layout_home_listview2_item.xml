@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="718dp"
-    android:layout_height="87dp">
+    android:layout_height="87dp"
+    android:background="#222222">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,12 +13,14 @@
         android:layout_height="60dp">
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="24dp"
             android:textSize="20dp"
             android:text="Stock Gains Trim Quater's $11 Trillion Loss as Bonds, Yen Drop"/>
 
         <TextView
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="19dp"
             android:textSize="15dp"
@@ -26,9 +29,10 @@
     </LinearLayout>
     
     <ImageView
+        android:id="@+id/iv_thumbnail"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="28dp"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:background="#FFFF00"/>
+        android:background="#3F3F3F"/>
 </LinearLayout>

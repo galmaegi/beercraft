@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="761dp"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:background="#222222">
 
     <android.widget.Space
         android:layout_width="12dp"
@@ -10,6 +11,7 @@
         />
 
     <View
+        android:id="@+id/v_alert"
         android:layout_width="5dp"
         android:layout_height="match_parent"
         android:background="#05B005"
@@ -18,31 +20,65 @@
     <LinearLayout
         android:layout_marginLeft="9dp"
         android:orientation="vertical"
-        android:layout_width="267dp"
-        android:layout_height="match_parent">
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textAlignment="gravity">
 
         <TextView
-            android:layout_marginTop="7dp"
+            android:id="@+id/tv_name"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="21dp"
             android:textSize="18dp"
             android:text="BIG WAVE GOLDEN ALE"/>
 
         <TextView
+            android:id="@+id/tv_country"
             android:layout_width="match_parent"
             android:layout_height="19dp"
             android:textSize="15dp"
             android:text="United States" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_style"
+        android:layout_width="109dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:textAlignment="gravity"
+        android:textSize="18dp"
+        android:text="GOLDEN ALE"/>
+
+    <TextView
+        android:id="@+id/tv_abv"
+        android:layout_width="77dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:textAlignment="gravity"
+        android:textSize="18dp"
+        android:text="4.4%"/>
+
+
+    <TextView
+        android:id="@+id/tv_ml"
+        android:layout_width="61dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:textAlignment="gravity"
+        android:textSize="18dp"
+        android:text="355"/>
+
     <LinearLayout
-        android:layout_marginLeft="9dp"
         android:orientation="vertical"
-        android:layout_width="55dp"
-        android:layout_height="match_parent">
+        android:layout_width="73dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:textAlignment="gravity">
 
         <TextView
-            android:layout_marginTop="7dp"
+            android:id="@+id/tv_sellingPrice"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="21dp"
             android:textAlignment="textEnd"
@@ -50,6 +86,7 @@
             android:text="8,200"/>
 
         <TextView
+            android:id="@+id/tv_date"
             android:layout_width="match_parent"
             android:layout_height="19dp"
             android:textAlignment="textEnd"
@@ -58,13 +95,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginLeft="27dp"
         android:orientation="vertical"
-        android:layout_width="64dp"
-        android:layout_height="match_parent">
+        android:layout_width="91dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:textAlignment="gravity">
 
         <TextView
-            android:layout_marginTop="7dp"
+            android:id="@+id/tv_rate"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="21dp"
             android:textAlignment="textEnd"
@@ -72,6 +111,7 @@
             android:text="+2.50%"/>
 
         <TextView
+            android:id="@+id/tv_increase"
             android:layout_width="match_parent"
             android:layout_height="19dp"
             android:textAlignment="textEnd"

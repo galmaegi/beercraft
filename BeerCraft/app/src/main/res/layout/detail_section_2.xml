@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="260dp"
+    android:layout_width="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#222222"
+    android:orientation="vertical">
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/detail_2_tabs"
+        app:pstsShouldExpand="true"
+        app:pstsTextAllCaps="true"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/detail_2_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#222222" />
 
-    >
-        <com.github.mikephil.charting.charts.LineChart
-
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:id="@+id/BeerDetailLine">
-        </com.github.mikephil.charting.charts.LineChart>
 </LinearLayout>

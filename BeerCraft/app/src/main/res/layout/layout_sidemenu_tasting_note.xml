@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="659dp"
+    android:layout_height="304dp"
+    android:background="#222222">
+
+    <TextView
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:textSize="25dp"
+        android:text="Tasting note"/>
+
+    <View
+        android:layout_marginLeft="28dp"
+        android:layout_width="131dp"
+        android:layout_height="5dp"
+        android:background="#FFFFFF"
+        />
+
+    <TextView
+        android:scrollbars="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:textSize="15dp"
+        android:text="After earning his Ph.D. in brewing from the University of Brusels in Belgium.
+an honor only a handful of brewers have achieved, Keith came back stateside with the idea of crafting beers inspired by Belgian Styles, but with a twist. His first in-
+terpretation turned out to be our most popular beer, Blue Moon. Belgian White and the start of the Blue Moon Brewing Company. Sice then, Keith thas gone on to brew several award-winning beers. Today, Keith continues to have fun experimenting and creating new beers for Blue
+"/>
+
+</LinearLayout>

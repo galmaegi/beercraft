@@ -11,8 +11,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class Detail_5_Page_Adapter extends FragmentPagerAdapter {
 
     String tastingnote,beerstory;
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Tasting Note", "Beer Story", "News" };
+    final int PAGE_COUNT = 2;
+    private String tabTitles[] = new String[] { "Tasting Note", "Beer Story"};
 
     public Detail_5_Page_Adapter(FragmentManager fm,String tastingnote,String beerstory) {
         super(fm);

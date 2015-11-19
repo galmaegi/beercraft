@@ -41,6 +41,14 @@
         <item name="android:textColor">@color/colorGreen</item>
     </style>
 
+    <style name = "summary_percent">
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorGreen</item>
+    </style>
+
+
     <style name = "summary_name">
         <item name="android:textAlignment">textEnd</item>
         <item name="android:textColor">@android:color/white</item>
@@ -54,6 +62,58 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">NanumGothic</item>
         <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name = "radar_title">
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+    <style name = "radar_value">
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorGreen</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+    </style>
+    <style name = "actionbar_title">
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+    <style name = "actionbar_tablenum">
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+    <style name = "action_bar_dialog_number">
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:background">#101010</item>
+    </style>
+    <style name = "action_bar_dialog_title">
+        <item name="android:fontFamily">NanumGothic</item>
+
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name = "dialog_ask">
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">#ffffff</item>
+
     </style>
 
 </resources>

@@ -2,11 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="1194dp"
-    android:layout_height="673dp"
-    android:background="#222222">
+    android:layout_height="673dp">
+
+    <!--<include-->
+        <!--layout="@layout/layout_beer_listview1" />-->
 
     <include
-        layout="@layout/layout_beer_listview1" />
+        android:id="@+id/inc_beer_index"
+        layout="@layout/layout_beer_pager" />
     
     <android.widget.Space
         android:layout_width="16dp"
@@ -15,14 +18,19 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#222222">
 
         <include
             layout="@layout/layout_beer_simpleview" />
 
-        <android.widget.Space
+        <TextView
+            android:layout_marginLeft="26dp"
             android:layout_width="match_parent"
-            android:layout_height="10dp" />
+            android:layout_height="31dp"
+            android:textSize="25dp"
+            android:text="Recommended KBX"
+            android:textColor="#FFFFFF"/>
 
         <include
             layout="@layout/layout_beer_listview2" />

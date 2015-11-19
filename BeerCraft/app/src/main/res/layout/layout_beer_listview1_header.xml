@@ -2,47 +2,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="761dp"
-    android:layout_height="24dp">
+    android:layout_height="24dp"
+    android:background="#222222">
 
     <TextView
         android:layout_marginLeft="26dp"
-        android:layout_width="267dp"
+        android:layout_width="300dp"
         android:layout_height="19dp"
         android:textSize="15dp"
         android:text="Index"/>
 
     <TextView
-        android:layout_width="55dp"
+        android:layout_width="109dp"
+        android:layout_height="19dp"
+        android:textAlignment="textEnd"
+        android:textSize="15dp"
+        android:text="Style" />
+
+    <TextView
+        android:layout_width="77dp"
+        android:layout_height="19dp"
+        android:textAlignment="textEnd"
+        android:textSize="15dp"
+        android:text="ABV" />
+
+    <TextView
+        android:layout_width="61dp"
+        android:layout_height="19dp"
+        android:textAlignment="textEnd"
+        android:textSize="15dp"
+        android:text="ml"/>
+
+    <TextView
+        android:layout_width="73dp"
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
         android:text="Last" />
 
     <TextView
-        android:layout_marginLeft="7dp"
-        android:layout_width="64dp"
-        android:layout_height="19dp"
-        android:textAlignment="textEnd"
-        android:textSize="15dp"
-        android:text="Change" />
-
-    <TextView
-        android:layout_marginLeft="26dp"
-        android:layout_width="267dp"
-        android:layout_height="19dp"
-        android:textSize="15dp"
-        android:text="Index"/>
-
-    <TextView
-        android:layout_width="55dp"
-        android:layout_height="19dp"
-        android:textAlignment="textEnd"
-        android:textSize="15dp"
-        android:text="Last" />
-
-    <TextView
-        android:layout_marginLeft="7dp"
-        android:layout_width="64dp"
+        android:layout_width="91dp"
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"

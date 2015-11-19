@@ -22,7 +22,7 @@ public class Detail_5_PageFragment extends Fragment {
     public static Detail_5_PageFragment newInstance(int page,String text) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        args.putString(ARG_PAGE_TEXT,text);
+        args.putString(ARG_PAGE_TEXT, text);
         Detail_5_PageFragment fragment = new Detail_5_PageFragment();
         fragment.setArguments(args);
         return fragment;
@@ -41,7 +41,7 @@ public class Detail_5_PageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.detail_section_5_page, container, false);
         TextView tvTitle = (TextView) view.findViewById(R.id.detail_section_5_page_text);
-        tvTitle.setText("Fragment #" + mPage+text);
+        tvTitle.setText(text);
         return view;
     }
 }

@@ -10,35 +10,46 @@
         android:layout_width="match_parent"
         android:layout_height="46dp">
 
+        <Space
+            android:layout_width="22dp"
+            android:layout_height="match_parent" />
+
         <TextView
-            android:layout_marginLeft="22dp"
             android:layout_marginTop="11dp"
-            android:layout_width="198dp"
-            android:layout_height="31dp"
+            android:layout_width="290dp"
+            android:layout_height="match_parent"
             android:textSize="25dp"
             android:text="World Beer Market"/>
 
         <TextView
-            android:layout_marginLeft="80dp"
             android:layout_marginTop="11dp"
-            android:layout_width="56dp"
-            android:layout_height="31dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textAlignment="textEnd"
             android:textSize="25dp"
             android:text="1 Day"/>
 
+        <android.widget.Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
         <TextView
-            android:layout_marginLeft="59dp"
             android:layout_marginTop="11dp"
-            android:layout_width="79dp"
-            android:layout_height="31dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textAlignment="textEnd"
             android:textSize="25dp"
             android:text="15 Days"/>
 
+        <android.widget.Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
         <TextView
-            android:layout_marginLeft="64dp"
             android:layout_marginTop="11dp"
-            android:layout_width="85dp"
-            android:layout_height="31dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textAlignment="textEnd"
             android:textSize="25dp"
             android:text="1 Month"/>
     </LinearLayout>

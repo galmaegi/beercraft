@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="520dp"
     android:layout_height="wrap_content"
     android:background="#222222">
 
@@ -12,9 +12,56 @@
 
         />
     <LinearLayout
-
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:paddingLeft="40dp">
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="ABV"
+            style="@style/radar_title"/>
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="5.4%"
+            android:id="@+id/detail_3_strength"
+            style="@style/radar_value"/>
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="IBU"
+            style="@style/radar_title"/>
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="70"
+            android:id="@+id/detail_3_bitter"
+            style="@style/radar_value"/>
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="ml"
+            style="@style/radar_title"/>
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="355"
+            android:id="@+id/detail_3_volume"
+            style="@style/radar_value"/>
+        <TextView
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:text="Ratebeer"
+            style="@style/radar_title"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="98"
+            android:id="@+id/detail_3_ratebeer"
+            style="@style/radar_value"/>
+
 
     </LinearLayout>
 

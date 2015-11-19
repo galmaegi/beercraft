@@ -6,63 +6,93 @@
     android:background="#222222">
 
     <View
+        android:id="@+id/v_alert"
+        android:layout_marginTop="17dp"
+        android:layout_marginLeft="15dp"
         android:layout_width="5dp"
         android:layout_height="231dp"
         android:background="#05b005"/>
     
     <ImageView
+        android:id="@+id/iv_thumbnail"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="17dp"
         android:layout_width="160dp"
         android:layout_height="214dp"
-        android:background="#ff0000"/>
+        android:background="#3F3F3F"/>
     
     <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="13dp"
         android:orientation="vertical"
         android:layout_width="180dp"
-        android:layout_height="231dp">
+        android:layout_height="269dp">
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="BLUE MOON"/>
+            android:layout_height="31dp"
+            android:textAlignment="textEnd"
+            android:textSize="25dp"
+            android:text="BLUE MOON"
+            android:textColor="#FFFFFF"/>
 
         <TextView
+            android:id="@+id/tv_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="BLUE MOON"/>
+            android:textAlignment="textEnd"
+            android:textSize="15dp"
+            android:text="WHITE IPA"
+            android:textColor="#FFFFFF"/>
 
         <TextView
+            android:id="@+id/tv_abv_ml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="BLUE MOON"/>
+            android:textAlignment="textEnd"
+            android:textSize="15dp"
+            android:text="5.4%, 355ml"
+            android:textColor="#FFFFFF"/>
 
         <TextView
+            android:id="@+id/tv_rate"
+            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="BLUE MOON"/>
+            android:layout_height="24dp"
+            android:textAlignment="textEnd"
+            android:textSize="20dp"
+            android:text="+12.62%"
+            android:textColor="#FFFFFF"/>
 
         <TextView
+            android:id="@+id/tv_increase"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="BLUE MOON"/>
+            android:layout_height="24dp"
+            android:textAlignment="textEnd"
+            android:textSize="20dp"
+            android:text="+1200"
+            android:textColor="#FFFFFF"/>
 
         <TextView
+            android:id="@+id/tv_Price"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="BLUE MOON"/>
+            android:layout_height="48dp"
+            android:textAlignment="textEnd"
+            android:textSize="40dp"
+            android:text="10,800"
+            android:textColor="#FFFFFF"/>
 
         <Button
+            android:id="@+id/bt_showdetail"
+            android:layout_marginTop="2dp"
             android:layout_width="180dp"
             android:layout_height="45dp"
             android:background="#CD1B1D"
             android:textColor="#FFFFFF"
-            android:textSize="10dp"
-            android:text="DETAIL"/>
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:text="DETAIL" />
     </LinearLayout>
 
 </LinearLayout>

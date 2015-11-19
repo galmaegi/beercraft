@@ -16,30 +16,29 @@ public class Detail_4_clicklistener implements View.OnClickListener{
     TextView text_totalprice;
     TextView text_count;
     int price;
-    private int totalcount;
     public Detail_4_clicklistener(TextView text_totalprice,TextView text_count,int price){
         this.text_totalprice = text_totalprice;
         this.text_count = text_count;
         this.price = price;
-        totalcount = 1;
+        DetailGlobalVar.count = 1;
 
-        text_totalprice.setText(textFormating(totalcount * price)+"");
+        text_totalprice.setText(textFormating(DetailGlobalVar.count * price)+"");
     }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.detail_4_countminus:
-                if(totalcount>1)
-                    totalcount--;
+                if(DetailGlobalVar.count>1)
+                    DetailGlobalVar.count--;
                 break;
             case R.id.detail_4_countplus:
-                if(totalcount<10)
-                    totalcount++;
+                if(DetailGlobalVar.count<10)
+                    DetailGlobalVar.count++;
                 break;
 
         }
-        text_count.setText(totalcount+"");
-        text_totalprice.setText(textFormating(totalcount*price)+"");
+        text_count.setText(DetailGlobalVar.count+"");
+        text_totalprice.setText(textFormating(DetailGlobalVar.count*price)+"");
 
     }
 

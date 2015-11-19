@@ -55,10 +55,6 @@ public class BeerIndexPagerFragment extends Fragment {
         beerListView = (ListView) view.findViewById(R.id.lv_beer_index);
         beerIndexAdapter = new BeerIndexAdapter(view.getContext(), items);
 
-        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View header = inflater.inflate(R.layout.layout_beer_listview1_header, null, false);
-
-        beerListView.addHeaderView(header);
         beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

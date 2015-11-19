@@ -13,6 +13,10 @@
         android:text="Recommended KBX"
         android:textColor="#FFFFFF"/>
 
+    <include
+        layout="@layout/layout_news_listview2_header"
+        />
+
     <ListView
         android:id="@+id/lv_recommend"
         android:layout_width="match_parent"

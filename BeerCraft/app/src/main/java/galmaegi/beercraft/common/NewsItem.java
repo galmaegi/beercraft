@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import galmaegi.beercraft.GlobalVar;
+
 public class NewsItem {
     private int newsID;
     private int divisionID;
@@ -32,9 +34,9 @@ public class NewsItem {
         newsTitle = object.getString("newsTitle");
         content = object.getString("content");
         content_newsImage = object.getString("content_newsImage");
-//        startDate = ;
-//        endDate = ;
-//        entryDate = ;
+        startDate = GlobalVar.StringToDate("startDate");
+        endDate = GlobalVar.StringToDate("endDate");
+        entryDate = GlobalVar.StringToDate("entryDate");
     }
 
     public int getNewsID() {

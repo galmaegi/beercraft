@@ -110,6 +110,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
         if(fr!=null)
             replaceFragment(fr);
+<<<<<<< HEAD
         if(curBtn!=null)
             buttonSelector(curBtn);
 
@@ -122,6 +123,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         btn_home.setSelected(false);
 
         curBtn.setSelected(true);
+=======
+>>>>>>> ad0a31e74fa3d4a5ac0090cfa0d4021aa45aeae1
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -130,6 +133,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         fragmentTransaction.replace(R.id.main_fragment, fragment);
         fragmentTransaction.commit();
     }
+
     public void setCurrenttable(){
         GlobalVar.currentTable = preftablenumRead();
         action_bar_tablenum.setText("TABLE NUMBER #"+GlobalVar.currentTable);

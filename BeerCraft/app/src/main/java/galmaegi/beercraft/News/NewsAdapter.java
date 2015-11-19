@@ -5,11 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 
+import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
+import galmaegi.beercraft.common.NewsItem;
 
 /**
  * Created by jongsu on 2015. 11. 18..
@@ -17,7 +22,7 @@ import galmaegi.beercraft.common.BeerIndexItem;
 public class NewsAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<BeerIndexItem> items;
+    private ArrayList<NewsItem> items;
 
     public NewsAdapter(Context context) {
         super();
@@ -56,10 +61,20 @@ public class NewsAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.layout_news_listview1_item, null);
 
+            holder.mTitle = (TextView) convertView.findViewById(R.id.tv_title);
+            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
+            holder.mThumbnail = (NetworkImageView) convertView.findViewById(R.id.iv_thumbnail);
+
             convertView.setTag(holder);
         } else {
             holder = (NewsViewHolder) convertView.getTag();
         }
+
+        NewsItem item = items.get(position);
+
+        holder.mTitle.setText(item.getNewsTitle());
+        holder.mDate.setText(item.getEntryDate().toString());
+        holder.mThumbnail.setImageUrl(item.getContent_newsImage(), AppController.getInstance().getImageLoader());
 
         return convertView;
     }

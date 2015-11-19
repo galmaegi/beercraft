@@ -12,8 +12,8 @@
         android:layout_width="5dp"
         android:layout_height="231dp"
         android:background="#05b005"/>
-    
-    <ImageView
+
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/iv_thumbnail"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="17dp"
@@ -75,7 +75,7 @@
             android:textColor="#FFFFFF"/>
 
         <TextView
-            android:id="@+id/tv_Price"
+            android:id="@+id/tv_sellingPrice"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:textAlignment="textEnd"

@@ -105,6 +105,7 @@ public class BeerIndexPagerFragment extends Fragment {
                                 item.setEntryDate(new Date());
                                 item.setModifyDate(new Date());
                                 items.add(item);
+                                e.printStackTrace();
                             }
                         }
                         beerIndexAdapter.notifyDataSetChanged();

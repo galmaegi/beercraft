@@ -17,10 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
+        <include
             android:layout_width="match_parent"
             android:layout_height="327dp"
-            android:background="#323232"/>
+            android:id="@+id/inc_news_page"
+            layout="@layout/layout_news_pager"
+            />
 
         <android.widget.Space
             android:layout_width="match_parent"

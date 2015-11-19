@@ -7,7 +7,7 @@ import com.github.mikephil.charting.charts.RadarChart;
 
 import org.json.JSONException;
 
-import galmaegi.beercraft.Detail.RadarChart.CustomRadarView;
+import galmaegi.beercraft.RadarChart.CustomRadarView;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 

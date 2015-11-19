@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import galmaegi.beercraft.AppController;
-import galmaegi.beercraft.Detail.LineChart.CustomLineChart;
+import galmaegi.beercraft.LineChart.CustomLineChart;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 

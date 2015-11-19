@@ -1,4 +1,4 @@
-package galmaegi.beercraft.Detail.RadarChart;
+package galmaegi.beercraft.RadarChart;
 
 import android.content.Context;
 import android.widget.TextView;

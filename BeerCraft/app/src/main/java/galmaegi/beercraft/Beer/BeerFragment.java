@@ -51,10 +51,6 @@ public class BeerFragment extends Fragment {
         items = new ArrayList<>();
         recommendAdapter = new RecommendAdapter(view.getContext(), items);
 
-        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View header = inflater.inflate(R.layout.layout_beer_listview2_header, null, false);
-
-        recommendListView.addHeaderView(header);
         recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

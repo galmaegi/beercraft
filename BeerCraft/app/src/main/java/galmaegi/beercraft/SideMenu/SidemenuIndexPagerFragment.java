@@ -51,10 +51,6 @@ public class SidemenuIndexPagerFragment extends Fragment {
         items = new ArrayList<>();
         beerIndexAdapter = new SidemenuIndexAdapter(view.getContext(), items);
 
-        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View header = inflater.inflate(R.layout.layout_sidemenu_listview_header, null, false);
-
-        beerListView.addHeaderView(header);
         beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

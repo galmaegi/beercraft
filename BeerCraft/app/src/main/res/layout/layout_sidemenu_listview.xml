@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     android:background="#222222">
 
+    <include
+        layout="@layout/layout_sidemenu_listview_header"
+        />
+
     <ListView
         android:id="@+id/lv_sidemenu_index"
         android:layout_width="match_parent"

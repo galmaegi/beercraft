@@ -5,6 +5,10 @@
     android:layout_height="383dp"
     android:background="#222222">
 
+    <include
+        layout="@layout/layout_beer_listview2_header"
+        />
+
     <ListView
         android:id="@+id/lv_recommend"
         android:layout_width="match_parent"

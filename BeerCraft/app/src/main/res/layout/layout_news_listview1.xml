@@ -5,6 +5,10 @@
     android:layout_height="594dp"
     android:background="#222222">
 
+    <include
+        layout="@layout/layout_news_listview1_header"
+        />
+
     <ListView
         android:id="@+id/lv_news"
         android:layout_width="match_parent"

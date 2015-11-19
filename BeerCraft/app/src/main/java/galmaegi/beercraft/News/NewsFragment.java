@@ -10,10 +10,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.astuetz.PagerSlidingTabStrip;
 
-import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
 
+import java.util.ArrayList;
+import java.util.Date;
+
+import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -43,6 +51,8 @@ public class NewsFragment extends Fragment {
             }
         });
         recommendListView.setAdapter(recommendAdapter);
+
+        getRecommend();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -55,6 +65,45 @@ public class NewsFragment extends Fragment {
         tabStrip.setViewPager(viewpager);
 
         return view;
+    }
+
+    private void getRecommend() {
+        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft.php";
+
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        for(int i = 0 ; i < response.length() ; i++) {
+                            try {
+                                BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));
+                                items.add(item);
+                            } catch (JSONException e) {
+                                BeerIndexItem item = new BeerIndexItem();
+                                item.setEnglishName("JSON Excep");
+                                item.setEntryDate(new Date());
+                                item.setModifyDate(new Date());
+                                items.add(item);
+                                e.printStackTrace();
+                            } catch (Exception e) {
+                                BeerIndexItem item = new BeerIndexItem();
+                                item.setEnglishName("IOE");
+                                item.setEntryDate(new Date());
+                                item.setModifyDate(new Date());
+                                items.add(item);
+                            }
+                        }
+                        recommendAdapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 }
 

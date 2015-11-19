@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.astuetz.PagerSlidingTabStrip;
 
 import org.json.JSONArray;
@@ -29,6 +30,7 @@ import java.util.Date;
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
+import galmaegi.beercraft.common.BeerIndexItemSendListener;
 
 public class BeerFragment extends Fragment {
     SimpleView simpleView;
@@ -78,25 +80,6 @@ public class BeerFragment extends Fragment {
         final PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
         tabStrip.setViewPager(viewpager);
 
-        tabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                adapter.notifyDataSetChanged();
-                tabStrip.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                adapter.notifyDataSetChanged();
-                tabStrip.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                adapter.notifyDataSetChanged();
-                tabStrip.notifyDataSetChanged();
-            }
-        });
         return view;
     }
 
@@ -141,7 +124,7 @@ public class BeerFragment extends Fragment {
 
     private class SimpleView implements View.OnClickListener{
         private View mAlert;
-        private ImageView mThumbnail;
+        private NetworkImageView mThumbnail;
         private TextView mName;
         private TextView mStyle;
         private TextView mAbvMl;
@@ -150,9 +133,11 @@ public class BeerFragment extends Fragment {
         private TextView mSellingPrice;
         private Button mShowDetail;
 
+        private BeerIndexItem item;
+
         public SimpleView(View view) {
             mAlert = view.findViewById(R.id.v_alert);
-            mThumbnail = (ImageView) view.findViewById(R.id.iv_thumbnail);
+            mThumbnail = (NetworkImageView) view.findViewById(R.id.iv_thumbnail);
             mName = (TextView) view.findViewById(R.id.tv_name);
             mStyle = (TextView) view.findViewById(R.id.tv_style);
             mAbvMl = (TextView) view.findViewById(R.id.tv_abv_ml);
@@ -160,15 +145,19 @@ public class BeerFragment extends Fragment {
             mIncrease = (TextView) view.findViewById(R.id.tv_increase);
             mSellingPrice = (TextView) view.findViewById(R.id.tv_sellingPrice);
             mShowDetail = (Button) view.findViewById(R.id.bt_showdetail);
+
+            mShowDetail.setOnClickListener(this);
         }
 
         public void setView(BeerIndexItem item) {
+            mThumbnail.setImageUrl(item.getProductImage(), AppController.getInstance().getImageLoader());
             mThumbnail.setImageURI(Uri.parse(item.getProductImage()));
             mName.setText(item.getEnglishName());
             mStyle.setText(item.getStyle());
-            mAbvMl.setText(item.getStrength()+ ", " + item.getVolume());
+            mAbvMl.setText(item.getStrength()+ "%, " + item.getVolume() + "ml");
             mRate.setText(String.valueOf(item.getRateBeerScore()));
             mIncrease.setText(String.valueOf(item.getPrice()));
+            mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
 
             int color;
             if(item.getRateBeerScore() < 0) {
@@ -182,6 +171,8 @@ public class BeerFragment extends Fragment {
             mAlert.setBackgroundColor(color);
             mRate.setTextColor(color);
             mIncrease.setTextColor(color);
+
+            this.item = item;
         }
 
         @Override

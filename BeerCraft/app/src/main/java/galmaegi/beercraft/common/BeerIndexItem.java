@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import galmaegi.beercraft.GlobalVar;
+
 public class BeerIndexItem {
     private int productID;
     private int divisionID;
@@ -27,7 +29,7 @@ public class BeerIndexItem {
     private int clumsy;
     private int sweetness;
     private int bitterness;
-    private String testingNote;
+    private String tastingNote;
     private String beerStory;
     private Date entryDate;
     private Date modifyDate;
@@ -55,10 +57,10 @@ public class BeerIndexItem {
         clumsy = 0;
         sweetness = 0;
         bitterness = 0;
-        testingNote = "";
+        tastingNote = "";
         beerStory = "";
-        entryDate = null;
-        modifyDate = null;
+        entryDate = new Date();
+        modifyDate = new Date();
         groupId = 0;
 
     }
@@ -78,17 +80,17 @@ public class BeerIndexItem {
         rateBeerScore = Integer.parseInt(object.getString("rateBeerScore"));
         price = Integer.parseInt(object.getString("price"));
         sellingPrice = Integer.parseInt(object.getString("sellingPrice"));
-        productImage = object.getString("productImage");
+        productImage = object.getString("proudctImage");
         creamy = Integer.parseInt(object.getString("creamy"));
         flavory = Integer.parseInt(object.getString("flavory"));
         pure = Integer.parseInt(object.getString("pure"));
         clumsy = Integer.parseInt(object.getString("clumsy"));
         sweetness = Integer.parseInt(object.getString("sweetness"));
         bitterness = Integer.parseInt(object.getString("bitterness"));
-        testingNote = object.getString("testingNote");
+        tastingNote = object.getString("tastingNote");
         beerStory = object.getString("beerStory");
-//        entryDate = object.getString("entryDate");
-//        modifyDate = object.getString("modifyDate");
+        entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
+        modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
         groupId = Integer.parseInt(object.getString("grp_id"));
     }
 
@@ -176,8 +178,8 @@ public class BeerIndexItem {
         this.bitterness = bitterness;
     }
 
-    public void setTestingNote(String testingNote) {
-        this.testingNote = testingNote;
+    public void setTastingNote(String tastingNote) {
+        this.tastingNote = tastingNote;
     }
 
     public void setBeerStory(String beerStory) {
@@ -288,8 +290,8 @@ public class BeerIndexItem {
         return bitterness;
     }
 
-    public String getTestingNote() {
-        return testingNote;
+    public String getTastingNote() {
+        return tastingNote;
     }
 
     public String getBeerStory() {

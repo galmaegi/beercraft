@@ -9,8 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.util.ArrayList;
 
+import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.NewsItem;
 
@@ -61,7 +64,7 @@ public class NewsAdapter extends BaseAdapter {
 
             holder.mTitle = (TextView) convertView.findViewById(R.id.tv_title);
             holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
-            holder.mThumbnail = (ImageView) convertView.findViewById(R.id.iv_thumbnail);
+            holder.mThumbnail = (NetworkImageView) convertView.findViewById(R.id.iv_thumbnail);
 
             convertView.setTag(holder);
         } else {
@@ -72,7 +75,7 @@ public class NewsAdapter extends BaseAdapter {
 
         holder.mTitle.setText(item.getNewsTitle());
         holder.mDate.setText(item.getEntryDate().toString());
-        holder.mThumbnail.setImageURI(Uri.parse(item.getContent_newsImage()));
+        holder.mThumbnail.setImageUrl(item.getContent_newsImage(), AppController.getInstance().getImageLoader());
 
         return convertView;
     }

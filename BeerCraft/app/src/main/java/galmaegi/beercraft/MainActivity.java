@@ -86,14 +86,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
         if(fr!=null)
             replaceFragment(fr);
-
     }
+
     public void replaceFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment, fragment);
         fragmentTransaction.commit();
     }
+
     public void setCurrenttable(){
         GlobalVar.currentTable = preftablenumRead();
         action_bar_tablenum.setText("TABLE NUMBER #"+GlobalVar.currentTable);

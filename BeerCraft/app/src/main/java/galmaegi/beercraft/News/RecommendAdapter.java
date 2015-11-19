@@ -75,7 +75,7 @@ public class RecommendAdapter extends BaseAdapter {
         holder.mName.setText(item.getEnglishName());
         holder.mCountry.setText(item.getCountry());
         holder.mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
-        holder.mDate.setText(item.getModifyDate().toString());
+//        holder.mDate.setText(item.getModifyDate().toString());
         holder.mRate.setText(String.valueOf(item.getRateBeerScore()));
         holder.mIncrease.setText(String.valueOf(item.getPrice()));
 

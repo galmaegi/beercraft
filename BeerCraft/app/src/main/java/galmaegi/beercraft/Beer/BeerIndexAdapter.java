@@ -76,8 +76,8 @@ public class BeerIndexAdapter extends BaseAdapter {
         holder.mName.setText(item.getEnglishName());
         holder.mCountry.setText(item.getCountry());
         holder.mStyle.setText(item.getStyle());
-//        holder.mABV.setText(item);
-//        holder.mMl.setText(item);
+        holder.mABV.setText(String.valueOf(item.getStrength()));
+        holder.mMl.setText(String.valueOf(item.getVolume()));
         holder.mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
         holder.mDate.setText(item.getModifyDate().toString());
         holder.mRate.setText(String.valueOf(item.getRateBeerScore()));

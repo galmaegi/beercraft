@@ -75,7 +75,6 @@ public class HomeFragment extends Fragment {
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 NewsItem item = new NewsItem(response.getJSONObject(i));
-                                item.setEntryDate(new Date());
                                 items.add(item);
                             } catch (JSONException e) {
                                 NewsItem item = new NewsItem();

@@ -28,7 +28,6 @@ public class SidemenuFragment extends Fragment {
     ImageButton btn_countplus;
     ImageButton btn_buy;
 
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

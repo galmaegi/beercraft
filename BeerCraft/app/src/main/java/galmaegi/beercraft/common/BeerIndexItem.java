@@ -10,7 +10,7 @@ import galmaegi.beercraft.GlobalVar;
 public class BeerIndexItem {
     private int productID;
     private int divisionID;
-    private int classificationCode;
+    private String classificationCode;
     private String productName;
     private String style;
     private String productDescription;
@@ -38,7 +38,7 @@ public class BeerIndexItem {
     public BeerIndexItem() {
         productID = 0;
         divisionID = 0;
-        classificationCode = 0;
+        classificationCode = "";
         productName = "";
         style = "";
         productDescription = "";
@@ -66,157 +66,111 @@ public class BeerIndexItem {
     }
 
     public BeerIndexItem(JSONObject object) throws JSONException{
-        if(object.isNull("productID")) {
+        if(object.getString("productID").equals("")) {
             productID = 0;
         } else {
             productID = Integer.parseInt(object.getString("productID"));
         }
 
-        if(object.isNull("divisionID")) {
+        if(object.getString("divisionID").equals("")) {
             divisionID = 0;
         } else {
             divisionID = Integer.parseInt(object.getString("divisionID"));
         }
 
-        if(object.isNull("classificationCode")) {
-            classificationCode = 0;
-        } else {
-            classificationCode = Integer.parseInt(object.getString("classificationCode"));
-        }
+        classificationCode = object.getString("classificationCode");
+        productName = object.getString("productName");
+        style = object.getString("style");
+        productDescription = object.getString("productDescription");
+        englishName = object.getString("englishName");
+        country = object.getString("country");
 
-        if(object.isNull("productName")) {
-            productName = "Empty";
-        } else {
-            productName = object.getString("productName");
-        }
-
-        if(object.isNull("style")) {
-            style = "Empty";
-        } else {
-            style = object.getString("style");
-        }
-
-        if(object.isNull("productDescription")) {
-            productDescription = "Empty";
-        } else {
-            productDescription = object.getString("productDescription");
-        }
-
-        if(object.isNull("englishName")) {
-            englishName = "Empty";
-        } else {
-            englishName = object.getString("englishName");
-        }
-
-        if(object.isNull("country")) {
-            country = "Empty";
-        } else {
-            country = object.getString("country");
-        }
-
-        if(object.isNull("strength")) {
+        if(object.getString("strength").equals("")) {
             strength = 0;
         } else {
             strength = Integer.parseInt(object.getString("strength"));
         }
 
-        if(object.isNull("bitterTaste")) {
-            bitterTaste = "";
-        } else {
-            bitterTaste = object.getString("bitterTaste");
-        }
+        bitterTaste = object.getString("bitterTaste");
 
-        if(object.isNull("volume")) {
+        if(object.getString("volume").equals("")) {
             volume = 0;
         } else {
             volume = Integer.parseInt(object.getString("volume"));
         }
 
-        if(object.isNull("rateBeerScore")) {
+        if(object.getString("rateBeerScore").equals("")) {
             rateBeerScore = 0;
         } else {
             rateBeerScore = Integer.parseInt(object.getString("rateBeerScore"));
         }
 
-        if(object.isNull("price")) {
+        if(object.getString("price").equals("")) {
             price = 0;
         } else {
             price = Integer.parseInt(object.getString("price"));
         }
 
-        if(object.isNull("sellingPrice")) {
+        if(object.getString("sellingPrice").equals("")) {
             sellingPrice = 0;
         } else {
             sellingPrice = Integer.parseInt(object.getString("sellingPrice"));
         }
 
-        if(object.isNull("productImage")) {
-            productImage = "";
-        } else {
-            productImage = object.getString("proudctImage");
-        }
+        productImage = object.getString("proudctImage");
 
-        if(object.isNull("creamy")) {
+        if(object.getString("creamy").equals("")) {
             creamy = 0;
         } else {
             creamy = Integer.parseInt(object.getString("creamy"));
         }
 
-        if(object.isNull("flavory")) {
+        if(object.getString("flavory").equals("")) {
             flavory = 0;
         } else {
             flavory = Integer.parseInt(object.getString("flavory"));
         }
 
-        if(object.isNull("pure")) {
+        if(object.getString("pure").equals("")) {
             pure = 0;
         } else {
             pure = Integer.parseInt(object.getString("pure"));
         }
 
-        if(object.isNull("clumsy")) {
+        if(object.getString("clumsy").equals("")) {
             clumsy = 0;
         } else {
             clumsy = Integer.parseInt(object.getString("clumsy"));
         }
 
-        if(object.isNull("sweetness")) {
+        if(object.getString("sweetness").equals("")) {
             sweetness = 0;
         } else {
             sweetness = Integer.parseInt(object.getString("sweetness"));
         }
 
-        if(object.isNull("bitterness")) {
+        if(object.getString("bitterness").equals("")) {
             bitterness = 0;
         } else {
             bitterness = Integer.parseInt(object.getString("bitterness"));
         }
 
-        if(object.isNull("tastingNote")) {
-            tastingNote = "Empty";
-        } else {
-            tastingNote = object.getString("tastingNote");
-        }
+        tastingNote = object.getString("tastingNote");
+        beerStory = object.getString("beerStory");
 
-        if(object.isNull("beerStory")) {
-            beerStory = "";
-        } else {
-            beerStory = object.getString("beerStory");
-        }
-
-        if(object.isNull("entryDate")) {
+        if(object.getString("entryDate").equals("")) {
             entryDate = new Date();
         } else {
             entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
         }
 
-        if(object.isNull("modifyDate")) {
+        if(object.getString("modifyDate").equals("")) {
             modifyDate = new Date();
         } else {
             modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
         }
 
-        if(object.isNull("grp_id")) {
+        if(object.getString("grp_id").equals("")) {
             groupId = 0;
         } else {
             groupId = Integer.parseInt(object.getString("grp_id"));
@@ -231,7 +185,7 @@ public class BeerIndexItem {
         this.divisionID = divisionID;
     }
 
-    public void setClassificationCode(int classificationCode) {
+    public void setClassificationCode(String classificationCode) {
         this.classificationCode = classificationCode;
     }
 
@@ -343,7 +297,7 @@ public class BeerIndexItem {
         return divisionID;
     }
 
-    public int getClassificationCode() {
+    public String getClassificationCode() {
         return classificationCode;
     }
 

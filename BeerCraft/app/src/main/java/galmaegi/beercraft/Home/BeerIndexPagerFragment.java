@@ -97,13 +97,6 @@ public class BeerIndexPagerFragment extends Fragment {
                                 item.setModifyDate(new Date());
                                 items.add(item);
                                 e.printStackTrace();
-                            } catch (Exception e) {
-                                BeerIndexItem item = new BeerIndexItem();
-                                item.setEnglishName("IOE");
-                                item.setEntryDate(new Date());
-                                item.setModifyDate(new Date());
-                                items.add(item);
-                                e.printStackTrace();
                             }
                         }
                         beerIndexAdapter.notifyDataSetChanged();
@@ -137,12 +130,6 @@ public class BeerIndexPagerFragment extends Fragment {
                                 item.setModifyDate(new Date());
                                 items.add(item);
                                 e.printStackTrace();
-                            } catch (Exception e) {
-                                BeerIndexItem item = new BeerIndexItem();
-                                item.setEnglishName("IOE");
-                                item.setEntryDate(new Date());
-                                item.setModifyDate(new Date());
-                                items.add(item);
                             }
                         }
                         beerIndexAdapter.notifyDataSetChanged();

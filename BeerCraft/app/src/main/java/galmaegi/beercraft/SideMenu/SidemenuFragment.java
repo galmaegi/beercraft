@@ -1,41 +1,21 @@
 package galmaegi.beercraft.SideMenu;
 
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-<<<<<<< HEAD
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-=======
 import android.widget.ImageButton;
 import android.widget.ImageView;
->>>>>>> origin/master
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.astuetz.PagerSlidingTabStrip;
 
-import java.util.ArrayList;
-
-import galmaegi.beercraft.AppController;
-import galmaegi.beercraft.MainActivity;
-import galmaegi.beercraft.News.RecommendAdapter;
 import galmaegi.beercraft.R;
-import galmaegi.beercraft.common.BeerIndexItem;
-import galmaegi.beercraft.common.BeerIndexItemSendListener;
 
 public class SidemenuFragment extends Fragment {
-<<<<<<< HEAD
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-=======
 
     ImageView img_updown;
     NetworkImageView img_product;
@@ -63,8 +43,6 @@ public class SidemenuFragment extends Fragment {
         btn_countminus = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_countminus);
         btn_countplus = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_countplus);
         btn_buy = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_buy);
-
->>>>>>> origin/master
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){

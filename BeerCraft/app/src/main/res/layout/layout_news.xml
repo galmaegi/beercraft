@@ -20,8 +20,8 @@
         <include
             android:layout_width="match_parent"
             android:layout_height="327dp"
-            android:id="@+id/inc_news_page"
-            layout="@layout/layout_news_pager"
+            android:id="@+id/inc_news_graph"
+            layout="@layout/layout_graph_pager"
             />
 
         <android.widget.Space

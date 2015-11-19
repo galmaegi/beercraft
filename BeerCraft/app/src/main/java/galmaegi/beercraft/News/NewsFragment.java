@@ -1,6 +1,5 @@
 package galmaegi.beercraft.News;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.Detail.Detail_2_Page_Adapter;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -59,6 +59,13 @@ public class NewsFragment extends Fragment {
 
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_news_index).findViewById(R.id.tab_news_index);
         tabStrip.setViewPager(viewpager);
+
+        //TODO: make own name
+        ViewPager viewpagerTemp = (ViewPager)view.findViewById(R.id.inc_news_graph).findViewById(R.id.vp_news_graph_index);
+        viewpagerTemp.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(),"test"));
+
+        PagerSlidingTabStrip tabStripTemp = (PagerSlidingTabStrip) view.findViewById(R.id.inc_news_graph).findViewById(R.id.tab_news_graph_index);
+        tabStripTemp.setViewPager(viewpagerTemp);
 
         return view;
     }

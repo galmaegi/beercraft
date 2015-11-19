@@ -146,10 +146,7 @@ public class BeerFragment extends Fragment {
             mIncrease = (TextView) view.findViewById(R.id.tv_increase);
             mSellingPrice = (TextView) view.findViewById(R.id.tv_sellingPrice);
             mShowDetail = (Button) view.findViewById(R.id.bt_showdetail);
-<<<<<<< HEAD
-=======
 
->>>>>>> ad0a31e74fa3d4a5ac0090cfa0d4021aa45aeae1
             mShowDetail.setOnClickListener(this);
         }
 

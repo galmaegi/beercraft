@@ -56,11 +56,7 @@ public class FragmentDetail extends Fragment {
     PagerSlidingTabStrip detail_5_tabstrip;
 
 
-<<<<<<< Updated upstream
-    public FragmentDetail(Context parent_context) {
-=======
     public FragmentDetail(Context parent_context, BeerIndexItem item){
->>>>>>> Stashed changes
         this.parent_context = parent_context;
 
     }

@@ -98,12 +98,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 fr = frNews;
                 break;
             case R.id.btn_check:
-<<<<<<< Updated upstream
                 curBtn = btn_check;
-                fr = frDetail;
-=======
 //                fr = frDetail;
->>>>>>> Stashed changes
+//                fr = frDetail;
                 break;
             case R.id.action_bar_tablenum:
                 DialogActionBar dialogActionBar = new DialogActionBar(this);

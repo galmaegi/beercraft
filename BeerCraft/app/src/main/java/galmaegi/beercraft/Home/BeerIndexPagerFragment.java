@@ -1,5 +1,6 @@
 package galmaegi.beercraft.Home;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -61,7 +63,7 @@ public class BeerIndexPagerFragment extends Fragment {
         beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                MainActivity.mainActivity.showDetailView(items.get(position));
             }
         });
         beerListView.setAdapter(beerIndexAdapter);

@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
-/**
- * Created by jongsu on 2015. 11. 16..
- */
 public class RecommendAdapter extends BaseAdapter {
 
     private Context mContext;

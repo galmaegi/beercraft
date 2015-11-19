@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
+import galmaegi.beercraft.common.BeerIndexItem;
 
 /**
  * Created by root on 15. 11. 13.
@@ -55,7 +56,11 @@ public class FragmentDetail extends Fragment {
     PagerSlidingTabStrip detail_5_tabstrip;
 
 
+<<<<<<< Updated upstream
     public FragmentDetail(Context parent_context) {
+=======
+    public FragmentDetail(Context parent_context, BeerIndexItem item){
+>>>>>>> Stashed changes
         this.parent_context = parent_context;
 
     }

@@ -18,6 +18,8 @@ import galmaegi.beercraft.Detail.FragmentDetail;
 import galmaegi.beercraft.Home.HomeFragment;
 import galmaegi.beercraft.News.NewsFragment;
 import galmaegi.beercraft.SideMenu.SidemenuFragment;
+import galmaegi.beercraft.common.BeerIndexItem;
+import galmaegi.beercraft.common.BeerIndexItemSendListener;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener{
@@ -64,11 +66,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mainActivity = this;
 
     }
+
     Fragment frHome = new HomeFragment();
     Fragment frBeer = new BeerFragment();
     Fragment frSide = new SidemenuFragment();
     Fragment frNews = new NewsFragment();
-    Fragment frDetail = new FragmentDetail(this);
+//    Fragment frDetail = new FragmentDetail(this);
+
     @Override
     public void onClick(View v) {
         Fragment fr = null;
@@ -94,8 +98,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 fr = frNews;
                 break;
             case R.id.btn_check:
+<<<<<<< Updated upstream
                 curBtn = btn_check;
                 fr = frDetail;
+=======
+//                fr = frDetail;
+>>>>>>> Stashed changes
                 break;
             case R.id.action_bar_tablenum:
                 DialogActionBar dialogActionBar = new DialogActionBar(this);
@@ -134,7 +142,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     public void setCurrenttable(){
         GlobalVar.currentTable = preftablenumRead();
-        action_bar_tablenum.setText("TABLE NUMBER #"+GlobalVar.currentTable);
+        action_bar_tablenum.setText("TABLE NUMBER #" + GlobalVar.currentTable);
 
     }
 
@@ -142,6 +150,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         SharedPreferences prefs = getSharedPreferences("BEERCRAFT", Context.MODE_PRIVATE);
         String returnvalue = prefs.getString("tablenum", "001");
         return returnvalue;
+    }
+
+    public void showDetailView(BeerIndexItem item) {
+        Fragment fragment = new FragmentDetail(this, item);
+        replaceFragment(fragment);
     }
 
 }

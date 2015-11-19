@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 import galmaegi.beercraft.common.BeerIndexItemSendListener;
@@ -180,7 +181,7 @@ public class BeerFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-
+            MainActivity.mainActivity.showDetailView(item);
         }
 
         @Override

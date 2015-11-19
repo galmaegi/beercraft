@@ -16,9 +16,6 @@ import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 import galmaegi.beercraft.common.NewsItem;
 
-/**
- * Created by jongsu on 2015. 11. 18..
- */
 public class NewsAdapter extends BaseAdapter {
 
     private Context mContext;

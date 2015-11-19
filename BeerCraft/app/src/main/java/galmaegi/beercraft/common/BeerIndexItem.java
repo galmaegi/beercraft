@@ -66,32 +66,161 @@ public class BeerIndexItem {
     }
 
     public BeerIndexItem(JSONObject object) throws JSONException{
-        productID = Integer.parseInt(object.getString("productID"));
-        divisionID = Integer.parseInt(object.getString("divisionID"));
-        classificationCode = Integer.parseInt(object.getString("classificationCode"));
-        productName = object.getString("productName");
-        style = object.getString("style");
-        productDescription = object.getString("productDescription");
-        englishName = object.getString("englishName");
-        country = object.getString("country");
-        strength = Integer.parseInt(object.getString("strength"));
-        bitterTaste = object.getString("bitterTaste");
-        volume = Integer.parseInt(object.getString("volume"));
-        rateBeerScore = Integer.parseInt(object.getString("rateBeerScore"));
-        price = Integer.parseInt(object.getString("price"));
-        sellingPrice = Integer.parseInt(object.getString("sellingPrice"));
-        productImage = object.getString("proudctImage");
-        creamy = Integer.parseInt(object.getString("creamy"));
-        flavory = Integer.parseInt(object.getString("flavory"));
-        pure = Integer.parseInt(object.getString("pure"));
-        clumsy = Integer.parseInt(object.getString("clumsy"));
-        sweetness = Integer.parseInt(object.getString("sweetness"));
-        bitterness = Integer.parseInt(object.getString("bitterness"));
-        tastingNote = object.getString("tastingNote");
-        beerStory = object.getString("beerStory");
-        entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
-        modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
-        groupId = Integer.parseInt(object.getString("grp_id"));
+        if(object.isNull("productID")) {
+            productID = 0;
+        } else {
+            productID = Integer.parseInt(object.getString("productID"));
+        }
+
+        if(object.isNull("divisionID")) {
+            divisionID = 0;
+        } else {
+            divisionID = Integer.parseInt(object.getString("divisionID"));
+        }
+
+        if(object.isNull("classificationCode")) {
+            classificationCode = 0;
+        } else {
+            classificationCode = Integer.parseInt(object.getString("classificationCode"));
+        }
+
+        if(object.isNull("productName")) {
+            productName = "Empty";
+        } else {
+            productName = object.getString("productName");
+        }
+
+        if(object.isNull("style")) {
+            style = "Empty";
+        } else {
+            style = object.getString("style");
+        }
+
+        if(object.isNull("productDescription")) {
+            productDescription = "Empty";
+        } else {
+            productDescription = object.getString("productDescription");
+        }
+
+        if(object.isNull("englishName")) {
+            englishName = "Empty";
+        } else {
+            englishName = object.getString("englishName");
+        }
+
+        if(object.isNull("country")) {
+            country = "Empty";
+        } else {
+            country = object.getString("country");
+        }
+
+        if(object.isNull("strength")) {
+            strength = 0;
+        } else {
+            strength = Integer.parseInt(object.getString("strength"));
+        }
+
+        if(object.isNull("bitterTaste")) {
+            bitterTaste = "";
+        } else {
+            bitterTaste = object.getString("bitterTaste");
+        }
+
+        if(object.isNull("volume")) {
+            volume = 0;
+        } else {
+            volume = Integer.parseInt(object.getString("volume"));
+        }
+
+        if(object.isNull("rateBeerScore")) {
+            rateBeerScore = 0;
+        } else {
+            rateBeerScore = Integer.parseInt(object.getString("rateBeerScore"));
+        }
+
+        if(object.isNull("price")) {
+            price = 0;
+        } else {
+            price = Integer.parseInt(object.getString("price"));
+        }
+
+        if(object.isNull("sellingPrice")) {
+            sellingPrice = 0;
+        } else {
+            sellingPrice = Integer.parseInt(object.getString("sellingPrice"));
+        }
+
+        if(object.isNull("productImage")) {
+            productImage = "";
+        } else {
+            productImage = object.getString("proudctImage");
+        }
+
+        if(object.isNull("creamy")) {
+            creamy = 0;
+        } else {
+            creamy = Integer.parseInt(object.getString("creamy"));
+        }
+
+        if(object.isNull("flavory")) {
+            flavory = 0;
+        } else {
+            flavory = Integer.parseInt(object.getString("flavory"));
+        }
+
+        if(object.isNull("pure")) {
+            pure = 0;
+        } else {
+            pure = Integer.parseInt(object.getString("pure"));
+        }
+
+        if(object.isNull("clumsy")) {
+            clumsy = 0;
+        } else {
+            clumsy = Integer.parseInt(object.getString("clumsy"));
+        }
+
+        if(object.isNull("sweetness")) {
+            sweetness = 0;
+        } else {
+            sweetness = Integer.parseInt(object.getString("sweetness"));
+        }
+
+        if(object.isNull("bitterness")) {
+            bitterness = 0;
+        } else {
+            bitterness = Integer.parseInt(object.getString("bitterness"));
+        }
+
+        if(object.isNull("tastingNote")) {
+            tastingNote = "Empty";
+        } else {
+            tastingNote = object.getString("tastingNote");
+        }
+
+        if(object.isNull("beerStory")) {
+            beerStory = "";
+        } else {
+            beerStory = object.getString("beerStory");
+        }
+
+        if(object.isNull("entryDate")) {
+            entryDate = new Date();
+        } else {
+            entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
+        }
+
+        if(object.isNull("modifyDate")) {
+            modifyDate = new Date();
+        } else {
+            modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
+        }
+
+        if(object.isNull("grp_id")) {
+            groupId = 0;
+        } else {
+            groupId = Integer.parseInt(object.getString("grp_id"));
+        }
     }
 
     public void setProductID(int productID) {

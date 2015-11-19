@@ -23,7 +23,7 @@ public class SidemenuIndexPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return SidemenuIndexPagerFragment.newInstance(position + 1);
+        return SidemenuIndexPagerFragment.newInstance(position);
     }
 
     @Override

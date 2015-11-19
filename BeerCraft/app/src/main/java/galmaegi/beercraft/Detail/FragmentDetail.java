@@ -27,7 +27,7 @@ import galmaegi.beercraft.R;
 /**
  * Created by root on 15. 11. 13.
  */
-public class FragmentDetail extends Fragment{
+public class FragmentDetail extends Fragment {
 
     Context parent_context;
     int price;
@@ -55,7 +55,7 @@ public class FragmentDetail extends Fragment{
     PagerSlidingTabStrip detail_5_tabstrip;
 
 
-    public FragmentDetail(Context parent_context){
+    public FragmentDetail(Context parent_context) {
         this.parent_context = parent_context;
 
     }
@@ -76,13 +76,12 @@ public class FragmentDetail extends Fragment{
         //initialization views which located in activity_detail section4
         detail_4 = new Detail_4(view);
         //get section 2
-        detail_2_viewpager = (ViewPager)view.findViewById(R.id.detail_2_viewpager);
+        detail_2_viewpager = (ViewPager) view.findViewById(R.id.detail_2_viewpager);
         detail_2_tabstrip = (PagerSlidingTabStrip) view.findViewById(R.id.detail_2_tabs);
 
 
-
         //get section 5
-        detail_5_viewpager = (ViewPager)view.findViewById(R.id.detail_5_viewpager);
+        detail_5_viewpager = (ViewPager) view.findViewById(R.id.detail_5_viewpager);
         detail_5_tabstrip = (PagerSlidingTabStrip) view.findViewById(R.id.detail_5_tabs);
 
         //get json data
@@ -105,14 +104,14 @@ public class FragmentDetail extends Fragment{
                             // Parsing json object response
                             // response will be a json object
                             //set global object
-                            DetailGlobalVar.currentObject = (JSONObject)response.get(0);
+                            DetailGlobalVar.currentObject = (JSONObject) response.get(0);
                             DetailGlobalVar.price = DetailGlobalVar.currentObject.getInt("sellingPrice");
                             //set detail section 1
                             detail_1.setSection();
 
                             //set detail section 2
                             //set section 5
-                            detail_2_viewpager.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(),"groupid"));
+                            detail_2_viewpager.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(), "groupid"));
                             detail_2_tabstrip.setViewPager(detail_2_viewpager);
 
                             //set detail section 3
@@ -123,7 +122,7 @@ public class FragmentDetail extends Fragment{
                             //to set detail_1_section
 
                             //set section 5
-                            detail_5_viewpager.setAdapter(new Detail_5_Page_Adapter(getChildFragmentManager(),DetailGlobalVar.currentObject.getString("tastingNote"),DetailGlobalVar.currentObject.getString("beerStory")));
+                            detail_5_viewpager.setAdapter(new Detail_5_Page_Adapter(getChildFragmentManager(), DetailGlobalVar.currentObject.getString("tastingNote"), DetailGlobalVar.currentObject.getString("beerStory")));
                             detail_5_tabstrip.setViewPager(detail_5_viewpager);
 
 

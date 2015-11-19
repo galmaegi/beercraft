@@ -29,6 +29,7 @@ import java.util.Date;
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
+import galmaegi.beercraft.common.BeerIndexItemSendListener;
 
 public class BeerFragment extends Fragment {
     SimpleView simpleView;
@@ -139,7 +140,7 @@ public class BeerFragment extends Fragment {
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
-    private class SimpleView implements View.OnClickListener{
+    private class SimpleView implements View.OnClickListener, BeerIndexItemSendListener{
         private View mAlert;
         private ImageView mThumbnail;
         private TextView mName;
@@ -160,6 +161,7 @@ public class BeerFragment extends Fragment {
             mIncrease = (TextView) view.findViewById(R.id.tv_increase);
             mSellingPrice = (TextView) view.findViewById(R.id.tv_sellingPrice);
             mShowDetail = (Button) view.findViewById(R.id.bt_showdetail);
+            mShowDetail.setOnClickListener(this);
         }
 
         public void setView(BeerIndexItem item) {
@@ -186,6 +188,11 @@ public class BeerFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
+
+        }
+
+        @Override
+        public void sendItem(BeerIndexItem item) {
 
         }
     }

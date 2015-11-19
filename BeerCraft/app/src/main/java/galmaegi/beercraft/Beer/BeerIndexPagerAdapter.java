@@ -22,7 +22,7 @@ public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        BeerIndexPagerFragment fragment = BeerIndexPagerFragment.newInstance(position + 1);
+        BeerIndexPagerFragment fragment = BeerIndexPagerFragment.newInstance(position );
         fragment.setItemClickListener(listener);
         return fragment;
     }

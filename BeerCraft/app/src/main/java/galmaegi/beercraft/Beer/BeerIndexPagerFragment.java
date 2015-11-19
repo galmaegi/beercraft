@@ -23,9 +23,6 @@ import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
-/**
- * Created by jongsu on 2015. 11. 17..
- */
 public class BeerIndexPagerFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;

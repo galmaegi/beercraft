@@ -23,7 +23,7 @@ public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return BeerIndexPagerFragment.newInstance(position + 1);
+        return BeerIndexPagerFragment.newInstance(position);
     }
 
     @Override

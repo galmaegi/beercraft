@@ -8,12 +8,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.astuetz.PagerSlidingTabStrip;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
+import galmaegi.beercraft.common.BeerIndexItem;
 
 public class SidemenuFragment extends Fragment {
 
@@ -27,6 +39,11 @@ public class SidemenuFragment extends Fragment {
     ImageButton btn_countminus;
     ImageButton btn_countplus;
     ImageButton btn_buy;
+
+    private ListView sidemenuListView;
+
+    private SidemenuAdapter sidemenuAdapter;
+    private ArrayList<BeerIndexItem> items;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -42,6 +59,22 @@ public class SidemenuFragment extends Fragment {
         btn_countminus = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_countminus);
         btn_countplus = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_countplus);
         btn_buy = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_buy);
+
+
+//        sidemenuListView = (ListView) view.findViewById(R.id.lv_sidemenu_index);
+//
+//        items = new ArrayList<>();
+//        sidemenuAdapter = new SidemenuAdapter(view.getContext(), items);
+//
+//        sidemenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                simpleView.setView(items.get(position));
+//            }
+//        });
+//
+//        sidemenuListView.setAdapter(sidemenuAdapter);
+//        getSidemenu();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -66,5 +99,38 @@ public class SidemenuFragment extends Fragment {
         public void setView(SidemenuIndexItem item) {
             tastingNote.setText(item.getTastingNote());
         }
+    }
+
+    private void getSidemenu() {
+        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-menu.php";
+
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        for(int i = 0 ; i < response.length() ; i++) {
+                            try {
+                                BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));
+                                items.add(item);
+                            } catch (JSONException e) {
+                                BeerIndexItem item = new BeerIndexItem();
+                                item.setEnglishName("JSON Excep");
+                                item.setEntryDate(new Date());
+                                item.setModifyDate(new Date());
+                                items.add(item);
+                                e.printStackTrace();
+                            }
+                        }
+                        sidemenuAdapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 }

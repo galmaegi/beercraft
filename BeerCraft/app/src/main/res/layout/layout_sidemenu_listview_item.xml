@@ -14,7 +14,7 @@
         android:id="@+id/v_alert"
         android:layout_width="5dp"
         android:layout_height="match_parent"
-        android:background="#6F6F6F"
+        android:background="#05B005"
         />
 
     <TextView
@@ -29,28 +29,14 @@
         android:textColor="#FFFFFF"/>
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="130dp"
-        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_Price"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="21dp"
-            android:textAlignment="textEnd"
-            android:textSize="18dp"
-            android:text="8,200"
-            android:textColor="#FFFFFF"/>
-
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="match_parent"
-            android:layout_height="19dp"
-            android:textAlignment="textEnd"
-            android:textSize="15dp"
-            android:text="8:10 PM"
-            android:textColor="#FFFFFF"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_Price"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:textAlignment="textEnd"
+        android:textSize="18dp"
+        android:text="8,200"
+        android:textColor="#FFFFFF"/>
 </LinearLayout>

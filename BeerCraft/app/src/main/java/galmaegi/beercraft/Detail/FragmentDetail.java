@@ -55,9 +55,12 @@ public class FragmentDetail extends Fragment {
     ViewPager detail_5_viewpager;
     PagerSlidingTabStrip detail_5_tabstrip;
 
+    int currentItemID ;
+
 
     public FragmentDetail(Context parent_context, BeerIndexItem item){
         this.parent_context = parent_context;
+        this.currentItemID = item.getProductID();
 
     }
 
@@ -94,7 +97,7 @@ public class FragmentDetail extends Fragment {
     }
 
     private void getDetailjson() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-get-selected-order-item.php?productID=27";
+        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-get-selected-order-item.php?productID="+currentItemID;
 //        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {

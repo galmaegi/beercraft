@@ -71,7 +71,6 @@ public class NewsPagerFragment extends Fragment {
         return view;
     }
 
-
     private void getNewsIndex() {
         final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
 

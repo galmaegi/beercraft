@@ -14,11 +14,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
+import galmaegi.beercraft.common.NewsItem;
 
 public class SidemenuIndexPagerFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
@@ -54,10 +57,15 @@ public class SidemenuIndexPagerFragment extends Fragment {
         sidemenuListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                // temporary
+                if(SidemenuFragment.tastingNote != null) {
+                    SidemenuFragment.tastingNote.setView(items.get(position));
+                }
             }
         });
         sidemenuListview.setAdapter(sidemenuAdapter);
+
+        getMenuIndex();
     }
 
     @Override
@@ -68,14 +76,32 @@ public class SidemenuIndexPagerFragment extends Fragment {
     }
 
 
-    private void getBottledBeerIndex() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft.php";
+    private void getMenuIndex() {
+        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-menu.php";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
 
+                        for(int i = 0 ; i < response.length() ; i++) {
+                            try {
+                                SidemenuIndexItem item = new SidemenuIndexItem(response.getJSONObject(i));
+                                items.add(item);
+                            } catch (JSONException e) {
+                                SidemenuIndexItem item = new SidemenuIndexItem();
+                                item.setProductName("JSONException");
+                                item.setEntryDate(new Date());
+                                items.add(item);
+                                e.printStackTrace();
+                            } catch (Exception e) {
+                                SidemenuIndexItem item = new SidemenuIndexItem();
+                                item.setProductName("JSONException");
+                                item.setEntryDate(new Date());
+                                items.add(item);
+                            }
+                        }
+                        sidemenuAdapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -83,7 +109,6 @@ public class SidemenuIndexPagerFragment extends Fragment {
 
             }
         });
-
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 }

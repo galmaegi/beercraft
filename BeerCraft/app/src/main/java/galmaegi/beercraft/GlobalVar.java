@@ -2,6 +2,9 @@ package galmaegi.beercraft;
 
 import android.graphics.Typeface;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,5 +25,13 @@ public class GlobalVar {
         }
 
         return new Date();
+    }
+
+    public static int SafetyJSONStringToInt(JSONObject object, String key) throws JSONException {
+        try {
+            return Integer.parseInt(object.getString(key));
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }

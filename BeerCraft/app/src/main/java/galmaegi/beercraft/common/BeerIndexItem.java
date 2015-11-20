@@ -66,95 +66,27 @@ public class BeerIndexItem {
     }
 
     public BeerIndexItem(JSONObject object) throws JSONException{
-        if(object.getString("productID").equals("")) {
-            productID = 0;
-        } else {
-            productID = Integer.parseInt(object.getString("productID"));
-        }
-
-        if(object.getString("divisionID").equals("")) {
-            divisionID = 0;
-        } else {
-            divisionID = Integer.parseInt(object.getString("divisionID"));
-        }
-
+        productID = GlobalVar.SafetyJSONStringToInt(object, "productID");
+        divisionID = GlobalVar.SafetyJSONStringToInt(object, "divisionID");
         classificationCode = object.getString("classificationCode");
         productName = object.getString("productName");
         style = object.getString("style");
         productDescription = object.getString("productDescription");
         englishName = object.getString("englishName");
         country = object.getString("country");
-
-        if(object.getString("strength").equals("")) {
-            strength = 0;
-        } else {
-            strength = Integer.parseInt(object.getString("strength"));
-        }
-
+        strength = GlobalVar.SafetyJSONStringToInt(object, "strength");
         bitterTaste = object.getString("bitterTaste");
-
-        if(object.getString("volume").equals("")) {
-            volume = 0;
-        } else {
-            volume = Integer.parseInt(object.getString("volume"));
-        }
-
-        if(object.getString("rateBeerScore").equals("")) {
-            rateBeerScore = 0;
-        } else {
-            rateBeerScore = Integer.parseInt(object.getString("rateBeerScore"));
-        }
-
-        if(object.getString("price").equals("")) {
-            price = 0;
-        } else {
-            price = Integer.parseInt(object.getString("price"));
-        }
-
-        if(object.getString("sellingPrice").equals("")) {
-            sellingPrice = 0;
-        } else {
-            sellingPrice = Integer.parseInt(object.getString("sellingPrice"));
-        }
-
+        volume = GlobalVar.SafetyJSONStringToInt(object, "volume");
+        rateBeerScore = GlobalVar.SafetyJSONStringToInt(object, "rateBeerScore");
+        price = GlobalVar.SafetyJSONStringToInt(object, "price");
+        sellingPrice = GlobalVar.SafetyJSONStringToInt(object, "sellingPrice");
         productImage = object.getString("proudctImage");
-
-        if(object.getString("creamy").equals("")) {
-            creamy = 0;
-        } else {
-            creamy = Integer.parseInt(object.getString("creamy"));
-        }
-
-        if(object.getString("flavory").equals("")) {
-            flavory = 0;
-        } else {
-            flavory = Integer.parseInt(object.getString("flavory"));
-        }
-
-        if(object.getString("pure").equals("")) {
-            pure = 0;
-        } else {
-            pure = Integer.parseInt(object.getString("pure"));
-        }
-
-        if(object.getString("clumsy").equals("")) {
-            clumsy = 0;
-        } else {
-            clumsy = Integer.parseInt(object.getString("clumsy"));
-        }
-
-        if(object.getString("sweetness").equals("")) {
-            sweetness = 0;
-        } else {
-            sweetness = Integer.parseInt(object.getString("sweetness"));
-        }
-
-        if(object.getString("bitterness").equals("")) {
-            bitterness = 0;
-        } else {
-            bitterness = Integer.parseInt(object.getString("bitterness"));
-        }
-
+        creamy = GlobalVar.SafetyJSONStringToInt(object, "creamy");
+        flavory = GlobalVar.SafetyJSONStringToInt(object, "flavory");
+        pure = GlobalVar.SafetyJSONStringToInt(object, "pure");
+        clumsy = GlobalVar.SafetyJSONStringToInt(object, "clumsy");
+        sweetness = GlobalVar.SafetyJSONStringToInt(object, "sweetness");
+        bitterness = GlobalVar.SafetyJSONStringToInt(object, "bitterness");
         tastingNote = object.getString("tastingNote");
         beerStory = object.getString("beerStory");
 
@@ -170,11 +102,8 @@ public class BeerIndexItem {
             modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
         }
 
-        if(object.getString("grp_id").equals("")) {
-            groupId = 0;
-        } else {
-            groupId = Integer.parseInt(object.getString("grp_id"));
-        }
+        groupId = GlobalVar.SafetyJSONStringToInt(object, "grp_id");
+
     }
 
     public void setProductID(int productID) {

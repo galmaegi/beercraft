@@ -17,6 +17,8 @@ import galmaegi.beercraft.R;
 
 public class SidemenuFragment extends Fragment {
 
+    public static TastingNote tastingNote;
+
     ImageView img_updown;
     NetworkImageView img_product;
     TextView txt_productname;
@@ -31,6 +33,8 @@ public class SidemenuFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        tastingNote = new TastingNote(view);
 
         img_updown = (ImageView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.img_updown);
         img_product = (NetworkImageView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.img_product);
@@ -56,7 +60,7 @@ public class SidemenuFragment extends Fragment {
         return view;
     }
 
-    private class TastingNote {
+    public class TastingNote {
         private TextView tastingNote;
 
         public TastingNote(View view) {

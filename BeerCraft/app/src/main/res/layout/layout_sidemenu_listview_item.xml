@@ -35,7 +35,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_Price"
+            android:id="@+id/tv_sellingPrice"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="21dp"

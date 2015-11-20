@@ -19,7 +19,7 @@
         android:layout_width="330dp"
         android:layout_height="330dp"
         android:id="@+id/img_product"
-        android:background="#fff"/>
+        android:background="#3F3F3F"/>
 
 
     <LinearLayout

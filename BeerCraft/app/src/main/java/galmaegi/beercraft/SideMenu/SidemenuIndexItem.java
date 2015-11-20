@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import galmaegi.beercraft.GlobalVar;
+
 public class SidemenuIndexItem {
     private int sideMenuID;
     private int classificationCode;
@@ -43,7 +45,22 @@ public class SidemenuIndexItem {
     }
 
     public SidemenuIndexItem(JSONObject object) throws JSONException{
-
+        sideMenuID = GlobalVar.SafetyJSONStringToInt(object, "sideMenuID");
+        classificationCode = GlobalVar.SafetyJSONStringToInt(object, "classificationCode");
+        productName = object.getString("productName");
+        englishName = object.getString("englishName");
+        price = GlobalVar.SafetyJSONStringToInt(object, "price");
+//        proudctImage = object.getString("productImage");
+        creamy = GlobalVar.SafetyJSONStringToInt(object, "creamy");
+        flavory = GlobalVar.SafetyJSONStringToInt(object, "flavory");
+        pure = GlobalVar.SafetyJSONStringToInt(object, "pure");
+        clumsy = GlobalVar.SafetyJSONStringToInt(object, "clumsy");
+        sweetness = GlobalVar.SafetyJSONStringToInt(object, "sweetness");
+        bitterness = GlobalVar.SafetyJSONStringToInt(object, "bitterness");
+        tastingNote = object.getString("tastingNote");
+        beerStory = object.getString("beerStory");
+        entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
+        modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
     }
 
     public void setSideMenuID(int sideMenuID) {

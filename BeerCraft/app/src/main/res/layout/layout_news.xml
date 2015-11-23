@@ -4,9 +4,14 @@
     android:layout_width="1194dp"
     android:layout_height="673dp">
 
-    <include
-        android:id="@+id/inc_news_index"
-        layout="@layout/layout_news_pager" />
+    <!--<include-->
+        <!--android:id="@+id/inc_news_index"-->
+        <!--layout="@layout/layout_news_pager" />-->
+
+    <FrameLayout
+        android:id="@+id/news_fragment"
+        android:layout_width="700dp"
+        android:layout_height="match_parent"/>
 
     <android.widget.Space
         android:layout_width="16dp"

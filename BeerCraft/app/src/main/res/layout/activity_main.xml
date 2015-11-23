@@ -32,7 +32,6 @@
         android:layout_toRightOf="@+id/main_left_side"
         android:layout_above="@id/main_bottom_bar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="galmaegi.beercraft.Home.HomeFragment"/>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

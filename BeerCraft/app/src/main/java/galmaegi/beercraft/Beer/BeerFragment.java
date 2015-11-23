@@ -111,7 +111,7 @@ public class BeerFragment extends Fragment {
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
-    private class SimpleView implements View.OnClickListener, BeerIndexItemSendListener{
+    private class SimpleView implements View.OnClickListener{
         private View mAlert;
         private NetworkImageView mThumbnail;
         private TextView mName;
@@ -166,12 +166,9 @@ public class BeerFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            MainActivity.mainActivity.showDetailView(item);
-        }
-
-        @Override
-        public void sendItem(BeerIndexItem item) {
-
+            if(item != null) {
+                MainActivity.mainActivity.showDetailView(item);
+            }
         }
     }
 }

@@ -26,9 +26,9 @@ public class NewsPagerFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
 
-    ListView newsListView;
-    NewsAdapter newsAdapter;
-    ArrayList<NewsItem> items;
+    ListView newsListView = null;
+    NewsAdapter newsAdapter = null;
+    ArrayList<NewsItem> items = null;
 
     public static NewsPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -48,18 +48,21 @@ public class NewsPagerFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        newsListView = (ListView) view.findViewById(R.id.lv_news);
+        if(newsListView == null) {
+            items = new ArrayList<>();
+            newsListView = (ListView) view.findViewById(R.id.lv_news);
+            newsAdapter = new NewsAdapter(view.getContext(), items);
 
-        items = new ArrayList<>();
-        newsAdapter = new NewsAdapter(view.getContext(), items);
-
-        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                NewsFragment.newsFragment.showNewsContentView(items, position);
-            }
-        });
-        newsListView.setAdapter(newsAdapter);
+            newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    NewsFragment.newsFragment.showNewsContentView(items, position);
+                }
+            });
+            newsListView.setAdapter(newsAdapter);
+        } else {
+            items.removeAll(items);
+        }
 
         getNewsIndex();
     }

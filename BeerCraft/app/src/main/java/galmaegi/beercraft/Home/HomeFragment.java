@@ -27,25 +27,29 @@ import galmaegi.beercraft.common.NewsItem;
 
 public class HomeFragment extends Fragment {
 
-    ListView newsListView;
-    NewsAdapter newsAdapter;
-    ArrayList<NewsItem> items;
+    ListView newsListView = null;
+    NewsAdapter newsAdapter = null;
+    ArrayList<NewsItem> items = null;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        newsListView = (ListView) view.findViewById(R.id.lv_news);
+        if(newsListView == null) {
+            newsListView = (ListView) view.findViewById(R.id.lv_news);
 
-        items = new ArrayList<>();
-        newsAdapter = new NewsAdapter(view.getContext(), items);
-        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            items = new ArrayList<>();
+            newsAdapter = new NewsAdapter(view.getContext(), items);
+            newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            }
-        });
-        newsListView.setAdapter(newsAdapter);
+                }
+            });
+            newsListView.setAdapter(newsAdapter);
+        } else {
+            items.removeAll(items);
+        }
 
         getNews();
     }

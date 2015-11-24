@@ -41,20 +41,23 @@ public class BeerFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        simpleView = new SimpleView(view);
+        if(simpleView == null) {
+            simpleView = new SimpleView(view);
 
-        recommendListView = (ListView) view.findViewById(R.id.lv_recommend);
+            items = new ArrayList<>();
+            recommendListView = (ListView) view.findViewById(R.id.lv_recommend);
+            recommendAdapter = new RecommendAdapter(view.getContext(), items);
 
-        items = new ArrayList<>();
-        recommendAdapter = new RecommendAdapter(view.getContext(), items);
-
-        recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                simpleView.setView(items.get(position));
-            }
-        });
-        recommendListView.setAdapter(recommendAdapter);
+            recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    simpleView.setView(items.get(position));
+                }
+            });
+            recommendListView.setAdapter(recommendAdapter);
+        } else {
+            items.removeAll(items);
+        }
 
         getRecommend();
     }

@@ -49,21 +49,24 @@ public class SidemenuIndexPagerFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        sidemenuListview = (ListView) view.findViewById(R.id.lv_sidemenu_index);
+        if(sidemenuListview == null) {
+            items = new ArrayList<>();
+            sidemenuListview = (ListView) view.findViewById(R.id.lv_sidemenu_index);
+            sidemenuAdapter = new SidemenuIndexAdapter(view.getContext(), items);
 
-        items = new ArrayList<>();
-        sidemenuAdapter = new SidemenuIndexAdapter(view.getContext(), items);
-
-        sidemenuListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // temporary
-                if(SidemenuFragment.tastingNote != null) {
-                    SidemenuFragment.tastingNote.setView(items.get(position));
+            sidemenuListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    // temporary
+                    if (SidemenuFragment.tastingNote != null) {
+                        SidemenuFragment.tastingNote.setView(items.get(position));
+                    }
                 }
-            }
-        });
-        sidemenuListview.setAdapter(sidemenuAdapter);
+            });
+            sidemenuListview.setAdapter(sidemenuAdapter);
+        } else {
+            items.removeAll(items);
+        }
 
         getMenuIndex();
     }

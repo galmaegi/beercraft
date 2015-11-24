@@ -4,13 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-/**
- * Created by jongsu on 2015. 11. 17..
- */
 public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[]{"Bottled Beer Index", "Draft Beer Index"};
+    private String tabTitles[] = new String[]{"Draft Beer Index", "Bottled Beer Index"};
 
     public BeerIndexPagerAdapter(FragmentManager fm) {
         super(fm);

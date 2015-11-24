@@ -17,9 +17,6 @@ import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.NewsItem;
 
-/**
- * Created by jongsu on 2015. 11. 16..
- */
 public class NewsAdapter extends BaseAdapter {
 
     Context mContext;

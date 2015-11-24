@@ -2,6 +2,8 @@ package galmaegi.beercraft.News;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,9 +29,15 @@ import galmaegi.beercraft.common.BeerIndexItem;
 
 public class NewsFragment extends Fragment {
 
+    public NewsFragment newsFragment = null;
+
     private ListView recommendListView;
     private RecommendAdapter recommendAdapter;
     private ArrayList<BeerIndexItem> items;
+
+    public NewsFragment() {
+        newsFragment = this;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -49,16 +57,14 @@ public class NewsFragment extends Fragment {
         recommendListView.setAdapter(recommendAdapter);
 
         getRecommend();
+
+        replaceFragment(newsListFragment);
     }
+
+    Fragment newsListFragment = new NewsContentFragment();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.layout_news, container, false);
-
-        ViewPager viewpager = (ViewPager)view.findViewById(R.id.inc_news_index).findViewById(R.id.vp_news_index);
-        viewpager.setAdapter(new NewsPagerAdapter(getChildFragmentManager()));
-
-        PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_news_index).findViewById(R.id.tab_news_index);
-        tabStrip.setViewPager(viewpager);
 
         //TODO: make own name
         ViewPager viewpagerTemp = (ViewPager)view.findViewById(R.id.inc_news_graph).findViewById(R.id.vp_news_graph_index);
@@ -68,6 +74,13 @@ public class NewsFragment extends Fragment {
         tabStripTemp.setViewPager(viewpagerTemp);
 
         return view;
+    }
+
+    public void replaceFragment(Fragment fragment) {
+        FragmentManager fm = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.news_fragment, fragment);
+        fragmentTransaction.commit();
     }
 
     private void getRecommend() {

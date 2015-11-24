@@ -36,6 +36,7 @@ public class BottomBar {
     public Handler handleBottomBar;
     CustomTimer customTimer;
     public BottomBar(View v){
+        getDataFromWeb();
         bottom_bar_text = (TextView)v.findViewById(R.id.bottom_bar_text);
         bottom_bar_text.setSelected(true);
 
@@ -46,7 +47,7 @@ public class BottomBar {
                 return false;
             }
         });
-        customTimer = new CustomTimer(60*1000,60*1000,handleBottomBar);
+        customTimer = new CustomTimer(60*3*1000,60*3*1000,handleBottomBar);
         customTimer.start();
     }
 
@@ -108,7 +109,7 @@ public class BottomBar {
     public void printData(){
         String result="";
         for(int i = 0; i < bottomData.size(); i++){
-            result+=bottomData.get(i)+"    ";
+            result+=bottomData.get(i)+"&nbsp;&nbsp;&nbsp;&nbsp;";
         }
         bottom_bar_text.setText(Html.fromHtml(result));
     }

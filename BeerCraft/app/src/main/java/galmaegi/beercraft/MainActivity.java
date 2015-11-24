@@ -12,7 +12,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import galmaegi.beercraft.Beer.BeerFragment;
 import galmaegi.beercraft.Detail.FragmentDetail;
@@ -37,9 +36,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     ImageButton btn_news;
     ImageButton btn_check;
 
-    //bottom Textview
-    TextView bottom_bar_text;
-
+    //bottom bar
+    BottomBar bottomBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,7 +59,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         action_bar_tablenum = (Button) findViewById(R.id.action_bar_tablenum);
 
-        bottom_bar_text = (TextView)findViewById(R.id.bottom_bar_text);
+        bottomBar = new BottomBar(this.getWindow().getDecorView().getRootView());
+
 
         btn_home.setOnClickListener(this);
         btn_home.setSelected(true);
@@ -72,7 +71,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         action_bar_tablenum.setOnLongClickListener(this);
 
-        bottom_bar_text.setSelected(true);
 
         setCurrenttable();
 

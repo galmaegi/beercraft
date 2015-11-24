@@ -28,7 +28,17 @@ public class CustomRadarView {
     private RadarChart radarchart;
     Typeface tf;
 
+    private ArrayList<String> mParties = new ArrayList<String>();
     public CustomRadarView(Context context, RadarChart radarchart, Typeface tf){
+
+        mParties.add(context.getResources().getString(R.string.alcohol));
+        mParties.add(context.getResources().getString(R.string.malty));
+        mParties.add(context.getResources().getString(R.string.bitter));
+        mParties.add(context.getResources().getString(R.string.sweet));
+        mParties.add(context.getResources().getString(R.string.body));
+        mParties.add(context.getResources().getString(R.string.florar));
+
+
         this.radarchart = radarchart;
         this.tf = tf;
         //set radar values
@@ -49,9 +59,10 @@ public class CustomRadarView {
         setData();
 
     }
-    private String[] mParties = new String[] {
-            "CREAMY","FLAVORY","PURE","BITTERNESS","SWEETNESS","CLUMSY"
-    };
+
+//    {
+//            "CREAMY","FLAVORY","PURE","BITTERNESS","SWEETNESS","CLUMSY"
+//    };
     public void setData() {
 
         float mult = 150;
@@ -66,7 +77,7 @@ public class CustomRadarView {
         for (int i = 0; i < cnt; i++) {
 //            yVals1.add(new Entry((float) (Math.random() * mult) + mult / 2, i));
             try {
-                yVals1.add(new Entry((float) DetailGlobalVar.currentObject.getInt(mParties[i].toLowerCase()), i));
+                yVals1.add(new Entry((float) DetailGlobalVar.currentObject.getInt(mParties.get(i).toLowerCase()), i));
 
             }
             catch (JSONException e){
@@ -76,7 +87,7 @@ public class CustomRadarView {
         ArrayList<String> xVals = new ArrayList<String>();
 
         for (int i = 0; i < cnt; i++)
-            xVals.add(mParties[i % mParties.length]);
+            xVals.add(mParties.get(i % mParties.size()));
 
         XAxis xaxis=radarchart.getXAxis();
         xaxis.setTextColor(Color.WHITE);

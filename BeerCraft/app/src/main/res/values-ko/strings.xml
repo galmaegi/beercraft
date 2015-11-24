@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BeerCraft</string>
+    <!-- for radar view's label-->
+    <string name="alcohol">알콜</string>
+    <string name="malty">몰트</string>
+    <string name="bitter">쓴 맛</string>
+    <string name="sweet">단 맛</string>
+    <string name="body">바디감</string>
+    <string name="florar">향</string>
+</resources>

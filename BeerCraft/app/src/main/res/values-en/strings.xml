@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">BeerCraft</string>
+    <!-- for radar view's label-->
+    <string name="alcohol">ALCOHOL</string>
+    <string name="malty">MALTY</string>
+    <string name="bitter">BITTER</string>
+    <string name="sweet">SWEET</string>
+    <string name="body">BODY</string>
+    <string name="florar">FLORAR</string>
+
+</resources>

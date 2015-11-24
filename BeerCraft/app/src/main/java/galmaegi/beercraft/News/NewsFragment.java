@@ -19,6 +19,7 @@ import com.astuetz.PagerSlidingTabStrip;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -29,7 +30,7 @@ import galmaegi.beercraft.common.BeerIndexItem;
 
 public class NewsFragment extends Fragment {
 
-    public NewsFragment newsFragment = null;
+    public static NewsFragment newsFragment = null;
 
     private ListView recommendListView;
     private RecommendAdapter recommendAdapter;
@@ -61,7 +62,7 @@ public class NewsFragment extends Fragment {
         replaceFragment(newsListFragment);
     }
 
-    Fragment newsListFragment = new NewsContentFragment();
+    Fragment newsListFragment = new NewsListFragment();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.layout_news, container, false);
@@ -83,6 +84,10 @@ public class NewsFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
+    public void showNewsContentView(ArrayList items, int index) {
+        Fragment fragment = new NewsContentFragment(items, index);
+        replaceFragment(fragment);
+    }
     private void getRecommend() {
         final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft.php";
 

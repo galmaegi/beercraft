@@ -29,8 +29,8 @@ public class NewsItem {
     }
 
     public NewsItem(JSONObject object) throws JSONException {
-        newsID = object.getInt("newsID");
-        divisionID = object.getInt("divisionID");
+        newsID = GlobalVar.SafetyJSONStringToInt(object, "newsID");
+        divisionID = GlobalVar.SafetyJSONStringToInt(object, "divisionID");
         newsTitle = object.getString("newsTitle");
         content = object.getString("content");
         content_newsImage = object.getString("content_newsImage");

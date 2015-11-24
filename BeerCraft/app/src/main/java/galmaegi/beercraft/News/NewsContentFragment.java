@@ -21,10 +21,10 @@ public class NewsContentFragment extends Fragment implements View.OnTouchListene
     private ViewFlipper viewFlipper;
 
     // need restore
-//    public NewsContentFragment(ArrayList items, int index) {
-//        this.items = items;
-//        this.index = index;
-//    }
+    public NewsContentFragment(ArrayList items, int index) {
+        this.items = items;
+        this.index = index;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

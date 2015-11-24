@@ -25,9 +25,6 @@ import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.NewsItem;
 
-/**
- * Created by root on 15. 11. 13.
- */
 public class HomeFragment extends Fragment {
 
     ListView newsListView;

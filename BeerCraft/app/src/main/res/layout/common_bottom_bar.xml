@@ -15,9 +15,10 @@
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:ellipsize="marquee"
-        android:marqueeRepeatLimit="1"
+        android:marqueeRepeatLimit="marquee_forever"
         android:singleLine="true"
-        android:textSize="30dp"
+        android:textSize="20dp"
+        android:textColor="@android:color/white"
         android:text="START TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest END"
         />
 

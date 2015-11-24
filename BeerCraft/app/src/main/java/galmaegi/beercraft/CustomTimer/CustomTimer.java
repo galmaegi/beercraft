@@ -20,7 +20,7 @@ public class CustomTimer extends CountDownTimer {
 
     @Override
     public void onFinish() {
-//        this.start();
+        this.start();
         customHandler.sendEmptyMessage(0);
     }
 }

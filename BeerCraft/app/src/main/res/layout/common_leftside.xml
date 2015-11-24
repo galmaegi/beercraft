@@ -20,44 +20,38 @@
         >
         <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="90dp"
             android:id="@+id/btn_back"
             android:background="@drawable/btn_back"
             />
         <ImageButton
             
             android:layout_width="match_parent"
-            android:layout_height="115dp"
+            android:layout_height="120dp"
             android:id="@+id/btn_home"
             android:background="@drawable/btn_home_selector"/>
         <ImageButton
             
             android:layout_width="match_parent"
-            android:layout_height="125dp"
+            android:layout_height="130dp"
             
             android:id="@+id/btn_beer"
             android:background="@drawable/btn_beer_selector"/>
         <ImageButton
-            
             android:layout_width="match_parent"
-            android:layout_height="125dp"
-            
+            android:layout_height="130dp"
             android:id="@+id/btn_sidemenu"
             android:background="@drawable/btn_sidemenu_selector"
             android:focusable="true"
             android:clickable="true" />
         <ImageButton
-            
             android:layout_width="match_parent"
-            android:layout_height="125dp"
-            
+            android:layout_height="130dp"
             android:id="@+id/btn_news"
             android:background="@drawable/btn_news_selector"/>
         <ImageButton
-
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            
+            android:layout_height="match_parent"
             android:id="@+id/btn_check"
             android:background="@drawable/btn_check_selector"/>
     </LinearLayout>

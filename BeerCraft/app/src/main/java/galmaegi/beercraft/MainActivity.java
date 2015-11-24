@@ -85,7 +85,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Fragment frBeer = new BeerFragment();
     Fragment frSide = new SidemenuFragment();
     Fragment frNews = new NewsFragment();
-//    Fragment frDetail = new FragmentDetail(this);
 
     @Override
     public void onClick(View v) {
@@ -113,8 +112,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.btn_check:
                 curBtn = btn_check;
-//                fr = frDetail;
-//                fr = frDetail;
                 break;
         }
         if(fr!=null)
@@ -175,7 +172,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             hideSystemUI(mDecorView);
 
     }
-
     @Override
     public boolean onLongClick(View v) {
         boolean returnvalue=false;

@@ -1,5 +1,6 @@
 package galmaegi.beercraft.Home;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -59,6 +60,8 @@ public class HomeFragment extends Fragment {
         viewpager.setAdapter(new BeerIndexPagerAdapter(getChildFragmentManager()));
 
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
+        tabStrip.setTextSize(13);
+        tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
 
         return view;

@@ -17,7 +17,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="520dp"
-        android:layout_height="wrap_content">
+        android:layout_height="fill_parent">
         <!-- 중간-->
         <include layout="@layout/detail_section_2"/>
         <Space

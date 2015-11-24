@@ -29,7 +29,6 @@ import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
-import galmaegi.beercraft.common.BeerIndexItemSendListener;
 
 public class BeerFragment extends Fragment {
     SimpleView simpleView;
@@ -73,6 +72,8 @@ public class BeerFragment extends Fragment {
         viewpager.setAdapter(adapter);
 
         final PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
+        tabStrip.setTextSize(13);
+        tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
 
         return view;

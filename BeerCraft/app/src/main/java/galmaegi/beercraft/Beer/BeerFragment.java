@@ -31,55 +31,51 @@ import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
 public class BeerFragment extends Fragment {
+    public static BeerFragment beerFragment;
     SimpleView simpleView;
 
     ListView recommendListView;
     RecommendAdapter recommendAdapter;
     ArrayList<BeerIndexItem> items;
 
+    public BeerFragment() {
+        beerFragment = this;
+    }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(simpleView == null) {
-            simpleView = new SimpleView(view);
+        simpleView = new SimpleView(view);
 
-            items = new ArrayList<>();
-            recommendListView = (ListView) view.findViewById(R.id.lv_recommend);
-            recommendAdapter = new RecommendAdapter(view.getContext(), items);
+        items = new ArrayList<>();
+        recommendListView = (ListView) view.findViewById(R.id.lv_recommend);
+        recommendAdapter = new RecommendAdapter(view.getContext(), items);
 
-            recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    simpleView.setView(items.get(position));
-                }
-            });
-            recommendListView.setAdapter(recommendAdapter);
-        } else {
-            items.removeAll(items);
-        }
+        recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                simpleView.setView(items.get(position));
+            }
+        });
+        recommendListView.setAdapter(recommendAdapter);
 
         getRecommend();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.layout_beer, container, false);
+        View holder = inflater.inflate(R.layout.layout_beer, container, false);
 
-        ViewPager viewpager = (ViewPager)view.findViewById(R.id.inc_beer_index).findViewById(R.id.vp_beer_index);
-        final BeerIndexPagerAdapter adapter = new BeerIndexPagerAdapter(getChildFragmentManager(), new BeerIndexPagerFragment.ItemClickListener() {
-            @Override
-            public void itemclick(BeerIndexItem item) {
-                simpleView.setView(item);
-            }
-        });
+        ViewPager viewpager = (ViewPager) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.vp_beer_index);
+        BeerIndexPagerAdapter adapter = new BeerIndexPagerAdapter(getChildFragmentManager());
         viewpager.setAdapter(adapter);
 
-        final PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
+        PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
         tabStrip.setTextSize(13);
         tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
 
-        return view;
+        return holder;
     }
 
     private void getRecommend() {
@@ -115,7 +111,11 @@ public class BeerFragment extends Fragment {
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
-    private class SimpleView implements View.OnClickListener{
+    public void setSimpleView(BeerIndexItem item) {
+        simpleView.setView(item);
+    }
+
+    public class SimpleView implements View.OnClickListener{
         private View mAlert;
         private NetworkImageView mThumbnail;
         private TextView mName;

@@ -20,11 +20,9 @@ public class GlobalVar {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         try {
             return format.parse(string);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            return new Date();
         }
-
-        return new Date();
     }
 
     public static int SafetyJSONStringToInt(JSONObject object, String key) throws JSONException {

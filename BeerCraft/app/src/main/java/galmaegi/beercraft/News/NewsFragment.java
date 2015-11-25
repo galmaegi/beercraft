@@ -43,31 +43,26 @@ public class NewsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(recommendListView == null) {
-            items = new ArrayList<>();
-            recommendListView = (ListView) view.findViewById(R.id.lv_recommend);
-            recommendAdapter = new RecommendAdapter(view.getContext(), items);
+        items = new ArrayList<>();
+        recommendListView = (ListView) view.findViewById(R.id.lv_recommend);
+        recommendAdapter = new RecommendAdapter(view.getContext(), items);
 
-            recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                }
-            });
-            recommendListView.setAdapter(recommendAdapter);
-        } else {
-            items.removeAll(items);
-        }
+            }
+        });
+        recommendListView.setAdapter(recommendAdapter);
 
         getRecommend();
-
         replaceFragment(newsListFragment);
     }
 
     Fragment newsListFragment = new NewsListFragment();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.layout_news, container, false);
+        View holder = inflater.inflate(R.layout.layout_news, container, false);
 
         //TODO: make own name
 //        ViewPager viewpagerTemp = (ViewPager)view.findViewById(R.id.inc_news_graph).findViewById(R.id.vp_news_graph_index);
@@ -75,8 +70,13 @@ public class NewsFragment extends Fragment {
 //
 //        PagerSlidingTabStrip tabStripTemp = (PagerSlidingTabStrip) view.findViewById(R.id.inc_news_graph).findViewById(R.id.tab_news_graph_index);
 //        tabStripTemp.setViewPager(viewpagerTemp);
+//        ViewPager viewpagerTemp = (ViewPager) holder.findViewById(R.id.inc_news_graph).findViewById(R.id.vp_news_graph_index);
+//        viewpagerTemp.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(), "test"));
+//
+//        PagerSlidingTabStrip tabStripTemp = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_news_graph).findViewById(R.id.tab_news_graph_index);
+//        tabStripTemp.setViewPager(viewpagerTemp);
 
-        return view;
+        return holder;
     }
 
     public void replaceFragment(Fragment fragment) {
@@ -90,6 +90,7 @@ public class NewsFragment extends Fragment {
         Fragment fragment = new NewsContentFragment(items, index);
         replaceFragment(fragment);
     }
+
     private void getRecommend() {
         final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft.php";
 

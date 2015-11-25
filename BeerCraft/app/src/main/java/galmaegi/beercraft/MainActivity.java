@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import galmaegi.beercraft.Beer.BeerFragment;
 import galmaegi.beercraft.Detail.FragmentDetail;
 import galmaegi.beercraft.Home.HomeFragment;
@@ -151,6 +154,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Fragment fragment = new FragmentDetail(this, item);
         replaceFragment(fragment);
     }
+
+    public void showNewsContent() {
+        replaceFragment(frNews);
+    }
+
     private void hideSystemUI(View mDecorView) {
         // Set the IMMERSIVE flag.
         // Set the content to appear under the system bars so that the content

@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.MainActivity;
+import galmaegi.beercraft.News.NewsFragment;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.NewsItem;
 
@@ -35,37 +37,35 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(newsListView == null) {
-            newsListView = (ListView) view.findViewById(R.id.lv_news);
+        newsListView = (ListView) view.findViewById(R.id.lv_news);
 
-            items = new ArrayList<>();
-            newsAdapter = new NewsAdapter(view.getContext(), items);
-            newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        items = new ArrayList<>();
+        newsAdapter = new NewsAdapter(view.getContext(), items);
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MainActivity.mainActivity.showNewsContent();
+            }
+        });
+        newsListView.setAdapter(newsAdapter);
 
-                }
-            });
-            newsListView.setAdapter(newsAdapter);
-        } else {
-            items.removeAll(items);
-        }
 
         getNews();
     }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.layout_home, container, false);
 
-        ViewPager viewpager = (ViewPager)view.findViewById(R.id.inc_beer_index).findViewById(R.id.vp_beer_index);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        View holder = inflater.inflate(R.layout.layout_home, container, false);
+
+        ViewPager viewpager = (ViewPager) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.vp_beer_index);
         viewpager.setAdapter(new BeerIndexPagerAdapter(getChildFragmentManager()));
 
-        PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
+        PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
         tabStrip.setTextSize(13);
         tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
 
-        return view;
+        return holder;
     }
 
     private void getNews() {

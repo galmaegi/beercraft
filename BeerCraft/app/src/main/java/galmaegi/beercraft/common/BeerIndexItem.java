@@ -89,19 +89,8 @@ public class BeerIndexItem {
         bitterness = GlobalVar.SafetyJSONStringToInt(object, "bitterness");
         tastingNote = object.getString("tastingNote");
         beerStory = object.getString("beerStory");
-
-        if(object.getString("entryDate").equals("")) {
-            entryDate = new Date();
-        } else {
-            entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
-        }
-
-        if(object.getString("modifyDate").equals("")) {
-            modifyDate = new Date();
-        } else {
-            modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
-        }
-
+        entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
+        modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
         groupId = GlobalVar.SafetyJSONStringToInt(object, "grp_id");
 
     }

@@ -193,14 +193,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         boolean returnvalue=false;
         switch (v.getId()){
             case R.id.action_bar_tablenum:
-                DialogActionBar dialogActionBar = new DialogActionBar(this);
-                dialogActionBar.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                DialogPassword dialogPassword = new DialogPassword(this);
+                dialogPassword.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
                         setCurrenttable();
                     }
                 });
-                dialogActionBar.show();
+                dialogPassword.show();
                 returnvalue = true;
                 break;
         }

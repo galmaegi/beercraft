@@ -2,11 +2,14 @@ package galmaegi.beercraft;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,7 +17,9 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Created by root on 15. 11. 17.
  */
-public class DialogActionBar extends Dialog implements View.OnClickListener{
+public class DialogPassword extends Dialog implements View.OnClickListener{
+
+    TextView dialog_action_bar_title;
 
     Button dialog_action_bar_btn_0;
     Button dialog_action_bar_btn_1;
@@ -32,14 +37,16 @@ public class DialogActionBar extends Dialog implements View.OnClickListener{
 
     TextView dialog_action_bar_text;
 
+
     String currentext;
-
-    public DialogActionBar(Context context){
+    Context parent_context;
+    public DialogPassword(Context context){
         super(context);
-
+        parent_context = context;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_action_bar);
 
+        dialog_action_bar_title = (TextView)findViewById(R.id.dialog_action_bar_title);
         dialog_action_bar_btn_0 = (Button)findViewById(R.id.dialog_action_bar_btn_0);
         dialog_action_bar_btn_1 = (Button)findViewById(R.id.dialog_action_bar_btn_1);
         dialog_action_bar_btn_2 = (Button)findViewById(R.id.dialog_action_bar_btn_2);
@@ -69,6 +76,8 @@ public class DialogActionBar extends Dialog implements View.OnClickListener{
         dialog_action_bar_btn_accept.setOnClickListener(this);
         dialog_action_bar_btn_exit.setOnClickListener(this);
 
+        dialog_action_bar_title.setText("PASSWORD");
+        dialog_action_bar_title.setTextColor(Color.RED);
         currentext="";
 
 
@@ -113,9 +122,18 @@ public class DialogActionBar extends Dialog implements View.OnClickListener{
                 dialog_action_bar_text.setText(currentext);
                 break;
             case R.id.dialog_action_bar_btn_accept:
-                preftablenumWrite(currentext);
-                GlobalVar.currentTable = currentext;
-                dismiss();
+                if(currentext.equals("0000")) {
+                    DialogActionBar dialogActionBar = new DialogActionBar(parent_context);
+                    dialogActionBar.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            dismiss();
+                        }
+                    });
+                    dialogActionBar.show();
+                }
+                else
+                    Toast.makeText(parent_context,"WRONG PASSWORD",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.dialog_action_bar_btn_exit:
                 dismiss();

@@ -12,6 +12,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import java.util.ArrayList;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 import galmaegi.beercraft.common.NewsItem;
@@ -70,7 +71,7 @@ public class NewsAdapter extends BaseAdapter {
         NewsItem item = items.get(position);
 
         holder.mTitle.setText(item.getNewsTitle());
-        holder.mDate.setText(item.getEntryDate().toString());
+        holder.mDate.setText(GlobalVar.DateToString(item.getEntryDate()));
         holder.mThumbnail.setImageUrl(item.getContent_newsImage(), AppController.getInstance().getImageLoader());
 
         return convertView;

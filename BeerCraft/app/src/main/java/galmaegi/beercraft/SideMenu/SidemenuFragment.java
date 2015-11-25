@@ -109,7 +109,7 @@ public class SidemenuFragment extends Fragment {
     }
 
     private void getSidemenu() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-menu.php";
+        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-side_menu.php?type=kbx";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {

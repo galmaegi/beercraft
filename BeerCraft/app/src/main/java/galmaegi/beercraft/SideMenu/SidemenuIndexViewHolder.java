@@ -7,5 +7,4 @@ public class SidemenuIndexViewHolder {
     public View mAlert;
     public TextView mName;
     public TextView mPrice;
-    public TextView mDate;
 }

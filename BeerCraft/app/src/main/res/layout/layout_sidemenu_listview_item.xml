@@ -29,18 +29,6 @@
         android:text="BIG WAVE GOLDEN ALE"
         android:textColor="#FFFFFF"/>
 
-
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/tv_Price"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="21dp"-->
-        <!--android:textAlignment="textEnd"-->
-        <!--android:textSize="18dp"-->
-        <!--android:text="8,200"-->
-        <!--android:textColor="#FFFFFF"/>-->
     <TextView
         android:id="@+id/tv_sellingPrice"
         android:layout_marginTop="5dp"
@@ -51,14 +39,5 @@
         android:text="8,200"
         android:layout_marginRight="20dp"
         android:textColor="#FFFFFF"/>
-
-    <!--<TextView-->
-        <!--android:id="@+id/tv_date"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="19dp"-->
-        <!--android:textAlignment="textEnd"-->
-        <!--android:textSize="15dp"-->
-        <!--android:text="8:10 PM"-->
-        <!--android:textColor="#FFFFFF"/>-->
 </LinearLayout>
 

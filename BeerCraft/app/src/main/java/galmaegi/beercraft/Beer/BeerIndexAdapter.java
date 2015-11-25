@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -72,21 +73,25 @@ public class BeerIndexAdapter extends BaseAdapter {
         }
 
         BeerIndexItem item = items.get(position);
+        int curPrice = item.getSellingPrice();
+        int prvPrice = item.getLast();
+        int increase = curPrice - prvPrice;
+        double rate = GlobalVar.Division(increase, curPrice);
 
         holder.mName.setText(item.getEnglishName());
         holder.mCountry.setText(item.getCountry());
         holder.mStyle.setText(item.getStyle());
         holder.mABV.setText(String.valueOf(item.getStrength()));
         holder.mMl.setText(String.valueOf(item.getVolume()));
-        holder.mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
-        holder.mDate.setText(item.getModifyDate().toString());
-        holder.mRate.setText(String.valueOf(item.getRateBeerScore()));
-        holder.mIncrease.setText(String.valueOf(item.getPrice()));
+        holder.mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
+        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
+        holder.mRate.setText(String.format("%.2f %%", rate));
+        holder.mIncrease.setText(GlobalVar.setComma(increase));
 
         int color;
-        if(item.getRateBeerScore() < 0) {
+        if(increase < 0) {
             color = Color.parseColor("#9D1819");
-        } else if(item.getRateBeerScore() == 0) {
+        } else if(increase == 0) {
             color = Color.parseColor("#6F6F6F");
         } else {
             color = Color.parseColor("#05B005");

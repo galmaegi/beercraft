@@ -30,6 +30,13 @@ public class NewsPagerFragment extends Fragment {
     NewsAdapter newsAdapter = null;
     ArrayList<NewsItem> items = null;
 
+    enum TYPE {
+        LATEST,
+        BOTTLED,
+        DRAFT,
+        ETC
+    }
+
     public static NewsPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -60,7 +67,23 @@ public class NewsPagerFragment extends Fragment {
         });
         newsListView.setAdapter(newsAdapter);
 
-        getNewsIndex();
+        TYPE type;
+        switch (mPage) {
+            case 0:
+                type = TYPE.LATEST;
+                break;
+            case 1:
+                type = TYPE.BOTTLED;
+                break;
+            case 2:
+                type = TYPE.DRAFT;
+                break;
+            default:
+                type = TYPE.ETC;
+                break;
+        }
+
+        getNewsIndex(type);
     }
 
     @Override
@@ -70,8 +93,18 @@ public class NewsPagerFragment extends Fragment {
         return view;
     }
 
-    private void getNewsIndex() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
+    private void getNewsIndex(TYPE type) {
+        final String testURL;
+
+        if(type == TYPE.LATEST) {
+            testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php?type=latest";
+        } else if(type == TYPE.BOTTLED) {
+            testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php?type=bottled";
+        } else if(type == TYPE.DRAFT) {
+            testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php?type=draft";
+        } else {
+            testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php?type=etc";
+        }
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -67,16 +68,19 @@ public class RecommendAdapter extends BaseAdapter {
         }
 
         BeerIndexItem item = items.get(position);
+        int curPrice = item.getSellingPrice();
+        int prvPrice = item.getLast();
+        int increase = curPrice - prvPrice;
 
         holder.mName.setText(item.getEnglishName());
         holder.mCountry.setText(item.getCountry());
-        holder.mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
-        holder.mDate.setText(item.getModifyDate().toString());
+        holder.mSellingPrice.setText(GlobalVar.setComma(curPrice));
+        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
 
         int color;
-        if(item.getRateBeerScore() < 0) {
+        if(increase < 0) {
             color = Color.parseColor("#9D1819");
-        } else if(item.getRateBeerScore() == 0) {
+        } else if(increase == 0) {
             color = Color.parseColor("#6F6F6F");
         } else {
             color = Color.parseColor("#05B005");

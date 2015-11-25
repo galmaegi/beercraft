@@ -77,7 +77,7 @@ public class BeerIndexPagerFragment extends Fragment {
     }
 
     private void getBottledBeerIndex() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-bottled.php";
+        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-bottled_beer.php";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
@@ -109,7 +109,7 @@ public class BeerIndexPagerFragment extends Fragment {
     }
 
     private void getDraftBeerIndex() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft.php";
+        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft_beer.php";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {

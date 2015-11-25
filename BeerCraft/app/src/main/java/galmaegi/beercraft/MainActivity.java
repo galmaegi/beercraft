@@ -13,9 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 import galmaegi.beercraft.Beer.BeerFragment;
 import galmaegi.beercraft.Detail.FragmentDetail;
 import galmaegi.beercraft.Home.HomeFragment;
@@ -33,6 +30,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Button action_bar_tablenum;
 
     //left side Button
+    ImageButton btn_back;
     ImageButton btn_home;
     ImageButton btn_beer;
     ImageButton btn_sidemenu;
@@ -41,6 +39,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     //bottom bar
     BottomBar bottomBar;
+
+    FragmentManager fm;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         GlobalVar.NanumGothic_Bold = Typeface.createFromAsset(getAssets(), "NanumGothic_Coding_Bold.ttf");
         //공통뷰들을 찾아주기 위한 작업을 수행해야함
+        btn_back = (ImageButton) findViewById(R.id.btn_back);
         btn_home = (ImageButton)findViewById(R.id.btn_home);
         btn_beer = (ImageButton)findViewById(R.id.btn_beer);
         btn_sidemenu = (ImageButton)findViewById(R.id.btn_sidemenu);
@@ -65,6 +66,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //        bottomBar = new BottomBar(this.getWindow().getDecorView().getRootView());
 
 
+        btn_back.setOnClickListener(this);
         btn_home.setOnClickListener(this);
         btn_home.setSelected(true);
         btn_beer.setOnClickListener(this);
@@ -93,7 +95,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ImageButton curBtn = null;
         switch(v.getId()){
             case R.id.btn_back:
-
+                Back();
                 break;
             case R.id.btn_home:
                 curBtn = btn_home;
@@ -132,12 +134,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     public void replaceFragment(Fragment fragment) {
-        FragmentManager fm = getSupportFragmentManager();
+        fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
+    public void Back() {
+        if(fm.getBackStackEntryCount() == 1) {
+            return ;
+        }
+
+        fm.popBackStack();
+    }
     public void setCurrenttable(){
         GlobalVar.currentTable = preftablenumRead();
         action_bar_tablenum.setText("TABLE NUMBER #" + GlobalVar.currentTable);

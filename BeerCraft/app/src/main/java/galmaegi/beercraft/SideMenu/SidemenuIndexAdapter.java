@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
 /**
@@ -60,7 +61,6 @@ public class SidemenuIndexAdapter extends BaseAdapter {
             holder.mAlert = convertView.findViewById(R.id.v_alert);
             holder.mName = (TextView) convertView.findViewById(R.id.tv_name);
             holder.mPrice = (TextView) convertView.findViewById(R.id.tv_sellingPrice);
-//            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
 
             convertView.setTag(holder);
         } else {
@@ -70,8 +70,7 @@ public class SidemenuIndexAdapter extends BaseAdapter {
         SidemenuIndexItem item = items.get(position);
 
         holder.mName.setText(item.getProductName());
-        holder.mPrice.setText(String.valueOf(item.getPrice()));
-//        holder.mDate.setText(item.getModifyDate().toString());
+        holder.mPrice.setText(GlobalVar.setComma(item.getPrice()));
 
         holder.mAlert.setBackgroundColor(Color.parseColor("#05B005"));
 

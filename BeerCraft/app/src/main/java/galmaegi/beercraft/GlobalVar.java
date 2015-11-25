@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class GlobalVar {
     public static String currentTable;
 
     public static Date StringToDate(String string) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         try {
             return format.parse(string);
         } catch (Exception e) {
@@ -30,6 +31,31 @@ public class GlobalVar {
             return Integer.parseInt(object.getString(key));
         } catch (NumberFormatException e) {
             return 0;
+        }
+    }
+
+    public static String setComma(int value) {
+        DecimalFormat format = new DecimalFormat("###,###");
+        return format.format(value);
+    }
+
+    public static double Division(int num1, int num2) {
+        double ret;
+        try {
+            ret = (double) num1 / num2 * 100;
+        } catch (ArithmeticException e) {
+            return 0;
+        }
+
+        return ret;
+    }
+
+    public static String DateToString(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("hh:mm a");
+        try {
+            return format.format(date);
+        } catch (Exception e) {
+            return "";
         }
     }
 }

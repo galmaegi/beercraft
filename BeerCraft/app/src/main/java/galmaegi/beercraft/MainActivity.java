@@ -62,7 +62,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         action_bar_tablenum = (Button) findViewById(R.id.action_bar_tablenum);
 
-        bottomBar = new BottomBar(this.getWindow().getDecorView().getRootView());
+//        bottomBar = new BottomBar(this.getWindow().getDecorView().getRootView());
 
 
         btn_home.setOnClickListener(this);

@@ -31,6 +31,11 @@ public class SidemenuIndexPagerFragment extends Fragment {
     private SidemenuIndexAdapter sidemenuAdapter;
     private ArrayList<SidemenuIndexItem> items;
 
+    enum TYPE {
+        KBX,
+        GUEST
+    }
+
     public static SidemenuIndexPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -63,7 +68,11 @@ public class SidemenuIndexPagerFragment extends Fragment {
         });
         sidemenuListview.setAdapter(sidemenuAdapter);
 
-        getMenuIndex();
+        if(mPage == 0) {
+            getMenuIndex(TYPE.KBX);
+        } else {
+            getMenuIndex(TYPE.GUEST);
+        }
     }
 
     @Override
@@ -74,8 +83,14 @@ public class SidemenuIndexPagerFragment extends Fragment {
     }
 
 
-    private void getMenuIndex() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-menu.php";
+    private void getMenuIndex(TYPE type) {
+        final String testURL;
+
+        if(type == TYPE.KBX) {
+            testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-side_menu.php?type=kbx";
+        } else {
+            testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-side_menu.php?type=guest";
+        }
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
@@ -92,11 +107,6 @@ public class SidemenuIndexPagerFragment extends Fragment {
                                 item.setEntryDate(new Date());
                                 items.add(item);
                                 e.printStackTrace();
-                            } catch (Exception e) {
-                                SidemenuIndexItem item = new SidemenuIndexItem();
-                                item.setProductName("JSONException");
-                                item.setEntryDate(new Date());
-                                items.add(item);
                             }
                         }
                         sidemenuAdapter.notifyDataSetChanged();

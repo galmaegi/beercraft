@@ -34,6 +34,7 @@ public class BeerIndexItem {
     private Date entryDate;
     private Date modifyDate;
     private int groupId;
+    private int last;
 
     public BeerIndexItem() {
         productID = 0;
@@ -62,6 +63,7 @@ public class BeerIndexItem {
         entryDate = new Date();
         modifyDate = new Date();
         groupId = 0;
+        last = 0;
 
     }
 
@@ -92,6 +94,7 @@ public class BeerIndexItem {
         entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
         modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
         groupId = GlobalVar.SafetyJSONStringToInt(object, "grp_id");
+        last = GlobalVar.SafetyJSONStringToInt(object, "last");
 
     }
 
@@ -207,6 +210,10 @@ public class BeerIndexItem {
         this.groupId = groupId;
     }
 
+    public void setLast(int last) {
+        this.last = last;
+    }
+
     public int getProductID() {
         return productID;
     }
@@ -309,5 +316,9 @@ public class BeerIndexItem {
 
     public int getGroupId() {
         return groupId;
+    }
+
+    public int getLast() {
+        return last;
     }
 }

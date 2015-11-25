@@ -49,7 +49,6 @@ public class HomeFragment extends Fragment {
         });
         newsListView.setAdapter(newsAdapter);
 
-
         getNews();
     }
 

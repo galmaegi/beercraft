@@ -1,12 +1,14 @@
 package galmaegi.beercraft.SideMenu;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,61 +27,27 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.GlobalVar;
+import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
 public class SidemenuFragment extends Fragment {
+    public static SidemenuFragment sidemenuFragment;
 
-    public static TastingNote tastingNote;
+    public TastingNote tastingNote;
+    public SimpleView simpleView;
 
-    ImageView img_updown;
-    NetworkImageView img_product;
-    TextView txt_productname;
-    TextView txt_currentprice;
-    TextView txt_count;
-    TextView txt_totalprice;
-
-    ImageButton btn_countminus;
-    ImageButton btn_countplus;
-    ImageButton btn_buy;
-
-    private ListView sidemenuListView;
-
-    private SidemenuAdapter sidemenuAdapter;
-    private ArrayList<BeerIndexItem> items;
+    public SidemenuFragment() {
+        sidemenuFragment = this;
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         tastingNote = new TastingNote(view);
-
-        img_updown = (ImageView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.img_updown);
-        img_product = (NetworkImageView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.img_product);
-        txt_productname = (TextView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.txt_productname);
-        txt_currentprice = (TextView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.txt_currentprice);
-        txt_count = (TextView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.txt_count);
-        txt_totalprice = (TextView)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.txt_totalprice);
-
-        btn_countminus = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_countminus);
-        btn_countplus = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_countplus);
-        btn_buy = (ImageButton)view.findViewById(R.id.inc_sidemenu_detail).findViewById(R.id.btn_buy);
-
-
-//        sidemenuListView = (ListView) view.findViewById(R.id.lv_sidemenu_index);
-//
-//        items = new ArrayList<>();
-//        sidemenuAdapter = new SidemenuAdapter(view.getContext(), items);
-//
-//        sidemenuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                simpleView.setView(items.get(position));
-//            }
-//        });
-//
-//        sidemenuListView.setAdapter(sidemenuAdapter);
-//        getSidemenu();
+        simpleView = new SimpleView(view);
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -96,6 +64,14 @@ public class SidemenuFragment extends Fragment {
         return view;
     }
 
+    public void setTastingNote(SidemenuIndexItem item) {
+        tastingNote.setView(item);
+    }
+
+    public void setSimpleView(SidemenuIndexItem item) {
+        simpleView.setView(item);
+    }
+
     public class TastingNote {
         private TextView tastingNote;
 
@@ -108,36 +84,73 @@ public class SidemenuFragment extends Fragment {
         }
     }
 
-    private void getSidemenu() {
-        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-side_menu.php?type=kbx";
+    public class SimpleView implements View.OnClickListener{
+        ImageView img_updown;
+        NetworkImageView img_product;
+        TextView txt_productname;
+        TextView txt_currentprice;
+        TextView txt_count;
+        TextView txt_totalprice;
 
-        JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
+        ImageButton btn_countminus;
+        ImageButton btn_countplus;
+        ImageButton btn_buy;
 
-                        for(int i = 0 ; i < response.length() ; i++) {
-                            try {
-                                BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));
-                                items.add(item);
-                            } catch (JSONException e) {
-                                BeerIndexItem item = new BeerIndexItem();
-                                item.setEnglishName("JSON Excep");
-                                item.setEntryDate(new Date());
-                                item.setModifyDate(new Date());
-                                items.add(item);
-                                e.printStackTrace();
-                            }
-                        }
-                        sidemenuAdapter.notifyDataSetChanged();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
+        private SidemenuIndexItem item;
+        int count;
+
+        public SimpleView(View view) {
+            img_updown = (ImageView)view.findViewById(R.id.img_updown);
+            img_product = (NetworkImageView)view.findViewById(R.id.img_product);
+            txt_productname = (TextView)view.findViewById(R.id.txt_productname);
+            txt_currentprice = (TextView)view.findViewById(R.id.txt_currentprice);
+            txt_count = (TextView)view.findViewById(R.id.txt_count);
+            txt_totalprice = (TextView)view.findViewById(R.id.txt_totalprice);
+
+            btn_countminus = (ImageButton)view.findViewById(R.id.btn_countminus);
+            btn_countplus = (ImageButton)view.findViewById(R.id.btn_countplus);
+            btn_buy = (ImageButton)view.findViewById(R.id.btn_buy);
+
+            btn_countminus.setOnClickListener(this);
+            btn_countplus.setOnClickListener(this);
+            btn_buy.setOnClickListener(this);
+
+            count = 1;
+        }
+
+        public void setView(SidemenuIndexItem item) {
+            int price = item.getPrice();
+            img_product.setImageUrl(item.getProudctImage(), AppController.getInstance().getImageLoader());
+
+            txt_productname.setText(item.getProductName());
+            txt_currentprice.setText(GlobalVar.setComma(price));
+            txt_count.setText(String.valueOf(count));
+            txt_totalprice.setText(GlobalVar.setComma(price * count));
+
+            this.item = item;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(v.getId() == R.id.btn_countminus) {
+                count--;
+
+                if(count <= 0) {
+                    btn_countminus.setEnabled(false);
+                }
+
+                setView(item);
+            } else if(v.getId() == R.id.btn_countplus) {
+                count++;
+
+                if(!btn_countminus.isEnabled()) {
+                    btn_countminus.setEnabled(true);
+                }
+
+                setView(item);
+            } else if(v.getId() == R.id.btn_buy) {
 
             }
-        });
-
-        AppController.getInstance().addToRequestQueue(jsonObjReq);
+        }
     }
 }

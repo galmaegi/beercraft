@@ -61,9 +61,8 @@ public class SidemenuIndexPagerFragment extends Fragment {
         sidemenuListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (SidemenuFragment.tastingNote != null) {
-                    SidemenuFragment.tastingNote.setView(items.get(position));
-                }
+                SidemenuFragment.sidemenuFragment.setSimpleView(items.get(position));
+                SidemenuFragment.sidemenuFragment.setTastingNote(items.get(position));
             }
         });
         sidemenuListview.setAdapter(sidemenuAdapter);

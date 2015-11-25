@@ -58,14 +58,14 @@
             android:id="@+id/detail_4_country"
             style="@style/product_detail"/>
         <TextView
-
+            style="@style/product_detail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_4_changepercent"/>
         <TextView
-
+            style="@style/product_detail"
             android:layout_width="fill_parent"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:id="@+id/detail_4_changeprice"/>
         <TextView
             android:layout_marginTop="10dp"

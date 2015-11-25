@@ -16,12 +16,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.astuetz.PagerSlidingTabStrip;
+import com.github.mikephil.charting.charts.LineChart;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.GlobalVar;
+import galmaegi.beercraft.LineChart.CustomLineChart;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -39,8 +42,7 @@ public class FragmentDetail extends Fragment {
     private Typeface tf;
 
     //to set section2
-    ViewPager detail_2_viewpager;
-    PagerSlidingTabStrip detail_2_tabstrip;
+    LineChart linechart;
 
     //<views where included in section1>
     Detail_1 detail_1;
@@ -80,9 +82,9 @@ public class FragmentDetail extends Fragment {
         //initialization views which located in activity_detail section4
         detail_4 = new Detail_4(view);
         //get section 2
-        detail_2_viewpager = (ViewPager) view.findViewById(R.id.detail_2_viewpager);
-        detail_2_tabstrip = (PagerSlidingTabStrip) view.findViewById(R.id.detail_2_tabs);
 
+        linechart = (LineChart)view.findViewById(R.id.BeerDetailLine);
+        new CustomLineChart(getContext(), linechart, GlobalVar.NanumGothic_Bold, 18);
 
         //get section 5
         detail_5_viewpager = (ViewPager) view.findViewById(R.id.detail_5_viewpager);
@@ -97,7 +99,7 @@ public class FragmentDetail extends Fragment {
     }
 
     private void getDetailjson() {
-        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-get-selected-order-item.php?productID="+currentItemID;
+        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-beer_detail.php?productID="+currentItemID;
 //        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
@@ -114,9 +116,7 @@ public class FragmentDetail extends Fragment {
                             detail_1.setSection();
 
                             //set detail section 2
-                            //set section 5
-                            detail_2_viewpager.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(), "groupid"));
-                            detail_2_tabstrip.setViewPager(detail_2_viewpager);
+
 
                             //set detail section 3
                             detail_3.setSection();

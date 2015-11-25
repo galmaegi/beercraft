@@ -20,7 +20,6 @@ import java.util.ArrayList;
 
 import galmaegi.beercraft.CustomTimer.CustomTimer;
 import galmaegi.beercraft.Detail.DetailGlobalVar;
-import galmaegi.beercraft.Detail.Detail_2_Page_Adapter;
 import galmaegi.beercraft.Detail.Detail_5_Page_Adapter;
 
 

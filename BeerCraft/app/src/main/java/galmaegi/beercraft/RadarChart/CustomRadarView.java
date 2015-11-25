@@ -27,20 +27,17 @@ import galmaegi.beercraft.R;
 public class CustomRadarView {
     private RadarChart radarchart;
     Typeface tf;
-
-    private ArrayList<String> mParties = new ArrayList<String>();
+    private ArrayList<String> tempParties = new ArrayList<String>();
     public CustomRadarView(Context context, RadarChart radarchart, Typeface tf){
-
-        mParties.add(context.getResources().getString(R.string.alcohol));
-        mParties.add(context.getResources().getString(R.string.malty));
-        mParties.add(context.getResources().getString(R.string.bitter));
-        mParties.add(context.getResources().getString(R.string.sweet));
-        mParties.add(context.getResources().getString(R.string.body));
-        mParties.add(context.getResources().getString(R.string.florar));
-
-
         this.radarchart = radarchart;
         this.tf = tf;
+
+        tempParties.add(context.getResources().getString(R.string.alcohol));
+        tempParties.add(context.getResources().getString(R.string.malty));
+        tempParties.add(context.getResources().getString(R.string.bitter));
+        tempParties.add(context.getResources().getString(R.string.sweet));
+        tempParties.add(context.getResources().getString(R.string.body));
+        tempParties.add(context.getResources().getString(R.string.florar));
         //set radar values
         radarchart.setDescription("");
         radarchart.setWebLineWidth(1.5f);
@@ -59,10 +56,10 @@ public class CustomRadarView {
         setData();
 
     }
+    private String[] mParties = new String[] {
+            "CREAMY","FLAVORY","PURE","BITTERNESS","SWEETNESS","CLUMSY"
+    };
 
-//    {
-//            "CREAMY","FLAVORY","PURE","BITTERNESS","SWEETNESS","CLUMSY"
-//    };
     public void setData() {
 
         float mult = 150;
@@ -77,8 +74,7 @@ public class CustomRadarView {
         for (int i = 0; i < cnt; i++) {
 //            yVals1.add(new Entry((float) (Math.random() * mult) + mult / 2, i));
             try {
-                yVals1.add(new Entry((float) DetailGlobalVar.currentObject.getInt(mParties.get(i).toLowerCase()), i));
-
+                yVals1.add(new Entry((float) DetailGlobalVar.currentObject.getInt(mParties[i].toLowerCase()), i));
             }
             catch (JSONException e){
                 e.printStackTrace();
@@ -87,7 +83,7 @@ public class CustomRadarView {
         ArrayList<String> xVals = new ArrayList<String>();
 
         for (int i = 0; i < cnt; i++)
-            xVals.add(mParties.get(i % mParties.size()));
+            xVals.add(tempParties.get(i % tempParties.size()));
 
         XAxis xaxis=radarchart.getXAxis();
         xaxis.setTextColor(Color.WHITE);

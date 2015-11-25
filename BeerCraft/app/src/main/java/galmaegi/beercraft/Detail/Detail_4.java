@@ -1,6 +1,7 @@
 package galmaegi.beercraft.Detail;
 
 import android.content.DialogInterface;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import org.json.JSONException;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
 /**
@@ -71,11 +73,53 @@ public class Detail_4 implements View.OnClickListener{
             detail_4_countplus.setOnClickListener(detail_4_clicklistener);
             detail_4_countminus.setOnClickListener(detail_4_clicklistener);
             detail_4_btn_buy.setOnClickListener(this);
+            setChanged(DetailGlobalVar.currentObject.getString("sellingPrice"), DetailGlobalVar.currentObject.getString("last"));
         }
         catch (JSONException e){
             e.printStackTrace();
         }
     }
+    public void setChanged(String sCurrentPrice,String sLastPrice){
+        int CurrentPrice = isNullPrice(sCurrentPrice);
+        int LastPrice = isNullPrice(sLastPrice);
+        double percent = getChangePercent(CurrentPrice, LastPrice);
+        int ChangedPrice = CurrentPrice - LastPrice;
+
+        if(ChangedPrice>=0) {
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+percent+"%"));
+            detail_4_changeprice.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice));
+        }
+//        else if(ChangedPrice==0) {
+//            detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+percent+"%"));
+//            detail_4_changeprice.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice));
+//        }
+        else {
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#15a615> -"+percent+"%"));
+            detail_4_changeprice.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice));
+        }
+    }
+    public double getChangePercent(int currentPrice, int LastPrice) {
+        if(LastPrice==0 || currentPrice==0)
+            return 0;
+        return (double)currentPrice/(double)LastPrice;
+    }
+    public String isNullString(String input){
+        String returnvalue = "NoData";
+
+        if(input.length()!=0 && !input.equals("null"))
+            returnvalue = input;
+
+        return returnvalue;
+    }
+    public int isNullPrice(String input){
+        int returnvalue = 0;
+
+        if(input.length()!=0 && !input.equals("null"))
+            returnvalue=Integer.parseInt(input);
+
+        return returnvalue;
+    }
+
 
     @Override
     public void onClick(View v) {

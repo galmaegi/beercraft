@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.util.Date;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.Detail.Detail_2_Page_Adapter;
+import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -35,6 +37,9 @@ public class NewsFragment extends Fragment {
     private ListView recommendListView = null;
     private RecommendAdapter recommendAdapter = null;
     private ArrayList<BeerIndexItem> items = null;
+
+    FragmentManager fm;
+    boolean isBackActive = false;
 
     public NewsFragment() {
         newsFragment = this;
@@ -57,6 +62,21 @@ public class NewsFragment extends Fragment {
         recommendListView.setAdapter(recommendAdapter);
 
         getRecommend();
+
+        fm = getChildFragmentManager();
+        fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                if (1 < fm.getBackStackEntryCount()) {
+                    isBackActive = true;
+                }
+
+                if (isBackActive && fm.getBackStackEntryCount() == 1) {
+                    isBackActive = false;
+                    MainActivity.mainActivity.setBackButtonHandler(null);
+                }
+            }
+        });
         replaceFragment(newsListFragment);
     }
 
@@ -72,18 +92,23 @@ public class NewsFragment extends Fragment {
         PagerSlidingTabStrip tabStripTemp = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_news_graph).findViewById(R.id.tab_news_graph_index);
         tabStripTemp.setViewPager(viewpagerTemp);
 
-
         return holder;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
     public void replaceFragment(Fragment fragment) {
-        FragmentManager fm = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.news_fragment, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
     public void showNewsContentView(ArrayList items, int index) {
+        MainActivity.mainActivity.setBackButtonHandler(newsBackButtonHandler);
         Fragment fragment = new NewsContentFragment(items, index);
         replaceFragment(fragment);
     }
@@ -120,5 +145,18 @@ public class NewsFragment extends Fragment {
 
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
+
+
+
+    View.OnClickListener newsBackButtonHandler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(fm.getBackStackEntryCount() == 1) {
+                return ;
+            }
+
+            fm.popBackStack();
+        }
+    };
 }
 

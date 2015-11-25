@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -66,7 +67,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 //        bottomBar = new BottomBar(this.getWindow().getDecorView().getRootView());
 
 
-        btn_back.setOnClickListener(this);
+        btn_back.setOnClickListener(mainBackHandler);
         btn_home.setOnClickListener(this);
         btn_home.setSelected(true);
         btn_beer.setOnClickListener(this);
@@ -79,9 +80,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         setCurrenttable();
 
+        fm = getSupportFragmentManager();
         replaceFragment(frHome);
         mainActivity = this;
-
     }
 
     Fragment frHome = new HomeFragment();
@@ -94,9 +95,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         Fragment fr = null;
         ImageButton curBtn = null;
         switch(v.getId()){
-            case R.id.btn_back:
-                Back();
-                break;
             case R.id.btn_home:
                 curBtn = btn_home;
                 fr = frHome;
@@ -110,6 +108,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 fr = frSide;
                 break;
             case R.id.btn_news:
+                frNews = new NewsFragment();
                 curBtn = btn_news;
                 fr = frNews;
                 break;
@@ -117,8 +116,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 curBtn = btn_check;
                 break;
         }
-        if(fr!=null)
+        if(fr!=null) {
             replaceFragment(fr);
+            setBackButtonHandler(null);
+        }
 
         if(curBtn!=null)
             buttonSelector(curBtn);
@@ -134,7 +135,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     }
 
     public void replaceFragment(Fragment fragment) {
-        fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.main_fragment, fragment);
         fragmentTransaction.addToBackStack(null);
@@ -205,5 +205,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
         return returnvalue;
+    }
+
+    View.OnClickListener mainBackHandler = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Back();
+        }
+    };
+
+    public void setBackButtonHandler(View.OnClickListener listener) {
+        if(listener == null) {
+            btn_back.setOnClickListener(mainBackHandler);
+        } else {
+            btn_back.setOnClickListener(listener);
+        }
     }
 }

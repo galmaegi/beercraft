@@ -1,10 +1,14 @@
 package galmaegi.beercraft.Detail;
 
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.json.JSONException;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import galmaegi.beercraft.R;
 
@@ -54,11 +58,52 @@ public class Detail_1 {
             sum_beer_style.setText(DetailGlobalVar.currentObject.getString("style"));
             sum_beer_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
             sum_price.setText(Detail_4_clicklistener.textFormating(DetailGlobalVar.price));
+            setChanged(DetailGlobalVar.currentObject.getString("sellingPrice"), DetailGlobalVar.currentObject.getString("last"));
         }
         catch (JSONException e){
             e.printStackTrace();
         }
     }
+    public void setChanged(String sCurrentPrice,String sLastPrice){
+        int CurrentPrice = isNullPrice(sCurrentPrice);
+        int LastPrice = isNullPrice(sLastPrice);
+        double percent = round(getChangePercent(CurrentPrice, LastPrice),2);
+        int ChangedPrice = CurrentPrice - LastPrice;
 
+        if(ChangedPrice>=0) {
+            sum_range.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice + " (<font color=#801f21> +" + percent + "%)"));
+        }
+        else {
+            sum_range.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice + " (<font color=#15a615> -"+percent+"%)"));
+        }
+    }
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
+    public double getChangePercent(int currentPrice, int LastPrice) {
+        if(LastPrice==0 || currentPrice==0)
+            return 0;
+        return (double)currentPrice/(double)LastPrice;
+    }
+    public String isNullString(String input){
+        String returnvalue = "NoData";
+
+        if(input.length()!=0 && !input.equals("null"))
+            returnvalue = input;
+
+        return returnvalue;
+    }
+    public int isNullPrice(String input){
+        int returnvalue = 0;
+
+        if(input.length()!=0 && !input.equals("null"))
+            returnvalue=Integer.parseInt(input);
+
+        return returnvalue;
+    }
 
 }

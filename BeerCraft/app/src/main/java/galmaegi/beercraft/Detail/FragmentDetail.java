@@ -22,6 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.LineChart.CustomLineChart;
@@ -84,7 +86,7 @@ public class FragmentDetail extends Fragment {
         //get section 2
 
         linechart = (LineChart)view.findViewById(R.id.BeerDetailLine);
-        new CustomLineChart(getContext(), linechart, GlobalVar.NanumGothic_Bold, 18);
+        new CustomLineChart(getContext(), linechart, GlobalVar.NanumGothic_Bold, getcount());
 
         //get section 5
         detail_5_viewpager = (ViewPager) view.findViewById(R.id.detail_5_viewpager);
@@ -92,6 +94,17 @@ public class FragmentDetail extends Fragment {
 
         //get json data
         getDetailjson();
+    }
+    int getcount(){
+        Calendar c = Calendar.getInstance();
+        int hours = c.get(Calendar.HOUR);
+        int minutes = c.get(Calendar.MINUTE);
+        int totalminutes = minutes+hours*60;
+        int count = 0;
+        if(totalminutes-1020>0){
+            count = (totalminutes-990)/30;
+        }
+        return count;
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

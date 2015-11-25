@@ -19,7 +19,7 @@
         android:singleLine="true"
         android:textSize="20dp"
         android:textColor="@android:color/white"
-        android:text="START TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest END"
+        android:text=""
         />
 
 </LinearLayout>

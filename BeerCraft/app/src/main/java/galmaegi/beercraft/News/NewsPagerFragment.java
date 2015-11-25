@@ -48,21 +48,17 @@ public class NewsPagerFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(newsListView == null) {
-            items = new ArrayList<>();
-            newsListView = (ListView) view.findViewById(R.id.lv_news);
-            newsAdapter = new NewsAdapter(view.getContext(), items);
+        items = new ArrayList<>();
+        newsListView = (ListView) view.findViewById(R.id.lv_news);
+        newsAdapter = new NewsAdapter(view.getContext(), items);
 
-            newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    NewsFragment.newsFragment.showNewsContentView(items, position);
-                }
-            });
-            newsListView.setAdapter(newsAdapter);
-        } else {
-            items.removeAll(items);
-        }
+        newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                NewsFragment.newsFragment.showNewsContentView(items, position);
+            }
+        });
+        newsListView.setAdapter(newsAdapter);
 
         getNewsIndex();
     }

@@ -13,8 +13,6 @@ public class NewsItem {
     private String newsTitle;
     private String content;
     private String content_newsImage;
-    private Date startDate;
-    private Date endDate;
     private Date entryDate;
 
     public NewsItem() {
@@ -23,8 +21,6 @@ public class NewsItem {
         newsTitle = "";
         content = "";
         content_newsImage = "";
-        startDate = new Date();
-        endDate = new Date();
         entryDate = new Date();
     }
 
@@ -34,9 +30,7 @@ public class NewsItem {
         newsTitle = object.getString("newsTitle");
         content = object.getString("content");
         content_newsImage = object.getString("content_newsImage");
-        startDate = GlobalVar.StringToDate("startDate");
-        endDate = GlobalVar.StringToDate("endDate");
-        entryDate = GlobalVar.StringToDate("entryDate");
+        entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
     }
 
     public int getNewsID() {
@@ -77,22 +71,6 @@ public class NewsItem {
 
     public void setContent_newsImage(String content_newsImage) {
         this.content_newsImage = content_newsImage;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
     }
 
     public Date getEntryDate() {

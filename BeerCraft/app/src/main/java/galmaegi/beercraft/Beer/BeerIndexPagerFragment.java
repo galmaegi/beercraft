@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -49,23 +50,17 @@ public class BeerIndexPagerFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(beerListView == null) {
-            items = new ArrayList<>();
-            beerListView = (ListView) view.findViewById(R.id.lv_beer_index);
-            beerIndexAdapter = new BeerIndexAdapter(view.getContext(), items);
+        items = new ArrayList<>();
+        beerListView = (ListView) view.findViewById(R.id.lv_beer_index);
+        beerIndexAdapter = new BeerIndexAdapter(view.getContext(), items);
 
-            beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    if (listener != null) {
-                        listener.itemclick(items.get(position));
-                    }
-                }
-            });
-            beerListView.setAdapter(beerIndexAdapter);
-        } else {
-            items.removeAll(items);
-        }
+        beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BeerFragment.beerFragment.setSimpleView(items.get(position));
+            }
+        });
+        beerListView.setAdapter(beerIndexAdapter);
 
         if (mPage == 0) {
             getDraftBeerIndex();
@@ -76,9 +71,9 @@ public class BeerIndexPagerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_beer_listview1, container, false);
+        View holder = inflater.inflate(R.layout.layout_beer_listview1, container, false);
 
-        return view;
+        return holder;
     }
 
     private void getBottledBeerIndex() {
@@ -93,13 +88,12 @@ public class BeerIndexPagerFragment extends Fragment {
                             try {
                                 BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));
                                 items.add(item);
-                            } catch (JSONException e) {
+                            } catch (Exception e) {
                                 BeerIndexItem item = new BeerIndexItem();
-                                item.setEnglishName("JSON Excep");
+                                item.setEnglishName("Excep");
                                 item.setEntryDate(new Date());
                                 item.setModifyDate(new Date());
                                 items.add(item);
-                                e.printStackTrace();
                             }
                         }
                         beerIndexAdapter.notifyDataSetChanged();
@@ -151,15 +145,5 @@ public class BeerIndexPagerFragment extends Fragment {
         });
 
         AppController.getInstance().addToRequestQueue(jsonObjReq);
-    }
-
-    ItemClickListener listener;
-
-    public void setItemClickListener(ItemClickListener listener) {
-        this.listener = listener;
-    }
-
-    public interface ItemClickListener {
-        public void itemclick(BeerIndexItem item);
     }
 }

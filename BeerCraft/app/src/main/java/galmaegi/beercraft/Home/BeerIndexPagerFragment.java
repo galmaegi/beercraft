@@ -51,22 +51,18 @@ public class BeerIndexPagerFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(beerListView == null) {
-            items = new ArrayList<>();
-            beerListView = (ListView) view.findViewById(R.id.lv_beer_index);
-            beerIndexAdapter = new BeerIndexAdapter(view.getContext(), items);
+        items = new ArrayList<>();
+        beerListView = (ListView) view.findViewById(R.id.lv_beer_index);
+        beerIndexAdapter = new BeerIndexAdapter(view.getContext(), items);
 
-            beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    MainActivity.mainActivity.showDetailView(items.get(position));
-                }
-            });
+        beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MainActivity.mainActivity.showDetailView(items.get(position));
+            }
+        });
 
-            beerListView.setAdapter(beerIndexAdapter);
-        } else {
-            items.removeAll(items);
-        }
+        beerListView.setAdapter(beerIndexAdapter);
 
         if(mPage == 0) {
             getDraftBeerIndex();

@@ -2,11 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="1194dp"
-    android:layout_height="673dp">
-
-    <!--<include-->
-        <!--android:id="@+id/inc_news_index"-->
-        <!--layout="@layout/layout_news_pager" />-->
+    android:layout_height="700dp">
 
     <FrameLayout
         android:id="@+id/news_fragment"

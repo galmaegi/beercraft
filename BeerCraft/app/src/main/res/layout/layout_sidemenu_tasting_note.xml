@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="659dp"
-    android:layout_height="304dp"
+    android:layout_height="331dp"
     android:background="#222222">
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_marginLeft="26dp"
         android:layout_marginRight="26dp"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="227dp"
         android:textSize="15dp"
         android:text="After earning his Ph.D. in brewing from the University of Brusels in Belgium.
 an honor only a handful of brewers have achieved, Keith came back stateside with the idea of crafting beers inspired by Belgian Styles, but with a twist. His first in-

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="1194dp"
-    android:layout_height="673dp">
+    android:layout_height="700dp">
 
     <include
         android:id="@+id/inc_sidemenu_index"

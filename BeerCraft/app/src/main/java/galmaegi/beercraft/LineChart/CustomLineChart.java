@@ -27,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.Detail.DetailGlobalVar;
@@ -50,6 +51,9 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
     public CustomLineChart(Context context,LineChart mChart,Typeface tf,int cnt){
         this.mChart = mChart;
         this.cnt = cnt;
+
+        getMgt();
+
         RadarMarkerView mv = new RadarMarkerView(context, R.layout.radar_marker);
         mChart.setMarkerView(mv);
 
@@ -70,8 +74,11 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         leftAxis.setLabelCount(5, false);
         leftAxis.setTextColor(Color.WHITE);
 
+        if(cnt==18)
+            mChart.setData(generateRandomDataLine());
         // set data
-        mChart.setData(generateDataLine(cnt));
+        else
+            mChart.setData(generateDataLine(cnt));
 
         // do not forget to refresh the chart
         // mChart.invalidate();
@@ -103,13 +110,35 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
 
         d1.setLineWidth(2.5f);
         d1.setCircleSize(4.5f);
-        d1.setHighLightColor(Color.rgb(244, 117, 117));
+        d1.setHighLightColor(Color.rgb(39, 174, 96));
         d1.setDrawValues(false);
 
         ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
         sets.add(d1);
 
         LineData cd = new LineData(getXLabelperTime(cnt), sets);
+        return cd;
+    }
+
+    private LineData generateRandomDataLine() {
+
+        ArrayList<Entry> e1 = new ArrayList<Entry>();
+
+        for (int i = 0; i < 18; i++) {
+            e1.add(new Entry(new Random().nextInt(10)*1000, i));
+        }
+
+        LineDataSet d1 = new LineDataSet(e1, "New DataSet " + 18 + ", (1)");
+
+        d1.setLineWidth(2.5f);
+        d1.setCircleSize(4.5f);
+        d1.setHighLightColor(Color.rgb(39, 174, 96));
+        d1.setDrawValues(false);
+
+        ArrayList<LineDataSet> sets = new ArrayList<LineDataSet>();
+        sets.add(d1);
+
+        LineData cd = new LineData(getXLabelperTime(18), sets);
         return cd;
     }
     private ArrayList<String> getXLabelperTime(int cnt) {
@@ -119,18 +148,22 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         }
         return m;
     }
-    private void getDetailjson() {
+    private void getMgt() {
 
         String testURL="";
+        String grp_id="";
         try {
-            String grp_id = DetailGlobalVar.currentObject.getString("grp_id");
+            grp_id = DetailGlobalVar.currentObject.getString("grp_id");
             if(grp_id.length()==0 || grp_id.equals("null"))
                 return;
-            testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-graph-data.php?groupID="+ DetailGlobalVar.currentObject.getString("grp_id");
+
         } catch (JSONException e) {
             e.printStackTrace();
             return;
+        } catch (NullPointerException e){
+            return;
         }
+        testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-graph-data.php?groupID="+ grp_id;
 //        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {

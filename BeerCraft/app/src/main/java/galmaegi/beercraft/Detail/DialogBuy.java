@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -113,6 +114,7 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
                     String status = response.getString("status");
                     if(status.equals("1")){
                         Log.d("addorderRequest","Success");
+                        Toast.makeText(getContext(), "성공적으로 구매하였습니다!!", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

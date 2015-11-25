@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.astuetz.PagerSlidingTabStrip;
+import com.github.mikephil.charting.charts.LineChart;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.GlobalVar;
+import galmaegi.beercraft.LineChart.CustomLineChart;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
@@ -43,6 +46,8 @@ public class NewsFragment extends Fragment {
     public NewsFragment() {
         newsFragment = this;
     }
+
+    LineChart NewsLineChart;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -77,6 +82,9 @@ public class NewsFragment extends Fragment {
             }
         });
         replaceFragment(newsListFragment);
+
+        NewsLineChart = (LineChart)view.findViewById(R.id.NewsLineChart);
+        new CustomLineChart(getContext(), NewsLineChart, GlobalVar.NanumGothic_Bold, 18);
     }
 
     Fragment newsListFragment = new NewsListFragment();
@@ -86,22 +94,6 @@ public class NewsFragment extends Fragment {
 
         //TODO: make own name
 
-//        ViewPager viewpagerTemp = (ViewPager)view.findViewById(R.id.inc_news_graph).findViewById(R.id.vp_news_graph_index);
-//        viewpagerTemp.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(),"test"));
-//
-//        PagerSlidingTabStrip tabStripTemp = (PagerSlidingTabStrip) view.findViewById(R.id.inc_news_graph).findViewById(R.id.tab_news_graph_index);
-//        tabStripTemp.setViewPager(viewpagerTemp);
-//        ViewPager viewpagerTemp = (ViewPager) holder.findViewById(R.id.inc_news_graph).findViewById(R.id.vp_news_graph_index);
-//        viewpagerTemp.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(), "test"));
-//
-//        PagerSlidingTabStrip tabStripTemp = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_news_graph).findViewById(R.id.tab_news_graph_index);
-//        tabStripTemp.setViewPager(viewpagerTemp);
-
-//        ViewPager viewpagerTemp = (ViewPager) holder.findViewById(R.id.inc_news_graph).findViewById(R.id.vp_news_graph_index);
-//        viewpagerTemp.setAdapter(new Detail_2_Page_Adapter(getChildFragmentManager(), "test"));
-//
-//        PagerSlidingTabStrip tabStripTemp = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_news_graph).findViewById(R.id.tab_news_graph_index);
-//        tabStripTemp.setViewPager(viewpagerTemp);
 
 
         return holder;

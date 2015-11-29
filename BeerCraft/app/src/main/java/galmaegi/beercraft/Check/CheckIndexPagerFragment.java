@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -26,6 +27,9 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment {
     ListView checkListView = null;
     CheckIndexAdapter checkIndexAdapter = null;
     ArrayList<CheckIndexItem> items = null;
+
+    AccountBottomLayout accountBottomLayout;
+    WishListBottomLayout wishListBottomLayout;
 
     public static CheckIndexPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -59,10 +63,17 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment {
         checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items, isOnCheckBox);
         checkListView.setAdapter(checkIndexAdapter);
 
+        accountBottomLayout = new AccountBottomLayout(view);
+        wishListBottomLayout = new WishListBottomLayout(view);
+
         if (mPage == 0) {
             getCheckIndex();
+            accountBottomLayout.setVisible(true);
+            wishListBottomLayout.setVisible(false);
         } else {
             getCheckIndex();
+            accountBottomLayout.setVisible(false);
+            wishListBottomLayout.setVisible(true);
         }
     }
 

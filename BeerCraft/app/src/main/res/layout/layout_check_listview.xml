@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="1194dp"
-    android:layout_height="515dp"
+    android:layout_height="636dp"
     android:background="#222222">
 
     <include
@@ -12,8 +12,294 @@
     <ListView
         android:id="@+id/lv_check_index"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="491dp">
     </ListView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#000000"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_account"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="263dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="Cost"
+                    android:textColor="#FFFFFF"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="Buy"
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="190dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="PER"
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="193dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="Profit"
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="291dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="Total"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_account_cost"
+                    android:paddingRight="20dp"
+                    android:layout_width="263dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="50dp"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_account_buy"
+                    android:paddingRight="20dp"
+                    android:layout_width="250dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="50dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_account_per"
+                    android:paddingRight="20dp"
+                    android:layout_width="190dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="50dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_account_profit"
+                    android:paddingRight="20dp"
+                    android:layout_width="193dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="50dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_account_total"
+                    android:paddingRight="20dp"
+                    android:layout_width="291dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="50dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_wish"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="190dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="PER"
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="193dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="Profit"
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:paddingRight="20dp"
+                    android:layout_width="291dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:textAlignment="gravity"
+                    android:textSize="20dp"
+                    android:text="Total"
+                    android:textColor="#FFFFFF" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_wish_per"
+                    android:paddingRight="20dp"
+                    android:layout_width="190dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="20dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_wish_profit"
+                    android:paddingRight="20dp"
+                    android:layout_width="193dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="20dp" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_wish_total"
+                    android:paddingRight="20dp"
+                    android:layout_width="291dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:textSize="20dp"/>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"/>
+
+                <Button
+                    android:id="@+id/bt_delete"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="167dp"
+                    android:layout_height="45dp"
+                    android:background="#D0021B"
+                    android:textSize="25dp"
+                    android:text="DELETE"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/bt_buy"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="167dp"
+                    android:layout_height="45dp"
+                    android:background="#3FF73F"
+                    android:textSize="25dp"
+                    android:text="BUY"
+                    android:textColor="#FFFFFF"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
     
 </LinearLayout>

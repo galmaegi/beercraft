@@ -1,6 +1,8 @@
 package galmaegi.beercraft.Home;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.CustomTimer.CustomTimer;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
@@ -31,6 +35,8 @@ public class BeerIndexPagerFragment extends Fragment {
     ListView beerListView = null;
     BeerIndexAdapter beerIndexAdapter = null;
     ArrayList<BeerIndexItem> items = null;
+
+    CustomTimer timer;
 
     public static BeerIndexPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -44,6 +50,12 @@ public class BeerIndexPagerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        timer.cancel();
     }
 
     @Override
@@ -68,7 +80,23 @@ public class BeerIndexPagerFragment extends Fragment {
         } else {
             getBottledBeerIndex();
         }
+
+        timer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime, handler);
+        timer.start();
     }
+
+
+    Handler handler = new Handler(new android.os.Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if(mPage == 0) {
+                getDraftBeerIndex();
+            } else {
+                getBottledBeerIndex();
+            }
+            return false;
+        }
+    });
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

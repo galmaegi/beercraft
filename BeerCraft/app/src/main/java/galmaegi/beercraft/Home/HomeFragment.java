@@ -43,12 +43,13 @@ public class HomeFragment extends Fragment {
     HomeKOBI homeKOBI;
     ViewPager viewpager;
     PagerSlidingTabStrip tabStrip;
+
     @Override
     public void onResume() {
         super.onResume();
         MainActivity.mainActivity.buttonSelector(MainActivity.mainActivity.btn_home);
         getListView();
-        customTimer.start();
+//        customTimer.start();
     }
 
     @Override
@@ -61,7 +62,7 @@ public class HomeFragment extends Fragment {
         @Override
         public boolean handleMessage(Message msg) {
             getNews();
-            getBeers();
+//            getBeers();
             return false;
         }
     });
@@ -108,6 +109,7 @@ public class HomeFragment extends Fragment {
 
         return holder;
     }
+
     private void getBeers(){
         BeerIndexPagerFragment temp = beerIndexPagerAdapter.getBBIPage();
         temp.getBottledBeerIndex();

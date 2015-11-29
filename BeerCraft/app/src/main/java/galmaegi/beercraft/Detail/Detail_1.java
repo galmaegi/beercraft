@@ -1,17 +1,25 @@
 package galmaegi.beercraft.Detail;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
@@ -113,6 +121,53 @@ public class Detail_1 implements OnClickListener{
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(parent_view.getContext(),"성공적으로 추가되었습니다.",Toast.LENGTH_SHORT).show();
+
+        addwishlistRequest();
+
+    }
+    private void addwishlistRequest() {
+        String urlJsonObj="";
+        try {
+
+            http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?tableNo=10&0[0]=11&0[1]=1&0[2]=8000&1[0]=12&1[1]=2&1[2]=2000
+
+            urlJsonObj = " http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-wishlist.php?" +
+                    "tableNo="+GlobalVar.currentTable+"&" +
+                    "0[0]="+DetailGlobalVar.currentObject.getString("productID")+"&" +
+                    "0[1]="+"1"+"&"+
+                    "0[2]="+DetailGlobalVar.price;
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, urlJsonObj, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    // Parsing json object response
+                    // response will be a json object
+                    String status = response.getString("status");
+                    if(status.equals("1")){
+                        Log.d("addorderRequest", "Success");
+                        Toast.makeText(parent_view.getContext(), "성공적으로 추가되었습니다!!", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("addorderRequest","Failed");
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 }

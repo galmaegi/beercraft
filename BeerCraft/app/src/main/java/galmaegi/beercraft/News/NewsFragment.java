@@ -1,6 +1,8 @@
 package galmaegi.beercraft.News;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.CustomTimer.CustomTimer;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.LineChart.CustomLineChart;
 import galmaegi.beercraft.MainActivity;
@@ -44,10 +47,26 @@ public class NewsFragment extends Fragment {
     }
 
     LineChart NewsLineChart;
+
+    CustomTimer timer;
+
+    Handler handler = new Handler(new android.os.Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            getRecommend();
+            return false;
+        }
+    });
     @Override
     public void onResume() {
         super.onResume();
         MainActivity.mainActivity.buttonSelector(MainActivity.mainActivity.btn_news);
+        timer.start();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        timer.cancel();
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -66,6 +85,9 @@ public class NewsFragment extends Fragment {
         recommendListView.setAdapter(recommendAdapter);
 
         getRecommend();
+
+        timer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime, handler);
+        timer.start();
 
         fm = getChildFragmentManager();
         fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -118,13 +140,13 @@ public class NewsFragment extends Fragment {
     }
 
     private void getRecommend() {
-        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-bottled_beer.php";
+        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-recommended_beer.php";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        items.clear();
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));
@@ -158,7 +180,6 @@ public class NewsFragment extends Fragment {
             if(fm.getBackStackEntryCount() == 1) {
                 return ;
             }
-
             fm.popBackStack();
         }
     };

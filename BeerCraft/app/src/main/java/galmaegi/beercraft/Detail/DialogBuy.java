@@ -95,10 +95,13 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
         String urlJsonObj="";
         try {
 
-            urlJsonObj = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?" +
+            http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?tableNo=10&0[0]=11&0[1]=1&0[2]=8000&1[0]=12&1[1]=2&1[2]=2000
+
+            urlJsonObj = " http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?" +
                     "tableNo="+GlobalVar.currentTable+"&" +
-                    "productID="+DetailGlobalVar.currentObject.getString("productID")+"&" +
-                    "orderAmount="+DetailGlobalVar.count;
+                    "0[0]="+DetailGlobalVar.currentObject.getString("productID")+"&" +
+                    "0[1]="+DetailGlobalVar.count+"&"+
+                    "0[2]="+DetailGlobalVar.price;
         }
         catch (JSONException e){
             e.printStackTrace();

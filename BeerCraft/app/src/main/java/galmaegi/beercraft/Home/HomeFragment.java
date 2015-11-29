@@ -25,7 +25,6 @@ import java.util.Date;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.CustomTimer.CustomTimer;
-import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.NewsItem;
@@ -48,21 +47,17 @@ public class HomeFragment extends Fragment {
     public void onResume() {
         super.onResume();
         MainActivity.mainActivity.buttonSelector(MainActivity.mainActivity.btn_home);
-        getListView();
-//        customTimer.start();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        customTimer.cancel();
     }
 
     Handler handleHome = new Handler(new android.os.Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
             getNews();
-//            getBeers();
             return false;
         }
     });
@@ -86,35 +81,19 @@ public class HomeFragment extends Fragment {
         getNews();
 
         homeKOBI = new HomeKOBI(view);
-
-        //set timer to loading realtime data
-        customTimer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime,handleHome);
-        customTimer.start();
     }
-
-    void getListView(){
-        viewpager = (ViewPager) this.getView().findViewById(R.id.inc_beer_index).findViewById(R.id.vp_beer_index);
-        beerIndexPagerAdapter = new BeerIndexPagerAdapter((getChildFragmentManager()));
-        viewpager.setAdapter(beerIndexPagerAdapter);
-
-        tabStrip = (PagerSlidingTabStrip) this.getView().findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
-        tabStrip.setTextSize(13);
-        tabStrip.setTextColor(Color.WHITE);
-        tabStrip.setViewPager(viewpager);
-    }
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View holder = inflater.inflate(R.layout.layout_home, container, false);
+        viewpager = (ViewPager) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.vp_beer_index);
+        beerIndexPagerAdapter = new BeerIndexPagerAdapter((getChildFragmentManager()));
+        viewpager.setAdapter(beerIndexPagerAdapter);
 
+        tabStrip = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
+        tabStrip.setTextSize(13);
+        tabStrip.setTextColor(Color.WHITE);
+        tabStrip.setViewPager(viewpager);
         return holder;
-    }
-
-    private void getBeers(){
-        BeerIndexPagerFragment BBP = (BeerIndexPagerFragment) beerIndexPagerAdapter.getItem(0);
-        BBP.getBottledBeerIndex();
-        BeerIndexPagerFragment DBP = (BeerIndexPagerFragment) beerIndexPagerAdapter.getItem(1);
-        DBP.getDraftBeerIndex();
     }
 
     private void getNews() {

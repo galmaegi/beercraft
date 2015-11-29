@@ -1,7 +1,8 @@
 package galmaegi.beercraft.Beer;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
-import galmaegi.beercraft.MainActivity;
+import galmaegi.beercraft.CustomTimer.CustomTimer;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -31,6 +33,30 @@ public class BeerIndexPagerFragment extends Fragment {
     ListView beerListView = null;
     BeerIndexAdapter beerIndexAdapter = null;
     ArrayList<BeerIndexItem> items = null;
+
+    CustomTimer timer;
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
+    @Override
+    public void onResume(){
+        super.onPause();
+        timer.start();
+    }
+    Handler handler = new Handler(new android.os.Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if(mPage == 0) {
+                getDraftBeerIndex();
+            } else {
+                getBottledBeerIndex();
+            }
+            return false;
+        }
+    });
 
     public static BeerIndexPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -44,6 +70,7 @@ public class BeerIndexPagerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+
     }
 
     @Override
@@ -67,6 +94,9 @@ public class BeerIndexPagerFragment extends Fragment {
         } else {
             getBottledBeerIndex();
         }
+
+        timer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime, handler);
+        timer.start();
     }
 
     @Override
@@ -83,7 +113,7 @@ public class BeerIndexPagerFragment extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        items.clear();
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));
@@ -115,7 +145,7 @@ public class BeerIndexPagerFragment extends Fragment {
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        items.clear();
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));

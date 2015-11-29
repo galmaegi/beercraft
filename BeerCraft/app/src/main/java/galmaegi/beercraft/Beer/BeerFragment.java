@@ -3,6 +3,8 @@ package galmaegi.beercraft.Beer;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -26,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.CustomTimer.CustomTimer;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
@@ -39,14 +42,30 @@ public class BeerFragment extends Fragment {
     RecommendAdapter recommendAdapter;
     ArrayList<BeerIndexItem> items;
 
+    CustomTimer timer;
+
     public BeerFragment() {
         beerFragment = this;
     }
+    Handler handler = new Handler(new android.os.Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            getRecommend();
+            return false;
+        }
+    });
     @Override
     public void onResume() {
         super.onResume();
         MainActivity.mainActivity.buttonSelector(MainActivity.mainActivity.btn_beer);
+        timer.start();
     }
+    @Override
+    public void onPause() {
+        super.onPause();
+        timer.cancel();
+    }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -66,6 +85,9 @@ public class BeerFragment extends Fragment {
         recommendListView.setAdapter(recommendAdapter);
 
         getRecommend();
+
+        timer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime, handler);
+        timer.start();
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -84,13 +106,13 @@ public class BeerFragment extends Fragment {
     }
 
     private void getRecommend() {
-        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft_beer.php";
+        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-recommended_beer.php";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        items.clear();
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));

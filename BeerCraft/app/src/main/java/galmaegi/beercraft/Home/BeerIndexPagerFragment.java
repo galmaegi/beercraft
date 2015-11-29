@@ -57,6 +57,11 @@ public class BeerIndexPagerFragment extends Fragment {
         super.onPause();
         timer.cancel();
     }
+    @Override
+    public void onResume(){
+        super.onPause();
+        timer.start();
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

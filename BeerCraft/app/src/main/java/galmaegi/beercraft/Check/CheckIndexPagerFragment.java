@@ -5,10 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.R;
 
 public class CheckIndexPagerFragment extends android.support.v4.app.Fragment {
@@ -18,6 +27,9 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment {
     ListView checkListView = null;
     CheckIndexAdapter checkIndexAdapter = null;
     ArrayList<CheckIndexItem> items = null;
+
+    AccountBottomLayout accountBottomLayout;
+    WishListBottomLayout wishListBottomLayout;
 
     public static CheckIndexPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
@@ -38,21 +50,30 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         items = new ArrayList<>();
-        checkListView = (ListView) view.findViewById(R.id.lv_beer_index);
-        checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items);
-
+        checkListView = (ListView) view.findViewById(R.id.lv_check_index);
         checkListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             }
         });
+
+        boolean isOnCheckBox = (mPage == 0) ? false : true;
+
+        checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items, isOnCheckBox);
         checkListView.setAdapter(checkIndexAdapter);
 
+        accountBottomLayout = new AccountBottomLayout(view);
+        wishListBottomLayout = new WishListBottomLayout(view);
+
         if (mPage == 0) {
-
+            getCheckIndex();
+            accountBottomLayout.setVisible(true);
+            wishListBottomLayout.setVisible(false);
         } else {
-
+            getCheckIndex();
+            accountBottomLayout.setVisible(false);
+            wishListBottomLayout.setVisible(true);
         }
     }
 
@@ -61,5 +82,35 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment {
         View holder = inflater.inflate(R.layout.layout_check_listview, container, false);
 
         return holder;
+    }
+
+    private void getCheckIndex() {
+        final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-get_wishlist_product.php?tableNo=10";
+
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        for(int i = 0 ; i < response.length() ; i++) {
+                            try {
+                                CheckIndexItem item = new CheckIndexItem(response.getJSONObject(i));
+                                items.add(item);
+                            } catch (JSONException e) {
+                                CheckIndexItem item = new CheckIndexItem();
+                                items.add(item);
+                                e.printStackTrace();
+                            }
+                        }
+                        checkIndexAdapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 }

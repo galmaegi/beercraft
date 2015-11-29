@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import galmaegi.beercraft.Beer.BeerFragment;
+import galmaegi.beercraft.Check.CheckFragment;
 import galmaegi.beercraft.Detail.FragmentDetail;
 import galmaegi.beercraft.Home.HomeFragment;
 import galmaegi.beercraft.News.NewsFragment;
@@ -88,6 +89,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Fragment frBeer = new BeerFragment();
     Fragment frSide = new SidemenuFragment();
     Fragment frNews = new NewsFragment();
+    Fragment frCheck = new CheckFragment();
 
     @Override
     public void onClick(View v) {
@@ -113,6 +115,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.btn_check:
                 curBtn = btn_check;
+                fr = frCheck;
                 break;
         }
         if(fr!=null) {
@@ -147,6 +150,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         fm.popBackStack();
     }
+
     public void setCurrenttable(){
         GlobalVar.currentTable = preftablenumRead();
         action_bar_tablenum.setText("TABLE NUMBER #" + GlobalVar.currentTable);

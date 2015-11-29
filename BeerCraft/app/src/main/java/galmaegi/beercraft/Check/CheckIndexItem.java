@@ -18,6 +18,7 @@ public class CheckIndexItem {
     private int orderAmount;
     private Date orderDate;
     private int orderID;
+    private int qty;
 
     public CheckIndexItem() {
         itemID = 0;
@@ -30,6 +31,7 @@ public class CheckIndexItem {
         orderAmount = 0;
         orderDate = new Date();
         orderID = 0;
+        qty = 0;
     }
 
     public CheckIndexItem(JSONObject object) throws JSONException {
@@ -43,6 +45,7 @@ public class CheckIndexItem {
         orderAmount = GlobalVar.SafetyJSONStringToInt(object, "orderAmount");
         orderDate = GlobalVar.StringToDate(object.getString("orderDate"));
         orderID = GlobalVar.SafetyJSONStringToInt(object, "orderID");
+        qty = GlobalVar.SafetyJSONStringToInt(object, "qty");
     }
 
     public int getItemID() {
@@ -123,5 +126,13 @@ public class CheckIndexItem {
 
     public void setOrderID(int orderID) {
         this.orderID = orderID;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 }

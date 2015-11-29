@@ -109,9 +109,10 @@ public class HomeFragment extends Fragment {
         return holder;
     }
     private void getBeers(){
-        BeerIndexPagerFragment temp = beerIndexPagerAdapter.getBBIPage();
-        temp.getBottledBeerIndex();
-        beerIndexPagerAdapter.getDBIPage().getDraftBeerIndex();
+        BeerIndexPagerFragment BBP = (BeerIndexPagerFragment) beerIndexPagerAdapter.getItem(0);
+        BBP.getBottledBeerIndex();
+        BeerIndexPagerFragment DBP = (BeerIndexPagerFragment) beerIndexPagerAdapter.getItem(1);
+        DBP.getDraftBeerIndex();
     }
 
     private void getNews() {

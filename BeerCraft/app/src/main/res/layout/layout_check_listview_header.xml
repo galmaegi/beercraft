@@ -47,6 +47,7 @@
     <CheckBox
         android:layout_marginLeft="50dp"
         android:layout_width="120dp"
-        android:layout_height="19dp"/>
+        android:layout_height="match_parent"
+        android:enabled="false"/>
 
 </LinearLayout>

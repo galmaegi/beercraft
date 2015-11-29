@@ -9,13 +9,11 @@
         layout="@layout/layout_check_listview_header"
         />
 
-
     <ListView
-        android:id="@+id/lv_beer_index"
+        android:id="@+id/lv_check_index"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
-
+        android:layout_height="match_parent">
     </ListView>
+
+    
 </LinearLayout>

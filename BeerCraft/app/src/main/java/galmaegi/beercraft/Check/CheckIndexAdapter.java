@@ -6,19 +6,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import galmaegi.beercraft.Beer.BeerIndexViewHolder;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
-import galmaegi.beercraft.common.BeerIndexItem;
 
 public class CheckIndexAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<BeerIndexItem> items;
+    private ArrayList<CheckIndexItem> items;
+    boolean isOnCheckbox;
 
     public CheckIndexAdapter(Context context) {
         super();
@@ -26,10 +26,11 @@ public class CheckIndexAdapter extends BaseAdapter {
         items = new ArrayList<>();
     }
 
-    public CheckIndexAdapter(Context context, ArrayList items) {
+    public CheckIndexAdapter(Context context, ArrayList items, boolean isOnCheckbox) {
         super();
         mContext = context;
         this.items = items;
+        this.isOnCheckbox = isOnCheckbox;
     }
 
     @Override
@@ -49,54 +50,48 @@ public class CheckIndexAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        BeerIndexViewHolder holder;
+        CheckIndexViewHolder holder;
 
         if(convertView == null) {
-            holder = new BeerIndexViewHolder();
+            holder = new CheckIndexViewHolder();
 
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.layout_beer_listview1_item, null);
+            convertView = inflater.inflate(R.layout.layout_check_listview_item, null);
 
             holder.mAlert = convertView.findViewById(R.id.v_alert);
             holder.mName = (TextView) convertView.findViewById(R.id.tv_name);
-            holder.mCountry = (TextView) convertView.findViewById(R.id.tv_country);
-            holder.mStyle = (TextView) convertView.findViewById(R.id.tv_style);
-            holder.mABV = (TextView) convertView.findViewById(R.id.tv_abv);
-            holder.mMl = (TextView) convertView.findViewById(R.id.tv_ml);
-            holder.mSellingPrice = (TextView) convertView.findViewById(R.id.tv_sellingPrice);
-            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
+            holder.mCode = (TextView) convertView.findViewById(R.id.tv_code);
+            holder.mCostPrice = (TextView) convertView.findViewById(R.id.tv_cost_price);
+            holder.mOrderAmount = (TextView) convertView.findViewById(R.id.tv_order_amount);
             holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
             holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
+            holder.mCheckBox = (CheckBox) convertView.findViewById(R.id.checkbox);
+
+            if(!isOnCheckbox) {
+                holder.mCheckBox.setVisibility(View.INVISIBLE);
+            }
 
             convertView.setTag(holder);
         } else {
-            holder = (BeerIndexViewHolder) convertView.getTag();
+            holder = (CheckIndexViewHolder) convertView.getTag();
         }
 
-        BeerIndexItem item = items.get(position);
-        int curPrice = item.getSellingPrice();
-        int prvPrice = item.getLast();
-        int increase = curPrice - prvPrice;
-        double rate = GlobalVar.Division(increase, curPrice);
+        CheckIndexItem item = items.get(position);
 
-        holder.mName.setText(item.getEnglishName());
-        holder.mCountry.setText(item.getCountry());
-        holder.mStyle.setText(item.getStyle());
-        holder.mABV.setText(String.valueOf(item.getStrength()));
-        holder.mMl.setText(String.valueOf(item.getVolume()));
-        holder.mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
-        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
-        holder.mRate.setText(String.format("%.2f %%", rate));
-        holder.mIncrease.setText(GlobalVar.setComma(increase));
+        holder.mName.setText(item.getProductName());
+        holder.mCostPrice.setText(GlobalVar.setComma(item.getCostPrice()));
+        holder.mOrderAmount.setText(GlobalVar.setComma(item.getOrderAmount()));
+        holder.mRate.setText(String.format("%.2f %%", 0.0));
+        holder.mIncrease.setText(GlobalVar.setComma(0));
 
-        int color;
-        if(increase < 0) {
-            color = Color.parseColor("#9D1819");
-        } else if(increase == 0) {
-            color = Color.parseColor("#6F6F6F");
-        } else {
-            color = Color.parseColor("#05B005");
-        }
+        int color = Color.parseColor("#6F6F6F");
+//        if(increase < 0) {
+//            color = Color.parseColor("#9D1819");
+//        } else if(increase == 0) {
+//            color = Color.parseColor("#6F6F6F");
+//        } else {
+//            color = Color.parseColor("#05B005");
+//        }
 
         holder.mAlert.setBackgroundColor(color);
         holder.mRate.setTextColor(color);

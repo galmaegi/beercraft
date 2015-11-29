@@ -2,39 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="1194dp"
-    android:layout_height="673dp"
+    android:layout_height="700dp"
     >
-    
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/inc_market_info"
-            layout="@layout/layout_home_market_info"/>
-
-
-        <android.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="15dp" />
-
-        <include
-            android:id="@+id/inc_news"
-            layout="@layout/layout_home_listview2" />
-
-    </LinearLayout>
-    
-    <android.widget.Space
-        android:layout_width="16dp"
-        android:layout_height="match_parent" />
 
     <include
-        android:id="@+id/inc_beer_index"
-        layout="@layout/layout_home_pager" />
-
-    <!--<include-->
-        <!--android:id="@+id/inc_beer_index"-->
-        <!--layout="@layout/layout_home_listview1" />-->
+        android:id="@+id/inc_check_list"
+        layout="@layout/layout_check_pager" />
 
 </LinearLayout>

@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class CheckIndexPagerAdapter  extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[]{"Account", "Watch List"};
+    private String tabTitles[] = new String[]{"Account", "Wish List"};
 
     public CheckIndexPagerAdapter(FragmentManager fm) {
         super(fm);

@@ -1,16 +1,16 @@
-package galmaegi.beercraft.Beer;
+package galmaegi.beercraft.Check;
 
 import android.view.View;
 import android.widget.TextView;
 
-public class BeerIndexViewHolder {
+public class CheckIndexViewHolder {
     public View mAlert;
     public TextView mName;
     public TextView mCountry;
-    public TextView mStyle;
-    public TextView mABV;
-    public TextView mMl;
-    public TextView mSellingPrice;
+    public TextView mCode;
+    public TextView mCostPrice;
+    public TextView mDiscountPrice;
+    public TextView mOrderDate;
     public TextView mDate;
     public TextView mRate;
     public TextView mIncrease;

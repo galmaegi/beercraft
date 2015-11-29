@@ -1,6 +1,7 @@
 package galmaegi.beercraft.Detail;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.text.Html;
 import android.view.View;
 import android.widget.ImageButton;
@@ -91,14 +92,18 @@ public class Detail_4 implements View.OnClickListener{
         if(ChangedPrice>=0) {
             detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+percent+"%"));
             detail_4_changeprice.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice));
+            detail_4_img_updown.setBackgroundColor(Color.parseColor("#801f21"));
         }
-//        else if(ChangedPrice==0) {
-//            detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+percent+"%"));
-//            detail_4_changeprice.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice));
-//        }
+        else if(ChangedPrice==0) {
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#FFFFFF> +"+percent+"%"));
+            detail_4_changeprice.setText(Html.fromHtml("<font color=#FFFFFF> +" + ChangedPrice));
+            detail_4_img_updown.setBackgroundColor(Color.parseColor("#801f21"));
+
+        }
         else {
             detail_4_changepercent.setText(Html.fromHtml("<font color=#15a615> -"+percent+"%"));
             detail_4_changeprice.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice));
+            detail_4_img_updown.setBackgroundColor(Color.parseColor("#15a615"));
         }
     }
     public static double round(double value, int places) {

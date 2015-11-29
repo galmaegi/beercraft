@@ -71,9 +71,16 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         leftAxis.setTypeface(tf);
         leftAxis.setLabelCount(5, false);
         leftAxis.setTextColor(Color.WHITE);
+        leftAxis.setAxisMinValue(4000f);
+        leftAxis.setStartAtZero(false);
+        leftAxis.setLabelCount(4,true);
     }
     public void setData(){
         mChart.setData(generateDataLine(cnt));
+        mChart.getAxisRight().resetAxisMinValue();
+        mChart.getAxisRight().setAxisMinValue(4000f);
+
+
         // do not forget to refresh the chart
         // mChart.invalidate();
         mChart.animateX(750);
@@ -89,6 +96,7 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         }
 
         mChart.invalidate();
+
     }
 
     private LineData generateDataLine(int cnt) {
@@ -110,6 +118,7 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         sets.add(d1);
 
         LineData cd = new LineData(getXLabelperTime(cnt), sets);
+
         return cd;
     }
 

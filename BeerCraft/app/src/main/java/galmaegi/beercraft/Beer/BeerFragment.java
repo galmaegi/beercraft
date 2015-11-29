@@ -175,14 +175,14 @@ public class BeerFragment extends Fragment {
             mName.setText(item.getEnglishName());
             mStyle.setText(item.getStyle());
             mAbvMl.setText(item.getStrength()+ "%, " + item.getVolume() + "ml");
-            mRate.setText(String.valueOf(item.getRateBeerScore()));
-            mIncrease.setText(String.valueOf(item.getPrice()));
+            mRate.setText(item.getRate()+"");
+            mIncrease.setText(String.valueOf(item.getIncrease()));
             mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
 
             int color;
-            if(item.getRateBeerScore() < 0) {
+            if(item.getIncrease() < 0) {
                 color = Color.parseColor("#9D1819");
-            } else if(item.getRateBeerScore() == 0) {
+            } else if(item.getIncrease() == 0) {
                 color = Color.parseColor("#6F6F6F");
             } else {
                 color = Color.parseColor("#05B005");

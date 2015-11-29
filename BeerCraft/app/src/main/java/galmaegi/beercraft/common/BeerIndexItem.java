@@ -35,6 +35,8 @@ public class BeerIndexItem {
     private Date modifyDate;
     private int groupId;
     private int last;
+    private int increase;
+    private double rate;
 
     public BeerIndexItem() {
         productID = 0;
@@ -67,6 +69,14 @@ public class BeerIndexItem {
 
     }
 
+    public int getIncrease() {
+        return increase;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
     public BeerIndexItem(JSONObject object) throws JSONException{
         productID = GlobalVar.SafetyJSONStringToInt(object, "productID");
         divisionID = GlobalVar.SafetyJSONStringToInt(object, "divisionID");
@@ -95,6 +105,9 @@ public class BeerIndexItem {
         modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
         groupId = GlobalVar.SafetyJSONStringToInt(object, "grp_id");
         last = GlobalVar.SafetyJSONStringToInt(object, "last");
+
+        increase = sellingPrice - last;
+        rate = GlobalVar.Division(increase, sellingPrice);
 
     }
 

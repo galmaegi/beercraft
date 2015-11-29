@@ -5,7 +5,6 @@ import android.os.Message;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -19,8 +18,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import galmaegi.beercraft.CustomTimer.CustomTimer;
-import galmaegi.beercraft.Detail.DetailGlobalVar;
-import galmaegi.beercraft.Detail.Detail_5_Page_Adapter;
 
 
 /**
@@ -46,7 +43,7 @@ public class BottomBar {
                 return false;
             }
         });
-        customTimer = new CustomTimer(60*3*1000,60*3*1000,handleBottomBar);
+        customTimer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime,handleBottomBar);
         customTimer.start();
     }
 

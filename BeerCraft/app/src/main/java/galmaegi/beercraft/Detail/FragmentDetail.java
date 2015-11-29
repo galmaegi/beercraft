@@ -83,10 +83,10 @@ public class FragmentDetail extends Fragment {
 
         //initialization views which located in activity_detail section4
         detail_4 = new Detail_4(view);
-        //get section 2
 
+        //get section 2
         linechart = (LineChart)view.findViewById(R.id.BeerDetailLine);
-        new CustomLineChart(getContext(), linechart, GlobalVar.NanumGothic_Bold, getcount());
+
 
         //get section 5
         detail_5_viewpager = (ViewPager) view.findViewById(R.id.detail_5_viewpager);
@@ -97,12 +97,15 @@ public class FragmentDetail extends Fragment {
     }
     int getcount(){
         Calendar c = Calendar.getInstance();
-        int hours = c.get(Calendar.HOUR);
+        int hours = c.get(Calendar.HOUR_OF_DAY);
         int minutes = c.get(Calendar.MINUTE);
         int totalminutes = minutes+hours*60;
-        int count = 0;
-        if(totalminutes-1020>0){
-            count = (totalminutes-990)/30;
+        int count = 18;
+        if(totalminutes>=1020 && totalminutes<=1440){
+            count = (totalminutes-1020)/30 + 1;
+        }
+        else if(0<=totalminutes && totalminutes<=90){
+            count = (totalminutes)/30 + 15;
         }
         return count;
     }
@@ -129,7 +132,7 @@ public class FragmentDetail extends Fragment {
                             detail_1.setSection();
 
                             //set detail section 2
-
+                            new CustomLineChart(getContext(), linechart, GlobalVar.NanumGothic_Bold, getcount());
 
                             //set detail section 3
                             detail_3.setSection();

@@ -71,7 +71,7 @@ public class Detail_4 implements View.OnClickListener{
             detail_4_productstyle.setText(DetailGlobalVar.currentObject.getString("style"));
             detail_4_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
             detail_4_country.setText(DetailGlobalVar.currentObject.getString("country"));
-            detail_4_currentprice.setText(Detail_4_clicklistener.textFormating(DetailGlobalVar.price) + "");
+            detail_4_currentprice.setText(GlobalVar.setComma(DetailGlobalVar.price) + "");
             Detail_4_clicklistener detail_4_clicklistener = new Detail_4_clicklistener(detail_4_totalprice, detail_4_counttext, DetailGlobalVar.price);
             detail_4_countplus.setOnClickListener(detail_4_clicklistener);
             detail_4_countminus.setOnClickListener(detail_4_clicklistener);

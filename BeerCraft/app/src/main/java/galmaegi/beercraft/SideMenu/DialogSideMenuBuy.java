@@ -1,4 +1,4 @@
-package galmaegi.beercraft.Detail;
+package galmaegi.beercraft.SideMenu;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -26,29 +26,31 @@ import galmaegi.beercraft.R;
 /**
  * Created by root on 15. 11. 18.
  */
-public class DialogBuy extends Dialog implements View.OnClickListener{
+public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
 
     NetworkImageView dialog_buy_productimage;
     TextView dialog_buy_productname;
-    TextView dialog_buy_productstyle;
-    TextView dialog_buy_abv;
-    TextView dialog_buy_country;
+//    TextView dialog_buy_country;
     TextView dialog_buy_currentprice;
     TextView dialog_buy_counttext;
     TextView dialog_buy_totalprice;
     ImageButton dialog_buy_btn_buy;
     ImageButton dialog_buy_btn_no;
-    public DialogBuy(Context context) {
+
+    private SidemenuIndexItem item;
+    private int count;
+    public DialogSideMenuBuy(Context context,SidemenuIndexItem item,int count) {
         super(context);
+
+        this.item = item;
+        this.count = count;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_buy_product);
         //initialization views which located in activity_detail section4
         dialog_buy_productimage = (NetworkImageView)findViewById(R.id.dialog_buy_productimage);
         dialog_buy_productname = (TextView)findViewById(R.id.dialog_buy_productname);
-        dialog_buy_productstyle = (TextView)findViewById(R.id.dialog_buy_productstyle);
-        dialog_buy_abv = (TextView)findViewById(R.id.dialog_buy_abv);
-        dialog_buy_country = (TextView)findViewById(R.id.dialog_buy_country);
+//        dialog_buy_country = (TextView)findViewById(R.id.dialog_buy_country);
         dialog_buy_currentprice = (TextView)findViewById(R.id.dialog_buy_currentprice);
         dialog_buy_counttext = (TextView)findViewById(R.id.dialog_buy_counttext);
         dialog_buy_totalprice = (TextView)findViewById(R.id.dialog_buy_totalprice);
@@ -72,37 +74,22 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
         }
     }
     public void setSection(){
-        try {
             //to set dialog_buy_section
             ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
-            dialog_buy_productimage.setImageUrl(DetailGlobalVar.currentObject.getString("proudctImage"), mImageLoader);
-            dialog_buy_productname.setText(DetailGlobalVar.currentObject.getString("productName"));
-            dialog_buy_productstyle.setText(DetailGlobalVar.currentObject.getString("style"));
-            dialog_buy_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
-            dialog_buy_country.setText(DetailGlobalVar.currentObject.getString("country"));
-            dialog_buy_currentprice.setText(GlobalVar.setComma(DetailGlobalVar.price));
-            dialog_buy_counttext.setText(DetailGlobalVar.count+"EA");
-            dialog_buy_totalprice.setText(GlobalVar.setComma(DetailGlobalVar.count * DetailGlobalVar.price));
+            dialog_buy_productimage.setImageUrl(item.getProudctImage(), mImageLoader);
+            dialog_buy_productname.setText(item.getProductName());
+//            dialog_buy_country.setText(DetailGlobalVar.currentObject.getString("country"));
+            dialog_buy_currentprice.setText(GlobalVar.setComma(item.getPrice()));
+            dialog_buy_counttext.setText(count+"EA");
+            dialog_buy_totalprice.setText(GlobalVar.setComma(count * item.getPrice()));
             dialog_buy_btn_buy.setOnClickListener(this);
             dialog_buy_btn_no.setOnClickListener(this);
-
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
     }
     private void addorderRequest() {
-        String urlJsonObj="";
-        try {
-
-            urlJsonObj = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?" +
+        String urlJsonObj = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?" +
                     "tableNo="+GlobalVar.currentTable+"&" +
-                    "productID="+DetailGlobalVar.currentObject.getString("productID")+"&" +
-                    "orderAmount="+DetailGlobalVar.count;
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
+                    "productID="+item.getSideMenuID()+"&" +
+                    "orderAmount="+count;
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, urlJsonObj, null, new Response.Listener<JSONObject>() {
 
             @Override

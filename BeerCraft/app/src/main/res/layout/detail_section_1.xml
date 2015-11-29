@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BLUE MOON"
-        style="@style/product_name"/>
+        style="@style/product_name_left"/>
     <TextView
         android:id="@+id/sum_beer_style"
         android:layout_width="wrap_content"
@@ -203,44 +203,6 @@
             android:text="9,100"
             style="@style/summary_price"/>
     </FrameLayout>
-    <!--<FrameLayout-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingRight="15dp">-->
-        <!--<TextView-->
-            <!--android:id="@+id/sum_summary_avg_title"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="left"-->
-            <!--android:text="1y Avg"-->
-            <!--style="@style/summary_price"/>-->
-        <!--<TextView-->
-            <!--android:id="@+id/sum_summary_avg"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="right"-->
-            <!--android:text="9,600"-->
-            <!--style="@style/summary_price"/>-->
-    <!--</FrameLayout>-->
-    <!--<FrameLayout-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:paddingRight="15dp">-->
-        <!--<TextView-->
-            <!--android:id="@+id/sum_summary_per_title"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="left"-->
-            <!--android:text="PER"-->
-            <!--style="@style/summary_price"/>-->
-        <!--<TextView-->
-            <!--android:id="@+id/sum_summary_per"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="right"-->
-            <!--android:text="9,550"-->
-            <!--style="@style/summary_price"/>-->
-    <!--</FrameLayout>-->
 
 
 </LinearLayout>

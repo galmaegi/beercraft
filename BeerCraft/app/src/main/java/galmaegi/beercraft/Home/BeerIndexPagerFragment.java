@@ -1,9 +1,8 @@
 package galmaegi.beercraft.Home;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,14 +77,15 @@ public class BeerIndexPagerFragment extends Fragment {
         return view;
     }
 
-    private void getBottledBeerIndex() {
+    public void getBottledBeerIndex() {
+        Log.d("getBottledBeerIndex","called");
         final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-bottled_beer.php";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        items.clear();
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));
@@ -111,14 +111,15 @@ public class BeerIndexPagerFragment extends Fragment {
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
-    private void getDraftBeerIndex() {
+    public void getDraftBeerIndex() {
+        Log.d("getDraftBeerIndex","called");
         final String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-draft_beer.php\n";
 
         JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        items.clear();
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 BeerIndexItem item = new BeerIndexItem(response.getJSONObject(i));

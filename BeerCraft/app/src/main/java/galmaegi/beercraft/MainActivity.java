@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -31,12 +30,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Button action_bar_tablenum;
 
     //left side Button
-    ImageButton btn_back;
-    ImageButton btn_home;
-    ImageButton btn_beer;
-    ImageButton btn_sidemenu;
-    ImageButton btn_news;
-    ImageButton btn_check;
+    public ImageButton btn_back;
+    public ImageButton btn_home;
+    public ImageButton btn_beer;
+    public ImageButton btn_sidemenu;
+    public ImageButton btn_news;
+    public ImageButton btn_check;
 
     //bottom bar
     BottomBar bottomBar;

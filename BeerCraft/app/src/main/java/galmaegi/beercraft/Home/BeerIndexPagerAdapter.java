@@ -9,8 +9,21 @@ public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
     final int PAGE_COUNT = 2;
     private String tabTitles[] = new String[]{"Draft Beer Index", "Bottled Beer Index"};
 
+    private BeerIndexPagerFragment DBIPage;
+
+    public BeerIndexPagerFragment getBBIPage() {
+        return BBIPage;
+    }
+
+    public BeerIndexPagerFragment getDBIPage() {
+        return DBIPage;
+    }
+
+    private BeerIndexPagerFragment BBIPage;
+
     public BeerIndexPagerAdapter(FragmentManager fm) {
         super(fm);
+
     }
 
     @Override
@@ -20,7 +33,14 @@ public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return BeerIndexPagerFragment.newInstance(position);
+        if(position == 0){
+            DBIPage = BeerIndexPagerFragment.newInstance(0);
+            return DBIPage;
+        }
+        else{
+            BBIPage = BeerIndexPagerFragment.newInstance(1);
+            return BBIPage;
+        }
     }
 
     @Override

@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -31,7 +30,6 @@ import java.util.Random;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.Detail.DetailGlobalVar;
-import galmaegi.beercraft.Detail.Detail_5_Page_Adapter;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.RadarChart.RadarMarkerView;
 
@@ -73,13 +71,9 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         leftAxis.setTypeface(tf);
         leftAxis.setLabelCount(5, false);
         leftAxis.setTextColor(Color.WHITE);
-
-        if(cnt==18)
-            mChart.setData(generateRandomDataLine());
-        // set data
-        else
-            mChart.setData(generateDataLine(cnt));
-
+    }
+    public void setData(){
+        mChart.setData(generateDataLine(cnt));
         // do not forget to refresh the chart
         // mChart.invalidate();
         mChart.animateX(750);
@@ -95,7 +89,6 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         }
 
         mChart.invalidate();
-
     }
 
     private LineData generateDataLine(int cnt) {
@@ -103,7 +96,7 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         ArrayList<Entry> e1 = new ArrayList<Entry>();
 
         for (int i = 0; i < cnt; i++) {
-            e1.add(new Entry(dataArray.get(i)/100*DetailGlobalVar.price, i));
+            e1.add(new Entry((int)((double)dataArray.get(i)/100*DetailGlobalVar.price), i));
         }
 
         LineDataSet d1 = new LineDataSet(e1, "New DataSet " + cnt + ", (1)");
@@ -154,6 +147,7 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         String grp_id="";
         try {
             grp_id = DetailGlobalVar.currentObject.getString("grp_id");
+//            grp_id = "7";
             if(grp_id.length()==0 || grp_id.equals("null"))
                 return;
 
@@ -176,9 +170,11 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
                             //set global object
                             dataArray.clear();
                             for(int i = 0; i < cnt; i++) {
-                                JSONObject tmpObject = (JSONObject) response.get(0);
+                                JSONObject tmpObject = (JSONObject) response.get(i);
                                 dataArray.add(tmpObject.getInt("time_value"));
                             }
+                            setData();
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

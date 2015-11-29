@@ -2,20 +2,23 @@ package galmaegi.beercraft.Detail;
 
 import android.text.Html;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
 /**
  * Created by root on 15. 11. 17.
  */
-public class Detail_1 {
+public class Detail_1 implements OnClickListener{
     private View parent_view;
     //<views  where included in section 1>
     TextView sum_beer_name;
@@ -47,6 +50,8 @@ public class Detail_1 {
         sum_today_prev = (TextView)view.findViewById(R.id.sum_today_prev);
         sum_summary_high = (TextView)view.findViewById(R.id.sum_summary_high);
         sum_summary_low = (TextView)view.findViewById(R.id.sum_summary_low);
+
+        sum_wishlist.setOnClickListener(this);
 //        sum_summary_avg = (TextView)view.findViewById(R.id.sum_summary_avg);
 //        sum_summary_per = (TextView)view.findViewById(R.id.sum_summary_per);
     }
@@ -57,7 +62,7 @@ public class Detail_1 {
             sum_beer_name.setText(DetailGlobalVar.currentObject.getString("productName"));
             sum_beer_style.setText(DetailGlobalVar.currentObject.getString("style"));
             sum_beer_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
-            sum_price.setText(Detail_4_clicklistener.textFormating(DetailGlobalVar.price));
+            sum_price.setText(GlobalVar.setComma(DetailGlobalVar.price));
             setChanged(DetailGlobalVar.currentObject.getString("sellingPrice"), DetailGlobalVar.currentObject.getString("last"));
         }
         catch (JSONException e){
@@ -106,4 +111,8 @@ public class Detail_1 {
         return returnvalue;
     }
 
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(parent_view.getContext(),"성공적으로 추가되었습니다.",Toast.LENGTH_SHORT).show();
+    }
 }

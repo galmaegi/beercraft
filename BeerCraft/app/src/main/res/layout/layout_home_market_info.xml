@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="718dp"
-    android:layout_height="310dp"
+    android:layout_height="210dp"
     android:background="#222222">
 
     <LinearLayout
@@ -32,13 +32,11 @@
         />
 
     <TableLayout
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginRight="94dp"
-        android:layout_marginBottom="26dp"
+        android:layout_marginLeft="70dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical">
+        android:gravity="center"
+        android:layout_gravity="center">
 
         <TableRow>
             <TextView
@@ -50,24 +48,24 @@
                 android:layout_width="160dp"
                 android:layout_height="19dp"
                 android:gravity="center_horizontal"
-                android:textSize="15dp"
-                android:text="INDEX"/>
+                android:textSize="10dp"
+                android:text="KOREA COMPOSITE BEER INDEX"/>
 
             <TextView
                 android:layout_margin="1dp"
                 android:layout_width="160dp"
                 android:layout_height="19dp"
                 android:gravity="center_horizontal"
-                android:textSize="15dp"
-                android:text="LAST"/>
+                android:textSize="10dp"
+                android:text="DRAFT BEER INDEX"/>
 
             <TextView
                 android:layout_margin="1dp"
                 android:layout_width="160dp"
                 android:layout_height="19dp"
                 android:gravity="center_horizontal"
-                android:textSize="15dp"
-                android:text="CHANGE"/>
+                android:textSize="10dp"
+                android:text="BOTTLED BEER INDEX"/>
         </TableRow>
 
         <TableRow>
@@ -77,22 +75,25 @@
                 android:layout_height="60dp"
                 android:layout_gravity="right"
                 android:gravity="center_vertical"
-                android:text="KOBI"/>
+                android:text=""/>
 
 
             <include
+                android:id="@+id/KOBI"
                 android:layout_margin="1dp"
                 layout="@layout/layout_home_market_info_table_component"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"/>
 
             <include
+                android:id="@+id/DBI"
                 android:layout_margin="1dp"
                 layout="@layout/layout_home_market_info_table_component"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"/>
 
             <include
+                android:id="@+id/BBI"
                 android:layout_margin="1dp"
                 layout="@layout/layout_home_market_info_table_component"
                 android:layout_height="wrap_content"

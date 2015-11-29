@@ -3,46 +3,31 @@
     android:orientation="vertical"
     android:layout_width="160dp"
     android:layout_height="60dp"
-    android:background="#FFFFFF">
+    android:background="#15a615"
+    android:id="@+id/KOBI_back"
+    >
 
     <TextView
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_width="144dp"
-        android:layout_height="15dp"
-        android:textSize="12dp"
-        android:text="Korea Composite Beer Index"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="3dp"
+        android:text=""
+        android:textColor="#FFF"
+        />
 
-    <LinearLayout
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="75dp"
-            android:layout_height="31dp"
-            android:textSize="25dp"
-            android:text="12.08%" />
+    <TextView
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:layout_gravity="right"
-                android:layout_width="43dp"
-                android:layout_height="15dp"
-                android:textSize="12dp"
-                android:text="3072.48" />
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="12.08%"
+        android:id="@+id/KOBI_value"
+        android:textColor="#FFF"
+        />
 
-            <TextView
-                android:layout_gravity="right"
-                android:layout_width="33dp"
-                android:layout_height="15dp"
-                android:textSize="12dp"
-                android:text="467.31" />
-        </LinearLayout>
-    </LinearLayout>
+
 </LinearLayout>

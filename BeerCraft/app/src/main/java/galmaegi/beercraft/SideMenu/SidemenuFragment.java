@@ -1,38 +1,27 @@
 package galmaegi.beercraft.SideMenu;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.astuetz.PagerSlidingTabStrip;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.Date;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
-import galmaegi.beercraft.common.BeerIndexItem;
 
 public class SidemenuFragment extends Fragment {
+    View parent_view;
     public static SidemenuFragment sidemenuFragment;
 
     public TastingNote tastingNote;
@@ -43,8 +32,15 @@ public class SidemenuFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.mainActivity.buttonSelector(MainActivity.mainActivity.btn_sidemenu);
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        parent_view = view;
 
         tastingNote = new TastingNote(view);
         simpleView = new SimpleView(view);
@@ -83,6 +79,7 @@ public class SidemenuFragment extends Fragment {
             tastingNote.setText(item.getTastingNote());
         }
     }
+
 
     public class SimpleView implements View.OnClickListener{
         ImageView img_updown;
@@ -132,23 +129,35 @@ public class SidemenuFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            if(v.getId() == R.id.btn_countminus) {
-                count--;
+            try {
+                if (v.getId() == R.id.btn_countminus) {
+                    count--;
 
-                if(count <= 0) {
-                    btn_countminus.setEnabled(false);
+                    if (count <= 0) {
+                        btn_countminus.setEnabled(false);
+                    }
+
+                    setView(item);
+                } else if (v.getId() == R.id.btn_countplus) {
+                    count++;
+
+                    if (!btn_countminus.isEnabled()) {
+                        btn_countminus.setEnabled(true);
+                    }
+
+                    setView(item);
+                } else if (v.getId() == R.id.btn_buy) {
+                    DialogSideMenuBuy dialogBuy = new DialogSideMenuBuy(parent_view.getContext(),item,count);
+                    dialogBuy.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+
+                        }
+                    });
+                    dialogBuy.show();
                 }
-
-                setView(item);
-            } else if(v.getId() == R.id.btn_countplus) {
-                count++;
-
-                if(!btn_countminus.isEnabled()) {
-                    btn_countminus.setEnabled(true);
-                }
-
-                setView(item);
-            } else if(v.getId() == R.id.btn_buy) {
+            }
+            catch (Exception e){
 
             }
         }

@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
@@ -41,7 +42,11 @@ public class BeerFragment extends Fragment {
     public BeerFragment() {
         beerFragment = this;
     }
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.mainActivity.buttonSelector(MainActivity.mainActivity.btn_beer);
+    }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -150,7 +155,7 @@ public class BeerFragment extends Fragment {
             mAbvMl.setText(item.getStrength()+ "%, " + item.getVolume() + "ml");
             mRate.setText(String.valueOf(item.getRateBeerScore()));
             mIncrease.setText(String.valueOf(item.getPrice()));
-            mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
+            mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
 
             int color;
             if(item.getRateBeerScore() < 0) {

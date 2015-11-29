@@ -118,8 +118,10 @@ public class DialogPassword extends Dialog implements View.OnClickListener{
                 currentext+="9";
                 break;
             case R.id.dialog_action_bar_btn_back:
-                currentext = currentext.substring(0, currentext.length() - 1);
-                dialog_action_bar_text.setText(currentext);
+                if(currentext.length()>0) {
+                    currentext = currentext.substring(0, currentext.length() - 1);
+                    dialog_action_bar_text.setText(currentext);
+                }
                 break;
             case R.id.dialog_action_bar_btn_accept:
                 if(currentext.equals("0000")) {

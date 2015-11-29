@@ -8,7 +8,13 @@
         <item name="android:textSize">25dp</item>
 
     </style>
-
+    <style name = "product_name_left">
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">NanumGothic</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25dp</item>
+    </style>
     <style name = "product_detail">
         <item name="android:textAlignment">textEnd</item>
         <item name="android:textColor">@android:color/white</item>

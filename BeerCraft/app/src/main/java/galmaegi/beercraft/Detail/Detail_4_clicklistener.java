@@ -3,8 +3,7 @@ package galmaegi.beercraft.Detail;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
 /**
@@ -22,7 +21,7 @@ public class Detail_4_clicklistener implements View.OnClickListener{
         this.price = price;
         DetailGlobalVar.count = 1;
 
-        text_totalprice.setText(textFormating(DetailGlobalVar.count * price)+"");
+        text_totalprice.setText(GlobalVar.setComma(DetailGlobalVar.count * price)+"");
     }
     @Override
     public void onClick(View v) {
@@ -38,13 +37,7 @@ public class Detail_4_clicklistener implements View.OnClickListener{
 
         }
         text_count.setText(DetailGlobalVar.count+"");
-        text_totalprice.setText(textFormating(DetailGlobalVar.count*price)+"");
-
-    }
-
-    public static String textFormating(int money){
-        DecimalFormat df = new DecimalFormat("###,###,###");
-        return df.format(money);
+        text_totalprice.setText(GlobalVar.setComma(DetailGlobalVar.count * price)+"");
 
     }
 

@@ -34,6 +34,14 @@ public class GlobalVar {
         }
     }
 
+    public static double SafetyJSONStringToDouble(JSONObject object, String key) throws JSONException {
+        try {
+            return Double.parseDouble(object.getString(key));
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
+    }
+
     public static String setComma(int value) {
         DecimalFormat format = new DecimalFormat("###,###,###");
         return format.format(value);

@@ -2,8 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="1194dp"
-    android:layout_height="488dp"
+    android:layout_height="515dp"
     android:background="#222222">
+
+    <include
+        layout="@layout/layout_check_listview_header"
+        />
+
 
     <ListView
         android:id="@+id/lv_beer_index"

@@ -34,7 +34,7 @@
             android:layout_height="31dp"
             android:textAlignment="textEnd"
             android:textSize="25dp"
-            android:text="BLUE MOON"
+            android:text="SELECT ITEM"
             android:textColor="#FFFFFF"/>
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="textEnd"
             android:textSize="15dp"
-            android:text="WHITE IPA"
+            android:text=""
             android:textColor="#FFFFFF"/>
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="textEnd"
             android:textSize="15dp"
-            android:text="5.4%, 355ml"
+            android:text=""
             android:textColor="#FFFFFF"/>
 
         <TextView
@@ -62,7 +62,7 @@
             android:layout_height="24dp"
             android:textAlignment="textEnd"
             android:textSize="20dp"
-            android:text="+12.62%"
+            android:text=""
             android:textColor="#FFFFFF"/>
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_height="24dp"
             android:textAlignment="textEnd"
             android:textSize="20dp"
-            android:text="+1200"
+            android:text=""
             android:textColor="#FFFFFF"/>
 
         <TextView
@@ -80,7 +80,7 @@
             android:layout_height="48dp"
             android:textAlignment="textEnd"
             android:textSize="40dp"
-            android:text="10,800"
+            android:text=""
             android:textColor="#FFFFFF"/>
 
         <Button

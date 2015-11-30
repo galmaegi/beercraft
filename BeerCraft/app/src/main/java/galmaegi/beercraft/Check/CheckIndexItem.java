@@ -19,6 +19,15 @@ public class CheckIndexItem {
     private Date orderDate;
     private int orderID;
     private int qty;
+    private boolean isclicked;
+
+    public void setIsclicked(boolean isclicked) {
+        this.isclicked = isclicked;
+    }
+
+    public boolean getisclicked() {
+        return isclicked;
+    }
 
     public CheckIndexItem() {
         itemID = 0;
@@ -32,6 +41,7 @@ public class CheckIndexItem {
         orderDate = new Date();
         orderID = 0;
         qty = 0;
+        isclicked = false;
     }
 
     public CheckIndexItem(JSONObject object) throws JSONException {

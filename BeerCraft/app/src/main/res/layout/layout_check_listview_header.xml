@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="1194dp"
-    android:layout_height="24dp"
+    android:layout_height="wrap_content"
     android:background="#222222">
 
     <android.widget.Space
@@ -47,7 +47,9 @@
     <CheckBox
         android:layout_marginLeft="50dp"
         android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:enabled="false"/>
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:checked="false"
+        android:id="@+id/check_checkbox" />
 
 </LinearLayout>

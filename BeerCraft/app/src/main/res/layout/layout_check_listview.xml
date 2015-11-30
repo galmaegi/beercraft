@@ -12,7 +12,7 @@
     <ListView
         android:id="@+id/lv_check_index"
         android:layout_width="match_parent"
-        android:layout_height="491dp">
+        android:layout_height="440dp">
     </ListView>
 
     <View
@@ -269,7 +269,7 @@
                     android:layout_width="291dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
-                    android:textSize="20dp"/>
+                    android:textSize="50dp"/>
 
                 <View
                     android:layout_width="1dp"

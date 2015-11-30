@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
-public class CheckIndexAdapter extends BaseAdapter {
+public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListener{
 
     private Context mContext;
     private ArrayList<CheckIndexItem> items;
@@ -97,6 +97,19 @@ public class CheckIndexAdapter extends BaseAdapter {
         holder.mRate.setTextColor(color);
         holder.mIncrease.setTextColor(color);
 
+        if(item.getisclicked()){
+            holder.mCheckBox.setChecked(true);
+        }
+        else{
+            holder.mCheckBox.setChecked(false);
+        }
+
         return convertView;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+
     }
 }

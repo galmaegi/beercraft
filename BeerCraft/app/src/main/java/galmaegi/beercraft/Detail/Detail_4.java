@@ -101,7 +101,7 @@ public class Detail_4 implements View.OnClickListener{
 
         }
         else {
-            detail_4_changepercent.setText(Html.fromHtml("<font color=#15a615> -"+percent+"%"));
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#15a615> "+percent+"%"));
             detail_4_changeprice.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice));
             detail_4_img_updown.setBackgroundColor(Color.parseColor("#15a615"));
         }

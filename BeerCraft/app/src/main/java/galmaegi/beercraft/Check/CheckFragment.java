@@ -7,15 +7,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.astuetz.PagerSlidingTabStrip;
 
-import java.util.ArrayList;
-
-import galmaegi.beercraft.Beer.BeerIndexPagerAdapter;
-import galmaegi.beercraft.Beer.RecommendAdapter;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 
@@ -44,7 +39,7 @@ public class CheckFragment extends Fragment{
         viewpager.setAdapter(adapter);
 
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_check_list).findViewById(R.id.tab_check);
-        tabStrip.setTextSize(13);
+        tabStrip.setTextSize(GlobalVar.tabTextSize);
         tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
 

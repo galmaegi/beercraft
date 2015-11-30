@@ -16,6 +16,7 @@ public class GlobalVar {
     public static Typeface NanumGothic_Bold;
     public static String currentTable;
     public static int realLoadingTime = 5*1000;
+    public static int tabTextSize = 25;
 
     public static Date StringToDate(String string) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -50,7 +51,7 @@ public class GlobalVar {
     public static double Division(int num1, int num2) {
         double ret;
         try {
-            ret = (double) num1 / num2 * 100;
+            ret = (double) num1 / num2;
         } catch (ArithmeticException e) {
             return 0;
         }

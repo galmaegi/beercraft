@@ -53,7 +53,7 @@ public class SidemenuFragment extends Fragment {
         viewpager.setAdapter(new SidemenuIndexPagerAdapter(getChildFragmentManager()));
 
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.inc_sidemenu_index).findViewById(R.id.tab_sidemenu_index);
-        tabStrip.setTextSize(13);
+        tabStrip.setTextSize(GlobalVar.tabTextSize);
         tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
 

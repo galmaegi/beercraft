@@ -98,7 +98,7 @@ public class BeerFragment extends Fragment {
         viewpager.setAdapter(adapter);
 
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
-        tabStrip.setTextSize(13);
+        tabStrip.setTextSize(GlobalVar.tabTextSize);
         tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
 
@@ -175,17 +175,17 @@ public class BeerFragment extends Fragment {
             mName.setText(item.getEnglishName());
             mStyle.setText(item.getStyle());
             mAbvMl.setText(item.getStrength()+ "%, " + item.getVolume() + "ml");
-            mRate.setText(item.getRate()+"");
+            mRate.setText(String.format("%.2f",item.getRate())+"%");
             mIncrease.setText(String.valueOf(item.getIncrease()));
             mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
 
             int color;
             if(item.getIncrease() < 0) {
-                color = Color.parseColor("#9D1819");
+                color = Color.parseColor("#05B005");
             } else if(item.getIncrease() == 0) {
                 color = Color.parseColor("#6F6F6F");
             } else {
-                color = Color.parseColor("#05B005");
+                color = Color.parseColor("#9D1819");
             }
 
             mAlert.setBackgroundColor(color);

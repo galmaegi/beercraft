@@ -79,11 +79,11 @@ public class RecommendAdapter extends BaseAdapter {
 
         int color;
         if(increase < 0) {
-            color = Color.parseColor("#9D1819");
+            color = Color.parseColor("#05B005");
         } else if(increase == 0) {
             color = Color.parseColor("#6F6F6F");
         } else {
-            color = Color.parseColor("#05B005");
+            color = Color.parseColor("#9D1819");
         }
 
         holder.mAlert.setBackgroundColor(color);

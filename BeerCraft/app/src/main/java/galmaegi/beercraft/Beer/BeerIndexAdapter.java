@@ -76,7 +76,7 @@ public class BeerIndexAdapter extends BaseAdapter {
         int curPrice = item.getSellingPrice();
         int prvPrice = item.getLast();
         int increase = curPrice - prvPrice;
-        double rate = GlobalVar.Division(increase, curPrice);
+        double rate = GlobalVar.Division(curPrice, prvPrice);
 
         holder.mName.setText(item.getEnglishName());
         holder.mCountry.setText(item.getCountry());
@@ -90,11 +90,11 @@ public class BeerIndexAdapter extends BaseAdapter {
 
         int color;
         if(increase < 0) {
-            color = Color.parseColor("#9D1819");
+            color = Color.parseColor("#05B005");
         } else if(increase == 0) {
             color = Color.parseColor("#6F6F6F");
         } else {
-            color = Color.parseColor("#05B005");
+            color = Color.parseColor("#9D1819");
         }
 
         holder.mAlert.setBackgroundColor(color);

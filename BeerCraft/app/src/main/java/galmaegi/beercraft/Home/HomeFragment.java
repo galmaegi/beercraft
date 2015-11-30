@@ -25,6 +25,7 @@ import java.util.Date;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.CustomTimer.CustomTimer;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.NewsItem;
@@ -90,7 +91,7 @@ public class HomeFragment extends Fragment {
         viewpager.setAdapter(beerIndexPagerAdapter);
 
         tabStrip = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_beer_index).findViewById(R.id.tab_beer_index);
-        tabStrip.setTextSize(13);
+        tabStrip.setTextSize(GlobalVar.tabTextSize);
         tabStrip.setTextColor(Color.WHITE);
         tabStrip.setViewPager(viewpager);
         return holder;

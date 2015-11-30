@@ -107,7 +107,7 @@ public class BeerIndexItem {
         last = GlobalVar.SafetyJSONStringToInt(object, "last");
 
         increase = sellingPrice - last;
-        rate = GlobalVar.Division(increase, sellingPrice);
+        rate = GlobalVar.Division(sellingPrice, last);
 
     }
 

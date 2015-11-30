@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,19 +13,19 @@ import java.util.ArrayList;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
-public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListener{
+public class CheckAccountAdapter extends BaseAdapter implements View.OnClickListener{
 
     private Context mContext;
     private ArrayList<CheckIndexItem> items;
     boolean isOnCheckbox;
 
-    public CheckIndexAdapter(Context context) {
+    public CheckAccountAdapter(Context context) {
         super();
         mContext = context;
         items = new ArrayList<>();
     }
 
-    public CheckIndexAdapter(Context context, ArrayList items, boolean isOnCheckbox) {
+    public CheckAccountAdapter(Context context, ArrayList items, boolean isOnCheckbox) {
         super();
         mContext = context;
         this.items = items;
@@ -50,37 +49,37 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        CheckIndexViewHolder holder;
+        CheckAccountViewHolder holder;
 
         if(convertView == null) {
-            holder = new CheckIndexViewHolder();
+            holder = new CheckAccountViewHolder();
 
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.layout_check_listview_item, null);
+            convertView = inflater.inflate(R.layout.layout_check_listview_account_item, null);
 
             holder.mAlert = convertView.findViewById(R.id.v_alert);
             holder.mName = (TextView) convertView.findViewById(R.id.tv_name);
             holder.mCode = (TextView) convertView.findViewById(R.id.tv_code);
-            holder.mCostPrice = (TextView) convertView.findViewById(R.id.tv_cost_price);
-            holder.mOrderAmount = (TextView) convertView.findViewById(R.id.tv_order_amount);
+            holder.mLast = (TextView) convertView.findViewById(R.id.tv_cost_last);
+            holder.mSale = (TextView) convertView.findViewById(R.id.tv_cost_sale);
+            holder.mQty = (TextView)convertView.findViewById(R.id.tv_cost_qty);
+            holder.mBuy = (TextView) convertView.findViewById(R.id.tv_order_buy);
+
             holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
             holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
-            holder.mCheckBox = (CheckBox) convertView.findViewById(R.id.checkbox);
 
-            if(!isOnCheckbox) {
-                holder.mCheckBox.setVisibility(View.INVISIBLE);
-            }
+
 
             convertView.setTag(holder);
         } else {
-            holder = (CheckIndexViewHolder) convertView.getTag();
+            holder = (CheckAccountViewHolder) convertView.getTag();
         }
 
         CheckIndexItem item = items.get(position);
 
         holder.mName.setText(item.getProductName());
-        holder.mCostPrice.setText(GlobalVar.setComma(item.getCostPrice()));
-        holder.mOrderAmount.setText(GlobalVar.setComma(item.getOrderAmount()));
+        holder.mLast.setText(GlobalVar.setComma(item.getCostPrice()));
+        holder.mBuy.setText(GlobalVar.setComma(item.getOrderAmount()));
         holder.mRate.setText(String.format("%.2f %%", 0.0));
         holder.mIncrease.setText(GlobalVar.setComma(0));
 
@@ -97,12 +96,6 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
         holder.mRate.setTextColor(color);
         holder.mIncrease.setTextColor(color);
 
-        if(item.getisclicked()){
-            holder.mCheckBox.setChecked(true);
-        }
-        else{
-            holder.mCheckBox.setSelected(false);
-        }
 
         return convertView;
     }

@@ -69,8 +69,14 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
 
         boolean isOnCheckBox = (mPage == 0) ? false : true;
 
-        checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items, isOnCheckBox);
-        checkListView.setAdapter(checkIndexAdapter);
+        if(mPage==0){
+            checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items, isOnCheckBox);
+            checkListView.setAdapter(checkIndexAdapter);
+        }
+        else{
+            checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items, isOnCheckBox);
+            checkListView.setAdapter(checkIndexAdapter);
+        }
 
         accountBottomLayout = new AccountBottomLayout(view);
         wishListBottomLayout = new WishListBottomLayout(view);
@@ -96,6 +102,7 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
             tv_total = (TextView)holder.findViewById(R.id.tv_account_total);
         }
         else{
+            holder.findViewById(R.id.layout_check_listview_account_header).setVisibility(View.INVISIBLE);
             tv_total = (TextView)holder.findViewById(R.id.tv_wish_total);
         }
         check_checkbox.setOnClickListener(this);

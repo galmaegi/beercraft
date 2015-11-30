@@ -4,10 +4,20 @@
     android:layout_width="1194dp"
     android:layout_height="636dp"
     android:background="#222222">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <include
-        layout="@layout/layout_check_listview_header"
-        />
+        <include
+            layout="@layout/layout_check_listview_header"
+            />
+        <include
+            android:id="@+id/layout_check_listview_account_header"
+            layout="@layout/layout_check_listview_account_header"
+            />
+
+    </RelativeLayout>
+
 
     <ListView
         android:id="@+id/lv_check_index"
@@ -36,7 +46,7 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
-                
+
                 <TextView
                     android:paddingRight="20dp"
                     android:layout_width="263dp"
@@ -301,5 +311,5 @@
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>
-    
+
 </LinearLayout>

@@ -101,7 +101,7 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
             holder.mCheckBox.setChecked(true);
         }
         else{
-            holder.mCheckBox.setSelected(false);
+            holder.mCheckBox.setChecked(false);
         }
 
         return convertView;

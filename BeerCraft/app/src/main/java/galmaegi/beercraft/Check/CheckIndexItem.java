@@ -13,7 +13,7 @@ public class CheckIndexItem {
     private int classificationCode;
     private String productName;
     private int costPrice;
-    private Double discountPrice;
+    private int discountPrice;
     private int profitRate;
     private int orderAmount;
     private Date orderDate;
@@ -35,7 +35,7 @@ public class CheckIndexItem {
         classificationCode = 0;
         productName = "";
         costPrice = 0;
-        discountPrice = 0.0;
+        discountPrice = 0;
         profitRate = 0;
         orderAmount = 0;
         orderDate = new Date();
@@ -50,7 +50,7 @@ public class CheckIndexItem {
         classificationCode = GlobalVar.SafetyJSONStringToInt(object, "classificationCode");
         productName = object.getString("productName");
         costPrice = GlobalVar.SafetyJSONStringToInt(object, "costPrice");
-        discountPrice = GlobalVar.SafetyJSONStringToDouble(object, "discountPrice");
+        discountPrice = GlobalVar.SafetyJSONStringToInt(object, "discountPrice");
         profitRate = GlobalVar.SafetyJSONStringToInt(object, "profitRate");
         orderAmount = GlobalVar.SafetyJSONStringToInt(object, "orderAmount");
         orderDate = GlobalVar.StringToDate(object.getString("orderDate"));
@@ -98,11 +98,11 @@ public class CheckIndexItem {
         this.costPrice = costPrice;
     }
 
-    public Double getDiscountPrice() {
+    public int getDiscountPrice() {
         return discountPrice;
     }
 
-    public void setDiscountPrice(Double discountPrice) {
+    public void setDiscountPrice(int discountPrice) {
         this.discountPrice = discountPrice;
     }
 

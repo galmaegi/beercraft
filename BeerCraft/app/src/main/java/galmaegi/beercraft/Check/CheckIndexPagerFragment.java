@@ -40,6 +40,14 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
     TextView tv_total;
     TextView tv_wish_total;
 
+    CheckAccountAdapter checkAccountAdapter = null;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
     public static CheckIndexPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -70,8 +78,8 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         boolean isOnCheckBox = (mPage == 0) ? false : true;
 
         if(mPage==0){
-            checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items, isOnCheckBox);
-            checkListView.setAdapter(checkIndexAdapter);
+            checkAccountAdapter = new CheckAccountAdapter(view.getContext(), items, isOnCheckBox);
+            checkListView.setAdapter(checkAccountAdapter);
         }
         else{
             checkIndexAdapter = new CheckIndexAdapter(view.getContext(), items, isOnCheckBox);
@@ -106,8 +114,6 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
             tv_total = (TextView)holder.findViewById(R.id.tv_wish_total);
         }
         check_checkbox.setOnClickListener(this);
-
-
         return holder;
     }
     public void setAccountBottomValue(){
@@ -131,7 +137,7 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-
+                        items.clear();
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 CheckIndexItem item = new CheckIndexItem(response.getJSONObject(i));
@@ -143,7 +149,12 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                             }
                         }
                         setAccountBottomValue();
-                        checkIndexAdapter.notifyDataSetChanged();
+                        if(mPage==0) {
+                            checkAccountAdapter.notifyDataSetChanged();
+                        }
+                        else{
+                            checkIndexAdapter.notifyDataSetChanged();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -157,14 +168,18 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
 
     @Override
     public void onClick(View v) {
-        if(!check_checkbox.isSelected()) {
-            check_checkbox.setSelected(true);
+        setCheckBoxs();
+    }
+    public void setCheckBoxs(){
+
+        if(check_checkbox.isChecked()) {
+//            check_checkbox.setSelected(true);
             for (int i = 0; i < items.size(); i++) {
                 items.get(i).setIsclicked(true);
             }
         }
         else{
-            check_checkbox.setSelected(false);
+//            check_checkbox.setSelected(false);
             for (int i = 0; i < items.size(); i++) {
                 items.get(i).setIsclicked(false);
             }

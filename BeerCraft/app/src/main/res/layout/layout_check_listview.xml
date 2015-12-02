@@ -198,7 +198,7 @@
 
                 <TextView
                     android:paddingRight="20dp"
-                    android:layout_width="190dp"
+                    android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
@@ -213,7 +213,7 @@
 
                 <TextView
                     android:paddingRight="20dp"
-                    android:layout_width="193dp"
+                    android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
@@ -228,7 +228,7 @@
 
                 <TextView
                     android:paddingRight="20dp"
-                    android:layout_width="291dp"
+                    android:layout_width="251dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
@@ -250,7 +250,7 @@
                 <TextView
                     android:id="@+id/tv_wish_per"
                     android:paddingRight="20dp"
-                    android:layout_width="190dp"
+                    android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
                     android:textSize="50dp" />
@@ -263,7 +263,7 @@
                 <TextView
                     android:id="@+id/tv_wish_profit"
                     android:paddingRight="20dp"
-                    android:layout_width="193dp"
+                    android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
                     android:textSize="50dp" />
@@ -276,7 +276,7 @@
                 <TextView
                     android:id="@+id/tv_wish_total"
                     android:paddingRight="20dp"
-                    android:layout_width="291dp"
+                    android:layout_width="251dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
                     android:textSize="50dp"/>

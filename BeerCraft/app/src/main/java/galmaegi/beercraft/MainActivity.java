@@ -150,14 +150,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         if(fm.getBackStackEntryCount() == 1) {
             return ;
         }
-
         fm.popBackStack();
     }
 
     public void setCurrenttable(){
         GlobalVar.currentTable = preftablenumRead();
         action_bar_tablenum.setText("TABLE NUMBER #" + GlobalVar.currentTable);
-
     }
 
     public String preftablenumRead(){
@@ -219,7 +217,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onBackPressed() {
-
     }
     View.OnClickListener mainBackHandler = new View.OnClickListener() {
         @Override

@@ -106,7 +106,7 @@ public class NewsFragment extends Fragment {
         replaceFragment(newsListFragment);
 
         NewsLineChart = (LineChart)view.findViewById(R.id.NewsLineChart);
-        new CustomLineChart(getContext(), NewsLineChart, GlobalVar.NanumGothic_Bold, 20);
+        new CustomLineChart(getContext(), NewsLineChart, GlobalVar.NanumGothic_Bold, 18);
     }
 
     Fragment newsListFragment = new NewsListFragment();

@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -22,9 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
@@ -225,15 +222,15 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
     }
 
     public ArrayList getCheckedItems() {
-        ArrayList<CheckIndexItem> items = new ArrayList<>();
+        ArrayList<CheckIndexItem> list = new ArrayList<>();
 
         for (int i = 0; i < items.size(); i++) {
             if(items.get(i).getisclicked()) {
-                items.add(items.get(i));
+                list.add(items.get(i));
             }
         }
 
-        return items;
+        return list;
     }
 
     public void sendRequest(String api) {
@@ -244,11 +241,7 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                 try {
                     String status = response.getString("status");
                     if(status.equals("1")){
-                        if(mPage == 0) {
-                            checkAccountAdapter.notifyDataSetChanged();
-                        } else {
-                            checkIndexAdapter.notifyDataSetChanged();
-                        }
+                        getCheckIndex();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -278,9 +271,9 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
             query += String.format("&%d[0]=%d&%d[1]=%d", i, item.getProductID(),
                     i, item.getOrderID());
         }
-        query.replace("&", "");
+        query = query.replaceFirst("&", "");
 
-        String api = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-remove-wishlist.php" +
+        String api = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-remove-wishlist.php?" +
                 query;
         sendRequest(api);
     }
@@ -311,5 +304,4 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
             buySelectedItem();
         }
     }
-
 }

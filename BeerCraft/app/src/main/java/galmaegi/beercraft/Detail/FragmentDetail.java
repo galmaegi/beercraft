@@ -128,7 +128,8 @@ public class FragmentDetail extends Fragment {
                             // response will be a json object
                             //set global object
                             DetailGlobalVar.currentObject = (JSONObject) response.get(0);
-                            DetailGlobalVar.price = DetailGlobalVar.currentObject.getInt("sellingPrice");
+                            DetailGlobalVar.lastPrice = DetailGlobalVar.currentObject.getInt("sellingPrice");
+                            DetailGlobalVar.price = DetailGlobalVar.currentObject.getInt("last");
                             //set detail section 1
                             detail_1.setSection();
 

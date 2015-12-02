@@ -98,7 +98,7 @@ public class BeerIndexItem {
         volume = GlobalVar.SafetyJSONStringToInt(object, "volume");
         rateBeerScore = GlobalVar.SafetyJSONStringToInt(object, "rateBeerScore");
         price = GlobalVar.SafetyJSONStringToInt(object, "price");
-        sellingPrice = GlobalVar.SafetyJSONStringToInt(object, "sellingPrice");
+        sellingPrice = GlobalVar.SafetyJSONStringToInt(object, "last");
         productImage = object.getString("proudctImage");
         creamy = GlobalVar.SafetyJSONStringToInt(object, "creamy");
         flavory = GlobalVar.SafetyJSONStringToInt(object, "flavory");
@@ -111,10 +111,10 @@ public class BeerIndexItem {
         entryDate = GlobalVar.StringToDate(object.getString("entryDate"));
         modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
         groupId = GlobalVar.SafetyJSONStringToInt(object, "grp_id");
-        last = GlobalVar.SafetyJSONStringToInt(object, "last");
+        last = GlobalVar.SafetyJSONStringToInt(object, "sellingPrice");
 
         increase = sellingPrice - last;
-        rate = GlobalVar.Division(sellingPrice-last, sellingPrice)*100;
+        rate = GlobalVar.Division(sellingPrice-last, last)*100;
 
     }
 

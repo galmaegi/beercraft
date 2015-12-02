@@ -81,7 +81,7 @@ public class Detail_4 implements View.OnClickListener{
             detail_4_countplus.setOnClickListener(detail_4_clicklistener);
             detail_4_countminus.setOnClickListener(detail_4_clicklistener);
             detail_4_btn_buy.setOnClickListener(this);
-            setChanged(DetailGlobalVar.currentObject.getString("sellingPrice"), DetailGlobalVar.currentObject.getString("last"));
+            setChanged( DetailGlobalVar.currentObject.getString("last"), DetailGlobalVar.currentObject.getString("sellingPrice"));
         }
         catch (JSONException e){
             e.printStackTrace();
@@ -91,7 +91,7 @@ public class Detail_4 implements View.OnClickListener{
         int CurrentPrice = isNullPrice(sCurrentPrice);
         int LastPrice = isNullPrice(sLastPrice);
         int ChangedPrice = CurrentPrice - LastPrice;
-        double percent = round(getChangePercent(CurrentPrice, LastPrice),2);
+        double percent = getChangePercent(ChangedPrice, LastPrice) * 100;
 
         if(ChangedPrice>=0) {
             detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+percent+"%"));
@@ -99,9 +99,9 @@ public class Detail_4 implements View.OnClickListener{
             detail_4_img_updown.setBackgroundColor(Color.parseColor("#801f21"));
         }
         else if(ChangedPrice==0) {
-            detail_4_changepercent.setText(Html.fromHtml("<font color=#FFFFFF> +"+percent+"%"));
-            detail_4_changeprice.setText(Html.fromHtml("<font color=#FFFFFF> +" + ChangedPrice));
-            detail_4_img_updown.setBackgroundColor(Color.parseColor("#801f21"));
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#6F6F6F> +"+percent+"%"));
+            detail_4_changeprice.setText(Html.fromHtml("<font color=#6F6F6F> +" + ChangedPrice));
+            detail_4_img_updown.setBackgroundColor(Color.parseColor("#6F6F6F"));
 
         }
         else {

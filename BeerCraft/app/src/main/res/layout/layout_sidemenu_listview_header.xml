@@ -19,7 +19,7 @@
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Last"
+        android:text="Current"
         android:textColor="#FFFFFF"/>
 
 </LinearLayout>

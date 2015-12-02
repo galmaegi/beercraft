@@ -57,9 +57,6 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
             getMgt();
         }
 
-
-
-
         RadarMarkerView mv = new RadarMarkerView(context, R.layout.radar_marker);
         mChart.setMarkerView(mv);
 
@@ -110,9 +107,9 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
     private LineData generateDataLine(int cnt) {
 
         ArrayList<Entry> e1 = new ArrayList<Entry>();
-        if (DetailGlobalVar.price != 0) {
+        if (DetailGlobalVar.lastPrice != 0) {
             for (int i = 0; i < cnt; i++) {
-                e1.add(new Entry((int) ((double) dataArray.get(i) / 100 * DetailGlobalVar.price), i));
+                e1.add(new Entry((int) ((double) dataArray.get(i) / 100 * DetailGlobalVar.lastPrice), i));
             }
         }
         else{

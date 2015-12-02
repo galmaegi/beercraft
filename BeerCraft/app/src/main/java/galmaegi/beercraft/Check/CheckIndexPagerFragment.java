@@ -148,13 +148,13 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         int costTotal=0;
         int buyTotal=0;
         for(int i = 0; i < items.size(); i++){
-            total += items.get(i).getCostPrice() * items.get(i).getQty();
+            total += items.get(i).getDiscountPrice() * items.get(i).getQty();
             costTotal += items.get(i).getCostPrice() * items.get(i).getQty();
             buyTotal += items.get(i).getDiscountPrice() * items.get(i).getQty();
         }
         tv_total.setText(GlobalVar.setComma(total));
-        tv_profit.setText(GlobalVar.setComma(buyTotal-costTotal));
-        tv_per.setText(String.format("%.2f %%", GlobalVar.Division(buyTotal - costTotal, buyTotal)*100));
+        tv_profit.setText(GlobalVar.setComma(costTotal - total));
+        tv_per.setText(String.format("%.2f %%", GlobalVar.Division(costTotal - total, costTotal)*100));
 
         if (mPage == 0){
             tv_account_cost.setText(GlobalVar.setComma(costTotal));

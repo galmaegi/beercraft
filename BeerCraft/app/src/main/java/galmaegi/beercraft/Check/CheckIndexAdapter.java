@@ -90,18 +90,29 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
 
         holder.mName.setText(item.getProductName());
         holder.mCostPrice.setText(GlobalVar.setComma(item.getCostPrice()));
-        holder.mOrderAmount.setText(GlobalVar.setComma(item.getOrderAmount()));
-        holder.mRate.setText(String.format("%.2f %%", 0.0));
-        holder.mIncrease.setText(GlobalVar.setComma(0));
+        holder.mOrderAmount.setText(GlobalVar.setComma(item.getDiscountPrice()));
 
-        int color = Color.parseColor("#6F6F6F");
-//        if(increase < 0) {
-//            color = Color.parseColor("#9D1819");
-//        } else if(increase == 0) {
-//            color = Color.parseColor("#6F6F6F");
-//        } else {
-//            color = Color.parseColor("#05B005");
-//        }
+        int increase;
+        try {
+            increase = item.getCostPrice() - item.getDiscountPrice();
+        }
+        catch (ArithmeticException e){
+            increase = 0;
+        }
+        double rate = GlobalVar.Division(increase,item.getCostPrice())*100;
+
+        holder.mRate.setText(String.format("%.2f %%", rate));
+        holder.mIncrease.setText(GlobalVar.setComma(increase * item.getQty()));
+
+
+        int color;
+        if(increase < 0) {
+            color = Color.parseColor("#9D1819");
+        } else if(increase == 0) {
+            color = Color.parseColor("#6F6F6F");
+        } else {
+            color = Color.parseColor("#05B005");
+        }
 
         holder.mAlert.setBackgroundColor(color);
         holder.mRate.setTextColor(color);

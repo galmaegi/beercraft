@@ -72,8 +72,8 @@ public class RecommendAdapter extends BaseAdapter {
         BeerIndexItem item = items.get(position);
         int curPrice = item.getSellingPrice();
         int prvPrice = item.getLast();
-        int increase = curPrice - prvPrice;
-        double rate = GlobalVar.Division(curPrice - prvPrice, curPrice)*100;
+        int increase = item.getIncrease();
+        double rate = item.getRate();
 
         holder.mName.setText(item.getBeerName());
         holder.mCountry.setText(item.getCountry());

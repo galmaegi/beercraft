@@ -75,7 +75,7 @@ public class Detail_1 implements OnClickListener{
             sum_beer_style.setText(DetailGlobalVar.currentObject.getString("style"));
             sum_beer_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
             sum_price.setText(GlobalVar.setComma(DetailGlobalVar.price));
-            setChanged(DetailGlobalVar.currentObject.getString("sellingPrice"), DetailGlobalVar.currentObject.getString("last"));
+            setChanged(DetailGlobalVar.currentObject.getString("last"), DetailGlobalVar.currentObject.getString("sellingPrice"));
         }
         catch (JSONException e){
             e.printStackTrace();
@@ -85,11 +85,13 @@ public class Detail_1 implements OnClickListener{
         int CurrentPrice = isNullPrice(sCurrentPrice);
         int LastPrice = isNullPrice(sLastPrice);
         int ChangedPrice = CurrentPrice - LastPrice;
-        double percent = round(getChangePercent(CurrentPrice, LastPrice),2);
+        double percent = getChangePercent(ChangedPrice, LastPrice) * 100;
 
-
-        if(ChangedPrice>=0) {
+        if(ChangedPrice>0) {
             sum_range.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice + " (<font color=#801f21> +" + percent + "%)"));
+        }
+        else if(ChangedPrice == 0){
+            sum_range.setText(Html.fromHtml("<font color=#6F6F6F>" + ChangedPrice + " (<font color=#6F6F6F> +" + percent + "%)"));
         }
         else {
             sum_range.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice + " (<font color=#15a615> -"+percent+"%)"));

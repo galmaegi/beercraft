@@ -253,7 +253,7 @@
                     android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
-                    android:textSize="20dp" />
+                    android:textSize="50dp" />
 
                 <View
                     android:layout_width="1dp"
@@ -266,7 +266,7 @@
                     android:layout_width="193dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
-                    android:textSize="20dp" />
+                    android:textSize="50dp" />
 
                 <View
                     android:layout_width="1dp"

@@ -70,7 +70,8 @@ public class RecommendAdapter extends BaseAdapter {
         BeerIndexItem item = items.get(position);
         int curPrice = item.getSellingPrice();
         int prvPrice = item.getLast();
-        int increase = curPrice - prvPrice;
+        int increase = item.getIncrease();
+
 
         holder.mName.setText(item.getBeerName());
         holder.mCountry.setText(item.getCountry());

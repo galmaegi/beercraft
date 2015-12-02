@@ -9,6 +9,7 @@ public class DetailGlobalVar {
 
     public static JSONObject currentObject;
     public static int price;
+    public static int lastPrice;
     public static int count;
 
 }

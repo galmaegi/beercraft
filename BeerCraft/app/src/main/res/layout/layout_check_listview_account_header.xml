@@ -28,14 +28,14 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Last" />
+        android:text="Original" />
 
     <TextView
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Sale" />
+        android:text="Bought" />
 
     <TextView
         android:layout_width="80dp"
@@ -49,7 +49,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Buy"/>
+        android:text="Sub-total"/>
 
     <TextView
         android:layout_width="120dp"

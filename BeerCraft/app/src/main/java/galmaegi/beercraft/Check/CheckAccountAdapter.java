@@ -89,7 +89,7 @@ public class CheckAccountAdapter extends BaseAdapter implements View.OnClickList
         catch (ArithmeticException e){
             increase = 0;
         }
-        double rate = GlobalVar.Division(increase, item.getCostPrice());
+        double rate = GlobalVar.Division(item.getDiscountPrice() - item.getCostPrice(), item.getDiscountPrice());
         holder.mIncrease.setText(GlobalVar.setComma(increase*item.getQty()));
         holder.mRate.setText(String.format("%.2f %%", rate));
 

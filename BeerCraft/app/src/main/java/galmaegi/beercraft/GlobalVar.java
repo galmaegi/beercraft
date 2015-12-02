@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by root on 15. 11. 17.
@@ -15,8 +16,10 @@ import java.util.Date;
 public class GlobalVar {
     public static Typeface NanumGothic_Bold;
     public static String currentTable;
-    public static int realLoadingTime = 5*1000;
+    public static int realLoadingTime = 60*1000;
     public static int tabTextSize = 25;
+    public static Locale language = Locale.KOREAN;//0 - english , 1 - korean
+
 
     public static Date StringToDate(String string) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");

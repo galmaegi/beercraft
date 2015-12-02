@@ -15,6 +15,7 @@ import org.json.JSONException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Locale;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
@@ -68,7 +69,10 @@ public class Detail_4 implements View.OnClickListener{
             //to set detail_4_section
             ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
             detail_4_productimage.setImageUrl(DetailGlobalVar.currentObject.getString("proudctImage"), mImageLoader);
-            detail_4_productname.setText(DetailGlobalVar.currentObject.getString("productName"));
+            if(GlobalVar.language == Locale.ENGLISH)
+                detail_4_productname.setText(DetailGlobalVar.currentObject.getString("englishName"));
+            else
+                detail_4_productname.setText(DetailGlobalVar.currentObject.getString("productName"));
             detail_4_productstyle.setText(DetailGlobalVar.currentObject.getString("style"));
             detail_4_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
             detail_4_country.setText(DetailGlobalVar.currentObject.getString("country"));
@@ -86,8 +90,8 @@ public class Detail_4 implements View.OnClickListener{
     public void setChanged(String sCurrentPrice,String sLastPrice){
         int CurrentPrice = isNullPrice(sCurrentPrice);
         int LastPrice = isNullPrice(sLastPrice);
-        double percent = round(getChangePercent(CurrentPrice, LastPrice),2);
         int ChangedPrice = CurrentPrice - LastPrice;
+        double percent = round(getChangePercent(CurrentPrice, LastPrice),2);
 
         if(ChangedPrice>=0) {
             detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+percent+"%"));

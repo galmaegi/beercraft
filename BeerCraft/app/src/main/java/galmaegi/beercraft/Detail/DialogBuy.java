@@ -19,6 +19,8 @@ import com.android.volley.toolbox.NetworkImageView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
@@ -76,7 +78,12 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
             //to set dialog_buy_section
             ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
             dialog_buy_productimage.setImageUrl(DetailGlobalVar.currentObject.getString("proudctImage"), mImageLoader);
-            dialog_buy_productname.setText(DetailGlobalVar.currentObject.getString("productName"));
+
+            if(GlobalVar.language == Locale.ENGLISH)
+                dialog_buy_productname.setText(DetailGlobalVar.currentObject.getString("englishName"));
+            else
+                dialog_buy_productname.setText(DetailGlobalVar.currentObject.getString("productName"));
+
             dialog_buy_productstyle.setText(DetailGlobalVar.currentObject.getString("style"));
             dialog_buy_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
             dialog_buy_country.setText(DetailGlobalVar.currentObject.getString("country"));

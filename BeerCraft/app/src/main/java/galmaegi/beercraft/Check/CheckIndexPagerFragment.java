@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,11 +37,17 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
 
     View holder;
     CheckBox check_checkbox;
-
+    //common
     TextView tv_total;
-    TextView tv_wish_total;
-
+    TextView tv_per;
+    TextView tv_profit;
+    //for account
+    TextView tv_account_cost;
+    TextView tv_account_buy;
+    //for wishlist
     CheckAccountAdapter checkAccountAdapter = null;
+    Button btn_delete;
+    Button btn_buy;
 
     @Override
     public void onResume() {
@@ -108,25 +115,52 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         if(mPage==0) {
             check_checkbox.setVisibility(View.INVISIBLE);
             tv_total = (TextView)holder.findViewById(R.id.tv_account_total);
+
+            tv_account_cost = (TextView)holder.findViewById(R.id.tv_account_cost);
+            tv_account_buy = (TextView)holder.findViewById(R.id.tv_account_buy);
+            tv_per = (TextView)holder.findViewById(R.id.tv_account_per);
+            tv_profit = (TextView)holder.findViewById(R.id.tv_account_profit);
         }
         else{
             holder.findViewById(R.id.layout_check_listview_account_header).setVisibility(View.INVISIBLE);
             tv_total = (TextView)holder.findViewById(R.id.tv_wish_total);
+            tv_profit = (TextView)holder.findViewById(R.id.tv_wish_profit);
+
+            tv_per = (TextView)holder.findViewById(R.id.tv_wish_per);
+
+            btn_buy = (Button)holder.findViewById(R.id.btn_buy);
+            btn_delete = (Button)holder.findViewById(R.id.btn_delete);
+
+            btn_buy.setOnClickListener(this);
+            btn_delete.setOnClickListener(this);
         }
-        check_checkbox.setOnClickListener(this);
+
+        check_checkbox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setCheckBoxs();
+            }
+        });
         return holder;
     }
     public void setAccountBottomValue(){
         int total = 0;
+        int costTotal=0;
+        int buyTotal=0;
         for(int i = 0; i < items.size(); i++){
             total += items.get(i).getCostPrice() * items.get(i).getQty();
+            costTotal += items.get(i).getCostPrice() * items.get(i).getQty();
+            buyTotal += items.get(i).getDiscountPrice() * items.get(i).getQty();
         }
-        tv_total.setText(total + "");
-    }
-    public void setWishBottomValue(){
+        tv_total.setText(GlobalVar.setComma(total));
+        tv_profit.setText(GlobalVar.setComma(buyTotal-costTotal));
+        tv_per.setText(String.format("%.2f %%", GlobalVar.Division(buyTotal - costTotal, buyTotal)*100));
 
+        if (mPage == 0){
+            tv_account_cost.setText(GlobalVar.setComma(costTotal));
+            tv_account_buy.setText(GlobalVar.setComma(buyTotal));
+        }
     }
-
     private void getCheckIndex() {
 
         String testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-get_wishlist_product.php?tableNo=" + GlobalVar.currentTable;
@@ -168,7 +202,7 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
 
     @Override
     public void onClick(View v) {
-        setCheckBoxs();
+
     }
     public void setCheckBoxs(){
 

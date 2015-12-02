@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
     private Context mContext;
     private ArrayList<CheckIndexItem> items;
     boolean isOnCheckbox;
+    private int position;
 
     public CheckIndexAdapter(Context context) {
         super();
@@ -49,10 +51,12 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         CheckIndexViewHolder holder;
 
+
         if(convertView == null) {
+            this.position = position;
             holder = new CheckIndexViewHolder();
 
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -66,6 +70,12 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
             holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
             holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
             holder.mCheckBox = (CheckBox) convertView.findViewById(R.id.checkbox);
+            holder.mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    items.get(position).setIsclicked(!items.get(position).getisclicked());
+                }
+            });
 
             if(!isOnCheckbox) {
                 holder.mCheckBox.setVisibility(View.INVISIBLE);
@@ -109,7 +119,5 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-
-
     }
 }

@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Locale;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
@@ -67,7 +68,10 @@ public class Detail_1 implements OnClickListener{
     public void setSection(){
         try {
             //to set detail_4_section
-            sum_beer_name.setText(DetailGlobalVar.currentObject.getString("productName"));
+            if(GlobalVar.language == Locale.ENGLISH)
+                sum_beer_name.setText(DetailGlobalVar.currentObject.getString("englishName"));
+            else
+                sum_beer_name.setText(DetailGlobalVar.currentObject.getString("productName"));
             sum_beer_style.setText(DetailGlobalVar.currentObject.getString("style"));
             sum_beer_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
             sum_price.setText(GlobalVar.setComma(DetailGlobalVar.price));
@@ -80,8 +84,9 @@ public class Detail_1 implements OnClickListener{
     public void setChanged(String sCurrentPrice,String sLastPrice){
         int CurrentPrice = isNullPrice(sCurrentPrice);
         int LastPrice = isNullPrice(sLastPrice);
-        double percent = round(getChangePercent(CurrentPrice, LastPrice),2);
         int ChangedPrice = CurrentPrice - LastPrice;
+        double percent = round(getChangePercent(CurrentPrice, LastPrice),2);
+
 
         if(ChangedPrice>=0) {
             sum_range.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice + " (<font color=#801f21> +" + percent + "%)"));

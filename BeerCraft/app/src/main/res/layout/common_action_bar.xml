@@ -8,15 +8,18 @@
     android:layout_height="50dp"
     android:layout_alignParentStart="true"
     android:background="#000">
-    <TextView
+    <Button
         android:layout_weight="1"
         android:layout_gravity="left"
+        android:gravity="left"
         android:layout_marginLeft="77dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="KOREA BEER EXCHANGE"
         android:id="@+id/action_bar_title"
         style="@style/actionbar_title"
+        android:background="#000"
+
         />
 
     <Button

@@ -72,7 +72,7 @@ public class RecommendAdapter extends BaseAdapter {
         int prvPrice = item.getLast();
         int increase = curPrice - prvPrice;
 
-        holder.mName.setText(item.getEnglishName());
+        holder.mName.setText(item.getBeerName());
         holder.mCountry.setText(item.getCountry());
         holder.mSellingPrice.setText(GlobalVar.setComma(curPrice));
         holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));

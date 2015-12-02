@@ -76,9 +76,9 @@ public class BeerIndexAdapter extends BaseAdapter {
         int curPrice = item.getSellingPrice();
         int prvPrice = item.getLast();
         int increase = curPrice - prvPrice;
-        double rate = GlobalVar.Division(curPrice, prvPrice) * 100;
+        double rate = GlobalVar.Division(curPrice-prvPrice, curPrice)*100;
 
-        holder.mName.setText(item.getEnglishName());
+        holder.mName.setText(item.getBeerName());
         holder.mCountry.setText(item.getCountry());
         holder.mStyle.setText(item.getStyle());
         holder.mABV.setText(String.valueOf(item.getStrength()));

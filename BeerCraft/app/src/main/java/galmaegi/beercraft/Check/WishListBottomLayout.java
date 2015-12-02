@@ -20,8 +20,8 @@ public class WishListBottomLayout {
         mPER = (TextView) view.findViewById(R.id.tv_wish_per);
         mProfit = (TextView) view.findViewById(R.id.tv_wish_profit);
         mTotal = (TextView) view.findViewById(R.id.tv_wish_total);
-        mDelete = (Button) view.findViewById(R.id.bt_delete);
-        mBuy = (Button) view.findViewById(R.id.bt_buy);
+        mDelete = (Button) view.findViewById(R.id.btn_delete);
+        mBuy = (Button) view.findViewById(R.id.btn_buy);
     }
 
     public void setVisible(boolean visible) {

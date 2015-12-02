@@ -29,6 +29,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     View include;
     Button action_bar_tablenum;
+    Button action_bar_title;
 
     //left side Button
     public ImageButton btn_back;
@@ -63,8 +64,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         btn_check = (ImageButton)findViewById(R.id.btn_check);
 
         action_bar_tablenum = (Button) findViewById(R.id.action_bar_tablenum);
+        action_bar_title = (Button) findViewById(R.id.action_bar_title);
 
-//        bottomBar = new BottomBar(this.getWindow().getDecorView().getRootView());
+        bottomBar = new BottomBar(this.getWindow().getDecorView().getRootView());
 
 
         btn_back.setOnClickListener(mainBackHandler);
@@ -76,6 +78,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         btn_check.setOnClickListener(this);
 
         action_bar_tablenum.setOnLongClickListener(this);
+        action_bar_title.setOnLongClickListener(this);
 
 
         setCurrenttable();
@@ -205,6 +208,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 });
                 dialogPassword.show();
                 returnvalue = true;
+                break;
+            case R.id.action_bar_title:
+                DialogLanguage dialogLanguage = new DialogLanguage(this);
+                dialogLanguage.show();
                 break;
         }
         return returnvalue;

@@ -172,7 +172,7 @@ public class BeerFragment extends Fragment {
         public void setView(BeerIndexItem item) {
             mThumbnail.setImageUrl(item.getProductImage(), AppController.getInstance().getImageLoader());
             mThumbnail.setImageURI(Uri.parse(item.getProductImage()));
-            mName.setText(item.getEnglishName());
+            mName.setText(item.getBeerName());
             mStyle.setText(item.getStyle());
             mAbvMl.setText(item.getStrength()+ "%, " + item.getVolume() + "ml");
             mRate.setText(String.format("%.2f",item.getRate())+"%");

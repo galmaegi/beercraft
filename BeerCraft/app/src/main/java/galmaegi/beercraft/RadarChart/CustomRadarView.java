@@ -57,7 +57,7 @@ public class CustomRadarView {
 
     }
     private String[] mParties = new String[] {
-            "CREAMY","FLAVORY","PURE","BITTERNESS","SWEETNESS","CLUMSY"
+            "ALCOHOL","MALTY","BITTER","SWEET","BODY","FLORAL"
     };
 
     public void setData() {
@@ -101,7 +101,7 @@ public class CustomRadarView {
 
         radarchart.setRotationEnabled(false);
         radarchart.setRotationAngle(0.1f);
-        radarchart.setExtraBottomOffset(50f);
+        radarchart.setExtraBottomOffset(20f);
 
 
         RadarDataSet set1 = new RadarDataSet(yVals1,null);

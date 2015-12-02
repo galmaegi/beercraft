@@ -49,7 +49,7 @@
 
                 <TextView
                     android:paddingRight="20dp"
-                    android:layout_width="263dp"
+                    android:layout_width="250dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
@@ -79,7 +79,7 @@
 
                 <TextView
                     android:paddingRight="20dp"
-                    android:layout_width="190dp"
+                    android:layout_width="205dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
@@ -94,7 +94,7 @@
 
                 <TextView
                     android:paddingRight="20dp"
-                    android:layout_width="193dp"
+                    android:layout_width="233dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
@@ -109,7 +109,7 @@
 
                 <TextView
                     android:paddingRight="20dp"
-                    android:layout_width="291dp"
+                    android:layout_width="251dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
@@ -126,7 +126,7 @@
                 <TextView
                     android:id="@+id/tv_account_cost"
                     android:paddingRight="20dp"
-                    android:layout_width="263dp"
+                    android:layout_width="250dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
                     android:textSize="50dp"/>
@@ -152,7 +152,7 @@
                 <TextView
                     android:id="@+id/tv_account_per"
                     android:paddingRight="20dp"
-                    android:layout_width="190dp"
+                    android:layout_width="205dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
                     android:textSize="50dp" />
@@ -165,7 +165,7 @@
                 <TextView
                     android:id="@+id/tv_account_profit"
                     android:paddingRight="20dp"
-                    android:layout_width="193dp"
+                    android:layout_width="233dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
                     android:textSize="50dp" />
@@ -178,7 +178,7 @@
                 <TextView
                     android:id="@+id/tv_account_total"
                     android:paddingRight="20dp"
-                    android:layout_width="291dp"
+                    android:layout_width="251dp"
                     android:layout_height="match_parent"
                     android:textAlignment="textEnd"
                     android:textSize="50dp" />
@@ -287,7 +287,7 @@
                     android:background="#000000"/>
 
                 <Button
-                    android:id="@+id/bt_delete"
+                    android:id="@+id/btn_delete"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="15dp"
                     android:layout_width="167dp"
@@ -298,7 +298,7 @@
                     android:textColor="#FFFFFF" />
 
                 <Button
-                    android:id="@+id/bt_buy"
+                    android:id="@+id/btn_buy"
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="15dp"
                     android:layout_width="167dp"

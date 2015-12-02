@@ -48,9 +48,17 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
     ArrayList<Integer> dataArray = new ArrayList<>();
     public CustomLineChart(Context context,LineChart mChart,Typeface tf,int cnt){
         this.mChart = mChart;
-        this.cnt = cnt;
+        if(cnt==20) {
+            this.cnt = 18;
+            getMgt("ForRandom");
+        }
+        else {
+            this.cnt = cnt;
+            getMgt();
+        }
 
-        getMgt();
+
+
 
         RadarMarkerView mv = new RadarMarkerView(context, R.layout.radar_marker);
         mChart.setMarkerView(mv);
@@ -73,7 +81,7 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         leftAxis.setTextColor(Color.WHITE);
         leftAxis.setAxisMinValue(4000f);
         leftAxis.setStartAtZero(false);
-        leftAxis.setLabelCount(4,true);
+        leftAxis.setLabelCount(4, true);
     }
     public void setData(){
         mChart.setData(generateDataLine(cnt));
@@ -102,9 +110,15 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
     private LineData generateDataLine(int cnt) {
 
         ArrayList<Entry> e1 = new ArrayList<Entry>();
-
-        for (int i = 0; i < cnt; i++) {
-            e1.add(new Entry((int)((double)dataArray.get(i)/100*DetailGlobalVar.price), i));
+        if (DetailGlobalVar.price != 0) {
+            for (int i = 0; i < cnt; i++) {
+                e1.add(new Entry((int) ((double) dataArray.get(i) / 100 * DetailGlobalVar.price), i));
+            }
+        }
+        else{
+            for (int i = 0; i < cnt; i++) {
+                e1.add(new Entry((int) ((double) dataArray.get(i) / 100 * 12000), i));
+            }
         }
 
         LineDataSet d1 = new LineDataSet(e1, "New DataSet " + cnt + ", (1)");
@@ -150,6 +164,39 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         }
         return m;
     }
+    private void getMgt(String forOverriding) {
+
+        String testURL = testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-random-graph-data.php";
+//        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            // Parsing json object response
+                            // response will be a json object
+                            //set global object
+                            dataArray.clear();
+                            for(int i = 0; i < cnt; i++) {
+                                JSONObject tmpObject = (JSONObject) response.get(i);
+                                dataArray.add(tmpObject.getInt("time_value"));
+                            }
+                            setData();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("LineChart", "Error: " + error.getMessage());
+            }
+        });
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
+    }
     private void getMgt() {
 
         String testURL="";
@@ -162,8 +209,10 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
 
         } catch (JSONException e) {
             e.printStackTrace();
+            grp_id="7";
             return;
         } catch (NullPointerException e){
+            grp_id="7";
             return;
         }
         testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-graph-data.php?groupID="+ grp_id;

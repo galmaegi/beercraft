@@ -63,7 +63,7 @@ public class SidemenuAdapter extends BaseAdapter {
 
         BeerIndexItem item = items.get(position);
 
-        holder.mName.setText(item.getEnglishName());
+        holder.mName.setText(item.getBeerName());
         holder.mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
         holder.mDate.setText(item.getModifyDate().toString());
 //

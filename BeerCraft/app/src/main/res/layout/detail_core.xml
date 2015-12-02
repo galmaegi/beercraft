@@ -19,11 +19,15 @@
         android:layout_width="520dp"
         android:layout_height="fill_parent">
         <!-- 중간-->
-        <include layout="@layout/detail_section_2"/>
+        <include layout="@layout/detail_section_2"
+            android:layout_height="300dp"
+            android:layout_width="fill_parent"/>
         <Space
             android:layout_height="10dp"
             android:layout_width="fill_parent"/>
-        <include layout="@layout/detail_section_3"/>
+        <include layout="@layout/detail_section_3"
+            android:layout_height="400dp"
+            android:layout_width="fill_parent"/>
 
     </LinearLayout>
     <Space

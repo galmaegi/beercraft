@@ -73,9 +73,9 @@ public class RecommendAdapter extends BaseAdapter {
         int curPrice = item.getSellingPrice();
         int prvPrice = item.getLast();
         int increase = curPrice - prvPrice;
-        double rate = GlobalVar.Division(curPrice, prvPrice);
+        double rate = GlobalVar.Division(curPrice - prvPrice, curPrice)*100;
 
-        holder.mName.setText(item.getEnglishName());
+        holder.mName.setText(item.getBeerName());
         holder.mCountry.setText(item.getCountry());
         holder.mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
         holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));

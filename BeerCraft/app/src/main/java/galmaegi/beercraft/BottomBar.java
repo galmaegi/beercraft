@@ -31,6 +31,8 @@ public class BottomBar {
 
     public Handler handleBottomBar;
     CustomTimer customTimer;
+
+    private String currentText="";
     public BottomBar(View v){
         getDataFromWeb();
         bottom_bar_text = (TextView)v.findViewById(R.id.bottom_bar_text);
@@ -43,7 +45,7 @@ public class BottomBar {
                 return false;
             }
         });
-        customTimer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime,handleBottomBar);
+        customTimer = new CustomTimer(60*3*1000,60*3*1000,handleBottomBar);
         customTimer.start();
     }
 
@@ -70,8 +72,10 @@ public class BottomBar {
                                 bottomBarItems.add(insertData);
 
                             }
+
                             makeData();
                             printData();
+                            createTimer();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -88,6 +92,12 @@ public class BottomBar {
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
+    public void createTimer(){
+        if (customTimer != null)
+            customTimer.cancel();
+        long time = currentText.length()/3*1000;
+        customTimer = new CustomTimer(time,time,handleBottomBar);
+    }
     public void makeData(){
         bottomData.clear();
         for(int i = 0; i < bottomBarItems.size(); i++) {
@@ -103,11 +113,11 @@ public class BottomBar {
         }
     }
     public void printData(){
-        String result="";
+
         for(int i = 0; i < bottomData.size(); i++){
-            result+=bottomData.get(i)+"&nbsp;&nbsp;&nbsp;&nbsp;";
+            currentText+=bottomData.get(i)+"&nbsp;&nbsp;&nbsp;&nbsp;";
         }
-        bottom_bar_text.setText(Html.fromHtml(result));
+        bottom_bar_text.setText(Html.fromHtml(currentText));
     }
 
     public class BottomBarItem{

@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Locale;
 
 import galmaegi.beercraft.GlobalVar;
 
@@ -76,6 +77,12 @@ public class BeerIndexItem {
     public double getRate() {
         return rate;
     }
+    public String getBeerName(){
+        if(GlobalVar.language== Locale.ENGLISH)
+            return getEnglishName();
+        else
+            return getProductName();
+    }
 
     public BeerIndexItem(JSONObject object) throws JSONException{
         productID = GlobalVar.SafetyJSONStringToInt(object, "productID");
@@ -107,7 +114,7 @@ public class BeerIndexItem {
         last = GlobalVar.SafetyJSONStringToInt(object, "last");
 
         increase = sellingPrice - last;
-        rate = GlobalVar.Division(sellingPrice, last);
+        rate = GlobalVar.Division(sellingPrice-last, sellingPrice)*100;
 
     }
 

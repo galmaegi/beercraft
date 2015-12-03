@@ -78,7 +78,6 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         checkListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
             }
         });
 

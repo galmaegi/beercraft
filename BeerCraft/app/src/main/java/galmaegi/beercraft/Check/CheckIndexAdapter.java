@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -52,7 +51,7 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        CheckIndexViewHolder holder;
+        final CheckIndexViewHolder holder;
 
 
         if(convertView == null) {
@@ -70,9 +69,9 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
             holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
             holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
             holder.mCheckBox = (CheckBox) convertView.findViewById(R.id.checkbox);
-            holder.mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                public void onClick(View v) {
                     items.get(position).setIsclicked(!items.get(position).getisclicked());
                 }
             });

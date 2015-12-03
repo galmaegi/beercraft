@@ -11,12 +11,15 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -142,6 +145,7 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         });
         return holder;
     }
+
     public void setAccountBottomValue(){
         int total = 0;
         int costTotal=0;
@@ -199,10 +203,6 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
     public void setCheckBoxs(){
 
         if(check_checkbox.isChecked()) {
@@ -218,5 +218,89 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
             }
         }
         checkIndexAdapter.notifyDataSetChanged();
+    }
+
+    public ArrayList getCheckedItems() {
+        ArrayList<CheckIndexItem> list = new ArrayList<>();
+
+        for (int i = 0; i < items.size(); i++) {
+            if(items.get(i).getisclicked()) {
+                list.add(items.get(i));
+            }
+        }
+
+        return list;
+    }
+
+    public void sendRequest(String api) {
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String status = response.getString("status");
+                    if(status.equals("1")){
+                        getCheckIndex();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
+    }
+
+    public void deleteSelectedItem() {
+        ArrayList<CheckIndexItem> items = getCheckedItems();
+        if(items.size() == 0) {
+            return ;
+        }
+
+        String query = "";
+        for(int i = 0 ; i < items.size() ; i++) {
+            CheckIndexItem item = items.get(i);
+            query += String.format("&%d[0]=%d&%d[1]=%d", i, item.getProductID(),
+                    i, item.getOrderID());
+        }
+        query = query.replaceFirst("&", "");
+
+        String api = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-remove-wishlist.php?" +
+                query;
+        sendRequest(api);
+    }
+
+    public void buySelectedItem() {
+        ArrayList<CheckIndexItem> items = getCheckedItems();
+        if(items.size() == 0) {
+            return ;
+        }
+
+        String query = "tableNo=" + GlobalVar.currentTable;
+        for(int i = 0 ; i < items.size() ; i++) {
+            CheckIndexItem item = items.get(i);
+            query += String.format("&%d[0]=%d&%d[1]=%d&%d[2]=%d", i, item.getProductID(),
+                    i, item.getQty(), i, item.getOrderAmount());
+        }
+
+        String api = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-wishlist.php?" +
+                query;
+        sendRequest(api);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btn_delete) {
+            deleteSelectedItem();
+        } else if(v.getId() == R.id.btn_buy) {
+            buySelectedItem();
+        }
     }
 }

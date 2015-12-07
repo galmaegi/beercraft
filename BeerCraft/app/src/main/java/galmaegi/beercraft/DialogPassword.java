@@ -170,17 +170,18 @@ public class DialogPassword extends Dialog implements View.OnClickListener{
         ed.putString("password", password);
         ed.commit();
     }
+    public String prefpasswordRead(String password){
+        SharedPreferences prefs = this.getContext().getSharedPreferences("BEERCRAFT", Context.MODE_PRIVATE);
+        String returnvalue = prefs.getString("password", "0000");
+        return returnvalue;
+    }
     public void preftablenumWrite(String tablenum){
         SharedPreferences prefs = this.getContext().getSharedPreferences("BEERCRAFT", Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = prefs.edit();
         ed.putString("tablenum", tablenum);
         ed.commit();
     }
-    public String prefpasswordRead(String password){
-        SharedPreferences prefs = this.getContext().getSharedPreferences("BEERCRAFT", Context.MODE_PRIVATE);
-        String returnvalue = prefs.getString("password", "0000");
-        return returnvalue;
-    }
+
     public String preftablenumRead(String password){
         SharedPreferences prefs = this.getContext().getSharedPreferences("BEERCRAFT", Context.MODE_PRIVATE);
         String returnvalue = prefs.getString("tablenum", "001");

@@ -106,17 +106,13 @@ public class NewsFragment extends Fragment {
         replaceFragment(newsListFragment);
 
         NewsLineChart = (LineChart)view.findViewById(R.id.NewsLineChart);
-        new CustomLineChart(getContext(), NewsLineChart, GlobalVar.NanumGothic_Bold, 18);
+        new CustomLineChart(getContext(), NewsLineChart, GlobalVar.NanumGothic_Bold, 20);
     }
 
     Fragment newsListFragment = new NewsListFragment();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View holder = inflater.inflate(R.layout.layout_news, container, false);
-
-        //TODO: make own name
-
-
 
         return holder;
     }

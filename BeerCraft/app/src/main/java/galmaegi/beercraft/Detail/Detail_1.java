@@ -88,13 +88,13 @@ public class Detail_1 implements OnClickListener{
         double percent = getChangePercent(ChangedPrice, LastPrice) * 100;
 
         if(ChangedPrice>0) {
-            sum_range.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice + " (<font color=#801f21> +" + String.format(".%2f",percent) + "%)"));
+            sum_range.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice + " (<font color=#801f21> +" + String.format("%.2f",percent) + "%)"));
         }
         else if(ChangedPrice == 0){
-            sum_range.setText(Html.fromHtml("<font color=#6F6F6F>" + ChangedPrice + " (<font color=#6F6F6F> +" + String.format(".%2f",percent) + "%)"));
+            sum_range.setText(Html.fromHtml("<font color=#6F6F6F>" + ChangedPrice + " (<font color=#6F6F6F> +" + String.format("%.2f",percent) + "%)"));
         }
         else {
-            sum_range.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice + " (<font color=#15a615> -"+String.format(".%2f",percent) +"%)"));
+            sum_range.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice + " (<font color=#15a615> -"+String.format("%.2f",percent) +"%)"));
         }
     }
     public static double round(double value, int places) {

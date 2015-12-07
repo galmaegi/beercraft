@@ -196,7 +196,15 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                items.clear();
+                if(mPage==0) {
+                    checkAccountAdapter.notifyDataSetChanged();
+                }
+                else{
+                    checkIndexAdapter.notifyDataSetChanged();
+                }
 
+                error.printStackTrace();
             }
         });
 
@@ -240,6 +248,31 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                 try {
                     String status = response.getString("status");
                     if(status.equals("1")){
+//                        getCheckIndex();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
+    }
+    public void sendRequestDelete(String api) {
+        JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, api, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String status = response.getString("status");
+                    if(status.equals("1")){
                         getCheckIndex();
                     }
                 } catch (JSONException e) {
@@ -258,10 +291,10 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
-    public void deleteSelectedItem() {
+    public String deleteSelectedItem() {
         ArrayList<CheckIndexItem> items = getCheckedItems();
         if(items.size() == 0) {
-            return ;
+            return null;
         }
 
         String query = "";
@@ -274,13 +307,14 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
 
         String api = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-remove-wishlist.php?" +
                 query;
-        sendRequest(api);
+//        sendRequest(api);
+        return api;
     }
 
-    public void buySelectedItem() {
+    public String buySelectedItem() {
         ArrayList<CheckIndexItem> items = getCheckedItems();
         if(items.size() == 0) {
-            return ;
+            return null;
         }
 
         String query = "tableNo=" + GlobalVar.currentTable;
@@ -290,17 +324,29 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                     i, item.getQty(), i, item.getOrderAmount());
         }
 
-        String api = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-wishlist.php?" +
+        String api = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?" +
                 query;
-        sendRequest(api);
+//        deleteSelectedItem();
+//        sendRequest(api);
+        return api;
     }
 
     @Override
     public void onClick(View v) {
+
         if(v.getId() == R.id.btn_delete) {
-            deleteSelectedItem();
+            String deleteApi = deleteSelectedItem();
+            if(deleteApi!=null)
+                sendRequestDelete(deleteApi);
+
         } else if(v.getId() == R.id.btn_buy) {
-            buySelectedItem();
+            String buyApi = buySelectedItem();
+            if(buyApi!=null)
+                sendRequest(buyApi);
+            String deleteApi = deleteSelectedItem();
+            if(deleteApi!=null)
+                sendRequestDelete(deleteApi);
         }
+//        getCheckIndex();
     }
 }

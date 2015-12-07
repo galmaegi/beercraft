@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -84,6 +85,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setCurrenttable();
 
         fm = getSupportFragmentManager();
+        fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                Log.d("BACKSTACK", String.valueOf(fm.getBackStackEntryCount()));
+            }
+        });
         replaceFragment(frHome);
         mainActivity = this;
     }

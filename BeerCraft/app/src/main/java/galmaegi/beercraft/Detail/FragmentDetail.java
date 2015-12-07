@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,6 @@ public class FragmentDetail extends Fragment {
     PagerSlidingTabStrip detail_5_tabstrip;
 
     int currentItemID ;
-
 
     public FragmentDetail(Context parent_context, BeerIndexItem item){
         this.parent_context = parent_context;
@@ -153,6 +153,8 @@ public class FragmentDetail extends Fragment {
                             Toast.makeText(parent_context,
                                     "Error: " + e.getMessage(),
                                     Toast.LENGTH_LONG).show();
+                        } catch (NullPointerException e) {
+                            Log.d("DOGTORLDI", "TLQKFSHADK");
                         }
                     }
                 }, new Response.ErrorListener() {

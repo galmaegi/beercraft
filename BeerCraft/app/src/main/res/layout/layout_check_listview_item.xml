@@ -33,22 +33,21 @@
 
     <TextView
         android:id="@+id/tv_code"
-        android:layout_width="120dp"
+        android:layout_width="360dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textAlignment="gravity"
-        android:textSize="18dp"
-        android:text="8120375"/>
+        android:textSize="18dp" />
 
 
-    <TextView
-        android:id="@+id/tv_cost_price"
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical|right"
-        android:textAlignment="gravity"
-        android:textSize="18dp"
-        android:text="8,200"/>
+    <!--<TextView-->
+        <!--android:id="@+id/tv_cost_price"-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:gravity="center_vertical|right"-->
+        <!--android:textAlignment="gravity"-->
+        <!--android:textSize="18dp"-->
+        <!--android:text="8,200"/>-->
 
     <TextView
         android:id="@+id/tv_order_amount"
@@ -59,28 +58,28 @@
         android:textSize="18dp"
         android:text="8,200"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="120dp"
-        android:layout_height="match_parent">
+    <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="match_parent">-->
 
-        <TextView
-            android:id="@+id/tv_rate"
-            android:layout_marginTop="7dp"
-            android:layout_width="match_parent"
-            android:layout_height="21dp"
-            android:textAlignment="textEnd"
-            android:textSize="18dp"
-            android:text="+2.50%"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_rate"-->
+            <!--android:layout_marginTop="7dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="21dp"-->
+            <!--android:textAlignment="textEnd"-->
+            <!--android:textSize="18dp"-->
+            <!--android:text="+2.50%"/>-->
 
-        <TextView
-            android:id="@+id/tv_increase"
-            android:layout_width="match_parent"
-            android:layout_height="19dp"
-            android:textAlignment="textEnd"
-            android:textSize="15dp"
-            android:text="+200" />
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_increase"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="19dp"-->
+            <!--android:textAlignment="textEnd"-->
+            <!--android:textSize="15dp"-->
+            <!--android:text="+200" />-->
+    <!--</LinearLayout>-->
 
     <CheckBox
         android:id="@+id/checkbox"

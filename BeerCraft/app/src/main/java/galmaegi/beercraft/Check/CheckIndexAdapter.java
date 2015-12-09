@@ -64,10 +64,10 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
             holder.mAlert = convertView.findViewById(R.id.v_alert);
             holder.mName = (TextView) convertView.findViewById(R.id.tv_name);
             holder.mCode = (TextView) convertView.findViewById(R.id.tv_code);
-            holder.mCostPrice = (TextView) convertView.findViewById(R.id.tv_cost_price);
+//            holder.mCostPrice = (TextView) convertView.findViewById(R.id.tv_cost_price);
             holder.mOrderAmount = (TextView) convertView.findViewById(R.id.tv_order_amount);
-            holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
-            holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
+//            holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
+//            holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
             holder.mCheckBox = (CheckBox) convertView.findViewById(R.id.checkbox);
             holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,7 +88,7 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
         CheckIndexItem item = items.get(position);
 
         holder.mName.setText(item.getProductName());
-        holder.mCostPrice.setText(GlobalVar.setComma(item.getCostPrice()));
+//        holder.mCostPrice.setText(GlobalVar.setComma(item.getCostPrice()));
         holder.mOrderAmount.setText(GlobalVar.setComma(item.getDiscountPrice()));
 
         int increase;
@@ -98,10 +98,11 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
         catch (ArithmeticException e){
             increase = 0;
         }
+
         double rate = GlobalVar.Division(increase,item.getCostPrice())*100;
 
-        holder.mRate.setText(String.format("%.2f %%", rate));
-        holder.mIncrease.setText(GlobalVar.setComma(increase * item.getQty()));
+//        holder.mRate.setText(String.format("%.1f %%", rate));
+//        holder.mIncrease.setText(GlobalVar.setComma(increase * item.getQty()));
 
 
         int color;
@@ -114,8 +115,8 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
         }
 
         holder.mAlert.setBackgroundColor(color);
-        holder.mRate.setTextColor(color);
-        holder.mIncrease.setTextColor(color);
+//        holder.mRate.setTextColor(color);
+//        holder.mIncrease.setTextColor(color);
 
         if(item.getisclicked()){
             holder.mCheckBox.setChecked(true);

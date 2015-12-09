@@ -20,15 +20,14 @@
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
-        android:textSize="15dp"
-        android:text="Code" />
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Original" />
+        android:text="Current" />
 
     <TextView
         android:layout_width="120dp"

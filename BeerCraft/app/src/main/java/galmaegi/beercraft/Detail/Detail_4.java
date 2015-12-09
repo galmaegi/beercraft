@@ -94,18 +94,18 @@ public class Detail_4 implements View.OnClickListener{
         double percent = getChangePercent(ChangedPrice, LastPrice) * 100;
 
         if(ChangedPrice>=0) {
-            detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+String.format("%.2f",percent)+"%"));
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+String.format("%.1f",percent)+"%"));
             detail_4_changeprice.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice));
             detail_4_img_updown.setBackgroundColor(Color.parseColor("#801f21"));
         }
         else if(ChangedPrice==0) {
-            detail_4_changepercent.setText(Html.fromHtml("<font color=#6F6F6F> +"+String.format("%.2f",percent)+"%"));
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#6F6F6F> +"+String.format("%.1f",percent)+"%"));
             detail_4_changeprice.setText(Html.fromHtml("<font color=#6F6F6F> +" + ChangedPrice));
             detail_4_img_updown.setBackgroundColor(Color.parseColor("#6F6F6F"));
 
         }
         else {
-            detail_4_changepercent.setText(Html.fromHtml("<font color=#15a615> "+String.format("%.2f",percent)+"%"));
+            detail_4_changepercent.setText(Html.fromHtml("<font color=#15a615> "+String.format("%.1f",percent)+"%"));
             detail_4_changeprice.setText(Html.fromHtml("<font color=#15a615> -" + ChangedPrice));
             detail_4_img_updown.setBackgroundColor(Color.parseColor("#15a615"));
         }

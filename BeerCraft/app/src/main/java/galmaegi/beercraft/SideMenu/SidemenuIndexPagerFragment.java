@@ -61,6 +61,8 @@ public class SidemenuIndexPagerFragment extends Fragment {
         sidemenuListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SidemenuFragment.side_simple_default.setVisibility(View.INVISIBLE);
+                SidemenuFragment.sidetasting_simple_default.setVisibility(View.INVISIBLE);
                 SidemenuFragment.sidemenuFragment.setSimpleView(items.get(position));
                 SidemenuFragment.sidemenuFragment.setTastingNote(items.get(position));
             }
@@ -84,6 +86,7 @@ public class SidemenuIndexPagerFragment extends Fragment {
 
     private void getMenuIndex(TYPE type) {
         final String testURL;
+        final TYPE type1 = type;
 
         if(type == TYPE.KBX) {
             testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-side_menu.php?type=kbx";
@@ -99,6 +102,7 @@ public class SidemenuIndexPagerFragment extends Fragment {
                         for(int i = 0 ; i < response.length() ; i++) {
                             try {
                                 SidemenuIndexItem item = new SidemenuIndexItem(response.getJSONObject(i));
+                                item.setType(type1);
                                 items.add(item);
                             } catch (JSONException e) {
                                 SidemenuIndexItem item = new SidemenuIndexItem();

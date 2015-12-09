@@ -104,11 +104,11 @@ public class BottomBar {
             BottomBarItem tempItem = bottomBarItems.get(i);
             String result = "";
             if(tempItem.getCurrentPrice()-tempItem.getLastPrice()>0)
-                result = String.format("%10s <font color=#801f21>▲ %.2f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
+                result = String.format("%10s <font color=#801f21>▲ %.1f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
             else if(tempItem.getCurrentPrice()-tempItem.getLastPrice()==0)
-                result = String.format("%10s <font color=#6f6f6f>〓 %.2f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
+                result = String.format("%10s <font color=#6f6f6f>〓 %.1f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
             else
-                result = String.format("%10s <font color=#15a615>▼ %.2f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
+                result = String.format("%10s <font color=#15a615>▼ %.1f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
             bottomData.add(result);
         }
     }

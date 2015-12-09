@@ -23,6 +23,8 @@ import galmaegi.beercraft.R;
 public class SidemenuFragment extends Fragment {
     View parent_view;
     public static SidemenuFragment sidemenuFragment;
+    public static ImageView side_simple_default;
+    public static ImageView sidetasting_simple_default;
 
     public TastingNote tastingNote;
     public SimpleView simpleView;
@@ -47,7 +49,11 @@ public class SidemenuFragment extends Fragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+
         View view = inflater.inflate(R.layout.layout_sidemenu, container, false);
+
+        side_simple_default = (ImageView)view.findViewById(R.id.side_simple_default);
+        sidetasting_simple_default = (ImageView)view.findViewById(R.id.sidetasting_simple_default);
 
         ViewPager viewpager = (ViewPager)view.findViewById(R.id.inc_sidemenu_index).findViewById(R.id.vp_sidemenu_index);
         viewpager.setAdapter(new SidemenuIndexPagerAdapter(getChildFragmentManager()));
@@ -131,19 +137,30 @@ public class SidemenuFragment extends Fragment {
         public void onClick(View v) {
             try {
                 if (v.getId() == R.id.btn_countminus) {
-                    count--;
 
-                    if (count <= 0) {
+
+                    if (count <= 1) {
                         btn_countminus.setEnabled(false);
+                        return;
                     }
+                    count--;
+                    if(!btn_countplus.isEnabled())
+                        btn_countplus.setEnabled(true);
+
 
                     setView(item);
                 } else if (v.getId() == R.id.btn_countplus) {
-                    count++;
 
+                    if(count >= 10){
+                        btn_countplus.setEnabled(false);
+                        return;
+                    }
+                    count++;
                     if (!btn_countminus.isEnabled()) {
                         btn_countminus.setEnabled(true);
                     }
+
+
 
                     setView(item);
                 } else if (v.getId() == R.id.btn_buy) {

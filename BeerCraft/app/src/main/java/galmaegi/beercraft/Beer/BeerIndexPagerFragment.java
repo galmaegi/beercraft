@@ -84,6 +84,7 @@ public class BeerIndexPagerFragment extends Fragment {
         beerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BeerFragment.beer_simple_default.setVisibility(View.INVISIBLE);
                 BeerFragment.beerFragment.setSimpleView(items.get(position));
             }
         });

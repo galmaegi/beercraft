@@ -5,6 +5,7 @@
     android:layout_height="266dp"
     android:background="#222222">
 
+
     <View
         android:id="@+id/v_alert"
         android:layout_marginTop="17dp"

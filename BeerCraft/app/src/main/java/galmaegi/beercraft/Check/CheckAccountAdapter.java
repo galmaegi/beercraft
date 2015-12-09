@@ -92,7 +92,7 @@ public class CheckAccountAdapter extends BaseAdapter implements View.OnClickList
         }
         double rate = GlobalVar.Division(increase,item.getCostPrice())*100;
         holder.mIncrease.setText(GlobalVar.setComma(increase*item.getQty()));
-        holder.mRate.setText(String.format("%.2f %%", rate));
+        holder.mRate.setText(String.format("%.1f %%", rate));
 
 
         int color;

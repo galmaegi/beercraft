@@ -24,8 +24,18 @@ public class SidemenuIndexItem {
     private String beerStory;
     private Date entryDate;
     private Date modifyDate;
+    private SidemenuIndexPagerFragment.TYPE type;
+
+    public SidemenuIndexPagerFragment.TYPE getType() {
+        return type;
+    }
+
+    public void setType(SidemenuIndexPagerFragment.TYPE type) {
+        this.type = type;
+    }
 
     public SidemenuIndexItem() {
+
         sideMenuID = 0;
         classificationCode = 0;
         productName = "";

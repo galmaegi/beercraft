@@ -16,18 +16,17 @@
         android:text="Index"/>
 
     <TextView
-        android:layout_width="120dp"
+        android:layout_width="360dp"
         android:layout_height="19dp"
         android:textAlignment="textEnd"
-        android:textSize="15dp"
-        android:text="Code" />
+        android:textSize="15dp" />
 
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="19dp"
-        android:textAlignment="textEnd"
-        android:textSize="15dp"
-        android:text="Original" />
+    <!--<TextView-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="19dp"-->
+        <!--android:textAlignment="textEnd"-->
+        <!--android:textSize="15dp"-->
+        <!--android:text="Original" />-->
 
     <TextView
         android:layout_width="120dp"
@@ -36,12 +35,12 @@
         android:textSize="15dp"
         android:text="Current"/>
 
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="19dp"
-        android:textAlignment="textEnd"
-        android:textSize="15dp"
-        android:text="Change" />
+    <!--<TextView-->
+        <!--android:layout_width="120dp"-->
+        <!--android:layout_height="19dp"-->
+        <!--android:textAlignment="textEnd"-->
+        <!--android:textSize="15dp"-->
+        <!--android:text="Change" />-->
 
 
     <CheckBox

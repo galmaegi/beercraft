@@ -157,7 +157,7 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         }
         tv_total.setText(GlobalVar.setComma(total));
         tv_profit.setText(GlobalVar.setComma(costTotal - total));
-        tv_per.setText(String.format("%.2f %%", GlobalVar.Division(costTotal - total, costTotal)*100));
+        tv_per.setText(String.format("%.1f %%", GlobalVar.Division(costTotal - total, costTotal)*100));
 
         if (mPage == 0){
             tv_account_cost.setText(GlobalVar.setComma(costTotal));

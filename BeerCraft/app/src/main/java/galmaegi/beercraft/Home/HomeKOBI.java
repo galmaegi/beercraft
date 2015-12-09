@@ -71,12 +71,12 @@ public class HomeKOBI {
     }
 
     public void setDBIData(){
-        DBI_value.setText(String.format("%.2f",getValue(DBIvalue)));
-        KOBI_value.setText(String.format("%.2f", getValue(DBIvalue + BBIvalue)));
+        DBI_value.setText(String.format("%.1f",getValue(DBIvalue)));
+        KOBI_value.setText(String.format("%.1f", getValue(DBIvalue + BBIvalue)));
     }
     public void setBBIData(){
-        BBI_value.setText(String.format("%.2f",getValue(BBIvalue)));
-        KOBI_value.setText(String.format("%.2f", getValue(DBIvalue + BBIvalue)));
+        BBI_value.setText(String.format("%.1f",getValue(BBIvalue)));
+        KOBI_value.setText(String.format("%.1f", getValue(DBIvalue + BBIvalue)));
     }
     public double getValue(double input){
         double returnvalue=0;

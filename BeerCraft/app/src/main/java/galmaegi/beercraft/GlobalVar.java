@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by root on 15. 11. 17.
@@ -54,8 +55,12 @@ public class GlobalVar {
     public static double Division(int num1, int num2) {
         double ret;
         try {
+            if(num2==0)
+                return 0;
             ret = (double) num1 / num2;
         } catch (ArithmeticException e) {
+            return 0;
+        } catch (Exception e){
             return 0;
         }
 

@@ -86,12 +86,17 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
             dialog_buy_btn_no.setOnClickListener(this);
     }
     private void addorderRequest() {
+        String typeString = "kbx";
+        if(item.getType()== SidemenuIndexPagerFragment.TYPE.GUEST)
+            typeString = "guest";
+
 
         String urlJsonObj = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?" +
                     "tableNo="+GlobalVar.currentTable+"&" +
                     "0[0]="+item.getSideMenuID()+"&" +
                     "0[1]="+count+ "&" +
-                    "0[2]="+item.getPrice()*count;
+                    "0[2]="+item.getPrice()*count + "&" +
+                    "0[3]="+typeString;
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, urlJsonObj, null, new Response.Listener<JSONObject>() {
 
             @Override

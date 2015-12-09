@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,6 +37,8 @@ import galmaegi.beercraft.common.BeerIndexItem;
 
 public class BeerFragment extends Fragment {
     public static BeerFragment beerFragment;
+    public static ImageView beer_simple_default;
+
     SimpleView simpleView;
 
     ListView recommendListView;
@@ -43,6 +46,8 @@ public class BeerFragment extends Fragment {
     ArrayList<BeerIndexItem> items;
 
     CustomTimer timer;
+
+
 
     public BeerFragment() {
         beerFragment = this;
@@ -76,9 +81,12 @@ public class BeerFragment extends Fragment {
         recommendListView = (ListView) view.findViewById(R.id.lv_recommend);
         recommendAdapter = new RecommendAdapter(view.getContext(), items);
 
+        beer_simple_default = (ImageView)view.findViewById(R.id.beer_simple_default);
+
         recommendListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                beer_simple_default.setVisibility(View.INVISIBLE);
                 simpleView.setView(items.get(position));
             }
         });
@@ -175,7 +183,7 @@ public class BeerFragment extends Fragment {
             mName.setText(item.getBeerName());
             mStyle.setText(item.getStyle());
             mAbvMl.setText(item.getStrength()+ "%, " + item.getVolume() + "ml");
-            mRate.setText(String.format("%.2f",item.getRate())+"%");
+            mRate.setText(String.format("%.1f",item.getRate())+"%");
             mIncrease.setText(String.valueOf(item.getIncrease()));
             mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
 

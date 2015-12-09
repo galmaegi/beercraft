@@ -50,7 +50,7 @@ public class CheckIndexItem {
         classificationCode = GlobalVar.SafetyJSONStringToInt(object, "classificationCode");
         productName = object.getString("productName");
         costPrice = GlobalVar.SafetyJSONStringToInt(object, "costPrice");
-        discountPrice = GlobalVar.SafetyJSONStringToInt(object, "discountPrice");
+        discountPrice = (int)GlobalVar.SafetyJSONStringToDouble(object, "discountPrice");
         profitRate = GlobalVar.SafetyJSONStringToInt(object, "profitRate");
         orderAmount = GlobalVar.SafetyJSONStringToInt(object, "orderAmount");
         orderDate = GlobalVar.StringToDate(object.getString("orderDate"));

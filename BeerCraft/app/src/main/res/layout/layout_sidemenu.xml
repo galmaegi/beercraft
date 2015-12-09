@@ -11,24 +11,38 @@
     <android.widget.Space
         android:layout_width="16dp"
         android:layout_height="match_parent"/>
-
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include
-            android:id="@+id/inc_sidemenu_detail"
-            layout="@layout/layout_sidemenu_detail"
-            />
-
-        <android.widget.Space
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="16dp"/>
+            android:layout_height="match_parent">
+            <include
+                android:id="@+id/inc_sidemenu_detail"
+                layout="@layout/layout_sidemenu_detail"
+                />
 
-        <include
-            android:id="@+id/inc_sidemenu_tasting_note"
-            layout="@layout/layout_sidemenu_tasting_note"
-            />
+            <android.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
 
-    </LinearLayout>
+            <include
+                android:id="@+id/inc_sidemenu_tasting_note"
+                layout="@layout/layout_sidemenu_tasting_note"
+                />
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/side_simple_default"
+            android:layout_width="659dp"
+            android:layout_height="350dp"
+            android:background="@drawable/side_simple_default"/>
+        <ImageView
+            android:id="@+id/sidetasting_simple_default"
+            android:layout_alignParentBottom="true"
+            android:layout_width="659dp"
+            android:layout_height="331dp"
+            android:background="@drawable/sidetasting_simple_default"/>
+    </RelativeLayout>
 </LinearLayout>

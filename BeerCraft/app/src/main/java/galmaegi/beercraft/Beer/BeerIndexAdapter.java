@@ -85,7 +85,7 @@ public class BeerIndexAdapter extends BaseAdapter {
         holder.mMl.setText(String.valueOf(item.getVolume()));
         holder.mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
         holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
-        holder.mRate.setText(String.format("%.2f %%", rate));
+        holder.mRate.setText(String.format("%.1f %%", rate));
         holder.mIncrease.setText(GlobalVar.setComma(increase));
 
         int color;

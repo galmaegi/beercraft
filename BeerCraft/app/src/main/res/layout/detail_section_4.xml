@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/detail_4_productname"
             style="@style/product_name"
-            android:text="BLUE MOON"
+            android:text="LOADING"
             android:textAlignment="textEnd"/>
         <TextView
 
@@ -72,7 +72,7 @@
             android:layout_width="fill_parent"
             android:layout_height="45dp"
             android:id="@+id/detail_4_currentprice"
-            android:text="10,000"
+            android:text=""
             style="@style/product_price_big"
             />
 
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_4_totalprice"
                 style="@style/product_total_price"
-                android:text="10,000"/>
+                android:text=""/>
 
         </LinearLayout>
         <ImageButton

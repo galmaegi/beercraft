@@ -9,12 +9,15 @@
         android:id="@+id/vf_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <TextView
-            android:padding="10dp"
-            android:id="@+id/tv_news_content"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+            <TextView
+                android:padding="10dp"
+                android:id="@+id/tv_news_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </ScrollView>
 
     </ViewFlipper>
 

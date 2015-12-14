@@ -60,7 +60,7 @@ public class SidemenuIndexItem {
         productName = object.getString("productName");
         englishName = object.getString("englishName");
         price = GlobalVar.SafetyJSONStringToInt(object, "price");
-//        proudctImage = object.getString("productImage");
+        proudctImage = object.getString("proudctImage");
         creamy = GlobalVar.SafetyJSONStringToInt(object, "creamy");
         flavory = GlobalVar.SafetyJSONStringToInt(object, "flavory");
         pure = GlobalVar.SafetyJSONStringToInt(object, "pure");

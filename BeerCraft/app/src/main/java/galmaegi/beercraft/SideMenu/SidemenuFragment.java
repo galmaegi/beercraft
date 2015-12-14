@@ -2,6 +2,7 @@ package galmaegi.beercraft.SideMenu;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -124,6 +125,7 @@ public class SidemenuFragment extends Fragment {
         public void setView(SidemenuIndexItem item) {
             int price = item.getPrice();
             img_product.setImageUrl(item.getProudctImage(), AppController.getInstance().getImageLoader());
+//            img_product.setImageURI(Uri.parse(item.getProudctImage()));
 
             txt_productname.setText(item.getProductName());
             txt_currentprice.setText(GlobalVar.setComma(price));

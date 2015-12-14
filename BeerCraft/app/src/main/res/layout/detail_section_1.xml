@@ -16,20 +16,20 @@
         android:id="@+id/sum_beer_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BLUE MOON"
+        android:text="LOADING..."
         style="@style/product_name_left"/>
     <TextView
         android:id="@+id/sum_beer_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WHITE IPA"
+        android:text=""
         style="@style/product_detail"/>
     <!-- 맥주의 도수와 용량을 함께 표기-->
     <TextView
         android:id="@+id/sum_beer_abv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5.4%, 355ml"
+        android:text=""
         style="@style/product_detail"/>
 
     <RelativeLayout
@@ -41,7 +41,7 @@
             android:id="@+id/sum_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="10,800"
+            android:text=""
             style="@style/product_total_price"
             />
         <TextView
@@ -57,7 +57,7 @@
         android:id="@+id/sum_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+1200 (+12.62%)"
+        android:text=""
         style="@style/summary_percent"
         />
     <ImageButton
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="10,800"
+            android:text=""
             style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,100"
+            android:text=""
             style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
@@ -132,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,600"
+            android:text=""
             style="@style/summary_price"/>
     </FrameLayout>
     <FrameLayout
@@ -151,7 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="9,550"
+            android:text=""
             style="@style/summary_price"/>
     </FrameLayout>
 

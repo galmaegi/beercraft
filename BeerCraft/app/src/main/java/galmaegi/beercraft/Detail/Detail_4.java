@@ -93,7 +93,7 @@ public class Detail_4 implements View.OnClickListener{
         int ChangedPrice = CurrentPrice - LastPrice;
         double percent = getChangePercent(ChangedPrice, LastPrice) * 100;
 
-        if(ChangedPrice>=0) {
+        if(ChangedPrice>0) {
             detail_4_changepercent.setText(Html.fromHtml("<font color=#801f21> +"+String.format("%.1f",percent)+"%"));
             detail_4_changeprice.setText(Html.fromHtml("<font color=#801f21> +" + ChangedPrice));
             detail_4_img_updown.setBackgroundColor(Color.parseColor("#801f21"));

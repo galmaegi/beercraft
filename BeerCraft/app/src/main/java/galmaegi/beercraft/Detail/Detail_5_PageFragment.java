@@ -2,6 +2,7 @@ package galmaegi.beercraft.Detail;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class Detail_5_PageFragment extends Fragment {
         View view = inflater.inflate(R.layout.detail_section_5_page, container, false);
         TextView tvTitle = (TextView) view.findViewById(R.id.detail_section_5_page_text);
         tvTitle.setText(text);
+//        tvTitle.setMovementMethod(new ScrollingMovementMethod());
         return view;
     }
 }

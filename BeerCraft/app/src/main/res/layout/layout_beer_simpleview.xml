@@ -20,7 +20,7 @@
         android:layout_marginLeft="17dp"
         android:layout_width="160dp"
         android:layout_height="214dp"
-        android:background="#3F3F3F"/>
+        android:background="@drawable/beer_loading_back"/>
     
     <LinearLayout
         android:layout_marginTop="25dp"

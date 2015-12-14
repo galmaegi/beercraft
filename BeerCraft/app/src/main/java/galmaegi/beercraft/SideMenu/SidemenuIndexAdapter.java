@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
@@ -68,8 +69,10 @@ public class SidemenuIndexAdapter extends BaseAdapter {
         }
 
         SidemenuIndexItem item = items.get(position);
-
-        holder.mName.setText(item.getProductName());
+        if(GlobalVar.language == Locale.KOREA)
+            holder.mName.setText(item.getProductName());
+        else
+            holder.mName.setText(item.getEnglishName());
         holder.mPrice.setText(GlobalVar.setComma(item.getPrice()));
 
         holder.mAlert.setBackgroundColor(Color.parseColor("#05B005"));

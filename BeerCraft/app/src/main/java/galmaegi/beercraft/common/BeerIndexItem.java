@@ -17,7 +17,7 @@ public class BeerIndexItem {
     private String productDescription;
     private String englishName;
     private String country;
-    private int strength;
+    private double strength;
     private String bitterTaste;
     private int volume;
     private int rateBeerScore;
@@ -93,7 +93,7 @@ public class BeerIndexItem {
         productDescription = object.getString("productDescription");
         englishName = object.getString("englishName");
         country = object.getString("country");
-        strength = GlobalVar.SafetyJSONStringToInt(object, "strength");
+        strength = GlobalVar.SafetyJSONStringToDouble(object, "strength");
         bitterTaste = object.getString("bitterTaste");
         volume = GlobalVar.SafetyJSONStringToInt(object, "volume");
         rateBeerScore = GlobalVar.SafetyJSONStringToInt(object, "rateBeerScore");
@@ -266,7 +266,7 @@ public class BeerIndexItem {
         return country;
     }
 
-    public int getStrength() {
+    public double getStrength() {
         return strength;
     }
 

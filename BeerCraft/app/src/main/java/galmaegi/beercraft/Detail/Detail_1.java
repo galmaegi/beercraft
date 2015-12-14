@@ -11,13 +11,18 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Locale;
 
 import galmaegi.beercraft.AppController;
@@ -44,6 +49,8 @@ public class Detail_1 implements OnClickListener{
     TextView sum_summary_low;
 //    TextView sum_summary_avg;
 //    TextView sum_summary_per;
+
+    ArrayList<Integer> dataArray = new ArrayList<>();
     public Detail_1(View view){
         parent_view = view;
 
@@ -176,5 +183,120 @@ public class Detail_1 implements OnClickListener{
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq);
+    }
+
+
+    private void getMgt() {
+
+        String testURL="";
+        String grp_id="";
+        try {
+            grp_id = DetailGlobalVar.currentObject.getString("grp_id");
+//            grp_id = "7";
+            if(grp_id.length()==0 || grp_id.equals("null"))
+                return;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+            grp_id="7";
+            return;
+        } catch (NullPointerException e){
+            grp_id="7";
+            return;
+        }
+        testURL = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-graph-data.php?groupID="+ grp_id;
+//        final String testURL = "http://kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-news.php";
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(testURL,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            // Parsing json object response
+                            // response will be a json object
+                            //set global object
+                            dataArray.clear();
+                            for(int i = 0; i < 18; i++) {
+                                JSONObject tmpObject = (JSONObject) response.get(i);
+                                dataArray.add(tmpObject.getInt("time_value"));
+                            }
+                            setToday();
+
+                        } catch (JSONException e) {
+                            setToSelling();
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                setToSelling();
+                VolleyLog.d("LineChart", "Error: " + error.getMessage());
+            }
+        });
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonObjReq);
+    }
+
+
+    void setToday(){
+
+        if(dataArray.size()==0) {
+            setToSelling();
+            return;
+        }
+        Calendar c = Calendar.getInstance();
+        int hours = c.get(Calendar.HOUR_OF_DAY);
+        int minutes = c.get(Calendar.MINUTE);
+        int totalminutes = minutes+hours*60;
+        int max=-1,min=9999;
+
+        int count = 18;
+        if(totalminutes>=1020 && totalminutes<=1440){
+            count = (totalminutes-1020)/30 + 1;
+        }
+        else if(0<=totalminutes && totalminutes<=90){
+            count = (totalminutes)/30 + 15;
+        }
+        else{
+            setToSelling();
+        }
+
+        if((totalminutes>=1020 && totalminutes<=1440)||(0<=totalminutes && totalminutes<=90)){
+            double sellingPrice = 0;
+            try {
+                sellingPrice = DetailGlobalVar.currentObject.getDouble("sellingPrice");
+            } catch (JSONException e) {
+                setToSelling();
+                e.printStackTrace();
+            }
+            for(int i=0 ; i < dataArray.size() ; i++){
+                if(dataArray.get(i)>max)
+                    max = dataArray.get(i);
+                if(dataArray.get(i)<min)
+                    min = dataArray.get(i);
+            }
+            sum_today_high.setText((int)(sellingPrice * max / 100));
+            sum_today_low.setText((int)(sellingPrice * min / 100));
+            sum_today_open.setText((int)(sellingPrice * dataArray.get(0) / 100));
+            if(count >= 1)
+                sum_today_prev.setText(GlobalVar.setComma((int)(sellingPrice * dataArray.get(count - 1) / 100)));
+            else
+                sum_today_prev.setText(GlobalVar.setComma((int)sellingPrice));
+
+        }
+        sum_summary_high.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 1.1)));
+        sum_summary_low.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 0.8)));
+
+    }
+    void setToSelling(){
+        sum_summary_high.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 1.1)));
+        sum_summary_low.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 0.8)));
+        sum_today_high.setText(GlobalVar.setComma(DetailGlobalVar.price));
+        sum_today_low.setText(GlobalVar.setComma(DetailGlobalVar.price));
+        sum_today_open.setText(GlobalVar.setComma(DetailGlobalVar.price));
+        sum_today_prev.setText(GlobalVar.setComma(DetailGlobalVar.price));
+
+
     }
 }

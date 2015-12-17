@@ -10,14 +10,14 @@
         android:layout_width="267dp"
         android:layout_height="19dp"
         android:textSize="15dp"
-        android:text="Index"/>
+        android:text="@string/BEERINDEX"/>
     
     <TextView
         android:layout_width="55dp"
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Current" />
+        android:text="@string/Current" />
 
     <TextView
         android:layout_marginLeft="7dp"
@@ -25,6 +25,6 @@
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Change" />
+        android:text="@string/Change" />
 
 </LinearLayout>

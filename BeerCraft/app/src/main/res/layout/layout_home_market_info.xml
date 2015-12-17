@@ -46,25 +46,28 @@
             <TextView
                 android:layout_margin="1dp"
                 android:layout_width="160dp"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:textSize="10dp"
+                android:textColor="@android:color/white"
                 android:text="KOREA COMPOSITE BEER INDEX"/>
 
             <TextView
                 android:layout_margin="1dp"
                 android:layout_width="160dp"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:textSize="10dp"
+                android:textColor="@android:color/white"
                 android:text="DRAFT BEER INDEX"/>
 
             <TextView
                 android:layout_margin="1dp"
                 android:layout_width="160dp"
-                android:layout_height="19dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:textSize="10dp"
+                android:textColor="@android:color/white"
                 android:text="BOTTLED BEER INDEX"/>
         </TableRow>
 

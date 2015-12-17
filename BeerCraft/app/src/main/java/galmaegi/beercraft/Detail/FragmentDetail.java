@@ -28,6 +28,7 @@ import java.util.Calendar;
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.LineChart.CustomLineChart;
+import galmaegi.beercraft.MainActivity;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
@@ -113,6 +114,12 @@ public class FragmentDetail extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.detail_core, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.mainActivity.buttonSelector(MainActivity.mainActivity.btn_back);
     }
 
     private void getDetailjson() {

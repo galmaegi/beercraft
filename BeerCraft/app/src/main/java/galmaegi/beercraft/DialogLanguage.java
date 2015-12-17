@@ -3,6 +3,9 @@ package galmaegi.beercraft;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -36,18 +39,26 @@ public class DialogLanguage extends Dialog implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        GlobalVar.localeChanged = false;
         switch (v.getId()){
             case R.id.btn_kor:
                 Toast.makeText(this.getContext(),"한국어로 설정되었습니다.",Toast.LENGTH_SHORT).show();
-                GlobalVar.language = Locale.KOREAN;
+                if(GlobalVar.language!=Locale.KOREAN) {
+                    GlobalVar.localeChanged = true;
+                    GlobalVar.language = Locale.KOREAN;
+                }
                 dismiss();
                 break;
             case R.id.btn_eng:
                 Toast.makeText(this.getContext(),"Language is set to English",Toast.LENGTH_SHORT).show();
-                GlobalVar.language = Locale.ENGLISH;
+                if(GlobalVar.language!=Locale.ENGLISH) {
+                    GlobalVar.localeChanged = true;
+                    GlobalVar.language = Locale.ENGLISH;
+                }
                 dismiss();
                 break;
         }
+
 
     }
     public String sha1(String password) {

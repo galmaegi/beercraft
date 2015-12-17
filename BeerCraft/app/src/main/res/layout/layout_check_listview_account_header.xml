@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical|left"
         android:textSize="15dp"
-        android:text="Index"/>
+        android:text="@string/BEERINDEX"/>
 
     <TextView
         android:layout_width="120dp"
@@ -27,34 +27,34 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Current" />
+        android:text="@string/Current" />
 
     <TextView
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Bought" />
+        android:text="@string/CHECKBOUGHT" />
 
     <TextView
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Qty" />
+        android:text="@string/CHECKQTY" />
 
     <TextView
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="Sub-total"/>
+        android:text="@string/CHECKSUBTOTAL"/>
 
     <TextView
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:textSize="15dp"
-        android:text="Change"
+        android:text="@string/CHECKCHANGE"
         android:gravity="center_vertical|right"/>
 
 </LinearLayout>

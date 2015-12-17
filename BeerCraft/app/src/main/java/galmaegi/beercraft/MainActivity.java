@@ -2,13 +2,17 @@ package galmaegi.beercraft;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -88,6 +92,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
+                if(fm.getBackStackEntryCount() == 1)
+                    btn_back.setSelected(false);
                 Log.d("BACKSTACK", String.valueOf(fm.getBackStackEntryCount()));
             }
         });
@@ -129,6 +135,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
         if(fr!=null) {
+            btn_back.setSelected(true);
             replaceFragment(fr);
             setBackButtonHandler(null);
         }
@@ -142,6 +149,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         btn_sidemenu.setSelected(false);
         btn_beer.setSelected(false);
         btn_home.setSelected(false);
+        if(fm.getBackStackEntryCount() != 1)
+            btn_back.setSelected(true);
+        else
+            btn_back.setSelected(false);
 
         curBtn.setSelected(true);
     }
@@ -155,9 +166,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     public void Back() {
         if(fm.getBackStackEntryCount() == 1) {
+            btn_back.setSelected(false);
             return ;
         }
         fm.popBackStack();
+        if(fm.getBackStackEntryCount() == 1){
+            btn_back.setSelected(false);
+        }
     }
 
     public void setCurrenttable(){
@@ -217,6 +232,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             case R.id.action_bar_title:
                 DialogLanguage dialogLanguage = new DialogLanguage(this);
                 dialogLanguage.show();
+                dialogLanguage.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        if(GlobalVar.localeChanged == true){
+                            Resources res = getResources();
+                            DisplayMetrics dm = res.getDisplayMetrics();
+                            Configuration conf = res.getConfiguration();
+                            conf.locale = GlobalVar.language;
+                            res.updateConfiguration(conf, dm);
+                            Intent refresh = new Intent(getApplicationContext(), SplashActivity.class);
+                            startActivity(refresh);
+                        }
+                    }
+                });
                 break;
         }
         return returnvalue;

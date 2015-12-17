@@ -11,7 +11,7 @@
         android:layout_width="330dp"
         android:layout_height="19dp"
         android:textSize="15dp"
-        android:text="Index"
+        android:text="@string/FOODINDEX"
         android:textColor="#FFFFFF"/>
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Current"
+        android:text="@string/Current"
         android:textColor="#FFFFFF"/>
 
 </LinearLayout>

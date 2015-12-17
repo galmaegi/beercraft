@@ -37,7 +37,7 @@ public class CustomRadarView {
         tempParties.add(context.getResources().getString(R.string.bitter));
         tempParties.add(context.getResources().getString(R.string.sweet));
         tempParties.add(context.getResources().getString(R.string.body));
-        tempParties.add(context.getResources().getString(R.string.florar));
+        tempParties.add(context.getResources().getString(R.string.aroma));
         //set radar values
         radarchart.setDescription("");
         radarchart.setWebLineWidth(1.5f);
@@ -57,7 +57,7 @@ public class CustomRadarView {
 
     }
     private String[] mParties = new String[] {
-            "ALCOHOL","MALTY","BITTER","SWEET","BODY","FLORAL"
+            "ALCOHOL","MALTY","BITTER","SWEET","BODY","AROMA"
     };
 
     public void setData() {

@@ -6,6 +6,45 @@
     <string name="bitter">BITTER</string>
     <string name="sweet">SWEET</string>
     <string name="body">BODY</string>
-    <string name="florar">FLORAR</string>
+    <string name="aroma">AROMA</string>
+
+    <string name="DraftBeerIndex">Draft Beer Index</string>
+    <string name="BottledBeerIndex">Bottled Beer Index</string>
+    <string name="RecommenedKBX">Recommened KBX</string>
+    <string name="ABV">%</string>
+    <string name="DETAIL">DETAIL</string>
+    <string name="BEERINDEX">INDEX</string>
+    <string name="STYLE">STYLE</string>
+    <string name="Current">Current</string>
+    <string name="Change">Change</string>
+    <string name="WATCHLIST">WATCHLIST</string>
+    <string name="BUY">BUY</string>
+    <string name="YES">YES</string>
+    <string name="NO">NO</string>
+
+    <string name="KBXFOOD">KBX FOOD</string>
+    <string name="GUESTFOOD">GUEST FOOD</string>
+    <string name="FOODINDEX">Index</string>
+    <string name="FOODCURRENT">Current</string>
+
+    <string name="CHECKACCOUNT">ACCOUNT</string>
+    <string name="CHECKWISHLIST">WISHLIST</string>
+    <string name="CHECKCURRENT">Current</string>
+    <string name="CHECKBOUGHT">Bought</string>
+    <string name="CHECKQTY">Qty</string>
+    <string name="CHECKSUBTOTAL">Sub-Total</string>
+    <string name="CHECKCHANGE">Change</string>
+    <string name="CHECKCOST">Cost</string>
+    <string name="CHECKBUY">Buy</string>
+    <string name="CHECKPER">PER</string>
+    <string name="CHECKPROFIT">Profit</string>
+    <string name="CHECKTOTAL">Total</string>
+    <!--<string name=""></string>-->
+
+
+
+
+
+
 
 </resources>

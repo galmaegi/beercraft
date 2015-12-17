@@ -54,7 +54,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="Cost"
+                    android:text="@string/CHECKCOST"
                     android:textColor="#FFFFFF"/>
 
                 <View
@@ -69,7 +69,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="Buy"
+                    android:text="@string/CHECKBUY"
                     android:textColor="#FFFFFF" />
 
                 <View
@@ -84,7 +84,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="PER"
+                    android:text="@string/CHECKPER"
                     android:textColor="#FFFFFF" />
 
                 <View
@@ -99,7 +99,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="Profit"
+                    android:text="@string/CHECKPROFIT"
                     android:textColor="#FFFFFF" />
 
                 <View
@@ -114,7 +114,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="Total"
+                    android:text="@string/CHECKTOTAL"
                     android:textColor="#FFFFFF" />
             </LinearLayout>
 
@@ -203,7 +203,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="PER"
+                    android:text="@string/CHECKPER"
                     android:textColor="#FFFFFF" />
 
                 <View
@@ -218,7 +218,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="Profit"
+                    android:text="@string/CHECKPROFIT"
                     android:textColor="#FFFFFF" />
 
                 <View
@@ -233,7 +233,7 @@
                     android:gravity="bottom|right"
                     android:textAlignment="gravity"
                     android:textSize="20dp"
-                    android:text="Total"
+                    android:text="@string/CHECKTOTAL"
                     android:textColor="#FFFFFF" />
 
                 <View

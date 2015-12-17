@@ -13,7 +13,7 @@
         android:layout_width="560dp"
         android:layout_height="19dp"
         android:textSize="15dp"
-        android:text="Index"/>
+        android:text="@string/BEERINDEX"/>
 
     <TextView
         android:layout_width="360dp"

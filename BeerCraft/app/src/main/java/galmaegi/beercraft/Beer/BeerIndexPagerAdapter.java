@@ -1,13 +1,16 @@
 package galmaegi.beercraft.Beer;
 
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import galmaegi.beercraft.GlobalVar;
+
 public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[]{"Draft Beer Index", "Bottled Beer Index"};
+//    private String tabTitles[] = new String[]{"Draft Beer Index", "Bottled Beer Index"};
 
     public BeerIndexPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -26,6 +29,6 @@ public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles[position];
+        return GlobalVar.beertabTitles[position];
     }
 }

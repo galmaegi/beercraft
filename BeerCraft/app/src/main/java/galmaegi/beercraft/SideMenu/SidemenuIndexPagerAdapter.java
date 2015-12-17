@@ -4,10 +4,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import galmaegi.beercraft.GlobalVar;
+
 public class SidemenuIndexPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[]{"KBX Food", "Guest Food"};
 
     public SidemenuIndexPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -25,6 +26,6 @@ public class SidemenuIndexPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles[position];
+        return GlobalVar.foodtabTitles[position];
     }
 }

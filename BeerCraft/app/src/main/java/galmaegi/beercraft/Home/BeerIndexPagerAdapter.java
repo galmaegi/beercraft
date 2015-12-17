@@ -4,10 +4,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import galmaegi.beercraft.GlobalVar;
+
 public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[]{"Draft Beer Index", "Bottled Beer Index"};
 
     private BeerIndexPagerFragment DBIPage;
 
@@ -46,6 +47,6 @@ public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         // Generate title based on item position
-        return tabTitles[position];
+        return GlobalVar.beertabTitles[position];
     }
 }

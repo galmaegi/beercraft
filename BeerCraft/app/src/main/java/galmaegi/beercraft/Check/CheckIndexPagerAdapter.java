@@ -4,13 +4,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import galmaegi.beercraft.GlobalVar;
+
 /**
  * Created by jongsu on 2015. 11. 29..
  */
 public class CheckIndexPagerAdapter  extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 2;
-    private String tabTitles[] = new String[]{"Account", "Wish List"};
+
 
     public CheckIndexPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -29,6 +31,6 @@ public class CheckIndexPagerAdapter  extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles[position];
+        return GlobalVar.checktabTitles[position];
     }
 }

@@ -20,6 +20,10 @@ public class GlobalVar {
     public static int realLoadingTime = 60*1000;
     public static int tabTextSize = 25;
     public static Locale language = Locale.KOREAN;//0 - english , 1 - korean
+    public static boolean localeChanged;
+    public static String beertabTitles[];
+    public static String foodtabTitles[];
+    public static String checktabTitles[];
 
 
     public static Date StringToDate(String string) {

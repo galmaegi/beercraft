@@ -21,6 +21,9 @@ public class SplashActivity extends Activity {
             public void run() {
 
                 try {
+                    GlobalVar.beertabTitles = new String[]{getString(R.string.DraftBeerIndex), getString(R.string.BottledBeerIndex)};
+                    GlobalVar.foodtabTitles = new String[]{getString(R.string.KBXFOOD), getString(R.string.GUESTFOOD)};
+                    GlobalVar.checktabTitles = new String[]{getString(R.string.CHECKACCOUNT), getString(R.string.CHECKWISHLIST)};
                     // Thread will sleep for 5 seconds
                     sleep(3*1000);
                     // After 5 seconds redirect to another intent

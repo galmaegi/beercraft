@@ -76,14 +76,14 @@ public class CustomLineChart implements SeekBar.OnSeekBarChangeListener,
         leftAxis.setTypeface(tf);
         leftAxis.setLabelCount(5, false);
         leftAxis.setTextColor(Color.WHITE);
-        leftAxis.setAxisMinValue(4000f);
+        leftAxis.setAxisMinValue(5000f);
         leftAxis.setStartAtZero(false);
         leftAxis.setLabelCount(4, true);
     }
     public void setData(){
         mChart.setData(generateDataLine(cnt));
         mChart.getAxisRight().resetAxisMinValue();
-        mChart.getAxisRight().setAxisMinValue(4000f);
+        mChart.getAxisRight().setAxisMinValue(5000f);
 
 
         // do not forget to refresh the chart

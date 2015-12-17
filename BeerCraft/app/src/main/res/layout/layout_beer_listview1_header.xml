@@ -10,21 +10,21 @@
         android:layout_width="300dp"
         android:layout_height="19dp"
         android:textSize="15dp"
-        android:text="Index"/>
+        android:text="@string/BEERINDEX"/>
 
     <TextView
         android:layout_width="109dp"
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Style" />
+        android:text="@string/STYLE" />
 
     <TextView
         android:layout_width="77dp"
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="ABV" />
+        android:text="@string/ABV" />
 
     <TextView
         android:layout_width="61dp"
@@ -38,13 +38,13 @@
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Current" />
+        android:text="@string/Current" />
 
     <TextView
         android:layout_width="91dp"
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Change" />
+        android:text="@string/Change" />
 
 </LinearLayout>

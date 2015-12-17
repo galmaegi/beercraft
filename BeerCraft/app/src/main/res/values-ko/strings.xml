@@ -1,17 +1,44 @@
 <resources>
     <string name="app_name">BeerCraft</string>
     <!-- for radar view's label-->
-    <!--<string name="alcohol">알콜</string>-->
-    <!--<string name="malty">몰트</string>-->
-    <!--<string name="bitter">쓴 맛</string>-->
-    <!--<string name="sweet">단 맛</string>-->
-    <!--<string name="body">바디감</string>-->
-    <!--<string name="florar">향</string>-->
-    <string name="alcohol">ALCOHOL</string>
-    <string name="malty">MALTY</string>
-    <string name="bitter">BITTER</string>
-    <string name="sweet">SWEET</string>
-    <string name="body">BODY</string>
-    <string name="florar">FLORAR</string>
+    <string name="alcohol">알코올</string>
+    <string name="malty">몰트</string>
+    <string name="bitter">쓴맛</string>
+    <string name="sweet">단맛</string>
+    <string name="body">바디감</string>
+    <string name="aroma">아로마</string>
+
+    <string name="DraftBeerIndex">생맥주</string>
+    <string name="BottledBeerIndex">병맥주</string>
+    <string name="RecommenedKBX">오늘의 추천주</string>
+    <string name="ABV">%</string>
+    <string name="DETAIL">자세히보기</string>
+    <string name="BEERINDEX">맥주종목</string>
+    <string name="STYLE">스타일</string>
+    <string name="Current">현재가</string>
+    <string name="Change">변동폭</string>
+    <string name="WATCHLIST">관심종목 추가</string>
+    <string name="BUY">BUY</string>
+    <string name="YES">구매</string>
+    <string name="NO">취소</string>
+
+    <string name="KBXFOOD">KBX 안주</string>
+    <string name="GUESTFOOD">게스트 푸드</string>
+    <string name="FOODINDEX">안주종목</string>
+    <string name="FOODCURRENT">현재가</string>
+
+    <string name="CHECKACCOUNT">주문목록</string>
+    <string name="CHECKWISHLIST">관심종목</string>
+    <string name="CHECKCURRENT">원가</string>
+    <string name="CHECKBOUGHT">구매가</string>
+    <string name="CHECKQTY">수량</string>
+    <string name="CHECKSUBTOTAL">구매합계</string>
+    <string name="CHECKCHANGE">변동폭</string>
+    <string name="CHECKCOST">원가</string>
+    <string name="CHECKBUY">구매가</string>
+    <string name="CHECKPER">수익률</string>
+    <string name="CHECKPROFIT">이익</string>
+    <string name="CHECKTOTAL">최종구매가</string>
+
 
 </resources>

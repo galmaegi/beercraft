@@ -12,11 +12,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import java.util.Locale;
 
 import galmaegi.beercraft.Beer.BeerFragment;
 import galmaegi.beercraft.Check.CheckFragment;
@@ -99,6 +102,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         });
         replaceFragment(frHome);
         mainActivity = this;
+
+        setLocaleResources();
+    }
+
+    public void setLocaleResources(){
+        if(GlobalVar.language == Locale.ENGLISH) {
+            btn_beer.setBackground(ContextCompat.getDrawable(this, R.drawable.btn_beer_selector_eng));
+            btn_home.setBackground(ContextCompat.getDrawable(this,R.drawable.btn_home_selector_eng));
+            btn_sidemenu.setBackground(ContextCompat.getDrawable(this,R.drawable.btn_sidemenu_selector_eng));
+            btn_news.setBackground(ContextCompat.getDrawable(this,R.drawable.btn_news_selector_eng));
+            btn_check.setBackground(ContextCompat.getDrawable(this,R.drawable.btn_check_selector_eng));
+        }
     }
 
     Fragment frHome = new HomeFragment();

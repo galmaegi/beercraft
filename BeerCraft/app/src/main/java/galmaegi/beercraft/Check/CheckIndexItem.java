@@ -1,9 +1,12 @@
 package galmaegi.beercraft.Check;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Locale;
 
 import galmaegi.beercraft.GlobalVar;
 
@@ -12,6 +15,7 @@ public class CheckIndexItem {
     private int productID;
     private int classificationCode;
     private String productName;
+    private String productEngName;
     private int costPrice;
     private int discountPrice;
     private int profitRate;
@@ -48,7 +52,23 @@ public class CheckIndexItem {
         itemID = GlobalVar.SafetyJSONStringToInt(object, "itemID");
         productID = GlobalVar.SafetyJSONStringToInt(object, "productID");
         classificationCode = GlobalVar.SafetyJSONStringToInt(object, "classificationCode");
-        productName = object.getString("productName");
+        try {
+            productName = object.getString("productName");
+        }
+        catch (Exception e){
+            productName = "jsonException";
+        }
+        try {
+            productEngName = object.getString("englishName");
+        }
+        catch (Exception e){
+            productEngName = "jsonException";
+        }
+
+
+//        Log.d("productname",getName());
+//        Log.d("productEngName",getName());
+
         costPrice = GlobalVar.SafetyJSONStringToInt(object, "costPrice");
         discountPrice = (int)GlobalVar.SafetyJSONStringToDouble(object, "discountPrice");
         profitRate = GlobalVar.SafetyJSONStringToInt(object, "profitRate");
@@ -144,5 +164,12 @@ public class CheckIndexItem {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public String getName(){
+        if(GlobalVar.language == Locale.ENGLISH)
+            return this.productEngName;
+        else
+            return this.productName;
     }
 }

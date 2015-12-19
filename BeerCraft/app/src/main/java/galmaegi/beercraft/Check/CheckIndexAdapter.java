@@ -87,7 +87,7 @@ public class CheckIndexAdapter extends BaseAdapter implements View.OnClickListen
 
         CheckIndexItem item = items.get(position);
 
-        holder.mName.setText(item.getProductName());
+        holder.mName.setText(item.getName());
 //        holder.mCostPrice.setText(GlobalVar.setComma(item.getCostPrice()));
         holder.mOrderAmount.setText(GlobalVar.setComma(item.getDiscountPrice()));
 

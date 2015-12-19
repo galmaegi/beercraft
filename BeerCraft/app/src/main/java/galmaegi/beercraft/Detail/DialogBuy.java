@@ -56,6 +56,11 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
         dialog_buy_totalprice = (TextView)findViewById(R.id.dialog_buy_totalprice);
         dialog_buy_btn_no = (ImageButton)findViewById(R.id.dialog_buy_btn_no);
         dialog_buy_btn_buy = (ImageButton)findViewById(R.id.dialog_buy_btn_buy);
+
+        if(GlobalVar.language == Locale.ENGLISH){
+            dialog_buy_btn_buy.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_buy_eng));
+            dialog_buy_btn_no.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_dialog_cancel_eng));
+        }
         setSection();
 
     }

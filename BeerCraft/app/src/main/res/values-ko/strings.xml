@@ -40,5 +40,10 @@
     <string name="CHECKPROFIT">이익</string>
     <string name="CHECKTOTAL">최종구매가</string>
 
+    <string name="NEWSINDEX">기사제목</string>
+    <string name="NEWSLASTEST">최신</string>
+    <string name="NEWSBOTTLED">병맥주</string>
+    <string name="NEWSDRAFT">생맥주</string>
+    <string name="NEWSETC">기타</string>
 
 </resources>

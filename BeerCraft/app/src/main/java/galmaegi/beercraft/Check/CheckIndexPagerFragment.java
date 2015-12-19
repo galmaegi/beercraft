@@ -22,6 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
@@ -135,6 +136,12 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
 
             btn_buy.setOnClickListener(this);
             btn_delete.setOnClickListener(this);
+            if(GlobalVar.language == Locale.KOREAN){
+                btn_buy.setBackground(getResources().getDrawable(R.drawable.btn_wishlist_buy_kor));
+                btn_delete.setBackground(getResources().getDrawable(R.drawable.btn_wishlist_delete_kor));
+                btn_buy.setText("");
+                btn_delete.setText("");
+            }
         }
 
         check_checkbox.setOnClickListener(new View.OnClickListener() {

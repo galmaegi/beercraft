@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.android.volley.toolbox.NetworkImageView;
 import com.astuetz.PagerSlidingTabStrip;
 
+import java.util.Locale;
+
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.MainActivity;
@@ -119,6 +121,9 @@ public class SidemenuFragment extends Fragment {
             btn_countplus.setOnClickListener(this);
             btn_buy.setOnClickListener(this);
 
+            if(GlobalVar.language == Locale.ENGLISH)
+                btn_buy.setBackground(view.getResources().getDrawable(R.drawable.btn_buy_eng));
+
             count = 1;
         }
 
@@ -127,7 +132,7 @@ public class SidemenuFragment extends Fragment {
             img_product.setImageUrl(item.getProudctImage(), AppController.getInstance().getImageLoader());
 //            img_product.setImageURI(Uri.parse(item.getProudctImage()));
 
-            txt_productname.setText(item.getProductName());
+            txt_productname.setText(item.getName());
             txt_currentprice.setText(GlobalVar.setComma(price));
             txt_count.setText(String.valueOf(count));
             txt_totalprice.setText(GlobalVar.setComma(price * count));

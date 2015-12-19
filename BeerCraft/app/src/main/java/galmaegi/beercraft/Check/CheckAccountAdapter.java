@@ -77,7 +77,7 @@ public class CheckAccountAdapter extends BaseAdapter implements View.OnClickList
 
         CheckIndexItem item = items.get(position);
 
-        holder.mName.setText(item.getProductName());
+        holder.mName.setText(item.getName());
         holder.mLast.setText(GlobalVar.setComma(item.getCostPrice()));
         holder.mSale.setText(GlobalVar.setComma(item.getDiscountPrice()));
         holder.mQty.setText(item.getQty()+"");

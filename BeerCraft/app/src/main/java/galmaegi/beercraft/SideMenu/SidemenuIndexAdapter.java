@@ -69,10 +69,8 @@ public class SidemenuIndexAdapter extends BaseAdapter {
         }
 
         SidemenuIndexItem item = items.get(position);
-        if(GlobalVar.language == Locale.KOREA)
-            holder.mName.setText(item.getProductName());
-        else
-            holder.mName.setText(item.getEnglishName());
+
+        holder.mName.setText(item.getName());
         holder.mPrice.setText(GlobalVar.setComma(item.getPrice()));
 
         holder.mAlert.setBackgroundColor(Color.parseColor("#05B005"));

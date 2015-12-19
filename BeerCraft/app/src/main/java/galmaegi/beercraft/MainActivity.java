@@ -258,6 +258,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                             res.updateConfiguration(conf, dm);
                             Intent refresh = new Intent(getApplicationContext(), SplashActivity.class);
                             startActivity(refresh);
+                            MainActivity.mainActivity.finish();
                         }
                     }
                 });

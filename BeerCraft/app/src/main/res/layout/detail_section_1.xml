@@ -65,7 +65,7 @@
         android:layout_marginTop="15dp"
         android:layout_width="170dp"
         android:layout_height="50dp"
-        android:background="@drawable/btn_wishlist"/>
+        android:background="@drawable/btn_watchlist_kor"/>
 
     <!-- Today-->
     <TextView

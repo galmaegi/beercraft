@@ -61,6 +61,9 @@ public class Detail_4 implements View.OnClickListener{
         detail_4_totalprice = (TextView)view.findViewById(R.id.detail_4_totalprice);
         detail_4_btn_buy = (ImageButton)view.findViewById(R.id.detail_4_btn_buy);
 
+        if(GlobalVar.language == Locale.ENGLISH)
+            detail_4_btn_buy.setBackground(view.getResources().getDrawable(R.drawable.btn_buy_eng));
+
     }
 
 

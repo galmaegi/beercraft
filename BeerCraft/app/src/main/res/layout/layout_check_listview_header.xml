@@ -33,7 +33,7 @@
         android:layout_height="19dp"
         android:textAlignment="textEnd"
         android:textSize="15dp"
-        android:text="Current"/>
+        android:text="@string/Current"/>
 
     <!--<TextView-->
         <!--android:layout_width="120dp"-->

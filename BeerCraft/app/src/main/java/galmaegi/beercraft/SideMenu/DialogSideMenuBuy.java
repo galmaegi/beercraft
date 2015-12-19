@@ -19,6 +19,8 @@ import com.android.volley.toolbox.NetworkImageView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
@@ -56,6 +58,11 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
         dialog_buy_totalprice = (TextView)findViewById(R.id.dialog_buy_totalprice);
         dialog_buy_btn_no = (ImageButton)findViewById(R.id.dialog_buy_btn_no);
         dialog_buy_btn_buy = (ImageButton)findViewById(R.id.dialog_buy_btn_buy);
+
+        if(GlobalVar.language == Locale.ENGLISH){
+            dialog_buy_btn_buy.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_buy_eng));
+            dialog_buy_btn_no.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_dialog_cancel_eng));
+        }
         setSection();
 
     }
@@ -77,7 +84,7 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
             //to set dialog_buy_section
             ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
             dialog_buy_productimage.setImageUrl(item.getProudctImage(), mImageLoader);
-            dialog_buy_productname.setText(item.getProductName());
+            dialog_buy_productname.setText(item.getName());
 //            dialog_buy_country.setText(DetailGlobalVar.currentObject.getString("country"));
             dialog_buy_currentprice.setText(GlobalVar.setComma(item.getPrice()));
             dialog_buy_counttext.setText(count+"EA");

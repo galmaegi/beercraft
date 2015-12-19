@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import galmaegi.beercraft.CustomTimer.CustomTimer;
 
@@ -104,11 +105,11 @@ public class BottomBar {
             BottomBarItem tempItem = bottomBarItems.get(i);
             String result = "";
             if(tempItem.getCurrentPrice()-tempItem.getLastPrice()>0)
-                result = String.format("%10s <font color=#801f21>▲ %.1f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
+                result = String.format("%10s <font color=#801f21>▲ %.1f (%s)</font>",tempItem.getName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getLastPrice()));
             else if(tempItem.getCurrentPrice()-tempItem.getLastPrice()==0)
-                result = String.format("%10s <font color=#6f6f6f>〓 %.1f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
+                result = String.format("%10s <font color=#6f6f6f>〓 %.1f (%s)</font>",tempItem.getName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getLastPrice()));
             else
-                result = String.format("%10s <font color=#15a615>▼ %.1f (%s)</font>",tempItem.getKorName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getCurrentPrice()));
+                result = String.format("%10s <font color=#15a615>▼ %.1f (%s)</font>",tempItem.getName(),tempItem.getChangePercent(),GlobalVar.setComma(tempItem.getLastPrice()));
             bottomData.add(result);
         }
     }
@@ -127,7 +128,13 @@ public class BottomBar {
         private int lastPrice;
         private double changePercent;
 
+        public String getName(){
+            if(GlobalVar.language == Locale.ENGLISH)
+                return this.engName;
+            else
+                return this.korName;
 
+        }
         public void setKorName(String korName) {
             this.korName = isNullString(korName);
         }

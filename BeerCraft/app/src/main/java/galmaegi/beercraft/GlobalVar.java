@@ -24,6 +24,7 @@ public class GlobalVar {
     public static String beertabTitles[];
     public static String foodtabTitles[];
     public static String checktabTitles[];
+    public static String newstabTitles[];
 
 
     public static Date StringToDate(String string) {

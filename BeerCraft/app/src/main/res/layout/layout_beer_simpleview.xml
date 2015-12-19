@@ -93,6 +93,7 @@
             android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:textSize="25dp"
+            android:textStyle="bold"
             android:text="DETAIL" />
     </LinearLayout>
 

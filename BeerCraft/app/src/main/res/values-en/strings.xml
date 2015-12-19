@@ -41,10 +41,10 @@
     <string name="CHECKTOTAL">Total</string>
     <!--<string name=""></string>-->
 
-
-
-
-
-
+    <string name="NEWSINDEX">Index</string>
+    <string name="NEWSLASTEST">LASTEST</string>
+    <string name="NEWSBOTTLED">BOTTLED</string>
+    <string name="NEWSDRAFT">DRAFT</string>
+    <string name="NEWSETC">ETC</string>
 
 </resources>

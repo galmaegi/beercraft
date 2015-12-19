@@ -68,6 +68,8 @@ public class Detail_1 implements OnClickListener{
         sum_summary_low = (TextView)view.findViewById(R.id.sum_summary_low);
 
         sum_wishlist.setOnClickListener(this);
+        if(GlobalVar.language == Locale.ENGLISH)
+            sum_wishlist.setBackground(view.getResources().getDrawable(R.drawable.btn_watchlist_eng));
 //        sum_summary_avg = (TextView)view.findViewById(R.id.sum_summary_avg);
 //        sum_summary_per = (TextView)view.findViewById(R.id.sum_summary_per);
     }

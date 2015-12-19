@@ -27,6 +27,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.CustomTimer.CustomTimer;
@@ -175,6 +176,10 @@ public class BeerFragment extends Fragment {
             mShowDetail = (Button) view.findViewById(R.id.bt_showdetail);
 
             mShowDetail.setOnClickListener(this);
+
+            if(GlobalVar.language == Locale.KOREAN)
+                mShowDetail.setText("자세히보기");
+//                mShowDetail.setBackground(getResources().getDrawable(R.));
         }
 
         public void setView(BeerIndexItem item) {

@@ -4,6 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Locale;
 
 import galmaegi.beercraft.GlobalVar;
 
@@ -73,6 +74,12 @@ public class SidemenuIndexItem {
         modifyDate = GlobalVar.StringToDate(object.getString("modifyDate"));
     }
 
+    public String getName(){
+        if(GlobalVar.language == Locale.ENGLISH)
+            return this.englishName;
+        else
+            return this.productName;
+    }
     public void setSideMenuID(int sideMenuID) {
         this.sideMenuID = sideMenuID;
     }

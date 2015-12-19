@@ -97,14 +97,14 @@
             android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:background="@drawable/btn_no"
+            android:background="@drawable/btn_dialog_cancel_kor"
             android:id="@+id/dialog_buy_btn_no"/>
         <ImageButton
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:background="@drawable/btn_buy"
+            android:background="@drawable/btn_dialog_buy_kor"
             android:id="@+id/dialog_buy_btn_buy"/>
     </LinearLayout>
 

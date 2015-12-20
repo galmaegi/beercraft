@@ -38,5 +38,5 @@
         android:layout_marginLeft="28dp"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:background="#3F3F3F"/>
+        />
 </LinearLayout>

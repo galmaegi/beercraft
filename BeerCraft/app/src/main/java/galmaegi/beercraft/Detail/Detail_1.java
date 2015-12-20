@@ -72,6 +72,7 @@ public class Detail_1 implements OnClickListener{
             sum_wishlist.setBackground(view.getResources().getDrawable(R.drawable.btn_watchlist_eng));
 //        sum_summary_avg = (TextView)view.findViewById(R.id.sum_summary_avg);
 //        sum_summary_per = (TextView)view.findViewById(R.id.sum_summary_per);
+
     }
 
     public void setSection(){
@@ -85,6 +86,7 @@ public class Detail_1 implements OnClickListener{
             sum_beer_abv.setText(DetailGlobalVar.currentObject.getString("strength") + "%, " + DetailGlobalVar.currentObject.getString("volume") + "ml");
             sum_price.setText(GlobalVar.setComma(DetailGlobalVar.price));
             setChanged(DetailGlobalVar.currentObject.getString("last"), DetailGlobalVar.currentObject.getString("sellingPrice"));
+            getMgt();
         }
         catch (JSONException e){
             e.printStackTrace();
@@ -278,22 +280,29 @@ public class Detail_1 implements OnClickListener{
                 if(dataArray.get(i)<min)
                     min = dataArray.get(i);
             }
-            sum_today_high.setText((int)(sellingPrice * max / 100));
-            sum_today_low.setText((int)(sellingPrice * min / 100));
-            sum_today_open.setText((int)(sellingPrice * dataArray.get(0) / 100));
+            sum_today_high.setText(GlobalVar.setComma((int)(sellingPrice * max / 100)));
+            sum_today_low.setText(GlobalVar.setComma((int)(sellingPrice * min / 100)));
+            sum_today_open.setText(GlobalVar.setComma((int)(sellingPrice * dataArray.get(0) / 100)));
             if(count >= 1)
                 sum_today_prev.setText(GlobalVar.setComma((int)(sellingPrice * dataArray.get(count - 1) / 100)));
             else
                 sum_today_prev.setText(GlobalVar.setComma((int)sellingPrice));
 
         }
-        sum_summary_high.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 1.1)));
+        sum_summary_high.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 1.2)));
         sum_summary_low.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 0.8)));
 
     }
     void setToSelling(){
-        sum_summary_high.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 1.1)));
-        sum_summary_low.setText(GlobalVar.setComma((int)(DetailGlobalVar.price * 0.8)));
+        double sellingPrice = 0;
+        try {
+            sellingPrice = DetailGlobalVar.currentObject.getDouble("sellingPrice");
+        } catch (JSONException e) {
+            setToSelling();
+            e.printStackTrace();
+        }
+        sum_summary_high.setText(GlobalVar.setComma((int)(sellingPrice * 1.2)));
+        sum_summary_low.setText(GlobalVar.setComma((int)(sellingPrice * 0.8)));
         sum_today_high.setText(GlobalVar.setComma(DetailGlobalVar.price));
         sum_today_low.setText(GlobalVar.setComma(DetailGlobalVar.price));
         sum_today_open.setText(GlobalVar.setComma(DetailGlobalVar.price));

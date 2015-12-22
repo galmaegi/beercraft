@@ -4,10 +4,10 @@
     android:layout_width="400dp"
     android:layout_height="480dp"
     android:background="@drawable/dialog_action_bar_back"
-    android:paddingBottom="20dp"
+    android:paddingBottom="10dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:paddingTop="20dp"
+    android:paddingTop="10dp"
     >
     <LinearLayout
         android:orientation="horizontal"
@@ -17,7 +17,7 @@
             android:orientation="vertical"
             android:layout_marginTop="20dp"
             android:layout_width="160dp"
-            android:layout_height="260dp">
+            android:layout_height="270dp">
             <com.android.volley.toolbox.NetworkImageView
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
@@ -80,13 +80,54 @@
 
         </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/dialog_ask"
-        android:text="정말로 구매하시겠습니까?"/>
+    <!--<TextView-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textStyle="bold"-->
+        <!--style="@style/dialog_ask"-->
+        <!--android:text="정말로 구매하시겠습니까?"/>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="20dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:textAlignment="center">-->
+        <!--<TextView-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="27dp"-->
+            <!--android:textColor="#42F63F"-->
+            <!--style="@style/dialog_ask"-->
+            <!--android:text="구매"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="27dp"-->
+            <!--style="@style/dialog_ask"-->
+            <!--android:text="후"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="33dp"-->
+            <!--style="@style/dialog_ask"-->
+            <!--android:textColor="#CD021D"-->
+            <!--android:text="취소가 불가"/>-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textSize="27dp"-->
+            <!--style="@style/dialog_ask"-->
+            <!--android:text="합니다."/>-->
+    <!--</LinearLayout>-->
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@drawable/dialog_buy_back"/>
 
     <LinearLayout
         android:orientation="horizontal"

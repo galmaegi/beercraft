@@ -80,13 +80,19 @@
 
         </LinearLayout>
     </LinearLayout>
-    <TextView
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/dialog_ask"
-        android:text="정말로 구매하시겠습니까?"/>
+    <!--<TextView-->
+    <!--android:layout_marginTop="30dp"-->
+    <!--android:layout_marginBottom="30dp"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--style="@style/dialog_ask"-->
+    <!--android:text="정말로 구매하시겠습니까?"/>-->
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@drawable/dialog_buy_back"/>
 
     <LinearLayout
         android:orientation="horizontal"

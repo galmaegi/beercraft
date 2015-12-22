@@ -116,10 +116,10 @@
     </style>
     <style name = "dialog_ask">
         <item name="android:fontFamily">NanumGothic</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:textSize">25dp</item>
         <item name="android:textColor">#ffffff</item>
-
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

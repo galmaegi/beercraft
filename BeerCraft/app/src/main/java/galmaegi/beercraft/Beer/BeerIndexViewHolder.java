@@ -11,7 +11,7 @@ public class BeerIndexViewHolder {
     public TextView mABV;
     public TextView mMl;
     public TextView mSellingPrice;
-    public TextView mDate;
+//    public TextView mDate;
     public TextView mRate;
     public TextView mIncrease;
 }

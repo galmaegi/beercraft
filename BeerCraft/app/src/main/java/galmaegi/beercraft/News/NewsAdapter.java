@@ -60,7 +60,7 @@ public class NewsAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.layout_news_listview1_item, null);
 
             holder.mTitle = (TextView) convertView.findViewById(R.id.tv_title);
-            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
+//            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
             holder.mThumbnail = (NetworkImageView) convertView.findViewById(R.id.iv_thumbnail);
 
             convertView.setTag(holder);
@@ -71,7 +71,7 @@ public class NewsAdapter extends BaseAdapter {
         NewsItem item = items.get(position);
 
         holder.mTitle.setText(item.getNewsTitle());
-        holder.mDate.setText(GlobalVar.DateToString(item.getEntryDate()));
+//        holder.mDate.setText(GlobalVar.DateToString(item.getEntryDate()));
         holder.mThumbnail.setImageUrl(item.getContent_newsImage(), AppController.getInstance().getImageLoader());
 
         return convertView;

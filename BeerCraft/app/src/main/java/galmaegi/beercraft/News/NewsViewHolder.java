@@ -8,6 +8,6 @@ import com.android.volley.toolbox.NetworkImageView;
 
 public class NewsViewHolder {
     public TextView mTitle;
-    public TextView mDate;
+//    public TextView mDate;
     public NetworkImageView mThumbnail;
 }

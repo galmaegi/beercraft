@@ -40,7 +40,7 @@ public class CheckFragment extends Fragment{
 
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) holder.findViewById(R.id.inc_check_list).findViewById(R.id.tab_check);
         tabStrip.setTextSize(GlobalVar.tabTextSize);
-        tabStrip.setTextColor(Color.WHITE);
+        tabStrip.setTextColor(Color.parseColor("#ffd588"));
         tabStrip.setViewPager(viewpager);
 
         return holder;

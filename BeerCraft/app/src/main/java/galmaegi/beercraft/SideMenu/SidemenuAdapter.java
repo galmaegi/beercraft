@@ -54,7 +54,7 @@ public class SidemenuAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.layout_beer_listview2_item, null);
             holder.mSellingPrice = (TextView) convertView.findViewById(R.id.tv_sellingPrice);
-            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
+//            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
 
             convertView.setTag(holder);
         } else {
@@ -65,7 +65,7 @@ public class SidemenuAdapter extends BaseAdapter {
 
         holder.mName.setText(item.getBeerName());
         holder.mSellingPrice.setText(String.valueOf(item.getSellingPrice()));
-        holder.mDate.setText(item.getModifyDate().toString());
+//        holder.mDate.setText(item.getModifyDate().toString());
 //
 //        int color;
 //        if(item.getRateBeerScore() < 0) {

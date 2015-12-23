@@ -43,24 +43,18 @@
         android:layout_marginLeft="9dp"
         android:orientation="vertical"
         android:layout_width="55dp"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_vertical">
+
 
         <TextView
             android:id="@+id/tv_sellingPrice"
-            android:layout_marginTop="7dp"
             android:layout_width="match_parent"
             android:layout_height="21dp"
             android:textAlignment="textEnd"
             android:textSize="18dp"
             android:text="8,200"/>
 
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="match_parent"
-            android:layout_height="19dp"
-            android:textAlignment="textEnd"
-            android:textSize="15dp"
-            android:text="8:10 PM" />
     </LinearLayout>
 
     <LinearLayout

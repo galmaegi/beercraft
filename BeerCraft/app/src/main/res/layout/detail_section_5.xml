@@ -12,6 +12,7 @@
         app:pstsTextAllCaps="true"
         android:layout_width="match_parent"
         android:layout_height="48dp"
+        app:pstsIndicatorColor="#ffd588"
         />
 
     <android.support.v4.view.ViewPager

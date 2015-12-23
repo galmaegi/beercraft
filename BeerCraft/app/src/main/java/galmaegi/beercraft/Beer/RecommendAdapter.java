@@ -60,7 +60,7 @@ public class RecommendAdapter extends BaseAdapter {
             holder.mName = (TextView) convertView.findViewById(R.id.tv_name);
             holder.mCountry = (TextView) convertView.findViewById(R.id.tv_country);
             holder.mSellingPrice = (TextView) convertView.findViewById(R.id.tv_sellingPrice);
-            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
+//            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
 
             convertView.setTag(holder);
         } else {
@@ -76,7 +76,7 @@ public class RecommendAdapter extends BaseAdapter {
         holder.mName.setText(item.getBeerName());
         holder.mCountry.setText(item.getCountry());
         holder.mSellingPrice.setText(GlobalVar.setComma(curPrice));
-        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
+//        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
 
         int color;
         if(increase < 0) {

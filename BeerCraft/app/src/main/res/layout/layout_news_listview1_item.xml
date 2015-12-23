@@ -23,12 +23,12 @@
             android:textSize="20dp"
             android:text="Stock Gains Trim Quater's $11 Trillion Loss as Bonds, Yen Drop"/>
 
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="match_parent"
-            android:layout_height="19dp"
-            android:textSize="15dp"
-            android:text="7 minutes ago"/>
+        <!--<TextView-->
+            <!--android:id="@+id/tv_date"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="19dp"-->
+            <!--android:textSize="15dp"-->
+            <!--android:text="7 minutes ago"/>-->
 
     </LinearLayout>
 

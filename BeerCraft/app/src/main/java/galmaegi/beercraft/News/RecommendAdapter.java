@@ -60,7 +60,7 @@ public class RecommendAdapter extends BaseAdapter {
             holder.mName = (TextView) convertView.findViewById(R.id.tv_name);
             holder.mCountry = (TextView) convertView.findViewById(R.id.tv_country);
             holder.mSellingPrice = (TextView) convertView.findViewById(R.id.tv_sellingPrice);
-            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
+//            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
             holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
             holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
 
@@ -78,7 +78,7 @@ public class RecommendAdapter extends BaseAdapter {
         holder.mName.setText(item.getBeerName());
         holder.mCountry.setText(item.getCountry());
         holder.mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
-        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
+//        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
         holder.mRate.setText(String.format("%.1f %%", rate));
         holder.mIncrease.setText(GlobalVar.setComma(increase));
 

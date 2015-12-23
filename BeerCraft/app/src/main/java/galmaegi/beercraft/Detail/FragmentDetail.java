@@ -2,6 +2,7 @@ package galmaegi.beercraft.Detail;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -94,6 +95,7 @@ public class FragmentDetail extends Fragment {
         detail_5_viewpager = (ViewPager) view.findViewById(R.id.detail_5_viewpager);
         detail_5_tabstrip = (PagerSlidingTabStrip) view.findViewById(R.id.detail_5_tabs);
 
+
         //get json data
         getDetailjson();
     }
@@ -153,6 +155,7 @@ public class FragmentDetail extends Fragment {
                             //set section 5
                             detail_5_viewpager.setAdapter(new Detail_5_Page_Adapter(getChildFragmentManager(), DetailGlobalVar.currentObject.getString("tastingNote"), DetailGlobalVar.currentObject.getString("beerStory")));
                             detail_5_tabstrip.setViewPager(detail_5_viewpager);
+                            detail_5_tabstrip.setTextColor(Color.parseColor("#ffd588"));
 
 
                         } catch (JSONException e) {

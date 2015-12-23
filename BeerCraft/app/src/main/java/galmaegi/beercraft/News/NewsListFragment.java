@@ -29,7 +29,7 @@ public class NewsListFragment extends Fragment{
 
         PagerSlidingTabStrip tabStrip = (PagerSlidingTabStrip) view.findViewById(R.id.tab_news_index);
         tabStrip.setTextSize(GlobalVar.tabTextSize);
-        tabStrip.setTextColor(Color.WHITE);
+        tabStrip.setTextColor(Color.parseColor("#ffd588"));
         tabStrip.setViewPager(viewpager);
 
         return view;

@@ -63,7 +63,7 @@ public class BeerIndexAdapter extends BaseAdapter {
             holder.mABV = (TextView) convertView.findViewById(R.id.tv_abv);
             holder.mMl = (TextView) convertView.findViewById(R.id.tv_ml);
             holder.mSellingPrice = (TextView) convertView.findViewById(R.id.tv_sellingPrice);
-            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
+//            holder.mDate = (TextView) convertView.findViewById(R.id.tv_date);
             holder.mRate = (TextView) convertView.findViewById(R.id.tv_rate);
             holder.mIncrease = (TextView) convertView.findViewById(R.id.tv_increase);
 
@@ -84,7 +84,7 @@ public class BeerIndexAdapter extends BaseAdapter {
         holder.mABV.setText(String.valueOf(item.getStrength()));
         holder.mMl.setText(String.valueOf(item.getVolume()));
         holder.mSellingPrice.setText(GlobalVar.setComma(item.getSellingPrice()));
-        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
+//        holder.mDate.setText(GlobalVar.DateToString(item.getModifyDate()));
         holder.mRate.setText(String.format("%.1f %%", rate));
         holder.mIncrease.setText(GlobalVar.setComma(increase));
 

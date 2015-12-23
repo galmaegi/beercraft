@@ -65,7 +65,9 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
         dialog_buy_sidemenu_alert = (ImageView)findViewById(R.id.dialog_buy_sidemenu_alert);
 
         if(GlobalVar.language == Locale.ENGLISH){
-            dialog_buy_sidemenu_alert.getLayoutParams().height=140;
+            final float scale = getContext().getResources().getDisplayMetrics().density;
+            int pixels = (int) (90 * scale + 0.5f);
+            dialog_buy_sidemenu_alert.getLayoutParams().height=pixels;
             dialog_buy_sidemenu_alert.setBackground(this.getContext().getResources().getDrawable(R.drawable.dialog_buy_back_eng));
 
             dialog_buy_btn_buy.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_buy_eng));

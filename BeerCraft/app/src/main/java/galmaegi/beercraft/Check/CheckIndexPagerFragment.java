@@ -1,5 +1,6 @@
 package galmaegi.beercraft.Check;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +33,8 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
 
+    public static CheckIndexPagerFragment checkIndexPagerFragment_0;
+    public static CheckIndexPagerFragment checkIndexPagerFragment_1;
     ListView checkListView = null;
     CheckIndexAdapter checkIndexAdapter = null;
     ArrayList<CheckIndexItem> items = null;
@@ -62,9 +65,19 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
     public static CheckIndexPagerFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        CheckIndexPagerFragment fragment = new CheckIndexPagerFragment();
-        fragment.setArguments(args);
-        return fragment;
+//        CheckIndexPagerFragment fragment = new CheckIndexPagerFragment();
+//        fragment.setArguments(args);
+        if(page == 0){
+            checkIndexPagerFragment_0 = new CheckIndexPagerFragment();
+            checkIndexPagerFragment_0.setArguments(args);
+            return checkIndexPagerFragment_0;
+        }
+        else{
+            checkIndexPagerFragment_1 = new CheckIndexPagerFragment();
+            checkIndexPagerFragment_1.setArguments(args);
+            return checkIndexPagerFragment_1;
+        }
+//        return fragment;
     }
 
     @Override
@@ -347,12 +360,25 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                 sendRequestDelete(deleteApi);
 
         } else if(v.getId() == R.id.btn_buy) {
-            String buyApi = buySelectedItem();
-            if(buyApi!=null)
-                sendRequest(buyApi);
-            String deleteApi = deleteSelectedItem();
-            if(deleteApi!=null)
-                sendRequestDelete(deleteApi);
+            if(items.size()>=0) {
+                final DialogWishlist dialogWishlist = new DialogWishlist(this.getContext());
+                dialogWishlist.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        if (DialogWishlist.buy == true) {
+                            String buyApi = buySelectedItem();
+                            if (buyApi != null)
+                                sendRequest(buyApi);
+                            String deleteApi = deleteSelectedItem();
+                            if (deleteApi != null)
+                                sendRequestDelete(deleteApi);
+
+                            checkIndexPagerFragment_0.getCheckIndex();
+                        }
+                    }
+                });
+                dialogWishlist.show();
+            }
         }
 //        getCheckIndex();
     }

@@ -65,7 +65,10 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
 
             dialog_buy_btn_buy.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_buy_eng));
             dialog_buy_btn_no.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_dialog_cancel_eng));
-            dialog_buy_beer_alert.getLayoutParams().height=140;
+
+            final float scale = getContext().getResources().getDisplayMetrics().density;
+            int pixels = (int) (90 * scale + 0.5f);
+            dialog_buy_beer_alert.getLayoutParams().height=pixels;
             dialog_buy_beer_alert.setBackground(this.getContext().getResources().getDrawable(R.drawable.dialog_buy_back_eng));
         }
         setSection();

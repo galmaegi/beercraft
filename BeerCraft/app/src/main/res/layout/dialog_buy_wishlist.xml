@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="400dp"
+    android:layout_height="180dp"
+    android:background="@drawable/dialog_action_bar_back"
+    android:paddingBottom="10dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="10dp"
+    >
+    <ImageView
+        android:layout_marginBottom="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@drawable/dialog_buy_back"
+        android:id="@+id/dialog_buy_check_wishlist_alert"
+        android:scaleType="fitXY"/>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_dialog_cancel_kor"
+            android:id="@+id/dialog_buy_btn_no"/>
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_dialog_buy_kor"
+            android:id="@+id/dialog_buy_btn_buy"/>
+    </LinearLayout>
+
+
+</LinearLayout>

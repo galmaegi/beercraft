@@ -2,10 +2,12 @@ package galmaegi.beercraft.SideMenu;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 
+
 /**
  * Created by root on 15. 11. 18.
  */
@@ -32,12 +35,13 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
 
     NetworkImageView dialog_buy_productimage;
     TextView dialog_buy_productname;
-//    TextView dialog_buy_country;
+    //    TextView dialog_buy_country;
     TextView dialog_buy_currentprice;
     TextView dialog_buy_counttext;
     TextView dialog_buy_totalprice;
     ImageButton dialog_buy_btn_buy;
     ImageButton dialog_buy_btn_no;
+    ImageView dialog_buy_sidemenu_alert;
 
     private SidemenuIndexItem item;
     private int count;
@@ -48,7 +52,7 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
         this.count = count;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.dialog_buy_product);
+        setContentView(R.layout.dialog_buy_sidemenu);
         //initialization views which located in activity_detail section4
         dialog_buy_productimage = (NetworkImageView)findViewById(R.id.dialog_buy_productimage);
         dialog_buy_productname = (TextView)findViewById(R.id.dialog_buy_productname);
@@ -58,8 +62,12 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
         dialog_buy_totalprice = (TextView)findViewById(R.id.dialog_buy_totalprice);
         dialog_buy_btn_no = (ImageButton)findViewById(R.id.dialog_buy_btn_no);
         dialog_buy_btn_buy = (ImageButton)findViewById(R.id.dialog_buy_btn_buy);
+        dialog_buy_sidemenu_alert = (ImageView)findViewById(R.id.dialog_buy_sidemenu_alert);
 
         if(GlobalVar.language == Locale.ENGLISH){
+            dialog_buy_sidemenu_alert.getLayoutParams().height=140;
+            dialog_buy_sidemenu_alert.setBackground(this.getContext().getResources().getDrawable(R.drawable.dialog_buy_back_eng));
+
             dialog_buy_btn_buy.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_buy_eng));
             dialog_buy_btn_no.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_dialog_cancel_eng));
         }
@@ -81,16 +89,21 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
         }
     }
     public void setSection(){
-            //to set dialog_buy_section
-            ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
-            dialog_buy_productimage.setImageUrl(item.getProudctImage(), mImageLoader);
-            dialog_buy_productname.setText(item.getName());
+        //to set dialog_buy_section
+        ImageLoader mImageLoader = AppController.getInstance().getImageLoader();
+
+        if(GlobalVar.language == Locale.ENGLISH)
+            dialog_buy_productname.setText(item.getProductName());
+        else
+            dialog_buy_productname.setText(item.getEnglishName());
+        dialog_buy_productimage.setImageUrl(item.getProudctImage(), mImageLoader);
+        dialog_buy_productname.setText(item.getName());
 //            dialog_buy_country.setText(DetailGlobalVar.currentObject.getString("country"));
-            dialog_buy_currentprice.setText(GlobalVar.setComma(item.getPrice()));
-            dialog_buy_counttext.setText(count+"EA");
-            dialog_buy_totalprice.setText(GlobalVar.setComma(count * item.getPrice()));
-            dialog_buy_btn_buy.setOnClickListener(this);
-            dialog_buy_btn_no.setOnClickListener(this);
+        dialog_buy_currentprice.setText(GlobalVar.setComma(item.getPrice()));
+        dialog_buy_counttext.setText(count+"EA");
+        dialog_buy_totalprice.setText(GlobalVar.setComma(count * item.getPrice()));
+        dialog_buy_btn_buy.setOnClickListener(this);
+        dialog_buy_btn_no.setOnClickListener(this);
     }
     private void addorderRequest() {
         String typeString = "kbx";
@@ -99,11 +112,11 @@ public class DialogSideMenuBuy extends Dialog implements View.OnClickListener{
 
 
         String urlJsonObj = "http://www.kbx.kr/wp-content/plugins/beer-rest-api/lib/class-wp-json-addorder.php?" +
-                    "tableNo="+GlobalVar.currentTable+"&" +
-                    "0[0]="+item.getSideMenuID()+"&" +
-                    "0[1]="+count+ "&" +
-                    "0[2]="+item.getPrice()*count + "&" +
-                    "0[3]="+typeString;
+                "tableNo="+GlobalVar.currentTable+"&" +
+                "0[0]="+item.getSideMenuID()+"&" +
+                "0[1]="+count+ "&" +
+                "0[2]="+item.getPrice()*count + "&" +
+                "0[3]="+typeString;
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET, urlJsonObj, null, new Response.Listener<JSONObject>() {
 
             @Override

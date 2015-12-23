@@ -2,10 +2,12 @@ package galmaegi.beercraft.Detail;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +42,7 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
     TextView dialog_buy_totalprice;
     ImageButton dialog_buy_btn_buy;
     ImageButton dialog_buy_btn_no;
+    ImageView dialog_buy_beer_alert;
     public DialogBuy(Context context) {
         super(context);
 
@@ -56,10 +59,14 @@ public class DialogBuy extends Dialog implements View.OnClickListener{
         dialog_buy_totalprice = (TextView)findViewById(R.id.dialog_buy_totalprice);
         dialog_buy_btn_no = (ImageButton)findViewById(R.id.dialog_buy_btn_no);
         dialog_buy_btn_buy = (ImageButton)findViewById(R.id.dialog_buy_btn_buy);
+        dialog_buy_beer_alert = (ImageView)findViewById(R.id.dialog_buy_beer_alert);
 
         if(GlobalVar.language == Locale.ENGLISH){
+
             dialog_buy_btn_buy.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_buy_eng));
             dialog_buy_btn_no.setBackground(this.getContext().getResources().getDrawable(R.drawable.btn_dialog_cancel_eng));
+            dialog_buy_beer_alert.getLayoutParams().height=140;
+            dialog_buy_beer_alert.setBackground(this.getContext().getResources().getDrawable(R.drawable.dialog_buy_back_eng));
         }
         setSection();
 

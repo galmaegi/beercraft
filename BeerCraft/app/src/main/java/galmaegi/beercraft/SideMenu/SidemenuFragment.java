@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -171,11 +172,12 @@ public class SidemenuFragment extends Fragment {
 
                     setView(item);
                 } else if (v.getId() == R.id.btn_buy) {
+                    Log.d("clicked","clicked");
                     DialogSideMenuBuy dialogBuy = new DialogSideMenuBuy(parent_view.getContext(),item,count);
                     dialogBuy.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(DialogInterface dialog) {
-
+                            Log.d("dismissed","dismissed");
                         }
                     });
                     dialogBuy.show();

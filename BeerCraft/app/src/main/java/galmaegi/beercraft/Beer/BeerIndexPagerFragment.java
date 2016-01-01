@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -29,7 +30,7 @@ import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
 import galmaegi.beercraft.common.BeerIndexItem;
 
-public class BeerIndexPagerFragment extends Fragment {
+public class BeerIndexPagerFragment extends Fragment implements View.OnClickListener {
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
 
@@ -41,6 +42,15 @@ public class BeerIndexPagerFragment extends Fragment {
 
     public static BeerIndexPagerFragment beerIndexDraft;
     public static BeerIndexPagerFragment beerIndexBottled;
+
+    //forSorting
+    Button beer_list_btn_index;
+    Button beer_list_btn_style;
+    Button beer_list_btn_abv;
+    Button beer_list_btn_ml;
+    Button beer_list_btn_current;
+
+    ArrayList<Boolean> isSort;
 
     @Override
     public void onPause() {
@@ -63,15 +73,30 @@ public class BeerIndexPagerFragment extends Fragment {
             return false;
         }
     });
-    Handler sortHandler = new Handler(new android.os.Handler.Callback() {
-        @Override
-        public boolean handleMessage(Message msg) {
-            sortList(msg.arg1);
-            return false;
-        }
-    });
 
-    static class CharAscCompare implements Comparator<BeerIndexItem> {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.beer_list_btn_index:
+                this.sortList(0);
+                break;
+            case R.id.beer_list_btn_style:
+                this.sortList(1);
+                break;
+            case R.id.beer_list_btn_abv:
+                this.sortList(2);
+                break;
+            case R.id.beer_list_btn_ml:
+                this.sortList(3);
+                break;
+            case R.id.beer_list_btn_current:
+                this.sortList(4);
+                break;
+        }
+
+    }
+
+    static class sortBeer implements Comparator<BeerIndexItem> {
 
         /**
          * 오름차순(ASC)
@@ -79,16 +104,24 @@ public class BeerIndexPagerFragment extends Fragment {
         public int sortArg;
         public BeerIndexItem lhs;
         public BeerIndexItem rhs;
-        public CharAscCompare(int sortArg){
+        public boolean isSort;
+
+        public sortBeer(int sortArg, boolean isSort){
             this.sortArg = sortArg;
+            this.isSort = isSort;
         }
-//        @Override
-//        public int compare(ArrayList<BeerIndexItem> lhs, ArrayList<BeerIndexItem> rhs) {
-//            return 0;
-//        }
+
         @Override
         public int compare(BeerIndexItem lhs, BeerIndexItem rhs) {
             int returnValue = -1;
+            if(isSort == true) {
+                this.lhs = lhs;
+                this.rhs = rhs;
+            } else {
+                this.rhs = lhs;
+                this.lhs = rhs;
+            }
+
             if(sortArg == 0){
                 returnValue = sortByName();
             } else if(sortArg == 1){
@@ -98,11 +131,12 @@ public class BeerIndexPagerFragment extends Fragment {
             } else if(sortArg == 3){
                 returnValue = sortByMl();
             } else if(sortArg == 4){
-                returnValue = sortByChange();
+                returnValue = sortByCurrent();
             }
             return returnValue;
         }
         public int sortByName(){
+
             if(GlobalVar.language == Locale.KOREAN) {
                 return lhs.getBeerName().compareTo(rhs.getBeerName());
             }
@@ -124,8 +158,8 @@ public class BeerIndexPagerFragment extends Fragment {
         public int sortByMl(){
             return (lhs.getVolume() - rhs.getVolume());
         }
-        public int sortByChange(){
-            return lhs.getIncrease() - rhs.getIncrease();
+        public int sortByCurrent(){
+            return lhs.getSellingPrice() - rhs.getSellingPrice();
         }
 
     }
@@ -137,7 +171,8 @@ public class BeerIndexPagerFragment extends Fragment {
         } else{
             fragment = beerIndexBottled;
         }
-        Collections.sort(fragment.items, new CharAscCompare(sortArg));
+        Collections.sort(fragment.items, new CharAscCompare(sortArg,isSort.get(sortArg)));
+        isSort.set(sortArg,!isSort.get(sortArg));
         fragment.beerIndexAdapter.notifyDataSetChanged();
 
     }
@@ -163,7 +198,6 @@ public class BeerIndexPagerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
-
     }
 
     @Override
@@ -191,6 +225,22 @@ public class BeerIndexPagerFragment extends Fragment {
 
         timer = new CustomTimer(GlobalVar.realLoadingTime,GlobalVar.realLoadingTime, handler);
         timer.start();
+
+        beer_list_btn_index = (Button)view.findViewById(R.id.beer_list_btn_index);
+        beer_list_btn_style = (Button)view.findViewById(R.id.beer_list_btn_style);
+        beer_list_btn_abv = (Button)view.findViewById(R.id.beer_list_btn_abv);
+        beer_list_btn_ml = (Button)view.findViewById(R.id.beer_list_btn_ml);
+        beer_list_btn_current = (Button)view.findViewById(R.id.beer_list_btn_current);
+
+        beer_list_btn_index.setOnClickListener(this);
+        beer_list_btn_style.setOnClickListener(this);
+        beer_list_btn_abv.setOnClickListener(this);
+        beer_list_btn_ml.setOnClickListener(this);
+        beer_list_btn_current.setOnClickListener(this);
+
+        isSort = new ArrayList<Boolean>();
+        for(int i=0; i < 5; i++)
+            isSort.add(i,true);
     }
 
     @Override

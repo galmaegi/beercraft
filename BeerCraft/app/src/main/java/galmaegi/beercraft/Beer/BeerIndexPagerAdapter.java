@@ -1,5 +1,6 @@
 package galmaegi.beercraft.Beer;
 
+import android.os.Message;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -24,6 +25,7 @@ public class BeerIndexPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         BeerIndexPagerFragment fragment = BeerIndexPagerFragment.newInstance(position);
+
         return fragment;
     }
 

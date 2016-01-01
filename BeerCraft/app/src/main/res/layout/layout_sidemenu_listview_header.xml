@@ -2,24 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="519dp"
-    android:layout_height="24dp"
+    android:layout_height="40dp"
     android:gravity="center_vertical"
     android:background="#222222">
 
     <TextView
-        android:layout_marginLeft="26dp"
+        android:paddingLeft="26dp"
         android:layout_width="330dp"
-        android:layout_height="19dp"
+        android:layout_height="match_parent"
         android:textSize="15dp"
         android:text="@string/FOODINDEX"
-        android:textColor="#FFFFFF"/>
+        android:textColor="@android:color/white"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical|left"
+        android:layout_marginRight="26dp"
+        android:id="@+id/side_list_btn_index"/>
 
     <TextView
         android:layout_width="130dp"
-        android:layout_height="19dp"
-        android:textAlignment="textEnd"
+        android:layout_height="match_parent"
         android:textSize="15dp"
         android:text="@string/Current"
-        android:textColor="#FFFFFF"/>
+        android:textColor="@android:color/white"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical|left"
+        android:id="@+id/side_list_btn_current"/>
 
 </LinearLayout>

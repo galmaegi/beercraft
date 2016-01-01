@@ -6,7 +6,7 @@
     android:gravity="center_vertical"
     android:background="#222222">
 
-    <TextView
+    <Button
         android:paddingLeft="26dp"
         android:layout_width="330dp"
         android:layout_height="match_parent"
@@ -18,14 +18,14 @@
         android:layout_marginRight="26dp"
         android:id="@+id/side_list_btn_index"/>
 
-    <TextView
+    <Button
         android:layout_width="130dp"
         android:layout_height="match_parent"
         android:textSize="15dp"
         android:text="@string/Current"
         android:textColor="@android:color/white"
         android:background="@android:color/transparent"
-        android:gravity="center_vertical|left"
+        android:gravity="center_vertical|right"
         android:id="@+id/side_list_btn_current"/>
 
 </LinearLayout>

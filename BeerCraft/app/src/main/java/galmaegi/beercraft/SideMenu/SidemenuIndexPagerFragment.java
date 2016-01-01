@@ -18,13 +18,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.Locale;
 
 import galmaegi.beercraft.AppController;
+import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
+import galmaegi.beercraft.common.BeerIndexItem;
 import galmaegi.beercraft.common.NewsItem;
 
-public class SidemenuIndexPagerFragment extends Fragment {
+public class SidemenuIndexPagerFragment extends Fragment implements View.OnClickListener{
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
 
@@ -32,14 +37,64 @@ public class SidemenuIndexPagerFragment extends Fragment {
     private SidemenuIndexAdapter sidemenuAdapter;
     private ArrayList<SidemenuIndexItem> items;
 
-    private Button side_list_btn_index;
-    private Button side_list_btn_current;
+    Button side_list_btn_index;
+    Button side_list_btn_current;
 
     ArrayList<Boolean> isSort;
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.side_list_btn_index:
+                this.sortList(0);
+                break;
+            case R.id.side_list_btn_current:
+                this.sortList(1);
+                break;
+        }
+    }
 
     enum TYPE {
         KBX,
         GUEST
+    }
+
+    static class sortSideMenu implements Comparator<SidemenuIndexItem> {
+        public int sortArg;
+        public SidemenuIndexItem lhs;
+        public SidemenuIndexItem rhs;
+        public boolean isSort;
+
+        public sortSideMenu(int sortArg, boolean isSort){
+            this.sortArg = sortArg;
+            this.isSort = isSort;
+        }
+        @Override
+        public int compare(SidemenuIndexItem lhs, SidemenuIndexItem rhs) {
+            int returnValue = -1;
+            if(isSort == true) {
+                this.lhs = lhs;
+                this.rhs = rhs;
+            } else {
+                this.rhs = lhs;
+                this.lhs = rhs;
+            }
+
+            if(sortArg == 0){
+                returnValue = sortByName();
+            } else if(sortArg == 1){
+                returnValue = sortByStyle();
+            }
+            return returnValue;
+        }
+        public int sortByName(){
+            return lhs.getName().compareTo(rhs.getName());
+        }
+        public int sortByStyle(){
+            return lhs.getPrice()-rhs.getPrice();
+        }
+
+
     }
 
     public static SidemenuIndexPagerFragment newInstance(int page) {
@@ -54,6 +109,12 @@ public class SidemenuIndexPagerFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+    }
+
+    public void sortList(int sortArg){
+        Collections.sort(this.items, new sortSideMenu(sortArg,isSort.get(sortArg)));
+        isSort.set(sortArg,!isSort.get(sortArg));
+        this.sidemenuAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -80,6 +141,17 @@ public class SidemenuIndexPagerFragment extends Fragment {
         } else {
             getMenuIndex(TYPE.GUEST);
         }
+
+        side_list_btn_index = (Button)view.findViewById(R.id.side_list_btn_index);
+        side_list_btn_current = (Button)view.findViewById(R.id.side_list_btn_current);
+
+        side_list_btn_index.setOnClickListener(this);
+        side_list_btn_current.setOnClickListener(this);
+
+        isSort = new ArrayList<Boolean>();
+        for(int i=0; i < 2; i++)
+            isSort.add(i,true);
+
     }
 
     @Override

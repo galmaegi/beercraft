@@ -5,56 +5,72 @@
     android:layout_height="50dp"
     android:background="#222222">
 
-    <android.widget.Space
-        android:layout_width="29dp"
-        android:layout_height="match_parent"/>
+    <!--<android.widget.Space-->
+        <!--android:layout_width="29dp"-->
+        <!--android:layout_height="match_parent"/>-->
 
-    <TextView
+    <Button
+        android:paddingLeft="29dp"
         android:layout_width="450dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|left"
         android:textSize="15dp"
-        android:text="@string/BEERINDEX"/>
+        android:text="@string/BEERINDEX"
+        android:layout_marginRight="29dp"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"/>
 
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical|right"
-        android:textSize="15dp" />
-
-    <TextView
-        android:layout_width="120dp"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical|right"
-        android:textSize="15dp"
-        android:text="@string/Current" />
-
-    <TextView
+    <Button
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="@string/CHECKBOUGHT" />
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"/>
 
-    <TextView
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:textSize="15dp"
+        android:text="@string/Current"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"/>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:textSize="15dp"
+        android:text="@string/CHECKBOUGHT"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"/>
+
+    <Button
         android:layout_width="80dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="@string/CHECKQTY" />
+        android:text="@string/CHECKQTY"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"/>
 
-    <TextView
+    <Button
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical|right"
         android:textSize="15dp"
-        android:text="@string/CHECKSUBTOTAL"/>
+        android:text="@string/CHECKSUBTOTAL"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"/>
 
-    <TextView
+    <Button
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:textSize="15dp"
         android:text="@string/CHECKCHANGE"
-        android:gravity="center_vertical|right"/>
+        android:gravity="center_vertical|right"
+        android:background="@android:color/transparent"
+        android:textColor="@android:color/white"/>
 
 </LinearLayout>

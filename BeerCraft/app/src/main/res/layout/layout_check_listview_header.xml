@@ -5,15 +5,20 @@
     android:layout_height="wrap_content"
     android:background="#222222">
 
-    <android.widget.Space
-        android:layout_width="29dp"
-        android:layout_height="match_parent"/>
-
-    <TextView
+    <!--<android.widget.Space-->
+        <!--android:layout_width="29dp"-->
+        <!--android:layout_height="match_parent"/>-->
+s
+    <Button
+        android:paddingLeft="29dp"
         android:layout_width="560dp"
-        android:layout_height="19dp"
+        android:layout_height="match_parent"
         android:textSize="15dp"
-        android:text="@string/BEERINDEX"/>
+        android:text="@string/BEERINDEX"
+        android:layout_marginRight="29dp"
+        android:gravity="left|center_vertical"
+        android:textColor="@android:color/white"
+        android:background="@android:color/transparent"/>
 
     <TextView
         android:layout_width="360dp"
@@ -28,12 +33,14 @@
         <!--android:textSize="15dp"-->
         <!--android:text="Original" />-->
 
-    <TextView
+    <Button
         android:layout_width="120dp"
-        android:layout_height="19dp"
-        android:textAlignment="textEnd"
+        android:layout_height="match_parent"
         android:textSize="15dp"
-        android:text="@string/Current"/>
+        android:text="@string/Current"
+        android:gravity="left|center_vertical"
+        android:textColor="@android:color/white"
+        android:background="@android:color/transparent"/>
 
     <!--<TextView-->
         <!--android:layout_width="120dp"-->

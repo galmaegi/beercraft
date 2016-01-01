@@ -165,16 +165,9 @@ public class BeerIndexPagerFragment extends Fragment implements View.OnClickList
     }
 
     public void sortList(int sortArg){
-        BeerIndexPagerFragment fragment;
-        if(mPage == 0){
-            fragment = beerIndexDraft;
-        } else{
-            fragment = beerIndexBottled;
-        }
-        Collections.sort(fragment.items, new CharAscCompare(sortArg,isSort.get(sortArg)));
+        Collections.sort(this.items, new sortBeer(sortArg,isSort.get(sortArg)));
         isSort.set(sortArg,!isSort.get(sortArg));
-        fragment.beerIndexAdapter.notifyDataSetChanged();
-
+        this.beerIndexAdapter.notifyDataSetChanged();
     }
 
 

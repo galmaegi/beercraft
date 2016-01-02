@@ -18,7 +18,8 @@
         android:text="@string/BEERINDEX"
         android:layout_marginRight="29dp"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:id="@+id/account_list_btn_index"/>
 
     <Button
         android:layout_width="120dp"
@@ -35,7 +36,8 @@
         android:textSize="15dp"
         android:text="@string/Current"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:id="@+id/account_list_btn_current"/>
 
     <Button
         android:layout_width="120dp"
@@ -44,7 +46,8 @@
         android:textSize="15dp"
         android:text="@string/CHECKBOUGHT"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:id="@+id/account_list_btn_bought"/>
 
     <Button
         android:layout_width="80dp"
@@ -53,7 +56,8 @@
         android:textSize="15dp"
         android:text="@string/CHECKQTY"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:id="@+id/account_list_btn_qty"/>
 
     <Button
         android:layout_width="120dp"
@@ -62,7 +66,8 @@
         android:textSize="15dp"
         android:text="@string/CHECKSUBTOTAL"
         android:background="@android:color/transparent"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:id="@+id/account_list_btn_subtotal"/>
 
     <Button
         android:layout_width="120dp"

@@ -23,11 +23,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Locale;
 
 import galmaegi.beercraft.AppController;
 import galmaegi.beercraft.GlobalVar;
 import galmaegi.beercraft.R;
+import galmaegi.beercraft.common.BeerIndexItem;
 
 public class CheckIndexPagerFragment extends android.support.v4.app.Fragment implements View.OnClickListener{
     public static final String ARG_PAGE = "ARG_PAGE";
@@ -55,6 +58,19 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
     CheckAccountAdapter checkAccountAdapter = null;
     Button btn_delete;
     Button btn_buy;
+
+    //for sort
+    Button account_list_btn_index;
+    Button account_list_btn_current;
+    Button account_list_btn_bought;
+    Button account_list_btn_qty;
+    Button account_list_btn_subtotal;
+
+    //for sort
+    Button wishlist_list_btn_index;
+    Button wishlist_list_btn_current;
+
+    ArrayList<Boolean> isSort;
 
     @Override
     public void onResume() {
@@ -128,6 +144,11 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
         holder = inflater.inflate(R.layout.layout_check_listview, container, false);
         Log.d("checkIndexPageFragment", "");
         check_checkbox = (CheckBox)holder.findViewById(R.id.check_checkbox);
+        isSort = new ArrayList<Boolean>();
+        for(int i=0; i<5 ; i++){
+            isSort.add(true);
+        }
+
         if(mPage==0) {
             check_checkbox.setVisibility(View.INVISIBLE);
             tv_total = (TextView)holder.findViewById(R.id.tv_account_total);
@@ -136,6 +157,19 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
             tv_account_buy = (TextView)holder.findViewById(R.id.tv_account_buy);
             tv_per = (TextView)holder.findViewById(R.id.tv_account_per);
             tv_profit = (TextView)holder.findViewById(R.id.tv_account_profit);
+
+            account_list_btn_index = (Button)holder.findViewById(R.id.account_list_btn_index);
+            account_list_btn_current = (Button)holder.findViewById(R.id.account_list_btn_current);
+            account_list_btn_bought = (Button)holder.findViewById(R.id.account_list_btn_bought);
+            account_list_btn_qty = (Button)holder.findViewById(R.id.account_list_btn_qty);
+            account_list_btn_subtotal = (Button)holder.findViewById(R.id.account_list_btn_subtotal);
+
+            account_list_btn_index.setOnClickListener(this);
+            account_list_btn_current.setOnClickListener(this);
+            account_list_btn_bought.setOnClickListener(this);
+            account_list_btn_qty.setOnClickListener(this);
+            account_list_btn_subtotal.setOnClickListener(this);
+
         }
         else{
             holder.findViewById(R.id.layout_check_listview_account_header).setVisibility(View.INVISIBLE);
@@ -155,6 +189,12 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                 btn_buy.setText("");
                 btn_delete.setText("");
             }
+
+            wishlist_list_btn_index = (Button)holder.findViewById(R.id.wishlist_list_btn_index);
+            wishlist_list_btn_current = (Button)holder.findViewById(R.id.wishlist_list_btn_current);
+
+            wishlist_list_btn_index.setOnClickListener(this);
+            wishlist_list_btn_current.setOnClickListener(this);
         }
 
         check_checkbox.setOnClickListener(new View.OnClickListener() {
@@ -380,6 +420,137 @@ public class CheckIndexPagerFragment extends android.support.v4.app.Fragment imp
                 dialogWishlist.show();
             }
         }
+        switch (v.getId()){
+            case R.id.account_list_btn_index:
+                sortList(0);
+                break;
+            case R.id.account_list_btn_current:
+                sortList(1);
+                break;
+            case R.id.account_list_btn_bought:
+                sortList(2);
+                break;
+            case R.id.account_list_btn_qty:
+                sortList(3);
+                break;
+            case R.id.account_list_btn_subtotal:
+                sortList(4);
+                break;
+            case R.id.wishlist_list_btn_index:
+                sortList(0);
+                break;
+            case R.id.wishlist_list_btn_current:
+                sortList(1);
+                break;
+
+        }
 //        getCheckIndex();
+    }
+
+    static class sortWishlist implements Comparator<CheckIndexItem> {
+        public int sortArg;
+        public CheckIndexItem lhs;
+        public CheckIndexItem rhs;
+        public boolean isSort;
+
+        public sortWishlist(int sortArg, boolean isSort){
+            this.sortArg = sortArg;
+            this.isSort = isSort;
+        }
+
+        @Override
+        public int compare(CheckIndexItem lhs, CheckIndexItem rhs) {
+            int returnValue = -1;
+            if(isSort == true) {
+                this.lhs = lhs;
+                this.rhs = rhs;
+            } else {
+                this.rhs = lhs;
+                this.lhs = rhs;
+            }
+
+            if(sortArg == 0){
+                returnValue = sortByName();
+            } else if(sortArg ==1){
+                returnValue = sortByCurrent();
+            }
+            return returnValue;
+        }
+        public int sortByName(){
+            return lhs.getName().compareTo(rhs.getName());
+        }
+        public int sortByCurrent(){
+            return lhs.getDiscountPrice() - rhs.getDiscountPrice();
+        }
+
+    }
+    static class sortAccount implements Comparator<CheckIndexItem> {
+        public int sortArg;
+        public CheckIndexItem lhs;
+        public CheckIndexItem rhs;
+        public boolean isSort;
+
+        public sortAccount(int sortArg, boolean isSort){
+            this.sortArg = sortArg;
+            this.isSort = isSort;
+        }
+
+        @Override
+        public int compare(CheckIndexItem lhs, CheckIndexItem rhs) {
+            int returnValue = -1;
+            if(isSort == true) {
+                this.lhs = lhs;
+                this.rhs = rhs;
+            } else {
+                this.rhs = lhs;
+                this.lhs = rhs;
+            }
+
+            if(sortArg == 0){
+                returnValue = sortByName();
+            } else if(sortArg == 1){
+                returnValue = sortByCurrent();
+            } else if(sortArg == 2){
+                returnValue = sortByBought();
+            } else if(sortArg == 3){
+                returnValue = sortByQty();
+            } else if(sortArg == 4){
+                returnValue = sortBySubtotal();
+            }
+            return returnValue;
+        }
+        public int sortByName(){
+            return lhs.getName().compareTo(rhs.getName());
+        }
+
+        public int sortByCurrent(){
+            return lhs.getDiscountPrice() - rhs.getDiscountPrice();
+        }
+
+        public int sortByBought(){
+            return (lhs.getOrderAmount() - rhs.getOrderAmount());
+        }
+        public int sortByQty(){
+            return lhs.getQty() - rhs.getQty();
+        }
+        public int sortBySubtotal(){
+            return (lhs.getQty()*lhs.getDiscountPrice() - rhs.getQty()*rhs.getDiscountPrice());
+        }
+
+
+    }
+
+    public void sortList(int sortArg){
+        if(mPage == 0){
+            Collections.sort(this.items, new sortAccount(sortArg,this.isSort.get(sortArg)));
+            this.isSort.set(sortArg,!this.isSort.get(sortArg));
+            this.checkAccountAdapter.notifyDataSetChanged();
+        }
+        else{
+            Collections.sort(this.items, new sortWishlist(sortArg,this.isSort.get(sortArg)));
+            this.isSort.set(sortArg,!this.isSort.get(sortArg));
+            this.checkIndexAdapter.notifyDataSetChanged();
+        }
+
     }
 }

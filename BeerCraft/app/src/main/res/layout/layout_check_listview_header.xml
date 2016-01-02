@@ -18,7 +18,8 @@ s
         android:layout_marginRight="29dp"
         android:gravity="left|center_vertical"
         android:textColor="@android:color/white"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:id="@+id/wishlist_list_btn_index"/>
 
     <TextView
         android:layout_width="360dp"
@@ -38,9 +39,10 @@ s
         android:layout_height="match_parent"
         android:textSize="15dp"
         android:text="@string/Current"
-        android:gravity="left|center_vertical"
+        android:gravity="right|center_vertical"
         android:textColor="@android:color/white"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:id="@+id/wishlist_list_btn_current"/>
 
     <!--<TextView-->
         <!--android:layout_width="120dp"-->
